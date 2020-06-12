@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568542103}
   - component: {fileID: 568542102}
+  - component: {fileID: 568542104}
   m_Layer: 0
   m_Name: ClusterDemo
   m_TagString: Untagged
@@ -164,6 +165,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &568542104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568542101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3208e607d997cd42ad53a0c8d06e97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPrefab: {fileID: 7516071928962121896, guid: 208fc4a7a29057447a9c4ae90eec603b,
+    type: 3}
+  wallPrefab:
+  - {fileID: 4789116485296126855, guid: d0ec3b7177f3192469b118ba68c8a734, type: 3}
+  - {fileID: 3120881290597023547, guid: f8ccdd063a03ce441926d1859b159077, type: 3}
+  - {fileID: 3771756233766687784, guid: b8a55eaa1f2f29341b2f00be0a158e1b, type: 3}
+  roofPrefab:
+  - {fileID: 4717650938701639776, guid: d22506ae83128934fba63ffc8e58a741, type: 3}
+  - {fileID: 4674721046292569844, guid: a237d0eda267756408cc9c42fb68bf5a, type: 3}
+  - {fileID: 2154486461388433284, guid: e1750afbe4d80ed4c9978a27a47cfa5a, type: 3}
+  - {fileID: 7516071928962121896, guid: 208fc4a7a29057447a9c4ae90eec603b, type: 3}
 --- !u!1 &765669707
 GameObject:
   m_ObjectHideFlags: 0
