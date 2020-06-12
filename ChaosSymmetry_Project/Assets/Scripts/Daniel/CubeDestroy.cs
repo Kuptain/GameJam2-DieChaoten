@@ -74,7 +74,7 @@ public class CubeDestroy : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pushMode = 0;
-            PushFunction(pushForce/3);
+            PushFunction(pushForce/2);
         }
 
         if (Input.GetKey(KeyCode.Alpha1))
