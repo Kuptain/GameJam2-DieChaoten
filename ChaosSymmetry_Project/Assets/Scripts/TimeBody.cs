@@ -41,6 +41,11 @@ public class TimeBody : MonoBehaviour
         }
         else
             Record();
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     void Rewind()

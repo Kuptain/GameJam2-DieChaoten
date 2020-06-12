@@ -23,6 +23,8 @@ public class TimeManager : MonoBehaviour
         {
             DoFastforward();
         }
+
+
     }
 
     public void DoSlowmotion()
