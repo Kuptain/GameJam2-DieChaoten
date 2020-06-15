@@ -59,32 +59,36 @@ public class ClusterManager : MonoBehaviour
 
     public void OnTheWayToHeaven()
     {
-        if(selectClusterScript.hit.transform.tag == "ClusterParts1")
+        if (Input.GetMouseButton(0))
         {
-            foreach (GameObject go in clusterParts1)
+            if (selectClusterScript.hit.transform.tag == "ClusterParts1")
             {
-                go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
-                go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                foreach (GameObject go in clusterParts1)
+                {
+                    go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
+                    go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                }
             }
-        }
 
-        if (selectClusterScript.hit.transform.tag == "ClusterParts2")
-        {
-            foreach (GameObject go in clusterParts2)
+            if (selectClusterScript.hit.transform.tag == "ClusterParts2")
             {
-                go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
-                go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                foreach (GameObject go in clusterParts2)
+                {
+                    go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
+                    go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                }
             }
-        }
 
-        if (selectClusterScript.hit.transform.tag == "ClusterParts3")
-        {
-            foreach (GameObject go in clusterParts3)
+            if (selectClusterScript.hit.transform.tag == "ClusterParts3")
             {
-                go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
-                go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                foreach (GameObject go in clusterParts3)
+                {
+                    go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y * speed, Space.World);
+                    go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
+                }
             }
         }
+        
 
     }
 
