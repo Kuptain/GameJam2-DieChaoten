@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 483481537612287347}
   - component: {fileID: 483481537612287346}
   - component: {fileID: 483481537612287345}
+  - component: {fileID: 6823661773539036720}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -59,8 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c605eb5bb427d4d82e4f144730f652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  mouseSensitivity: 100
+  speed: 50
+  mouseSensitivity: 300
+  jumpForce: 2000
 --- !u!54 &483481537612287345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,6 +79,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6823661773539036720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483481537612287349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75010a31ffd6ff940879d37975a01a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 483481538249870202}
 --- !u!1 &483481538249870204
 GameObject:
   m_ObjectHideFlags: 0
