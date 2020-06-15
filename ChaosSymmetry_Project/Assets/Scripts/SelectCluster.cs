@@ -7,6 +7,8 @@ public class SelectCluster : MonoBehaviour
     float range;
     ClusterManager clusterManager;
 
+    public RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class SelectCluster : MonoBehaviour
 
     void Select()
     {
-        RaycastHit hit;
+        //RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);

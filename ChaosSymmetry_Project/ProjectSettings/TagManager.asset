@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ClusterParts3
+  - ClusterParts1
+  - ClusterParts2
   layers:
   - Default
   - TransparentFX
