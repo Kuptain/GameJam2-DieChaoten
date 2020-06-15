@@ -18,11 +18,16 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         ShootRay();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
