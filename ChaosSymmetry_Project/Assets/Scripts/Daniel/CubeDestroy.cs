@@ -11,7 +11,10 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] float slowmoStrength = 0.25f;
     [SerializeField] float gravityValue = 2f; //The value of the gravity
     [SerializeField] float maxGravity = 2f; //gravityChange can not be higher than this
-    
+
+    [HideInInspector] public int pushMode;
+    [HideInInspector] public bool sendingBack;
+
     float gravityChange; //This will be changed and added to the object
 
     float finalSpeed;
@@ -23,14 +26,14 @@ public class CubeDestroy : MonoBehaviour
     Vector3 moveVelocity;
     Quaternion startRotation;
     Rigidbody rigid;
-    int pushMode;
+
 
     
 
 
     void Start()
     {
-
+        /*
         if (gameObject.GetComponent<Renderer>() != null)
         {
             Debug.Log("Has Mat");
@@ -48,6 +51,7 @@ public class CubeDestroy : MonoBehaviour
                 gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorThree);
             }
         }
+        */
 
         rigid = gameObject.GetComponent<Rigidbody>();
         pushForce = CubeManager.instance.pushForce;
@@ -123,11 +127,30 @@ public class CubeDestroy : MonoBehaviour
 
 
     //New "manual" push mode for adding the slowmotion effect
-    void Explode()
+    public void Explode()
     {
         colliding = false;
         rigid.constraints = RigidbodyConstraints.None;
         moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
+        sendingBack = false;
+
+    }
+
+    public void SendBack()
+    {
+      
+        pushMode = 0;
+        transform.position = Vector3.Slerp(transform.position, startPosition, 0.02f);
+
+        //transform.position = new Vector3(Mathf.InverseLerp(transform.position.x, startPosition.x, 0.2f),
+        //                                 Mathf.InverseLerp(transform.position.y, startPosition.y, 0.2f),
+        //                                 Mathf.InverseLerp(transform.position.z, startPosition.z, 0.2f));
+
+        transform.rotation = startRotation;
+        moveVelocity = new Vector3(0, 0, 0);
+
+        rigid.constraints = RigidbodyConstraints.FreezeRotation;
+        rigid.constraints = RigidbodyConstraints.FreezePosition;
     }
     void InputPushNew()
     {     
@@ -142,34 +165,48 @@ public class CubeDestroy : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             finalSlowmo = slowmoStrength;
-            //finalSpeed = speed;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             finalSlowmo = 1;
-            //finalSpeed = speed;
         }
 
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            pushMode = 0;
-            transform.position = Vector3.Lerp(transform.position, startPosition, 0.05f);
-            transform.rotation = startRotation;
-            moveVelocity = new Vector3(0, 0, 0);
-
-            rigid.constraints = RigidbodyConstraints.FreezeRotation;
-            rigid.constraints = RigidbodyConstraints.FreezePosition;
-
+            sendingBack = true;
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
             pushMode = 2;
+
             Explode();
 
         }
     }
 
+    void SetColor()
+    {
+        if (gameObject.GetComponent<Renderer>() != null)
+        {
+            if (pushMode == 0)
+            {
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
 
+            }
+            if (pushMode == 1)
+            {
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorTwo);
+
+            }
+            if (pushMode == 2)
+            {
+                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorThree);
+
+            }
+        }
+   
+
+    }
     void Update()
     {
         if (colliding == false && (pushMode == 1 || pushMode == 2))
@@ -208,6 +245,12 @@ public class CubeDestroy : MonoBehaviour
 
         //InputPush();
         InputPushNew();
+        SetColor();
+        if (sendingBack)
+        {
+            SendBack();
+
+        }
 
         RaycastHit hit;
 
