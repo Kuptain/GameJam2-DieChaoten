@@ -28,6 +28,15 @@ public class CubeManager : MonoBehaviour
         
     }
 
+    public void ChangeToA()
+    {
+        testMode = 0;
+    }
+    public void ChangeToB()
+    {
+        testMode = 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
