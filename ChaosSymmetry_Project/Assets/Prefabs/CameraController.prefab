@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 483481537612287346}
   - component: {fileID: 483481537612287345}
   - component: {fileID: 6823661773539036720}
+  - component: {fileID: 5185433686715111547}
   m_Layer: 2
   m_Name: CameraController
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483481537612287349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21668771, y: 1.0476568, z: 0.8789003}
+  m_LocalPosition: {x: 0.21668771, y: 1.52, z: 0.8789003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483481538249870203}
@@ -60,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c605eb5bb427d4d82e4f144730f652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 65
-  mouseSensitivity: 300
-  jumpForce: 1200
+  speed: 20
+  mouseSensitivity: 250
+  jumpForce: 1000
 --- !u!54 &483481537612287345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6823661773539036720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 483481538249870202}
+--- !u!135 &5185433686715111547
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483481537612287349}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4125793
+  m_Center: {x: -0.18583477, y: -1.3227044, z: 0}
 --- !u!1 &483481538249870204
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,22 @@ public class FirstPersonController : MonoBehaviour
 {
 
     [SerializeField] float speed;
-    [SerializeField] float mouseSensitivity;
+    //[SerializeField] float mouseSensitivity;
     [SerializeField] float jumpForce;
+    [SerializeField] float lookUpMax = 45;
+    [SerializeField] float lookUpMin = -45;
 
+    float camSmoothingFactor = 1;
 
+    bool isGrounded;
 
 
     Rigidbody rigid;
     Camera cam;
 
     Vector3 lastMousePosition;
+
+    private Quaternion camRotation;
 
     void Start()
     {
@@ -41,18 +47,16 @@ public class FirstPersonController : MonoBehaviour
 
     private void RotateCamera()
     {
-        Vector3 cameraDelta = new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0);
-       // Vector3 cameraDelta = lastMousePosition - Input.mousePosition;
+        camRotation.x += Input.GetAxis("Mouse Y") * camSmoothingFactor * (-1);
+        camRotation.y += Input.GetAxis("Mouse X") * camSmoothingFactor;
 
-        transform.Rotate(0, cameraDelta.x * Time.deltaTime * mouseSensitivity, 0);
-        cam.transform.Rotate( -cameraDelta.y * Time.deltaTime * mouseSensitivity,0,0);
+        camRotation.x = Mathf.Clamp(camRotation.x, lookUpMin, lookUpMax);
 
-
-        //   lastMousePosition = Input.mousePosition;
+        transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rigid.AddForce(transform.up * jumpForce);
         }
@@ -61,6 +65,22 @@ public class FirstPersonController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            isGrounded = false;
+        }
     }
 
 }
