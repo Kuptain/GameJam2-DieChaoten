@@ -4223,7 +4223,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
+=======
+    - target: {fileID: 483481537612287346, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: jumpForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 483481537612287346, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d,
+>>>>>>> Stashed changes
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0235
