@@ -110,7 +110,7 @@ MonoBehaviour:
   colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
   colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
   colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
-  speed: 20
+  speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
   maxGravity: 2
