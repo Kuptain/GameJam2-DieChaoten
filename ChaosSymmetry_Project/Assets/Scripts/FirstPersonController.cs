@@ -9,7 +9,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float mouseSensitivity;
     [SerializeField] float jumpForce;
 
-
+    bool isGrounded;
 
 
     Rigidbody rigid;
@@ -52,7 +52,7 @@ public class FirstPersonController : MonoBehaviour
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rigid.AddForce(transform.up * jumpForce);
         }
@@ -61,6 +61,22 @@ public class FirstPersonController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            isGrounded = false;
+        }
     }
 
 }
