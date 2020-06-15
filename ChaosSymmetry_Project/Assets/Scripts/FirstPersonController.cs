@@ -6,8 +6,12 @@ public class FirstPersonController : MonoBehaviour
 {
 
     [SerializeField] float speed;
-    [SerializeField] float mouseSensitivity;
+    //[SerializeField] float mouseSensitivity;
     [SerializeField] float jumpForce;
+    [SerializeField] float lookUpMax = 45;
+    [SerializeField] float lookUpMin = -45;
+
+    float camSmoothingFactor = 1;
 
     bool isGrounded;
 
@@ -16,6 +20,8 @@ public class FirstPersonController : MonoBehaviour
     Camera cam;
 
     Vector3 lastMousePosition;
+
+    private Quaternion camRotation;
 
     void Start()
     {
@@ -41,14 +47,12 @@ public class FirstPersonController : MonoBehaviour
 
     private void RotateCamera()
     {
-        Vector3 cameraDelta = new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0);
-       // Vector3 cameraDelta = lastMousePosition - Input.mousePosition;
+        camRotation.x += Input.GetAxis("Mouse Y") * camSmoothingFactor * (-1);
+        camRotation.y += Input.GetAxis("Mouse X") * camSmoothingFactor;
 
-        transform.Rotate(0, cameraDelta.x * Time.deltaTime * mouseSensitivity, 0);
-        //cam.transform.Rotate( -cameraDelta.y * Time.deltaTime * mouseSensitivity,0,0);   --- here will come other camera script
+        camRotation.x = Mathf.Clamp(camRotation.x, lookUpMin, lookUpMax);
 
-
-        //   lastMousePosition = Input.mousePosition;
+        transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
     }
     void Jump()
     {
