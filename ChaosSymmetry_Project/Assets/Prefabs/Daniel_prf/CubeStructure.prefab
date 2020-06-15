@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1885943437}
   m_Layer: 8
   m_Name: CubeStructure
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +114,8 @@ MonoBehaviour:
   slowmoStrength: 0.02
   gravityValue: 2
   maxGravity: 2
+  pushMode: 0
+  sendingBack: 0
 --- !u!54 &1885943437
 Rigidbody:
   m_ObjectHideFlags: 0
