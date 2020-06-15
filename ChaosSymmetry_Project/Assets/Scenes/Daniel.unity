@@ -452,21 +452,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0235
-      objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.0235
-      objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.0235
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e033d1f9bbd4c345b9504ed93904478, type: 3}
 --- !u!1001 &117590927
@@ -1213,21 +1198,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0235
-      objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.0235
-      objectReference: {fileID: 0}
-    - target: {fileID: 2512075555022091095, guid: 2e033d1f9bbd4c345b9504ed93904478,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.0235
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e033d1f9bbd4c345b9504ed93904478, type: 3}
@@ -4682,7 +4652,7 @@ GameObject:
   - component: {fileID: 2056110396}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

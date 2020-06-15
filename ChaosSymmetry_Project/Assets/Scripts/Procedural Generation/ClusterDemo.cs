@@ -8,6 +8,7 @@ public class ClusterDemo : MonoBehaviour
     void Start()
     {
         Cluster c = ClusterGenerator.Generate();
+        GetComponent<ClusterRenderer>().Render(c);
         Debug.Log(c.ToString());
     }
 }
