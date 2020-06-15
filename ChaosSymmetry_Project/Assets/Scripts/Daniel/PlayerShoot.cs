@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    CubeManager cubeManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         //Send Back
+
         if (Input.GetMouseButton(1))
         {
             RaycastHit hit;

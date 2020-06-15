@@ -15,6 +15,7 @@ public class CubeDestroy : MonoBehaviour
     [HideInInspector] public int pushMode;
     [HideInInspector] public bool sendingBack;
 
+    CubeManager cubeManager;
     float gravityChange; //This will be changed and added to the object
 
     float finalSpeed;
@@ -52,6 +53,7 @@ public class CubeDestroy : MonoBehaviour
             }
         }
         */
+        cubeManager = CubeManager.instance.GetComponent<CubeManager>();
 
         rigid = gameObject.GetComponent<Rigidbody>();
         pushForce = CubeManager.instance.pushForce;
@@ -132,7 +134,11 @@ public class CubeDestroy : MonoBehaviour
         colliding = false;
         rigid.constraints = RigidbodyConstraints.None;
         moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-        sendingBack = false;
+        if( cubeManager.testMode == 0)
+        {
+            sendingBack = false;
+
+        }
 
     }
 
@@ -173,8 +179,13 @@ public class CubeDestroy : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            sendingBack = true;
+            if (cubeManager.testMode == 0)
+            {
+                sendingBack = true;
+
+            }
         }
+
         if (Input.GetKey(KeyCode.Alpha2))
         {
             pushMode = 2;
