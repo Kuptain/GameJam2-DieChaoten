@@ -60,15 +60,18 @@ public class CubeDestroy : MonoBehaviour
 
     IEnumerator Force()
     {
-        while (true && finalSlowmo == 1)
+        while (true )
         {
-            yield return new WaitForSeconds(Random.Range(-0.75f, 0.75f) );
+          
+            yield return new WaitForSeconds(Random.Range(-0.75f, 0.75f));
 
-            
-            if (pushMode == 2)
+            if (finalSlowmo == 1)
             {
-                Explode();
+                if (pushMode == 2)
+                {
+                    Explode();
 
+                }
             }
 
         }
@@ -208,9 +211,9 @@ public class CubeDestroy : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1.5f))
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
         {
-            Debug.DrawRay(transform.position , transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position , new Vector3(0, -1, 0) * hit.distance, Color.yellow);
             if (hit.collider.gameObject.CompareTag("terrain"))
             {
                 colliding = true;
