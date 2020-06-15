@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    CubeManager cubeManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,16 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         ShootRay();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -48,6 +54,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         //Send Back
+
         if (Input.GetMouseButton(1))
         {
             RaycastHit hit;

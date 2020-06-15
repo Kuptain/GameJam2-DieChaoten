@@ -11,10 +11,13 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] float slowmoStrength = 0.25f;
     [SerializeField] float gravityValue = 2f; //The value of the gravity
     [SerializeField] float maxGravity = 2f; //gravityChange can not be higher than this
+    [SerializeField] float sendBackManual = 0.02f;
+    [SerializeField] float sendBackAuto = 0.001f;
 
     [HideInInspector] public int pushMode;
     [HideInInspector] public bool sendingBack;
 
+    CubeManager cubeManager;
     float gravityChange; //This will be changed and added to the object
 
     float finalSpeed;
@@ -27,7 +30,7 @@ public class CubeDestroy : MonoBehaviour
     Quaternion startRotation;
     Rigidbody rigid;
 
-
+    float gravityAutoAdjust = 1;
     
 
 
@@ -52,6 +55,7 @@ public class CubeDestroy : MonoBehaviour
             }
         }
         */
+        cubeManager = CubeManager.instance.GetComponent<CubeManager>();
 
         rigid = gameObject.GetComponent<Rigidbody>();
         pushForce = CubeManager.instance.pushForce;
@@ -132,26 +136,42 @@ public class CubeDestroy : MonoBehaviour
         colliding = false;
         rigid.constraints = RigidbodyConstraints.None;
         moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-        sendingBack = false;
+        if( cubeManager.testMode == 0)
+        {
+            sendingBack = false;
+
+        }
 
     }
 
     public void SendBack()
     {
       
-        pushMode = 0;
-        transform.position = Vector3.Slerp(transform.position, startPosition, 0.02f);
+        if(cubeManager.testMode == 0)
+        {
+            pushMode = 0;
+            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * finalSlowmo);
+            //transform.rotation = startRotation;
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.1f);
+            moveVelocity = new Vector3(0, 0, 0);
 
-        //transform.position = new Vector3(Mathf.InverseLerp(transform.position.x, startPosition.x, 0.2f),
-        //                                 Mathf.InverseLerp(transform.position.y, startPosition.y, 0.2f),
-        //                                 Mathf.InverseLerp(transform.position.z, startPosition.z, 0.2f));
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
 
-        transform.rotation = startRotation;
-        moveVelocity = new Vector3(0, 0, 0);
+        }
 
-        rigid.constraints = RigidbodyConstraints.FreezeRotation;
-        rigid.constraints = RigidbodyConstraints.FreezePosition;
+        if (cubeManager.testMode == 1)
+        {
+            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * finalSlowmo);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
+
+
+        }
+
+
+    
     }
+
     void InputPushNew()
     {     
         //Force/Push out 
@@ -173,8 +193,13 @@ public class CubeDestroy : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            sendingBack = true;
+            if (cubeManager.testMode == 0)
+            {
+                sendingBack = true;
+
+            }
         }
+
         if (Input.GetKey(KeyCode.Alpha2))
         {
             pushMode = 2;
@@ -209,6 +234,16 @@ public class CubeDestroy : MonoBehaviour
     }
     void Update()
     {
+        if (cubeManager.testMode == 0)
+        {
+            gravityAutoAdjust = 1;
+
+        }
+        if (cubeManager.testMode == 1)
+        {
+            gravityAutoAdjust = 0.05f;
+
+        }
         if (colliding == false && (pushMode == 1 || pushMode == 2))
         {
             //Change Gravity modifier
@@ -223,16 +258,16 @@ public class CubeDestroy : MonoBehaviour
                 gravityChange = maxGravity;
             }
             */
-
+          
             //Change velocity
             if (moveVelocity.y > -maxGravity)
             {
-                moveVelocity.y -= gravityValue * Time.deltaTime * finalSlowmo;
+                moveVelocity.y -= gravityValue * Time.deltaTime * finalSlowmo * gravityAutoAdjust;
 
             }
             else if(moveVelocity.y <= -maxGravity)
             {
-                moveVelocity.y = -maxGravity;
+                moveVelocity.y = -maxGravity * gravityAutoAdjust;
             }
 
         }
@@ -246,10 +281,15 @@ public class CubeDestroy : MonoBehaviour
         //InputPush();
         InputPushNew();
         SetColor();
+        if (cubeManager.testMode == 1)
+        {
+            sendingBack = true;
+            moveVelocity *= 0.99f; 
+        }
+
         if (sendingBack)
         {
             SendBack();
-
         }
 
         RaycastHit hit;
