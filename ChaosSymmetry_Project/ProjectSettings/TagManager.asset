@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - terrain
+  - ClusterParts3
+  - ClusterParts1
+  - ClusterParts2
   layers:
   - Default
   - TransparentFX
