@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -221,9 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -336,9 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -451,9 +451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -681,9 +681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -796,9 +796,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -911,9 +911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1026,9 +1026,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1141,9 +1141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1256,9 +1256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1371,9 +1371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1532,9 +1532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1647,9 +1647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1762,9 +1762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
@@ -1877,9 +1877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOne: {r: 0.43867922, g: 1, b: 0.9909465, a: 0}
-  colorTwo: {r: 1, g: 0.6933962, b: 0.9445193, a: 0}
-  colorThree: {r: 1, g: 0.9999895, b: 0.5235849, a: 0}
+  colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
+  colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
+  colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   speed: 30
   slowmoStrength: 0.02
   gravityValue: 2
