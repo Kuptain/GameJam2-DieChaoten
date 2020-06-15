@@ -7,6 +7,8 @@ public class FirstPersonController : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float mouseSensitivity;
+    [SerializeField] float jumpForce;
+
 
 
 
@@ -24,7 +26,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
-       
+        Jump();
         Move();
         RotateCamera();
        
@@ -46,9 +48,16 @@ public class FirstPersonController : MonoBehaviour
         cam.transform.Rotate( -cameraDelta.y * Time.deltaTime * mouseSensitivity,0,0);
 
 
-     //   lastMousePosition = Input.mousePosition;
+        //   lastMousePosition = Input.mousePosition;
     }
- 
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigid.AddForce(transform.up * jumpForce);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
