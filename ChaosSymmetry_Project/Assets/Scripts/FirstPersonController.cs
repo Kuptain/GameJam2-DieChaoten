@@ -45,7 +45,7 @@ public class FirstPersonController : MonoBehaviour
        // Vector3 cameraDelta = lastMousePosition - Input.mousePosition;
 
         transform.Rotate(0, cameraDelta.x * Time.deltaTime * mouseSensitivity, 0);
-        cam.transform.Rotate( -cameraDelta.y * Time.deltaTime * mouseSensitivity,0,0);
+        //cam.transform.Rotate( -cameraDelta.y * Time.deltaTime * mouseSensitivity,0,0);   --- here will come other camera script
 
 
         //   lastMousePosition = Input.mousePosition;
