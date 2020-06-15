@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e717fa2713f7a48957acfa8c7f8c90, type: 3}
   m_Name: BasicCluster
   m_EditorClassIdentifier: 
-  clusterSize: {x: 0, y: 0}
+  clusterSize: {x: 7, y: 12}
+  roofStrategy: {fileID: 0}
+  storiesStrategy: {fileID: 0}
+  wallsStrategy: {fileID: 0}
+  storyStrategy: {fileID: 0}
+  wingsStrategy: {fileID: 0}
+  wingStrategy: {fileID: 0}
