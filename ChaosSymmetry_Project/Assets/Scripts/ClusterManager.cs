@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StructuresManager : MonoBehaviour
+public class ClusterManager : MonoBehaviour
 {
     [SerializeField] float speed;
     List<GameObject> allStructureParts;
@@ -35,17 +35,8 @@ public class StructuresManager : MonoBehaviour
         }
     }
 
-    void OnTheWayToHeaven()
+    public void OnTheWayToHeaven()
     {
-        /*if (Input.GetKey(KeyCode.Space))
-        {
-            foreach (GameObject go in allStructureParts)
-            {
-                go.transform.Translate(Vector3.up * Time.deltaTime * Random.Range(1, 3), Space.World);
-                go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(1, 10));
-            }
-        }*/
-
         foreach (GameObject go in allStructureParts)
         {
             go.transform.Translate(Vector3.up * Time.deltaTime * go.transform.position.y*speed, Space.World);
