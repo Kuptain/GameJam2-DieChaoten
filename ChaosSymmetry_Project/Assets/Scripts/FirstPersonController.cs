@@ -8,8 +8,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float speed;
     //[SerializeField] float mouseSensitivity;
     [SerializeField] float jumpForce;
-    [SerializeField] float lookUpMax = 45;
-    [SerializeField] float lookUpMin = -45;
+    [SerializeField] float lookUpMax = 60;
+    [SerializeField] float lookUpMin = -80;
 
     float camSmoothingFactor = 1;
 
