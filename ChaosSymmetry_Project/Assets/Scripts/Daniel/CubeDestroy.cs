@@ -184,10 +184,7 @@ public class CubeDestroy : MonoBehaviour
                 SendBack();
             }
         }
-
-
-
-
+                     
     }
 
     //Intervall Push mode, every x second makes the cubes push away again
