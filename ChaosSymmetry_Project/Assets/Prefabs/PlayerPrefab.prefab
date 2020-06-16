@@ -50,11 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c605eb5bb427d4d82e4f144730f652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  jumpForce: 700
-  lookUpMax: 45
-  lookUpMin: -45
-  fallMultiplier: 2.5
+  speed: 26
+  jumpForce: 900
+  lookUpMax: 60
+  lookUpMin: -60
+  fallMultiplier: 2
   lowJumpMultiplier: 2
   isGrounded: 0
   currentPlattform: {fileID: 0}

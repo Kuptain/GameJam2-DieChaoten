@@ -86,14 +86,16 @@ public class PlayerShoot : MonoBehaviour
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
-                    currentCluster = objectHit.gameObject.transform.parent.gameObject;
+                    currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                     foreach (Transform child in currentCluster.transform)
                     {
-                        //child.GetComponent<PlattformMovement>().startMoving = true;
-                        child.GetComponent<CubeDestroy>().pushMode = 1;
-                        child.GetComponent<CubeDestroy>().Explode();
+                        foreach (Transform childChild in child)
+                        {
+                            childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
+                            childChild.gameObject.GetComponent<CubeDestroy>().Explode();
+                        }
 
-                    }
+                                         }
                 }
             }
         }
@@ -109,23 +111,33 @@ public class PlayerShoot : MonoBehaviour
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
-                    foreach (Transform child in objectHit.gameObject.transform.parent.gameObject.transform)
+                    currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                    Debug.Log("Check1");
+                    foreach (Transform child in currentCluster.transform)
                     {
-                        child.GetComponent<CubeDestroy>().freezeThis = true;
-                        child.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-                        StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject));
+                        Debug.Log("Check2");
+
+                        foreach (Transform childChild in child)
+                        {
+                            Debug.Log("Check3");
+
+                            childChild.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
+                            childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+                            StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject));
+
+                        }
                     }
                 }
             }
         }
     }
 
-    IEnumerator Defreeze(GameObject cluster)
+    public IEnumerator Defreeze(GameObject cluster)
     {
         yield return new WaitForSeconds(meltingTime);
         foreach (Transform child in cluster.transform)
         {
-            child.GetComponent<CubeDestroy>().freezeThis = false;
+            child.GetChild(0).GetComponent<CubeDestroy>().freezeThis = false;
         }
     }
 }

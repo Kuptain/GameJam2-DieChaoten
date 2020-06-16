@@ -19,26 +19,29 @@ public class CubeDestroy : MonoBehaviour
     [HideInInspector] public bool sendingBack, freezeThis;
 
     CubeManager cubeManager;
-    float gravityChange; //This will be changed and added to the object
+    Rigidbody rigid;
+    GameObject orbitObj;
+
 
     float finalSpeed;
-    float currentSlowmo = 1;
+    public float currentSlowmo = 1;
+    float gravityAutoAdjust = 1;
+    float gravityChange; //This will be changed and added to the object
+
     bool colliding;
     bool returnTimer;
     bool isFrozen;
 
-    float pushForce;
     Vector3 startPosition;
     public Vector3 moveVelocity;
     Quaternion startRotation;
-    Rigidbody rigid;
 
-    float gravityAutoAdjust = 1;
-    
 
 
     void Start()
     {
+        
+
         //Set Random color (auskommentiert)
         {
          /*
@@ -75,7 +78,7 @@ public class CubeDestroy : MonoBehaviour
             maxGravity = cubeManager.maxGravity;
             sendBackManual = cubeManager.sendBackManual;
             sendBackAuto = cubeManager.sendBackAuto;
-            pushForce = cubeManager.pushForce;
+            //pushForce = cubeManager.pushForce;
             returnDelay = cubeManager.returnDelay;
         }
 
@@ -101,7 +104,8 @@ public class CubeDestroy : MonoBehaviour
         // Freeze Plattform player is standing on
         if (freezeThis)
         {
-
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
         }
 
         //Return Cooldown
@@ -114,7 +118,7 @@ public class CubeDestroy : MonoBehaviour
         {
             moveVelocity *= 0.99f;
 
-            if (colliding == false && (pushMode == 1 || pushMode == 2))
+            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThis == false)
             {
 
                 //Change velocity
@@ -246,7 +250,7 @@ public class CubeDestroy : MonoBehaviour
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
             //transform.rotation = startRotation;
-            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.1f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.02f);
             moveVelocity = new Vector3(0, 0, 0);
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
