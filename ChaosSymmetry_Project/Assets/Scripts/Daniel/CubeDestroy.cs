@@ -7,6 +7,7 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] Color colorOne;
     [SerializeField] Color colorTwo;
     [SerializeField] Color colorThree;
+    public Color colorHover;
     float speed;
     float slowmoValue;
     float gravityValue; //The value of the gravity
