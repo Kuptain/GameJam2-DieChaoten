@@ -12,7 +12,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float lookUpMin = -45;
 
     float camSmoothingFactor = 1;
-
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
     bool isGrounded;
 
 
@@ -33,6 +34,7 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         Jump();
+        JumpSmoothing();
         Move();
         RotateCamera();
        
@@ -58,7 +60,19 @@ public class FirstPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rigid.AddForce(transform.up * jumpForce);
+            rigid.AddForce(Vector3.up * jumpForce);
+        }
+    }
+
+    void JumpSmoothing()
+    {
+        if(rigid.velocity.y < 0)
+        {
+            rigid.velocity += Vector3.up * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rigid.velocity.y > 0)
+        {
+            rigid.velocity += Vector3.up * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 

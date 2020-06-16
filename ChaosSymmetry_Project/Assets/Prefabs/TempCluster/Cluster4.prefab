@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -363,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -491,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -619,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -747,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -875,6 +881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1003,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1131,6 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1259,6 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1387,6 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1561,6 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1689,6 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1817,6 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -1945,6 +1959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}
@@ -2073,6 +2088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.7611989, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.69618446, a: 0}
   colorThree: {r: 0.6738256, g: 1, b: 0.5254902, a: 0}

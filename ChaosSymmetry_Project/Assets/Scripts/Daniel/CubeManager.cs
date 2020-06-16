@@ -16,6 +16,7 @@ public class CubeManager : MonoBehaviour
     public float returnDelay = 3f;
 
     [HideInInspector] public int testMode;
+    [HideInInspector] public bool gameModeAllClusters;
 
     public float pushForce = 10;
 
@@ -47,6 +48,13 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gameModeAllClusters = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameModeAllClusters = false;
+        }
     }
 }
