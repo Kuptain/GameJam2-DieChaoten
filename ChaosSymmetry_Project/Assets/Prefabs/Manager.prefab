@@ -59,11 +59,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonA: {fileID: 0}
   buttonB: {fileID: 0}
-  speed: 25
-  slowmoValue: 0.05
+  speed: 22
+  slowmoValue: 0.04
   gravityValue: 0
   maxGravity: 0
-  sendBackManual: 0.03
+  sendBackManual: 0.01
   sendBackAuto: 0.001
   returnDelay: 5
   orbitMaxRotation: 90
