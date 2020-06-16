@@ -22,6 +22,7 @@ public class CubeManager : MonoBehaviour
     public float pushForce = 10;
 
     public static CubeManager instance;
+    public bool slowMode = false;
 
     public GameObject player;
 
@@ -56,6 +57,24 @@ public class CubeManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gameModeAllClusters = false;
+        }
+
+        //Slowmotion
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if(slowMode == false)
+                {
+                    slowMode = true;
+
+                }
+                else if(slowMode == true)
+                {
+                    slowMode = false;
+
+                }
+            }
+         
         }
     }
 }

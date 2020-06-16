@@ -214,6 +214,12 @@ public class CubeDestroy : MonoBehaviour
         rigid.constraints = RigidbodyConstraints.FreezeRotation;
         returnTimer = true;
 
+        if (transform.parent.GetComponent<OrbitPoint>() != null)
+        {
+            transform.parent.GetComponent<OrbitPoint>().RandomizeRotation();
+
+        }
+        
         moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
         if( cubeManager.testMode == 0)
         {
@@ -250,7 +256,7 @@ public class CubeDestroy : MonoBehaviour
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
             //transform.rotation = startRotation;
-            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.02f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, sendBackManual * currentSlowmo);
             moveVelocity = new Vector3(0, 0, 0);
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
@@ -271,18 +277,19 @@ public class CubeDestroy : MonoBehaviour
     }
 
     void InputPushNew()
-    {     
-      
-
+    {         
+        
         //Slowmotion
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+
+            if (cubeManager.slowMode)
             {
                 currentSlowmo = slowmoValue;
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            else if (cubeManager.slowMode == false)
             {
                 currentSlowmo = 1;
+
             }
         }
 

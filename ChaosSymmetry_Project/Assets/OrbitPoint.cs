@@ -9,15 +9,14 @@ public class OrbitPoint : MonoBehaviour
     float currentSlowmo;
 
     Vector3 randomRotate;
-    [SerializeField] float maxRotation;
+    float maxRotation;
 
     // Start is called before the first frame update
     void Start()
     {
 
         maxRotation = CubeManager.instance.orbitMaxRotation;
-        randomRotate = new Vector3(Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation));
-
+        
         childObj = gameObject.transform.GetChild(0).gameObject;
 
         if (childObj.GetComponent<CubeDestroy>() != null)
@@ -85,20 +84,20 @@ public class OrbitPoint : MonoBehaviour
         }
         if (childScript.pushMode == 0)
         {
+            randomRotate = Vector3.Lerp(randomRotate, Vector3.zero, 0.005f);
+            transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,
+                       randomRotate.y * Time.deltaTime * currentSlowmo,
+                       randomRotate.z * Time.deltaTime * currentSlowmo);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(0, 0, 0, 0), 0.02f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(0, 0, 0, 0), CubeManager.instance.sendBackManual * currentSlowmo);
+
 
         }
     }
-
-    IEnumerator ChangeRotationValue()
+    public void RandomizeRotation()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(0);
-            randomRotate = new Vector3(Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation));
-
-        }
+        randomRotate = new Vector3(Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation), Random.Range(-maxRotation, maxRotation));
 
     }
+    
 }
