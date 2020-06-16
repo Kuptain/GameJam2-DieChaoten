@@ -83,7 +83,7 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null)
+                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject;
                     foreach (Transform child in currentCluster.transform)

@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548365366287}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -126,14 +127,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548365366287}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774548449684952
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548449684952}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -260,14 +262,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548449684952}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774548620038817
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +405,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548691799124}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -421,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -440,14 +443,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548691799124}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774548735633565
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +540,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548735633565}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -555,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -574,14 +578,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548735633565}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774548762858255
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +675,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548762858255}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -689,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -708,14 +713,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548762858255}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774548766007116
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +810,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548766007116}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -823,6 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -842,14 +848,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774548766007116}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549036867223
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +945,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549036867223}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -957,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -976,14 +983,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549036867223}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549062888471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1080,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549062888471}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1091,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1110,14 +1118,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549062888471}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549135456866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1215,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549135456866}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1225,6 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1244,14 +1253,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549135456866}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549256567940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1350,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549256567940}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1359,6 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1378,14 +1388,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549256567940}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549436385697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1485,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549436385697}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1493,6 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1512,14 +1523,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549436385697}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549444790229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1620,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549444790229}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1627,6 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1646,14 +1658,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549444790229}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549446878081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1755,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549446878081}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1761,6 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1780,14 +1793,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549446878081}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549593203458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,7 +1890,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549593203458}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1895,6 +1908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -1914,14 +1928,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549593203458}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549709303237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +2025,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549709303237}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2029,6 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -2048,14 +2063,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549709303237}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &7542774549753180294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,7 +2160,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549753180294}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af260559024e4394290e435e1c7be535, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2163,6 +2178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 0.8708348, b: 1, a: 0}
   colorTwo: {r: 1, g: 0.69411767, b: 0.791513, a: 0}
   colorThree: {r: 0.8737507, g: 1, b: 0.5254902, a: 0}
@@ -2182,11 +2198,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542774549753180294}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
