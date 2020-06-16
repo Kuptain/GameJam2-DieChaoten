@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] Camera cam;
     CubeManager cubeManager;
     GameObject currentCluster;
+    [SerializeField] float meltingTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,35 @@ public class PlayerShoot : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Transform objectHit = hit.transform;
+                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
+                {
+                    foreach (Transform child in objectHit.gameObject.transform.parent.gameObject.transform)
+                    {
+                        child.GetComponent<CubeDestroy>().freezeThis = true;
+                        StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject));
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator Defreeze(GameObject cluster)
+    {
+        yield return new WaitForSeconds(meltingTime);
+        foreach (Transform child in cluster.transform)
+        {
+            child.GetComponent<CubeDestroy>().freezeThis = false;
         }
     }
 }

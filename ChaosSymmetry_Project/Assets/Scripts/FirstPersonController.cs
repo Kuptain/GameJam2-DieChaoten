@@ -16,13 +16,11 @@ public class FirstPersonController : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     [SerializeField] bool isGrounded;
 
-    [HideInInspector] public GameObject currentPlattform;
-
     Rigidbody rigid;
     Camera cam;
 
     Vector3 lastMousePosition;
-    public List<GameObject> currentPlattforms = new List<GameObject>();
+    public List<GameObject> currentPlatforms = new List<GameObject>();
 
     private Quaternion camRotation;
 
@@ -95,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         {
             if (other.name != "Ground")
             {
-                currentPlattforms.Add(other.gameObject);
+                currentPlatforms.Add(other.gameObject);
                 other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
             }
         }
@@ -106,14 +104,14 @@ public class FirstPersonController : MonoBehaviour
         if (other.CompareTag("terrain"))
         {
             isGrounded = false;
-            if (other.name != "Ground" && currentPlattforms != null)
+            if (other.name != "Ground" && currentPlatforms != null)
             {
-                foreach (GameObject plattform in currentPlattforms)
+                foreach (GameObject platform in currentPlatforms)
                 {
-                    if (other.gameObject == plattform.gameObject)
+                    if (other.gameObject == platform.gameObject)
                     {
-                        plattform.GetComponent<CubeDestroy>().freezeThis = false;
-                        currentPlattforms.Remove(plattform);
+                        platform.GetComponent<CubeDestroy>().freezeThis = false;
+                        currentPlatforms.Remove(platform);
                     }
                 }
             }
