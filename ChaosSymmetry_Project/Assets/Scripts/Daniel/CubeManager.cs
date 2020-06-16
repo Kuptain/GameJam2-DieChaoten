@@ -7,6 +7,13 @@ public class CubeManager : MonoBehaviour
 {
     [SerializeField] Button buttonA;
     [SerializeField] Button buttonB;
+    public float speed;
+    public float slowmoValue = 0.25f;
+    public float gravityValue = 0.1f; //The value of the gravity
+    public float maxGravity = 0.1f; //gravityChange can not be higher than this
+    public float sendBackManual = 0.02f;
+    public float sendBackAuto = 0.001f;
+    public float returnDelay = 3f;
 
     [HideInInspector] public int testMode;
 

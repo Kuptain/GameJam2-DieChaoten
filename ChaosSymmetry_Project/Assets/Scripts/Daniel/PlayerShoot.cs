@@ -43,7 +43,7 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null)
+                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && objectHit.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
                 {
                     CubeDestroy cube = objectHit.gameObject.GetComponent<CubeDestroy>();
 
