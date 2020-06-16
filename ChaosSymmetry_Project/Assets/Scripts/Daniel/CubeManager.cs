@@ -14,6 +14,7 @@ public class CubeManager : MonoBehaviour
     public float sendBackManual = 0.02f;
     public float sendBackAuto = 0.001f;
     public float returnDelay = 3f;
+    public float orbitMaxRotation = 45;
 
     [HideInInspector] public int testMode;
     [HideInInspector] public bool gameModeAllClusters;

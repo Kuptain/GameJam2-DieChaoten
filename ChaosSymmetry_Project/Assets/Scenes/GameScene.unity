@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cluster3
       objectReference: {fileID: 0}
+    - target: {fileID: 7542774548620038817, guid: d9779500c9f7b5d44a8e41f49427c4cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7542774548620038822, guid: d9779500c9f7b5d44a8e41f49427c4cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -630,6 +635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cluster1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749092757673383585, guid: 7b26c55b4bd318a4a9e9c5f43be03a6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6749092757673383590, guid: 7b26c55b4bd318a4a9e9c5f43be03a6d,
         type: 3}
@@ -1181,12 +1191,12 @@ GameObject:
   - component: {fileID: 374681466}
   - component: {fileID: 374681470}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Wand3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &374681466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1291,12 +1301,12 @@ GameObject:
   - component: {fileID: 392523362}
   - component: {fileID: 392523366}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Wand4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &392523362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1959,6 +1969,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cluster4 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7361598610687927323, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7361598610687927324, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2036,12 +2051,12 @@ GameObject:
   - component: {fileID: 624344073}
   - component: {fileID: 624344077}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Wand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &624344073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3639,6 +3654,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cluster2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4811548256763297572, guid: 11edb603975f5514e9799e998ddfb939,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4811548256763297575, guid: 11edb603975f5514e9799e998ddfb939,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3793,6 +3813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cluster2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811548256763297572, guid: 11edb603975f5514e9799e998ddfb939,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811548256763297575, guid: 11edb603975f5514e9799e998ddfb939,
         type: 3}
@@ -4225,7 +4250,7 @@ PrefabInstance:
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.39858574
+      value: 0.5348286
       objectReference: {fileID: 0}
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
@@ -4235,7 +4260,7 @@ PrefabInstance:
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9171311
+      value: 0.84496063
       objectReference: {fileID: 0}
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
@@ -4250,32 +4275,17 @@ PrefabInstance:
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 46.980003
+      value: 64.665
       objectReference: {fileID: 0}
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 483481537612287345, guid: 1a2192a2a02cef8418163e33e20d441d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 483481538249870204, guid: 1a2192a2a02cef8418163e33e20d441d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a2192a2a02cef8418163e33e20d441d, type: 3}
@@ -4703,6 +4713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cluster3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7542774548620038817, guid: d9779500c9f7b5d44a8e41f49427c4cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7542774548620038822, guid: d9779500c9f7b5d44a8e41f49427c4cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5011,28 +5026,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
-      propertyPath: pushForce
-      value: 25
+      propertyPath: sendBackManual
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
       propertyPath: speed
-      value: 20
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
-      propertyPath: slowmoStrength
-      value: 0.05
+      propertyPath: slowmoValue
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
-      propertyPath: gravityValue
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
-        type: 3}
-      propertyPath: sendBackManual
-      value: 0.05
+      propertyPath: orbitMaxRotation
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2884d6839df5eec479c55c8dc246c1a0, type: 3}
@@ -5233,6 +5243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cluster4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361598610687927323, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7361598610687927324, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
         type: 3}
@@ -5940,6 +5955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cluster4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361598610687927323, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7361598610687927324, guid: c9f9123698b3bb34fbe80984d6ad5cb7,
         type: 3}
@@ -7134,6 +7154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cluster1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6749092757673383585, guid: 7b26c55b4bd318a4a9e9c5f43be03a6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6749092757673383590, guid: 7b26c55b4bd318a4a9e9c5f43be03a6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7208,6 +7233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cluster2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811548256763297572, guid: 11edb603975f5514e9799e998ddfb939,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811548256763297575, guid: 11edb603975f5514e9799e998ddfb939,
         type: 3}
@@ -7714,12 +7744,12 @@ GameObject:
   - component: {fileID: 1983284506}
   - component: {fileID: 1983284510}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Wand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1983284506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7824,12 +7854,12 @@ GameObject:
   - component: {fileID: 2022612934}
   - component: {fileID: 2022612937}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Decke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2022612933
 Transform:
   m_ObjectHideFlags: 0

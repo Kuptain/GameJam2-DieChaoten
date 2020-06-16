@@ -59,6 +59,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonA: {fileID: 0}
   buttonB: {fileID: 0}
+  speed: 25
+  slowmoValue: 0.05
+  gravityValue: 0
+  maxGravity: 0
+  sendBackManual: 0.03
+  sendBackAuto: 0.001
+  returnDelay: 5
+  orbitMaxRotation: 90
   testMode: 0
-  pushForce: 10
+  gameModeAllClusters: 0
+  pushForce: 25
   player: {fileID: 0}

@@ -85,12 +85,24 @@ public class PlayerShoot : MonoBehaviour
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
-                    currentCluster = objectHit.gameObject.transform.parent.gameObject;
+                    currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                     foreach (Transform child in currentCluster.transform)
                     {
+                        Debug.Log("Boom");
+
                         //child.GetComponent<PlattformMovement>().startMoving = true;
-                        child.GetComponent<CubeDestroy>().pushMode = 1;
-                        child.GetComponent<CubeDestroy>().Explode();
+                        foreach (Transform childChild in child)
+                        {
+                            Debug.Log("Boom");
+                            childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
+                            childChild.gameObject.GetComponent<CubeDestroy>().Explode();
+                        }
+
+                        /*
+                        Debug.LogError("Boom");
+                        child.GetChild(0).gameObject.GetComponent<CubeDestroy>().pushMode = 1;
+                        child.GetChild(0).gameObject.GetComponent<CubeDestroy>().Explode();
+                        */
 
                     }
                 }
