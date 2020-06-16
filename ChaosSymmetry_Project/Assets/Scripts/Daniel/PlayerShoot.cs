@@ -113,14 +113,11 @@ public class PlayerShoot : MonoBehaviour
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
-                    Debug.Log("Check1");
                     foreach (Transform child in currentCluster.transform)
                     {
-                        Debug.Log("Check2");
 
                         foreach (Transform childChild in child)
                         {
-                            Debug.Log("Check3");
 
                             childChild.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
                             childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
@@ -149,8 +146,12 @@ public class PlayerShoot : MonoBehaviour
                 {
                     foreach (Transform childChild in child)
                     {
-                        childChild.gameObject.GetComponent<Renderer>().material.SetColor("_Color", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
-                        print("aaaa");
+                        if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+                        {
+                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_Color", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
+                            print("aaaa");
+                        }
+                  
                     }
                 }
             }
