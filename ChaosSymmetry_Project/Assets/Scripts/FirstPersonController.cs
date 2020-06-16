@@ -15,6 +15,7 @@ public class FirstPersonController : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     [SerializeField] bool isGrounded;
+    bool isOnCube;
 
     Rigidbody rigid;
     Camera cam;
@@ -84,28 +85,45 @@ public class FirstPersonController : MonoBehaviour
         if (other.CompareTag("terrain"))
         {
             isGrounded = true;
+
+            if (other.name != "Ground")
+            {
+
+                currentPlatforms.Add(other.gameObject);
+                other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
+                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+                StartCoroutine(Defreeze(other.gameObject));
+
+
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("terrain"))
         {
-            if (other.name != "Ground")
-            {
-                currentPlatforms.Add(other.gameObject);
-                other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
-                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-            }
+          
         }
     }
 
+    IEnumerator Defreeze(GameObject cube)
+    {
+        yield return new WaitForSeconds(0.15f);
+        if(isGrounded == false)
+        {
+            cube.GetComponent<CubeDestroy>().freezeThis = false;
+
+        }
+
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("terrain"))
         {
             isGrounded = false;
-            if (other.name != "Ground" && currentPlatforms != null)
+            if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().freezeThis == true)
             {
                 foreach (GameObject platform in currentPlatforms)
                 {
@@ -117,6 +135,7 @@ public class FirstPersonController : MonoBehaviour
                 }
             }
         }
+        
     }
 
 }

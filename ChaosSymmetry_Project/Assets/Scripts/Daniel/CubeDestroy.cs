@@ -104,7 +104,8 @@ public class CubeDestroy : MonoBehaviour
         // Freeze Plattform player is standing on
         if (freezeThis)
         {
-
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
         }
 
         //Return Cooldown
@@ -117,7 +118,7 @@ public class CubeDestroy : MonoBehaviour
         {
             moveVelocity *= 0.99f;
 
-            if (colliding == false && (pushMode == 1 || pushMode == 2))
+            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThis == false)
             {
 
                 //Change velocity

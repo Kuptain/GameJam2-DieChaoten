@@ -74,9 +74,9 @@ public class OrbitPoint : MonoBehaviour
             */
 
         }
-    
 
-        if (childScript.pushMode == 1)
+
+        if (childScript.pushMode == 1 && childScript.freezeThis == false)
         {            
             transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,
                              randomRotate.y * Time.deltaTime * currentSlowmo,
