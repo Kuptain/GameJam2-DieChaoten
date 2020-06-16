@@ -6,6 +6,8 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
     CubeManager cubeManager;
+    GameObject currentCluster;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,28 +36,45 @@ public class PlayerShoot : MonoBehaviour
     void ShootRay()
     {
         //Explode
-        if (Input.GetMouseButton(0))
-        {
-            RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+        /* if (Input.GetMouseButton(0))
+         {
+             RaycastHit hit;
+             Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
 
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Transform objectHit = hit.transform;
-                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && objectHit.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
-                {
-                    CubeDestroy cube = objectHit.gameObject.GetComponent<CubeDestroy>();
+             if (Physics.Raycast(ray, out hit))
+             {
+                 Transform objectHit = hit.transform;
+                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null)
+                 {
+                     CubeDestroy cube = objectHit.gameObject.GetComponent<CubeDestroy>();
 
-                    cube.pushMode = 1;
-                    cube.Explode();
-                }
-            }
-        }
+                     cube.pushMode = 1;
+                     cube.Explode();
+                 }
+             }
+         }
 
-        //Send Back
+         //Send Back
+         if (Input.GetMouseButton(1))
+         {
+             RaycastHit hit;
+             Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
 
-        if (Input.GetMouseButton(1))
+
+             if (Physics.Raycast(ray, out hit))
+             {
+                 Transform objectHit = hit.transform;
+                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null)
+                 {
+                     CubeDestroy cube = objectHit.gameObject.GetComponent<CubeDestroy>();
+
+                     cube.sendingBack = true;
+                 }
+             }
+         }*/
+
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
@@ -66,9 +85,11 @@ public class PlayerShoot : MonoBehaviour
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null)
                 {
-                    CubeDestroy cube = objectHit.gameObject.GetComponent<CubeDestroy>();
-
-                    cube.sendingBack = true;
+                    currentCluster = objectHit.gameObject.transform.parent.gameObject;
+                    foreach (Transform child in currentCluster.transform)
+                    {
+                        child.GetComponent<PlattformMovement>().startMoving = true;
+                    }
                 }
             }
         }
