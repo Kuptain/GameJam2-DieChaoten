@@ -107,15 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &5794998617200232551
@@ -126,9 +121,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756234404231}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -241,15 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &7186582699814911408
@@ -260,9 +250,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756353331827}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -375,15 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &6641821756987645027
@@ -394,9 +379,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756363153454}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -509,15 +494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &6594735880492026775
@@ -528,9 +508,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756400461059}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -643,15 +623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &6357602415969706669
@@ -662,9 +637,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756490911877}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -777,15 +752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &8073267924853518438
@@ -796,9 +766,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756601970522}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -911,15 +881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &4282729793620415108
@@ -930,9 +895,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756610370084}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1045,15 +1010,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &1559985365344399470
@@ -1064,9 +1024,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756651530308}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1179,15 +1139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &9213218807351420975
@@ -1198,9 +1153,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092756918184680}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1313,15 +1268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &1930836236129919325
@@ -1332,9 +1282,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757513874693}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1447,15 +1397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &5225946838033807665
@@ -1466,9 +1411,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757558987613}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1581,15 +1526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &7832192672116145669
@@ -1600,9 +1540,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757568210053}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1761,15 +1701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &6068102631788924666
@@ -1780,9 +1715,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757733981820}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1895,15 +1830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &6995168181990343968
@@ -1914,9 +1844,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757818013897}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2029,15 +1959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &5675715224129829843
@@ -2048,9 +1973,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757844306872}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2163,15 +2088,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoving: 0
   colorOne: {r: 0.43921566, g: 1, b: 0.7480106, a: 0}
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
-  speed: 30
-  slowmoStrength: 0.02
-  gravityValue: 2
-  maxGravity: 2
-  sendBackManual: 0.02
-  sendBackAuto: 0.001
   pushMode: 0
   sendingBack: 0
 --- !u!54 &5472987360751234092
@@ -2182,9 +2102,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6749092757937430295}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0

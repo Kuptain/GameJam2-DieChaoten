@@ -7,26 +7,29 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] Color colorOne;
     [SerializeField] Color colorTwo;
     [SerializeField] Color colorThree;
-    [SerializeField] float speed;
-    [SerializeField] float slowmoStrength = 0.25f;
-    [SerializeField] float gravityValue = 2f; //The value of the gravity
-    [SerializeField] float maxGravity = 2f; //gravityChange can not be higher than this
-    [SerializeField] float sendBackManual = 0.02f;
-    [SerializeField] float sendBackAuto = 0.001f;
+    float speed;
+    float slowmoValue;
+    float gravityValue; //The value of the gravity
+    float maxGravity; //gravityChange can not be higher than this
+    float sendBackManual;
+    float sendBackAuto;
+    float returnDelay;
 
     [HideInInspector] public int pushMode;
-    [HideInInspector] public bool sendingBack;
+    [HideInInspector] public bool sendingBack, freezeThis;
 
     CubeManager cubeManager;
     float gravityChange; //This will be changed and added to the object
 
     float finalSpeed;
-    float finalSlowmo = 1;
+    float currentSlowmo = 1;
     bool colliding;
+    bool returnTimer;
+    bool isFrozen;
 
     float pushForce;
     Vector3 startPosition;
-    Vector3 moveVelocity;
+    public Vector3 moveVelocity;
     Quaternion startRotation;
     Rigidbody rigid;
 
@@ -36,7 +39,9 @@ public class CubeDestroy : MonoBehaviour
 
     void Start()
     {
-        /*
+        //Set Random color (auskommentiert)
+        {
+         /*
         if (gameObject.GetComponent<Renderer>() != null)
         {
             Debug.Log("Has Mat");
@@ -55,17 +60,127 @@ public class CubeDestroy : MonoBehaviour
             }
         }
         */
-        cubeManager = CubeManager.instance.GetComponent<CubeManager>();
+        }
+        
+        
+        //Copy from Cubemanager//
+        {
+            cubeManager = CubeManager.instance.GetComponent<CubeManager>();
 
-        rigid = gameObject.GetComponent<Rigidbody>();
-        pushForce = CubeManager.instance.pushForce;
-        startPosition = transform.position;
-        startRotation = transform.rotation;
-        finalSpeed = speed;
+            speed = cubeManager.speed;
+            finalSpeed = speed;
 
-        StartCoroutine(Force());
+            slowmoValue = cubeManager.slowmoValue;
+            gravityValue = cubeManager.gravityValue;
+            maxGravity = cubeManager.maxGravity;
+            sendBackManual = cubeManager.sendBackManual;
+            sendBackAuto = cubeManager.sendBackAuto;
+            pushForce = cubeManager.pushForce;
+            returnDelay = cubeManager.returnDelay;
+        }
+
+        //Start Setup
+        {
+            rigid = gameObject.GetComponent<Rigidbody>();
+            startPosition = transform.position;
+            startRotation = transform.rotation;
+            
+
+            StartCoroutine(Force());
+        }
+
+        gravityAutoAdjust = 1;
+
     }
 
+    void Update()
+    {
+        InputPushNew();
+        SetColor();
+
+        // Freeze Plattform player is standing on
+        if (freezeThis)
+        {
+
+        }
+
+        //Return Cooldown
+        if (returnTimer == true)
+        {
+            ReturnTimer();
+        }
+
+        //Add own velocity and gravity - Push Cubes away
+        {
+            moveVelocity *= 0.99f;
+
+            if (colliding == false && (pushMode == 1 || pushMode == 2))
+            {
+
+                //Change velocity
+                if (moveVelocity.y > -maxGravity)
+                {
+                    moveVelocity.y -= gravityValue * Time.deltaTime * currentSlowmo * gravityAutoAdjust;
+
+                }
+                else if (moveVelocity.y <= -maxGravity)
+                {
+                    moveVelocity.y = -maxGravity * gravityAutoAdjust;
+                }
+
+            }
+            else
+            {
+                gravityChange = 0;
+            }
+            transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+
+        }
+
+
+        //Check ground below for Collision/Raycast
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
+            {
+                Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * hit.distance, Color.yellow);
+                if (hit.collider.gameObject.CompareTag("terrain"))
+                {
+                    colliding = true;
+                    //moveVelocity.y = 0;
+                    moveVelocity *= 0.9f;
+                    rigid.constraints = RigidbodyConstraints.FreezeRotation;
+                }
+                else
+                {
+                    colliding = false;
+                }
+            }
+            else
+            {
+                colliding = false;
+
+            }
+        }
+
+
+        //Send Cubes back to the roots
+        {
+            if (cubeManager.testMode == 1)
+            {
+                sendingBack = true;
+            }
+
+            if (sendingBack)
+            {
+                SendBack();
+            }
+        }
+                     
+    }
+
+    //Intervall Push mode, every x second makes the cubes push away again
     IEnumerator Force()
     {
         while (true )
@@ -73,7 +188,7 @@ public class CubeDestroy : MonoBehaviour
           
             yield return new WaitForSeconds(Random.Range(-0.75f, 0.75f));
 
-            if (finalSlowmo == 1)
+            if (currentSlowmo == 1)
             {
                 if (pushMode == 2)
                 {
@@ -86,55 +201,15 @@ public class CubeDestroy : MonoBehaviour
       
     }
 
-    //##################
-    //>>>>>>>>>>>>> OLD 
-    void PushFunction(float force)
-    {
-        /*
-        Vector3 newForce = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * force;
-        rigid.constraints = RigidbodyConstraints.None;
-        rigid.useGravity = true;
-        rigid.AddForce(newForce, ForceMode.Impulse);
-        */
-    }
 
-    void InputPush()
-    {
-        /*
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            pushMode = 0;
-            PushFunction(pushForce / 2);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            pushMode = 1;
-        }
-
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            pushMode = 0;
-            transform.position = Vector3.Lerp(transform.position, startPosition, 0.05f);
-            transform.rotation = startRotation;
-            rigid.constraints = RigidbodyConstraints.FreezeRotation;
-            rigid.constraints = RigidbodyConstraints.FreezePosition;
-
-            rigid.useGravity = false;
-
-        }
-        */
-    }
-    //OLD <<<<<<<<<<<<<<<
-    //###################
-
-
-
-    //New "manual" push mode for adding the slowmotion effect
+    //Push out effect/Explode
     public void Explode()
     {
         colliding = false;
         rigid.constraints = RigidbodyConstraints.None;
+        rigid.constraints = RigidbodyConstraints.FreezeRotation;
+        returnTimer = true;
+
         moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
         if( cubeManager.testMode == 0)
         {
@@ -144,13 +219,32 @@ public class CubeDestroy : MonoBehaviour
 
     }
 
+    
+    //Return cubes after this timer runs out
+    float timer = 0;
+    void ReturnTimer()
+    {    
+
+        if(timer < returnDelay)
+        {
+            timer += Time.deltaTime * currentSlowmo;
+        }
+        else
+        {
+            sendingBack = true;
+            timer = 0;
+            returnTimer = false;
+        }
+    }
+
+    //Send cubes back to the roots while this is running
     public void SendBack()
     {
       
-        if(cubeManager.testMode == 0)
+        if(freezeThis == false)
         {
             pushMode = 0;
-            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * finalSlowmo);
+            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
             //transform.rotation = startRotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.1f);
             moveVelocity = new Vector3(0, 0, 0);
@@ -160,13 +254,13 @@ public class CubeDestroy : MonoBehaviour
 
         }
 
-        if (cubeManager.testMode == 1)
+       /* if (cubeManager.testMode == 1)
         {
-            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * finalSlowmo);
+            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * currentSlowmo);
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
 
 
-        }
+        }*/
 
 
     
@@ -174,41 +268,52 @@ public class CubeDestroy : MonoBehaviour
 
     void InputPushNew()
     {     
-        //Force/Push out 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            pushMode = 1;
-            Explode();
-        }
+      
 
-        //Slowmo
-        if (Input.GetKey(KeyCode.LeftShift))
+        //Slowmotion
         {
-            finalSlowmo = slowmoStrength;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            finalSlowmo = 1;
-        }
-
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            if (cubeManager.testMode == 0)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                sendingBack = true;
-
+                currentSlowmo = slowmoValue;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                currentSlowmo = 1;
             }
         }
 
-        if (Input.GetKey(KeyCode.Alpha2))
+        //Control all cubes
         {
-            pushMode = 2;
+            //Force/Push out 
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                pushMode = 1;
+                Explode();
+            }
 
-            Explode();
+            //Intervall Force/Push
+            if (Input.GetKey(KeyCode.Alpha2))
+            {
+                pushMode = 2;
+                Explode();
+            }
 
+            //Send all cubes back to the roots
+            if (Input.GetKey(KeyCode.Alpha3))
+            {
+                if (cubeManager.testMode == 0)
+                {
+                    sendingBack = true;
+                }
+            }
+
+          
         }
+
+  
     }
 
+    //Color Management
     void SetColor()
     {
         if (gameObject.GetComponent<Renderer>() != null)
@@ -231,89 +336,6 @@ public class CubeDestroy : MonoBehaviour
         }
    
 
-    }
-    void Update()
-    {
-        if (cubeManager.testMode == 0)
-        {
-            gravityAutoAdjust = 1;
-
-        }
-        if (cubeManager.testMode == 1)
-        {
-            gravityAutoAdjust = 0.05f;
-
-        }
-        if (colliding == false && (pushMode == 1 || pushMode == 2))
-        {
-            //Change Gravity modifier
-            /*
-            if(gravityChange < maxGravity)
-            {
-                gravityChange += gravityValue * finalSlowmo * Time.deltaTime;
-
-            }
-            else if(gravityChange >= maxGravity)
-            {
-                gravityChange = maxGravity;
-            }
-            */
-          
-            //Change velocity
-            if (moveVelocity.y > -maxGravity)
-            {
-                moveVelocity.y -= gravityValue * Time.deltaTime * finalSlowmo * gravityAutoAdjust;
-
-            }
-            else if(moveVelocity.y <= -maxGravity)
-            {
-                moveVelocity.y = -maxGravity * gravityAutoAdjust;
-            }
-
-        }
-        else
-        {
-            gravityChange = 0;
-        }
-        transform.position += moveVelocity * finalSpeed * Time.deltaTime * finalSlowmo;
-
-
-        //InputPush();
-        InputPushNew();
-        SetColor();
-        if (cubeManager.testMode == 1)
-        {
-            sendingBack = true;
-            moveVelocity *= 0.99f; 
-        }
-
-        if (sendingBack)
-        {
-            SendBack();
-        }
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
-        {
-            Debug.DrawRay(transform.position , new Vector3(0, -1, 0) * hit.distance, Color.yellow);
-            if (hit.collider.gameObject.CompareTag("terrain"))
-            {
-                colliding = true;
-                //moveVelocity.y = 0;
-                moveVelocity *= 0.9f;
-                rigid.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-            else
-            {
-                colliding = false;
-            }
-        }
-        else
-        {
-            colliding = false;
-
-        }
     }
 
 
