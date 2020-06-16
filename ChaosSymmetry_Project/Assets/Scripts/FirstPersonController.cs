@@ -14,13 +14,13 @@ public class FirstPersonController : MonoBehaviour
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    bool isGrounded;
-
+    [SerializeField] bool isGrounded;
 
     Rigidbody rigid;
     Camera cam;
 
     Vector3 lastMousePosition;
+    public List<GameObject> currentPlatforms = new List<GameObject>();
 
     private Quaternion camRotation;
 
@@ -37,14 +37,12 @@ public class FirstPersonController : MonoBehaviour
         JumpSmoothing();
         Move();
         RotateCamera();
-       
+
     }
 
     private void Move()
     {
-
-            rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
-
+        rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
     }
 
     private void RotateCamera()
@@ -66,7 +64,7 @@ public class FirstPersonController : MonoBehaviour
 
     void JumpSmoothing()
     {
-        if(rigid.velocity.y < 0)
+        if (rigid.velocity.y < 0)
         {
             rigid.velocity += Vector3.up * (fallMultiplier - 1) * Time.deltaTime;
         }
@@ -78,14 +76,27 @@ public class FirstPersonController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("terrain"))
         {
-            isGrounded = true;
+            if (other.name != "Ground")
+            {
+                currentPlatforms.Add(other.gameObject);
+                other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
+                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+            }
         }
     }
 
@@ -94,6 +105,17 @@ public class FirstPersonController : MonoBehaviour
         if (other.CompareTag("terrain"))
         {
             isGrounded = false;
+            if (other.name != "Ground" && currentPlatforms != null)
+            {
+                foreach (GameObject platform in currentPlatforms)
+                {
+                    if (other.gameObject == platform.gameObject)
+                    {
+                        platform.GetComponent<CubeDestroy>().freezeThis = false;
+                        currentPlatforms.Remove(platform);
+                    }
+                }
+            }
         }
     }
 

@@ -4235,7 +4235,7 @@ PrefabInstance:
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 483481537612287344, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
@@ -8048,7 +8048,7 @@ GameObject:
   - component: {fileID: 2056110392}
   - component: {fileID: 2056110396}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground
   m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

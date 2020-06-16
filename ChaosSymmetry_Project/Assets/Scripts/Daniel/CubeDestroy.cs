@@ -16,7 +16,7 @@ public class CubeDestroy : MonoBehaviour
     float returnDelay;
 
     [HideInInspector] public int pushMode;
-    [HideInInspector] public bool sendingBack;
+    [HideInInspector] public bool sendingBack, freezeThis;
 
     CubeManager cubeManager;
     Rigidbody rigid;
@@ -33,7 +33,7 @@ public class CubeDestroy : MonoBehaviour
     bool isFrozen;
 
     Vector3 startPosition;
-    Vector3 moveVelocity;
+    public Vector3 moveVelocity;
     Quaternion startRotation;
 
 
@@ -92,6 +92,8 @@ public class CubeDestroy : MonoBehaviour
             StartCoroutine(Force());
         }
 
+        gravityAutoAdjust = 1;
+
     }
 
     void Update()
@@ -99,26 +101,17 @@ public class CubeDestroy : MonoBehaviour
         InputPushNew();
         SetColor();
 
+        // Freeze Plattform player is standing on
+        if (freezeThis)
+        {
+
+        }
+
         //Return Cooldown
         if (returnTimer == true)
         {
             ReturnTimer();
         }
-
-        //Mode Selection A and B
-        {
-            if (cubeManager.testMode == 0)
-            {
-                gravityAutoAdjust = 1;
-
-            }
-            if (cubeManager.testMode == 1)
-            {
-                gravityAutoAdjust = 0.05f;
-
-            }
-        }
-
 
         //Add own velocity and gravity - Push Cubes away
         {
@@ -251,7 +244,7 @@ public class CubeDestroy : MonoBehaviour
     public void SendBack()
     {
       
-        if(cubeManager.testMode == 0)
+        if(freezeThis == false)
         {
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
@@ -264,13 +257,13 @@ public class CubeDestroy : MonoBehaviour
 
         }
 
-        if (cubeManager.testMode == 1)
+       /* if (cubeManager.testMode == 1)
         {
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * currentSlowmo);
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
 
 
-        }
+        }*/
 
 
     
