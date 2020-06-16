@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6823661773539036720}
   - component: {fileID: 5185433686715111547}
   m_Layer: 2
-  m_Name: CameraController
+  m_Name: PlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  mouseSensitivity: 250
   jumpForce: 1000
+  lookUpMax: 45
+  lookUpMin: -45
 --- !u!54 &483481537612287345
 Rigidbody:
   m_ObjectHideFlags: 0
