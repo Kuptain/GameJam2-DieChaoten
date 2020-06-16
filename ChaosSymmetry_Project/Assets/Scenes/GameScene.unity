@@ -8018,7 +8018,7 @@ GameObject:
   - component: {fileID: 2056110392}
   - component: {fileID: 2056110396}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground
   m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
