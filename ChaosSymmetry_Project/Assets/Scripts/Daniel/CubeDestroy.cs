@@ -29,7 +29,7 @@ public class CubeDestroy : MonoBehaviour
 
     float pushForce;
     Vector3 startPosition;
-    Vector3 moveVelocity;
+    public Vector3 moveVelocity;
     Quaternion startRotation;
     Rigidbody rigid;
 

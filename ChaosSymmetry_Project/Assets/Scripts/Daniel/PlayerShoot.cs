@@ -112,6 +112,7 @@ public class PlayerShoot : MonoBehaviour
                     foreach (Transform child in objectHit.gameObject.transform.parent.gameObject.transform)
                     {
                         child.GetComponent<CubeDestroy>().freezeThis = true;
+                        child.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
                         StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject));
                     }
                 }

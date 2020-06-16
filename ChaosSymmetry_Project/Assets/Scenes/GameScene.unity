@@ -5027,12 +5027,17 @@ PrefabInstance:
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
       propertyPath: gravityValue
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
         type: 3}
       propertyPath: sendBackManual
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897165919144564730, guid: 2884d6839df5eec479c55c8dc246c1a0,
+        type: 3}
+      propertyPath: maxGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2884d6839df5eec479c55c8dc246c1a0, type: 3}

@@ -95,6 +95,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 currentPlatforms.Add(other.gameObject);
                 other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
+                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
             }
         }
     }
