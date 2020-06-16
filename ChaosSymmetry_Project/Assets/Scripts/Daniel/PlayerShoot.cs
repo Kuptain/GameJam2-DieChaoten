@@ -88,7 +88,10 @@ public class PlayerShoot : MonoBehaviour
                     currentCluster = objectHit.gameObject.transform.parent.gameObject;
                     foreach (Transform child in currentCluster.transform)
                     {
-                        child.GetComponent<PlattformMovement>().startMoving = true;
+                        //child.GetComponent<PlattformMovement>().startMoving = true;
+                        child.GetComponent<CubeDestroy>().pushMode = 1;
+                        child.GetComponent<CubeDestroy>().Explode();
+
                     }
                 }
             }
