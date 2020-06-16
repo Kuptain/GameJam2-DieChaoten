@@ -9,8 +9,8 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] Color colorThree;
     [SerializeField] float speed;
     [SerializeField] float slowmoStrength = 0.25f;
-    [SerializeField] float gravityValue = 2f; //The value of the gravity
-    [SerializeField] float maxGravity = 2f; //gravityChange can not be higher than this
+    [SerializeField] float gravityValue = 0.1f; //The value of the gravity
+    [SerializeField] float maxGravity = 0.1f; //gravityChange can not be higher than this
     [SerializeField] float sendBackManual = 0.02f;
     [SerializeField] float sendBackAuto = 0.001f;
 
