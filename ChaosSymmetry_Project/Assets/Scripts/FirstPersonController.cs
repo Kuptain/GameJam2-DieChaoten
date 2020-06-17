@@ -11,35 +11,44 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float floatForce;
 
 
+
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    [SerializeField] bool isGrounded;
+    public bool isGrounded;
     bool isOnCube;
 
     Rigidbody rigid;
     Camera cam;
+    PlayerManager pm;
 
     Vector3 lastMousePosition;
-    public List<GameObject> currentPlatforms = new List<GameObject>();
+    //public List<GameObject> currentPlatforms = new List<GameObject>();
 
     private Quaternion camRotation;
 
     void Start()
     {
+        pm = PlayerManager.instance.GetComponent<PlayerManager>();
         cam = Camera.main;
         rigid = GetComponent<Rigidbody>();
         Cursor.visible = false;
+
+       
+        
     }
 
     void Update()
+    {
+        RotatePlayer();
+
+    }
+    private void FixedUpdate()
     {
         Jump();
         Floating();
         JumpSmoothing();
         Move();
-        RotatePlayer();
-
     }
 
     private void Move()
@@ -65,14 +74,21 @@ public class FirstPersonController : MonoBehaviour
 
     void Floating()
     {
-        if (Input.GetKey(KeyCode.Space) && isGrounded == false)
+        if (Input.GetKey(KeyCode.Space) && isGrounded == false && pm.floatFuel > 0)
         {
             if (rigid.velocity.y < 0)
             {
-                rigid.AddForce(Vector3.up * floatForce, ForceMode.Force);
+                rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y * 0.75f, rigid.velocity.z);
+            }
+
+            if (true)
+            {
+                rigid.velocity = rigid.velocity + Vector3.up * floatForce;
+                pm.floatFuel -= 1;
             }
         }
     }
+
     void JumpSmoothing()
     {
         if (rigid.velocity.y < 0)
@@ -93,10 +109,11 @@ public class FirstPersonController : MonoBehaviour
             if (rigid.velocity.y <= 0)
             {
                 isGrounded = true;
+                pm.floatFuel = pm.maxFloatFuel;
 
             }
 
-            if (other.name != "Ground")
+            /*if (other.name != "Ground")
             {
 
                 currentPlatforms.Add(other.gameObject);
@@ -105,7 +122,20 @@ public class FirstPersonController : MonoBehaviour
                 StartCoroutine(Defreeze(other.gameObject));
 
 
+            }*/
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terrain") &&  other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null  )
+        {
+            if(other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
+            {
+                LevelGeneration.instance.MoveCheckpoint();
+                Debug.Log("Move Checkpoint");
             }
+         
         }
     }
 
@@ -115,7 +145,7 @@ public class FirstPersonController : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         if(isGrounded == false)
         {
-            cube.GetComponent<CubeDestroy>().freezeThis = false;
+            cube.GetComponent<CubeDestroy>().freezeThisCluster = false;
 
         }
 
@@ -123,20 +153,23 @@ public class FirstPersonController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         StartCoroutine(ChangeGrounded());
-        if (other.CompareTag("terrain"))
+        /*if (other.CompareTag("terrain"))
         {
-            if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().freezeThis == true)
+            if(other.gameObject.GetComponent<CubeDestroy>() != null)
             {
-                foreach (GameObject platform in currentPlatforms)
+                if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().freezeThis == true)
                 {
-                    if (other.gameObject == platform.gameObject)
+                    foreach (GameObject platform in currentPlatforms)
                     {
-                        platform.GetComponent<CubeDestroy>().freezeThis = false;
-                        currentPlatforms.Remove(platform);
+                        if (other.gameObject == platform.gameObject)
+                        {
+                            platform.GetComponent<CubeDestroy>().freezeThis = false;
+                            currentPlatforms.Remove(platform);
+                        }
                     }
                 }
             }
-        }
+        }*/
         
     }
     IEnumerator ChangeGrounded()
