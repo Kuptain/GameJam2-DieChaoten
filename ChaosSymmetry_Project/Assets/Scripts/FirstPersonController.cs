@@ -126,6 +126,19 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terrain") &&  other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null  )
+        {
+            if(other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
+            {
+                LevelGeneration.instance.MoveCheckpoint();
+                Debug.Log("Move Checkpoint");
+            }
+         
+        }
+    }
+
 
     IEnumerator Defreeze(GameObject cube)
     {

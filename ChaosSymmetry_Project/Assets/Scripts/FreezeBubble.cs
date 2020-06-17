@@ -18,11 +18,11 @@ public class FreezeBubble : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("terrain"))
+        if (other.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() != null)
         {
-            if (other.name != "Ground")
+            if (other.name != "Ground" )
             {
                 currentPlatforms.Add(other.gameObject);
                 other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze = true;
@@ -34,7 +34,7 @@ public class FreezeBubble : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("terrain"))
+        if (other.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() != null)
         {
             if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
             {
