@@ -82,7 +82,7 @@ public class OrbitPoint : MonoBehaviour
                              randomRotate.z * Time.deltaTime * currentSlowmo);
 
         }
-        if (childScript.pushMode == 0)
+        if (childScript.pushMode == 0 && childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
         {
             randomRotate = Vector3.Lerp(randomRotate, Vector3.zero, 0.005f);
             transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,

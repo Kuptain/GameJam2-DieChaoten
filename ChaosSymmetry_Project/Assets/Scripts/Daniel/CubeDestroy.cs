@@ -132,12 +132,10 @@ public class CubeDestroy : MonoBehaviour
                 }
 
             }
-         
-            if (freezeThisCluster == false && bubbleFreeze == false)
-            {
-                transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
 
-            }
+            transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+
+          
 
         }
 
@@ -149,7 +147,7 @@ public class CubeDestroy : MonoBehaviour
             if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
             {
                 Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * hit.distance, Color.yellow);
-                if (hit.collider.gameObject.CompareTag("terrain"))
+                if (hit.collider.gameObject.CompareTag("terrain") && hit.collider.gameObject.GetComponent<CubeDestroy>() == null)
                 {
                     colliding = true;
                     //moveVelocity.y = 0;
