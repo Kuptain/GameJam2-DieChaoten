@@ -21,6 +21,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         ShootRay();
+        HoverCursor();
         if (Input.GetKey(KeyCode.LeftControl))
         {
             Cursor.visible = true;
@@ -112,20 +113,45 @@ public class PlayerShoot : MonoBehaviour
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
-                    Debug.Log("Check1");
                     foreach (Transform child in currentCluster.transform)
                     {
-                        Debug.Log("Check2");
 
                         foreach (Transform childChild in child)
                         {
-                            Debug.Log("Check3");
 
                             childChild.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
                             childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
                             StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject));
 
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    void HoverCursor()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Transform clusterHit = hit.transform;
+            if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
+            {
+                currentCluster = clusterHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                foreach (Transform child in currentCluster.transform)
+                {
+                    foreach (Transform childChild in child)
+                    {
+                        if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+                        {
+                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_Color", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
+                            print("aaaa");
+                        }
+                  
                     }
                 }
             }

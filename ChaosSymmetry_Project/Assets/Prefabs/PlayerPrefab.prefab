@@ -31,9 +31,9 @@ Transform:
   m_GameObject: {fileID: 483481537612287349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.21668771, y: 1.52, z: 0.8789003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.27551, y: 0.27551, z: 0.27551}
   m_Children:
-  - {fileID: 483481538249870203}
+  - {fileID: 2623041344164508245}
   - {fileID: 9206090366976522111}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,11 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 26
-  jumpForce: 10000
-  lookUpMax: 60
-  lookUpMin: -60
-  fallMultiplier: 2
-  lowJumpMultiplier: 2
+  jumpForce: 9600
+  floatForce: 55
+  fallMultiplier: 1
+  lowJumpMultiplier: 2.5
   isGrounded: 0
   currentPlatforms: []
 --- !u!54 &483481537612287345
@@ -175,10 +174,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483481538249870204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.751, z: 0}
+  m_LocalPosition: {x: -0.2, y: 2.67, z: -7.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 483481537612287344}
+  m_Father: {fileID: 2623041344164508245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &483481538249870202
@@ -232,6 +231,52 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483481538249870204}
   m_Enabled: 1
+--- !u!1 &5929774391281703856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2623041344164508245}
+  - component: {fileID: 2220752848079132653}
+  m_Layer: 2
+  m_Name: CameraAnkor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2623041344164508245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929774391281703856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 483481538249870203}
+  m_Father: {fileID: 483481537612287344}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2220752848079132653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929774391281703856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fbaa0e07c98c34b9cd90ee93c44307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookUpMax: 60
+  lookUpMin: -60
 --- !u!1 &6802654344931765961
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9206090366976522111}
   - component: {fileID: 3546427684848029126}
+  - component: {fileID: 7140446102872441332}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -257,8 +303,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6802654344931765961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.053, y: 0.08, z: 0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.798, z: 0}
+  m_LocalScale: {x: 1, y: 0.48437, z: 1}
   m_Children: []
   m_Father: {fileID: 483481537612287344}
   m_RootOrder: 1
@@ -272,7 +318,21 @@ SphereCollider:
   m_GameObject: {fileID: 6802654344931765961}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.72587824
-  m_Center: {x: -0.0063742995, y: -0.6787021, z: -0.008228064}
+  m_Radius: 0.69
+  m_Center: {x: 0, y: -0.57, z: 0}
+--- !u!136 &7140446102872441332
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802654344931765961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.7870487
+  m_Height: 2.0062408
+  m_Direction: 1
+  m_Center: {x: 0.08813661, y: -0.29512027, z: -0.07558888}

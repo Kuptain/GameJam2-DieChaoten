@@ -8,8 +8,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float speed;
     //[SerializeField] float mouseSensitivity;
     [SerializeField] float jumpForce;
-    [SerializeField] float lookUpMax = 60;
-    [SerializeField] float lookUpMin = -80;
+    [SerializeField] float floatForce;
+
 
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
@@ -35,9 +35,10 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         Jump();
+        Floating();
         JumpSmoothing();
         Move();
-        RotateCamera();
+        RotatePlayer();
 
     }
 
@@ -46,23 +47,32 @@ public class FirstPersonController : MonoBehaviour
         rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
     }
 
-    private void RotateCamera()
+    private void RotatePlayer()
     {
-        camRotation.x += Input.GetAxis("Mouse Y") * camSmoothingFactor * (-1);
         camRotation.y += Input.GetAxis("Mouse X") * camSmoothingFactor;
 
-        camRotation.x = Mathf.Clamp(camRotation.x, lookUpMin, lookUpMax);
-
-        transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
+            isGrounded = false;
+            rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce);
         }
     }
 
+    void Floating()
+    {
+        if (Input.GetKey(KeyCode.Space) && isGrounded == false)
+        {
+            if (rigid.velocity.y < 0)
+            {
+                rigid.AddForce(Vector3.up * floatForce, ForceMode.Force);
+            }
+        }
+    }
     void JumpSmoothing()
     {
         if (rigid.velocity.y < 0)
@@ -75,16 +85,16 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("terrain"))
         {
-            isGrounded = true;
+            if (rigid.velocity.y <= 0)
+            {
+                isGrounded = true;
+
+            }
 
             if (other.name != "Ground")
             {
@@ -99,14 +109,6 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.CompareTag("terrain"))
-        {
-          
-        }
-    }
 
     IEnumerator Defreeze(GameObject cube)
     {
@@ -120,9 +122,9 @@ public class FirstPersonController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        StartCoroutine(ChangeGrounded());
         if (other.CompareTag("terrain"))
         {
-            isGrounded = false;
             if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().freezeThis == true)
             {
                 foreach (GameObject platform in currentPlatforms)
@@ -136,6 +138,12 @@ public class FirstPersonController : MonoBehaviour
             }
         }
         
+    }
+    IEnumerator ChangeGrounded()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isGrounded = false;
+
     }
 
 }
