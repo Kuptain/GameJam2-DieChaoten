@@ -24,8 +24,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slomo = uiPrefab.transform.GetChild(0).GetChild(3).gameObject;
-        freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).gameObject;
+        slomo = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(2).gameObject;
+        freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
         freezetimer = currentFreezeTime;
