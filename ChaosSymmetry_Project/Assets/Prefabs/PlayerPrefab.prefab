@@ -50,11 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c605eb5bb427d4d82e4f144730f652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 26
-  jumpForce: 9600
-  floatForce: 55
-  fallMultiplier: 1
-  lowJumpMultiplier: 2.5
+  speed: 7
+  jumpForce: 9000
+  floatForce: 0.22
+  fallMultiplier: 0.5
+  lowJumpMultiplier: 3
   isGrounded: 0
   currentPlatforms: []
 --- !u!54 &483481537612287345
@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929774391281703856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483481538249870203}
