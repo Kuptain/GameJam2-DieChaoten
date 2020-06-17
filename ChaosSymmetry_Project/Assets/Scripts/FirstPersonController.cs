@@ -14,14 +14,14 @@ public class FirstPersonController : MonoBehaviour
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    [SerializeField] bool isGrounded;
+    public bool isGrounded;
     bool isOnCube;
 
     Rigidbody rigid;
     Camera cam;
 
     Vector3 lastMousePosition;
-    public List<GameObject> currentPlatforms = new List<GameObject>();
+    //public List<GameObject> currentPlatforms = new List<GameObject>();
 
     private Quaternion camRotation;
 
@@ -96,7 +96,7 @@ public class FirstPersonController : MonoBehaviour
 
             }
 
-            if (other.name != "Ground")
+            /*if (other.name != "Ground")
             {
 
                 currentPlatforms.Add(other.gameObject);
@@ -105,7 +105,7 @@ public class FirstPersonController : MonoBehaviour
                 StartCoroutine(Defreeze(other.gameObject));
 
 
-            }
+            }*/
         }
     }
 
@@ -115,7 +115,7 @@ public class FirstPersonController : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         if(isGrounded == false)
         {
-            cube.GetComponent<CubeDestroy>().freezeThis = false;
+            cube.GetComponent<CubeDestroy>().freezeThisCluster = false;
 
         }
 
@@ -123,7 +123,7 @@ public class FirstPersonController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         StartCoroutine(ChangeGrounded());
-        if (other.CompareTag("terrain"))
+        /*if (other.CompareTag("terrain"))
         {
             if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().freezeThis == true)
             {
@@ -136,7 +136,7 @@ public class FirstPersonController : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
         
     }
     IEnumerator ChangeGrounded()

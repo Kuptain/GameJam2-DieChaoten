@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
     CubeManager cubeManager;
-    GameObject currentCluster;
+    GameObject currentCluster, frozenCluster;
     [SerializeField] float meltingTime = 5;
 
     // Start is called before the first frame update
@@ -110,19 +110,16 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
+                if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster == null)
                 {
-                    currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
-                    foreach (Transform child in currentCluster.transform)
+                    frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                    foreach (Transform child in frozenCluster.transform)
                     {
-
                         foreach (Transform childChild in child)
                         {
-
-                            childChild.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
+                            childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster = true;
                             childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-                            StartCoroutine(Defreeze(objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject));
-
+                            StartCoroutine(Defreeze(frozenCluster));
                         }
                     }
                 }
@@ -148,10 +145,13 @@ public class PlayerShoot : MonoBehaviour
                     {
                         if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
                         {
-                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_Color", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
-                            print("aaaa");
+                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
                         }
-                  
+
+                        if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
+                        {
+                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);
+                        }
                     }
                 }
             }
@@ -163,7 +163,9 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(meltingTime);
         foreach (Transform child in cluster.transform)
         {
-            child.GetChild(0).GetComponent<CubeDestroy>().freezeThis = false;
+            child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
+            print("defreeze");
         }
+        frozenCluster = null;
     }
 }
