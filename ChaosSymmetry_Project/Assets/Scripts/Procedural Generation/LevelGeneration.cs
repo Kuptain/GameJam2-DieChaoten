@@ -110,18 +110,20 @@ public class LevelGeneration : MonoBehaviour
     }
 
     public void MoveCheckpoint()
-    {     
-        
+    {
+        checkPointOne.transform.position = new Vector3(checkPointOne.transform.position.x,
+                                                       checkPointTwo.transform.position.y + checkPointDistance,
+                                                       checkPointOne.transform.position.z);
+
         GameObject tempCheckPoint = checkPointOne;
         checkPointOne = checkPointTwo;
         checkPointTwo = tempCheckPoint;
         checkPointOne.GetComponent<CheckPointBehavior>().isStart = true;
         checkPointTwo.GetComponent<CheckPointBehavior>().isStart = false;
 
-        checkPointOne.transform.position = new Vector3(checkPointOne.transform.position.x,
-                                                       clusterDistance / clusterAmount,
-                                                       checkPointOne.transform.position.z);
+        GenerateClusters(checkPointOne.transform.position, checkPointTwo.transform.position);
 
+    
     }
 
     public void GenerateClusters(Vector3 startPos, Vector3 endPos)
@@ -129,7 +131,7 @@ public class LevelGeneration : MonoBehaviour
         Vector3 spawnPos = startPos - new Vector3(0, 5, 0);
         randomX = spawnPos.x;
         randomZ = spawnPos.z;
-        int currentCluster = -1; //-1 or 0  Random.Range(-1, 1);
+        int currentCluster = 0; //-1 or 0  Random.Range(-1, 1);
 
 
         for (int i = 0; i < clusterAmount; i++)
