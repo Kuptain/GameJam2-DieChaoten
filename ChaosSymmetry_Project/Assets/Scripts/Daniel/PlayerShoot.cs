@@ -6,15 +6,15 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
     CubeManager cubeManager;
-    GameObject currentCluster, frozenCluster;
-    [SerializeField] float meltingTime = 5;
+    [HideInInspector] public GameObject currentCluster, frozenCluster;
+    public float meltingTime = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-            
+
     }
 
     // Update is called once per frame
@@ -61,8 +61,7 @@ public class PlayerShoot : MonoBehaviour
                             childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
                             childChild.gameObject.GetComponent<CubeDestroy>().Explode();
                         }
-
-                                         }
+                    }
                 }
             }
         }
@@ -121,7 +120,7 @@ public class PlayerShoot : MonoBehaviour
 
                         }
 
-                        if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
+                        if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
                         {
                             Debug.Log("Check4.2");
 
