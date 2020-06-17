@@ -9,6 +9,8 @@ TagManager:
   - ClusterParts2
   - terrain
   - checkpoint
+  - UI
+  - IgnoreCluster
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - structures
   - terrain
-  - 
+  - IgnoreCluster
   - 
   - 
   - 

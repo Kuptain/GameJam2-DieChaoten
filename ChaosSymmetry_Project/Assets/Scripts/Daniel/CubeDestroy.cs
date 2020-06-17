@@ -133,7 +133,11 @@ public class CubeDestroy : MonoBehaviour
 
             }
          
-            transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+            if (freezeThisCluster == false && bubbleFreeze == false)
+            {
+                transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+
+            }
 
         }
 
@@ -253,18 +257,19 @@ public class CubeDestroy : MonoBehaviour
         {
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
-            //transform.rotation = startRotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, sendBackManual * currentSlowmo);
             moveVelocity = new Vector3(0, 0, 0);
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
-            notsendingback = false;
+            //notsendingback = false;
         }
-        else
+        else if(freezeThisCluster == true || bubbleFreeze == true)
         {
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
             moveVelocity = Vector3.zero;
-            notsendingback = true;
+            //notsendingback = true;
         }
 
 

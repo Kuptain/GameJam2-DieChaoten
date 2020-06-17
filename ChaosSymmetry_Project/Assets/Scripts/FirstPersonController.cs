@@ -101,7 +101,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("terrain"))
@@ -113,18 +113,9 @@ public class FirstPersonController : MonoBehaviour
 
             }
 
-            /*if (other.name != "Ground")
-            {
-
-                currentPlatforms.Add(other.gameObject);
-                other.gameObject.GetComponent<CubeDestroy>().freezeThis = true;
-                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-                StartCoroutine(Defreeze(other.gameObject));
-
-
-            }*/
         }
     }
+    */
 
     private void OnTriggerEnter(Collider other)
     {

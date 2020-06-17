@@ -26,7 +26,7 @@ public class FreezeBubble : MonoBehaviour
             {
                 currentPlatforms.Add(other.gameObject);
                 other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze = true;
-                other.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+                other.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
                 print("inbuble");
             }
         }
@@ -42,9 +42,11 @@ public class FreezeBubble : MonoBehaviour
                 {
                     if (other.gameObject == platform.gameObject)
                     {
+                        
                         platform.GetComponent<CubeDestroy>().bubbleFreeze = false;
                         currentPlatforms.Remove(platform);
                         print("buddleDefreeze");
+                        
                     }
                 }
             }
