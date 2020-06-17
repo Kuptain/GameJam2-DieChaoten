@@ -102,21 +102,32 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Transform clusterHit = hit.transform;
-            if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
+            //&& CubeManager.instance.gameModeAllClusters == false
+            if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null )
             {
                 currentCluster = clusterHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                 foreach (Transform child in currentCluster.transform)
                 {
+
                     foreach (Transform childChild in child)
                     {
-                        if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+
+                        if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
                         {
+
                             childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
+                            childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
+
+
                         }
 
                         if(childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
                         {
+                            Debug.Log("Check4.2");
+
                             childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);
+                            childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
+
                         }
                     }
                 }

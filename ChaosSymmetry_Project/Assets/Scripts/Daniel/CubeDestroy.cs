@@ -21,17 +21,14 @@ public class CubeDestroy : MonoBehaviour
 
     CubeManager cubeManager;
     Rigidbody rigid;
-    GameObject orbitObj;
-
 
     float finalSpeed;
     public float currentSlowmo = 1;
     float gravityAutoAdjust = 1;
-    float gravityChange; //This will be changed and added to the object
 
     bool colliding;
     bool returnTimer;
-    bool isFrozen;
+    public bool isHovered;
 
     Vector3 startPosition;
     public Vector3 moveVelocity;
@@ -101,6 +98,7 @@ public class CubeDestroy : MonoBehaviour
     {
         InputPushNew();
         SetColor();
+        StartCoroutine(ChangeHoveredState());
 
         // Freeze Plattform player is standing on
         if (freezeThisCluster || bubbleFreeze)
@@ -134,10 +132,7 @@ public class CubeDestroy : MonoBehaviour
                 }
 
             }
-            else
-            {
-                gravityChange = 0;
-            }
+         
             transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
 
         }
@@ -332,11 +327,17 @@ public class CubeDestroy : MonoBehaviour
 
   
     }
+    IEnumerator ChangeHoveredState()
+    {
+       
+        yield return new WaitForEndOfFrame();
+        isHovered = false;
+    }
 
     //Color Management
     void SetColor()
     {
-        if (gameObject.GetComponent<Renderer>() != null)
+        if (gameObject.GetComponent<Renderer>() != null && isHovered == false)
         {
             if (pushMode == 0)
             {
