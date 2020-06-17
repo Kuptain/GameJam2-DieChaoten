@@ -7,7 +7,7 @@ public class CubeDestroy : MonoBehaviour
     [SerializeField] Color colorOne;
     [SerializeField] Color colorTwo;
     [SerializeField] Color colorThree;
-    public Color colorHover;
+    public Color colorHover, colorHoverExploded;
     float speed;
     float slowmoValue;
     float gravityValue; //The value of the gravity
@@ -17,7 +17,7 @@ public class CubeDestroy : MonoBehaviour
     float returnDelay;
 
     [HideInInspector] public int pushMode;
-    [HideInInspector] public bool sendingBack, freezeThis;
+    public bool sendingBack, freezeThisCluster, bubbleFreeze, notsendingback;
 
     CubeManager cubeManager;
     Rigidbody rigid;
@@ -103,7 +103,7 @@ public class CubeDestroy : MonoBehaviour
         SetColor();
 
         // Freeze Plattform player is standing on
-        if (freezeThis)
+        if (freezeThisCluster || bubbleFreeze)
         {
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
@@ -119,7 +119,7 @@ public class CubeDestroy : MonoBehaviour
         {
             moveVelocity *= 0.99f;
 
-            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThis == false)
+            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThisCluster == false && bubbleFreeze == false)
             {
 
                 //Change velocity
@@ -210,24 +210,26 @@ public class CubeDestroy : MonoBehaviour
     //Push out effect/Explode
     public void Explode()
     {
-        colliding = false;
-        rigid.constraints = RigidbodyConstraints.None;
-        rigid.constraints = RigidbodyConstraints.FreezeRotation;
-        returnTimer = true;
-
-        if (transform.parent.GetComponent<OrbitPoint>() != null)
+        if(freezeThisCluster == false && bubbleFreeze == false)
         {
-            transform.parent.GetComponent<OrbitPoint>().RandomizeRotation();
+            colliding = false;
+            rigid.constraints = RigidbodyConstraints.None;
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            returnTimer = true;
 
-        }
-        
-        moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-        if( cubeManager.testMode == 0)
-        {
-            sendingBack = false;
+            if (transform.parent.GetComponent<OrbitPoint>() != null)
+            {
+                transform.parent.GetComponent<OrbitPoint>().RandomizeRotation();
 
-        }
+            }
 
+            moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
+            if (cubeManager.testMode == 0)
+            {
+                sendingBack = false;
+
+            }
+        }       
     }
 
     
@@ -252,7 +254,7 @@ public class CubeDestroy : MonoBehaviour
     public void SendBack()
     {
       
-        if(freezeThis == false)
+        if(freezeThisCluster == false && bubbleFreeze == false)
         {
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
@@ -262,19 +264,25 @@ public class CubeDestroy : MonoBehaviour
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
-
+            notsendingback = false;
+        }
+        else
+        {
+            moveVelocity = Vector3.zero;
+            notsendingback = true;
         }
 
-       /* if (cubeManager.testMode == 1)
-        {
-            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * currentSlowmo);
-            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
+
+        /* if (cubeManager.testMode == 1)
+         {
+             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * currentSlowmo);
+             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
 
 
-        }*/
+         }*/
 
 
-    
+
     }
 
     void InputPushNew()
@@ -332,17 +340,17 @@ public class CubeDestroy : MonoBehaviour
         {
             if (pushMode == 0)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
+                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
 
             }
             if (pushMode == 1)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorTwo);
+                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorTwo);
 
             }
             if (pushMode == 2)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorThree);
+                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorThree);
 
             }
         }

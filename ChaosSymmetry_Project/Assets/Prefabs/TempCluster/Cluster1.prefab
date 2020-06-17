@@ -287,9 +287,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &6641821756987645027
@@ -419,9 +422,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &6594735880492026775
@@ -551,9 +557,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &6357602415969706669
@@ -683,9 +692,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &4282729793620415108
@@ -815,9 +827,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &1559985365344399470
@@ -947,9 +962,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &1930836236129919325
@@ -1079,9 +1097,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &7832192672116145669
@@ -1249,9 +1270,12 @@ MonoBehaviour:
   colorTwo: {r: 0.84003866, g: 0.69411767, b: 1, a: 0}
   colorThree: {r: 1, g: 0.8865021, b: 0.5254902, a: 0}
   colorHover: {r: 1, g: 0.2216981, b: 0.48418432, a: 0}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 0}
   pushMode: 0
   sendingBack: 0
-  freezeThis: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
   currentSlowmo: 1
   moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &5675715224129829843
