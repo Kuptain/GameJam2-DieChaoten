@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 2623041344164508245}
   - {fileID: 9206090366976522111}
+  - {fileID: 3934999097431858853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,13 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c605eb5bb427d4d82e4f144730f652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 26
-  jumpForce: 9600
-  floatForce: 55
-  fallMultiplier: 1
-  lowJumpMultiplier: 2.5
+  speed: 7
+  jumpForce: 9000
+  floatForce: 0.22
+  fallMultiplier: 0.5
+  lowJumpMultiplier: 3
   isGrounded: 0
-  currentPlatforms: []
 --- !u!54 &483481537612287345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86,6 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 483481538249870202}
+  currentCluster: {fileID: 0}
+  frozenCluster: {fileID: 0}
   meltingTime: 5
 --- !u!136 &2440215951480863300
 CapsuleCollider:
@@ -231,6 +233,64 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483481538249870204}
   m_Enabled: 1
+--- !u!1 &3077996405723590295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3934999097431858853}
+  - component: {fileID: 9085611188301602892}
+  - component: {fileID: 3300941232573524163}
+  m_Layer: 0
+  m_Name: FreezeRadius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3934999097431858853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077996405723590295}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.110142566, y: -0.31203097, z: 0.035429183}
+  m_LocalScale: {x: 3.629632, y: 3.629632, z: 3.629632}
+  m_Children: []
+  m_Father: {fileID: 483481537612287344}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &9085611188301602892
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077996405723590295}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3300941232573524163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077996405723590295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52070ea72ab42e5449dfedfa3cc50b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlatforms: []
 --- !u!1 &5929774391281703856
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929774391281703856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483481538249870203}
@@ -288,8 +348,9 @@ GameObject:
   - component: {fileID: 9206090366976522111}
   - component: {fileID: 3546427684848029126}
   - component: {fileID: 7140446102872441332}
+  - component: {fileID: 1819234920889710528}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: JumpCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,3 +397,15 @@ CapsuleCollider:
   m_Height: 2.0062408
   m_Direction: 1
   m_Center: {x: 0.08813661, y: -0.29512027, z: -0.07558888}
+--- !u!114 &1819234920889710528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802654344931765961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95c906d38f0b94409c2b020866f1de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
