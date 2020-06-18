@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     public GameObject uiPrefab;
-    [HideInInspector] public GameObject slomo, currentPowerup, freezeTime;
+    [HideInInspector] public GameObject slomo, currentPowerup, freezeTime, slowmoScreen;
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime;
 
@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         slomo = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(2).gameObject;
+        slowmoScreen = uiPrefab.transform.GetChild(0).GetChild(3).gameObject;
+
         freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
@@ -44,9 +46,16 @@ public class UIManager : MonoBehaviour
         if (CubeManager.instance.slowMode == true)
         {
             slomo.SetActive(true);
+            slowmoScreen.SetActive(true);
+
         }
         else
+        {
             slomo.SetActive(false);
+            slowmoScreen.SetActive(false);
+        }
+         
+
     }
 
     void ShowFreezeTime()

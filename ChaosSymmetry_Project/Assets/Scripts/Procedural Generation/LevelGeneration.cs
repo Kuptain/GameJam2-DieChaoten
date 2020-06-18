@@ -122,7 +122,8 @@ public class LevelGeneration : MonoBehaviour
 
     public void MoveCheckpoint()
     {
-        
+        float oldClusterAmountCalc = clusterAmountCalc;
+
         //Increase difficulty
         {
             difficulty += incrDifficulty;
@@ -133,14 +134,9 @@ public class LevelGeneration : MonoBehaviour
 
         //Check if inside bounds
         {
-            if (clusterAmountCalc > (clusterAmountCalc + maxClusterAmountCalcDiff))
-            {
-                clusterAmountCalc = clusterAmountCalc + maxClusterAmountCalcDiff;
-            }
-            if (clusterAmountCalc < (clusterAmountCalc - maxClusterAmountCalcDiff))
-            {
-                clusterAmountCalc = clusterAmountCalc - maxClusterAmountCalcDiff;
-            }
+            Mathf.Clamp(clusterAmountCalc, oldClusterAmountCalc - maxClusterAmountCalcDiff,
+                                           oldClusterAmountCalc + maxClusterAmountCalcDiff);
+         
         }
 
         //Set the lower checkpoint higher
