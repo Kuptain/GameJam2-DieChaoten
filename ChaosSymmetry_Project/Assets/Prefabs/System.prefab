@@ -133,8 +133,8 @@ MonoBehaviour:
   checkPoints: []
   checkPointDistance: 30
   difficulty: 0
-  clusterAmountCalc: 2
-  maxVariationZX: 20
+  clusterAmountCalc: 10
+  maxVariationZX: 10
   incrCheckPointDistance: 5
   incrClusterAmountCalc: 0
   maxClusterAmountCalcDiff: 5

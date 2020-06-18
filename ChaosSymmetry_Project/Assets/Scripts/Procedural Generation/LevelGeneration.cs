@@ -195,7 +195,7 @@ public class LevelGeneration : MonoBehaviour
 
     public void GenerateClusters(Vector3 startPos, Vector3 endPos)
     {
-        Vector3 spawnPos = startPos - new Vector3(0, 5, 0);
+        Vector3 spawnPos = startPos - new Vector3(0, 0, 0);
         //randomX = spawnPos.x;
         //randomZ = spawnPos.z;
         int currentCluster = 0; //-1 or 0  Random.Range(-1, 1);
