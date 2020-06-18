@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Slider fuelSlider;
     public static PlayerManager instance;
+    private GameObject player;
 
     public float floatFuel;
     public float maxFloatFuel = 40f;
@@ -21,7 +22,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        
+        player = ObjectManager.instance.player;
     }
 
     // Update is called once per frame

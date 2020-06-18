@@ -11,7 +11,7 @@ public class LevelGeneration : MonoBehaviour
 
 
 
-
+    GameObject powerUp;
 
     //---------------------------------------------------\\
     [Header("Generation values")]
@@ -60,6 +60,7 @@ public class LevelGeneration : MonoBehaviour
     void Start()
     {
         checkPoints = GameObject.FindGameObjectsWithTag("checkpoint");
+        powerUp = ObjectManager.instance.powerUp;
 
         if (checkPoints[0].GetComponent<CheckPointBehavior>().isStart)
         {
@@ -85,7 +86,9 @@ public class LevelGeneration : MonoBehaviour
                                                        checkPointOne.transform.position.y + checkPointDistance,
                                                        checkPointOne.transform.position.z + GenerateVariation(25f, 55f));
 
-  
+        Instantiate(powerUp, checkPointTwo.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+
+
         if (checkPointOne != null && checkPointTwo != null)
         {
             TriggerGeneration();
@@ -143,6 +146,9 @@ public class LevelGeneration : MonoBehaviour
         checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointTwo.transform.position.y + checkPointDistance,
                                                        checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
+
+        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+
         //Swap Checkpoint 1 with 2
         {
             GameObject tempCheckPoint = checkPointOne;

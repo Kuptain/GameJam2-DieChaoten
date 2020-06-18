@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class RandomPowerUp : MonoBehaviour
 {
+    GameObject player;
     public string thisPowerUp;
 
     // Start is called before the first frame update
     void Start()
     {
         thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
+        player = ObjectManager.instance.player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
