@@ -79,19 +79,13 @@ public class LevelGeneration : MonoBehaviour
         {
             Debug.LogError("No Checkpoint");
         }
-
-        //Move second checkpoint up by the variable "checkPointDistance" and give it X and Z variation
-       
-        
-        //Choose Z variation
- 
-        checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariationX(25f, 55f),
+                      
+  
+        checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointOne.transform.position.y + checkPointDistance,
-                                                       checkPointOne.transform.position.z + GenerateVariationZ(25f, 55f));
+                                                       checkPointOne.transform.position.z + GenerateVariation(25f, 55f));
 
   
-
-
         if (checkPointOne != null && checkPointTwo != null)
         {
             TriggerGeneration();
@@ -107,42 +101,23 @@ public class LevelGeneration : MonoBehaviour
       
     }
   
-    float GenerateVariationX(float minVariationX, float maxVariationX)
+    float GenerateVariation(float minVariation, float maxVariation)
     {
         //Choose X variation
-        float VariationX = 0;   
+        float variation = 0;   
 
         int choose = Random.Range(0, 2); //choose 0 or 1
         if (choose == 0)
         {
-            VariationX = Random.Range(minVariationX, maxVariationX);
+            variation = Random.Range(minVariation, maxVariation);
         }
         if (choose == 1)
         {
-            VariationX = Random.Range(-minVariationX, -maxVariationX);
+            variation = Random.Range(-minVariation, -maxVariation);
 
         }
 
-        return VariationX;
-    }
-
-    float GenerateVariationZ(float minVariationZ, float maxVariationZ)
-    {
-        //Choose Z variation
-        float VariationZ = 0;   
-
-        int choose = Random.Range(0, 2); //choose 0 or 1
-        if (choose == 0)
-        {
-            VariationZ = Random.Range(minVariationZ, maxVariationZ);
-        }
-        if (choose == 1)
-        {
-            VariationZ = Random.Range(-minVariationZ, -maxVariationZ);
-
-        }
-
-        return VariationZ;
+        return variation;
     }
 
     public void MoveCheckpoint()
@@ -169,9 +144,9 @@ public class LevelGeneration : MonoBehaviour
         }
 
         //Set the lower checkpoint higher
-        checkPointOne.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariationX(25f, 55f),
+        checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointTwo.transform.position.y + checkPointDistance,
-                                                       checkPointOne.transform.position.z + GenerateVariationZ(25f, 55f));
+                                                       checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
         //Swap Checkpoint 1 with 2
         {
             GameObject tempCheckPoint = checkPointOne;
