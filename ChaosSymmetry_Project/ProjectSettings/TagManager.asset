@@ -8,7 +8,6 @@ TagManager:
   - ClusterParts1
   - ClusterParts2
   - terrain
-  - checkpoint
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - 
   - structures
   - terrain
-  - 
+  - ost rocessing
   - 
   - 
   - 

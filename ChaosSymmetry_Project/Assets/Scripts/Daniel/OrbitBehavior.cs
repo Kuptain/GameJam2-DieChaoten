@@ -27,13 +27,14 @@ public class OrbitBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (childScript.pushMode == 1)
+        if (childScript.pushMode == 1 && childScript.bubbleFreeze == false && childScript.freezeThisCluster == false)
         {
             transform.rotation = Quaternion.Euler(randomRotate.x, randomRotate.y, randomRotate.z);
+            //transform.Rotate(randomRotate.x, randomRotate.y, randomRotate.z);
         }
-        if (childScript.pushMode == 0)
+        if (childScript.pushMode == 0 || childScript.bubbleFreeze == true || childScript.freezeThisCluster == true)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
 
         }
     }

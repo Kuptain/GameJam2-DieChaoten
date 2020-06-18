@@ -57,7 +57,6 @@ MonoBehaviour:
   fallMultiplier: 0.5
   lowJumpMultiplier: 3
   isGrounded: 0
-  currentPlatforms: []
 --- !u!54 &483481537612287345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,6 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 483481538249870202}
+  currentCluster: {fileID: 0}
+  frozenCluster: {fileID: 0}
   meltingTime: 5
 --- !u!136 &2440215951480863300
 CapsuleCollider:
@@ -275,8 +276,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.13
-  m_Center: {x: -0.042618874, y: 0.1998494, z: 0}
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3300941232573524163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +348,9 @@ GameObject:
   - component: {fileID: 9206090366976522111}
   - component: {fileID: 3546427684848029126}
   - component: {fileID: 7140446102872441332}
+  - component: {fileID: 1819234920889710528}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: JumpCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,3 +397,15 @@ CapsuleCollider:
   m_Height: 2.0062408
   m_Direction: 1
   m_Center: {x: 0.08813661, y: -0.29512027, z: -0.07558888}
+--- !u!114 &1819234920889710528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802654344931765961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95c906d38f0b94409c2b020866f1de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

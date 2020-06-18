@@ -75,14 +75,14 @@ public class OrbitPoint : MonoBehaviour
         }
 
 
-        if (childScript.pushMode == 1 && childScript.freezeThisCluster == false)
+        if (childScript.pushMode == 1 && childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
         {            
             transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,
                              randomRotate.y * Time.deltaTime * currentSlowmo,
                              randomRotate.z * Time.deltaTime * currentSlowmo);
 
         }
-        if (childScript.pushMode == 0)
+        if (childScript.pushMode == 0 && childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
         {
             randomRotate = Vector3.Lerp(randomRotate, Vector3.zero, 0.005f);
             transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,

@@ -132,8 +132,10 @@ public class CubeDestroy : MonoBehaviour
                 }
 
             }
-         
+
             transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+
+          
 
         }
 
@@ -145,7 +147,7 @@ public class CubeDestroy : MonoBehaviour
             if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
             {
                 Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * hit.distance, Color.yellow);
-                if (hit.collider.gameObject.CompareTag("terrain"))
+                if (hit.collider.gameObject.CompareTag("terrain") && hit.collider.gameObject.GetComponent<CubeDestroy>() == null)
                 {
                     colliding = true;
                     //moveVelocity.y = 0;
@@ -253,18 +255,19 @@ public class CubeDestroy : MonoBehaviour
         {
             pushMode = 0;
             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
-            //transform.rotation = startRotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, sendBackManual * currentSlowmo);
             moveVelocity = new Vector3(0, 0, 0);
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
-            notsendingback = false;
+            //notsendingback = false;
         }
-        else
+        else if(freezeThisCluster == true || bubbleFreeze == true)
         {
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
             moveVelocity = Vector3.zero;
-            notsendingback = true;
+            //notsendingback = true;
         }
 
 
