@@ -12,7 +12,7 @@ public class PowerUpManager : MonoBehaviour
 
     PlayerShoot shootScript;
 
-    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze" };
+    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze" };
 
     private void Awake()
     {
@@ -59,6 +59,12 @@ public class PowerUpManager : MonoBehaviour
                 higherJumpFactor = 1;
                 PlayerManager.instance.maxFloatFuel = 40f;
                 shootScript.meltingTime = longerFreezeData;
+            }
+            if(currentPowerUp == "secondClusterFreeze")
+            {
+                higherJumpFactor = 1;
+                shootScript.meltingTime = 5;
+                PlayerManager.instance.maxFloatFuel = 40f;
             }
         }
         else
