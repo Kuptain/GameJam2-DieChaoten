@@ -10,7 +10,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] float floatForce;
 
-
+    PowerUpManager powerUp;
 
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
@@ -34,7 +34,7 @@ public class FirstPersonController : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         Cursor.visible = false;
 
-       
+        powerUp = PowerUpManager.instance;
         
     }
 
@@ -68,7 +68,7 @@ public class FirstPersonController : MonoBehaviour
         {
             isGrounded = false;
             rigid.velocity = new Vector3(0, 0, 0);
-            rigid.AddForce(Vector3.up * jumpForce);
+            rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
         }
     }
 

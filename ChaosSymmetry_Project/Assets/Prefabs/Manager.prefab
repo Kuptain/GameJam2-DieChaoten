@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6548826942356772403}
   - component: {fileID: 1935294865594177983}
   - component: {fileID: 8897165919144564730}
+  - component: {fileID: 893793426128512933}
   - component: {fileID: 8607890654621703095}
   m_Layer: 0
   m_Name: Manager
@@ -73,6 +74,18 @@ MonoBehaviour:
   pushForce: 25
   slowMode: 0
   player: {fileID: 0}
+--- !u!114 &893793426128512933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077727407125858377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021f7cfad614938449f237ef92054780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8607890654621703095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,3 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68cff05e997e8245aa151c80f4f4c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 0}
+  slomo: {fileID: 0}
+  currentPowerup: {fileID: 0}
+  freezeTime: {fileID: 0}

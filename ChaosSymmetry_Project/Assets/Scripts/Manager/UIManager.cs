@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject uiPrefab;
     [HideInInspector] public GameObject slomo, currentPowerup, freezeTime;
     GameObject player;
-    float freezetimer, currentFreezeTime;
+    [HideInInspector] public float freezetimer, currentFreezeTime;
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
         freezetimer = currentFreezeTime;
+        currentPowerup = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class UIManager : MonoBehaviour
     {
         if(player.GetComponent<PlayerShoot>().frozenCluster != null)
         {
-            freezeTime.SetActive(true);
+            freezeTime.SetActive(true); 
             //TimeSpan interval = TimeSpan.FromSeconds(currentFreezeTime);
             //string timeInterval = interval.ToString();
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = timeInterval;
