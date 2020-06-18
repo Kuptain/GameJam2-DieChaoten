@@ -1096,6 +1096,11 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2276997612826208557, guid: ef683dfc7d66c4a41981eb09597670cf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5878944666236710927, guid: ef683dfc7d66c4a41981eb09597670cf,
         type: 3}
       propertyPath: m_Name
