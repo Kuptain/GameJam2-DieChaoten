@@ -74,14 +74,33 @@ public class CameraController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {   
 
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider))
+        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
+        {
             colliding = true;
+
+        }
+
+        if ( other.gameObject.GetComponent<CubeDestroy>() != null)
+        {
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider))
+        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
+        {
             colliding = false;
+        }
+
+        if (other.gameObject.GetComponent<CubeDestroy>() != null)
+        {
+            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            other.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+
+        }
     }
 
 }

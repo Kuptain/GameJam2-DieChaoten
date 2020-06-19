@@ -20,7 +20,7 @@ public class CamCheckSideCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider))
+        if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
         {
             collidingToRight = true;
         }
@@ -28,7 +28,7 @@ public class CamCheckSideCollision : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider))
+        if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
             collidingToRight = false;
     }
 }

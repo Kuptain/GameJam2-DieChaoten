@@ -46,7 +46,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -70,7 +70,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -115,7 +115,7 @@ public class PlayerShoot : MonoBehaviour
     void HoverCursor()
     {
         RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position, cam.gameObject.transform.forward);
+        Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
 
 
         if (Physics.Raycast(ray, out hit))
