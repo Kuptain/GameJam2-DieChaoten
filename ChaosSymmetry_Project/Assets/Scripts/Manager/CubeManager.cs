@@ -24,7 +24,7 @@ public class CubeManager : MonoBehaviour
     public static CubeManager instance;
     public bool slowMode = false;
 
-    public GameObject player;
+    GameObject player;
 
     private void Awake()
     {
@@ -35,7 +35,8 @@ public class CubeManager : MonoBehaviour
     }
     void Start()
     {
-        
+        player = ObjectManager.instance.player;
+
     }
 
     public void ChangeToA()

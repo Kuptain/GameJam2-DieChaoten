@@ -5,20 +5,49 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     [SerializeField] GameObject clusterObj;
-    public GameObject[] checkPoints;
-    public float clusterAmountCalculator = 5;
-    public float checkPointDistance = 50;
-    public float difficulty = 0; //subtracts clusters
-
     [HideInInspector] public GameObject checkPointOne;
     [HideInInspector] public GameObject checkPointTwo;
-    
+    [HideInInspector] public GameObject[] checkPoints;
+
+
+
+    GameObject powerUp;
+
+    //---------------------------------------------------\\
+    [Header("Generation values")]
+
+        [Tooltip("Y Distance between checkpoints")]
+        public float checkPointDistance = 50;
+
+        [Tooltip("Subtract this from the cluster amount")]
+        public float difficulty = 0; //subtracts clusters
+
+        [Tooltip("Every x units, a new cluster is spawned")]
+        [Range(1, 100)] public float clusterAmountCalc;
+
+        [Tooltip("Variation in X and Z of spawned cluster")]
+        public float maxVariationZX = 5f;
+
+
+
+    //---------------------------------------------------\\
+    [Header("Value change after reaching checkpoint")]
+
+        public float incrCheckPointDistance = 5;
+        public float incrClusterAmountCalc = 1;
+        public float maxClusterAmountCalcDiff = 5;
+        public float incrDifficulty = 0.5f;
+
+    //---------------------------------------------------\\
+
+
     float clusterDistance;
     float clusterAmount;
 
     float randomX;
     float randomZ;
 
+    //Singleton
     public static LevelGeneration instance;
     private void Awake()
     {
@@ -31,6 +60,7 @@ public class LevelGeneration : MonoBehaviour
     void Start()
     {
         checkPoints = GameObject.FindGameObjectsWithTag("checkpoint");
+        powerUp = ObjectManager.instance.powerUp;
 
         if (checkPoints[0].GetComponent<CheckPointBehavior>().isStart)
         {
@@ -50,43 +80,13 @@ public class LevelGeneration : MonoBehaviour
         {
             Debug.LogError("No Checkpoint");
         }
-
-        //Move second checkpoint up by the variable "checkPointDistance" and give it X and Z variation
-        float minVariationZX = 25f;
-        float maxVariationZX = 55f;
-        float VariationX = 0;
-        float VariationZ = 0;
-
-        //Choose X variation
-        int choose = Random.Range(0,2); //choose 0 or 1
-        if (choose == 0)
-        {
-            VariationX = Random.Range(minVariationZX, maxVariationZX);
-        }
-        if (choose == 1)
-        {
-            VariationX = Random.Range(-minVariationZX, -maxVariationZX);
-
-        }
-        
-        //Choose Z variation
-        choose = Random.Range(0, 2); //choose 0 or 1
-        if (choose == 0)
-        {
-            VariationZ = Random.Range(minVariationZX, maxVariationZX);
-        }
-        if (choose == 1)
-        {
-            VariationZ = Random.Range(-minVariationZX, -maxVariationZX);
-
-        }
-
-        checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + VariationX,
+                      
+  
+        checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointOne.transform.position.y + checkPointDistance,
-                                                       checkPointOne.transform.position.z + VariationZ);
+                                                       checkPointOne.transform.position.z + GenerateVariation(25f, 55f));
 
-        clusterAmount = Mathf.RoundToInt( checkPointDistance / clusterAmountCalculator - difficulty );
-        clusterDistance = checkPointDistance / clusterAmount;
+        Instantiate(powerUp, checkPointTwo.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
 
 
         if (checkPointOne != null && checkPointTwo != null)
@@ -103,42 +103,87 @@ public class LevelGeneration : MonoBehaviour
     {
       
     }
-     public void TriggerGeneration()
+  
+    float GenerateVariation(float minVariation, float maxVariation)
     {
-        GenerateClusters(checkPointOne.transform.position, checkPointTwo.transform.position);
+        //Choose X variation
+        float variation = 0;   
 
+        int choose = Random.Range(0, 2); //choose 0 or 1
+        if (choose == 0)
+        {
+            variation = Random.Range(minVariation, maxVariation);
+        }
+        if (choose == 1)
+        {
+            variation = Random.Range(-minVariation, -maxVariation);
+
+        }
+
+        return variation;
     }
 
     public void MoveCheckpoint()
     {
-        checkPointOne.transform.position = new Vector3(checkPointOne.transform.position.x,
+        float oldClusterAmountCalc = clusterAmountCalc;
+
+        //Increase difficulty
+        {
+            difficulty += incrDifficulty;
+            checkPointDistance += incrCheckPointDistance;
+            clusterAmountCalc += incrClusterAmountCalc;
+        } 
+
+
+        //Check if inside bounds
+        {
+            Mathf.Clamp(clusterAmountCalc, oldClusterAmountCalc - maxClusterAmountCalcDiff,
+                                           oldClusterAmountCalc + maxClusterAmountCalcDiff);
+         
+        }
+
+        //Set the lower checkpoint higher
+        checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointTwo.transform.position.y + checkPointDistance,
-                                                       checkPointOne.transform.position.z);
+                                                       checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
 
-        GameObject tempCheckPoint = checkPointOne;
-        checkPointOne = checkPointTwo;
-        checkPointTwo = tempCheckPoint;
-        checkPointOne.GetComponent<CheckPointBehavior>().isStart = true;
-        checkPointTwo.GetComponent<CheckPointBehavior>().isStart = false;
+        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
 
+        //Swap Checkpoint 1 with 2
+        {
+            GameObject tempCheckPoint = checkPointOne;
+            checkPointOne = checkPointTwo;
+            checkPointTwo = tempCheckPoint;
+            checkPointOne.GetComponent<CheckPointBehavior>().isStart = true;
+            checkPointTwo.GetComponent<CheckPointBehavior>().isStart = false;
+        }
+
+        TriggerGeneration();
+    }
+    public void TriggerGeneration()
+    {
+
+        clusterAmount = Mathf.RoundToInt(
+                        Vector3.Distance(checkPointOne.transform.position, checkPointTwo.transform.position) / clusterAmountCalc - difficulty);
+        clusterDistance = checkPointDistance / clusterAmount;
         GenerateClusters(checkPointOne.transform.position, checkPointTwo.transform.position);
 
-    
     }
 
     public void GenerateClusters(Vector3 startPos, Vector3 endPos)
     {
-        Vector3 spawnPos = startPos - new Vector3(0, 5, 0);
-        randomX = spawnPos.x;
-        randomZ = spawnPos.z;
+        Vector3 spawnPos = startPos - new Vector3(0, 0, 0);
+        //randomX = spawnPos.x;
+        //randomZ = spawnPos.z;
         int currentCluster = 0; //-1 or 0  Random.Range(-1, 1);
 
 
         for (int i = 0; i < clusterAmount; i++)
         {
-            float maxVariationZX = 5f;
-            randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterDistance * currentCluster;
-            randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterDistance * currentCluster;
+            spawnPos.x = startPos.x;
+            spawnPos.z = startPos.z;
+            randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
+            randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
 
             spawnPos.y += clusterDistance;    
 

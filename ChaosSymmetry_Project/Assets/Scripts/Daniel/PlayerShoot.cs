@@ -6,7 +6,8 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
     CubeManager cubeManager;
-    [HideInInspector] public GameObject currentCluster, frozenCluster;
+    //[HideInInspector] 
+    public GameObject currentCluster, frozenCluster, secondFrozenCluster;
     public float meltingTime = 5;
 
     // Start is called before the first frame update
@@ -40,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
     void ShootRay()
-    {     
+    {
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -78,6 +79,7 @@ public class PlayerShoot : MonoBehaviour
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster == null)
                 {
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                    print("aaa");
                     foreach (Transform child in frozenCluster.transform)
                     {
                         foreach (Transform childChild in child)
@@ -85,6 +87,24 @@ public class PlayerShoot : MonoBehaviour
                             childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster = true;
                             childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
                             StartCoroutine(Defreeze(frozenCluster));
+                        }
+                    }
+                }
+
+                else if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster != null)
+                {
+                    if (PowerUpManager.instance.currentPowerUp == "secondClusterFreeze" && secondFrozenCluster == null)
+                    {
+                        secondFrozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                        foreach (Transform child in secondFrozenCluster.transform)
+                        {
+                            foreach (Transform childChild in child)
+                            {
+                                print("ddd");
+                                childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster = true;
+                                childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+                                StartCoroutine(DefreezeClusterTwo(secondFrozenCluster));
+                            }
                         }
                     }
                 }
@@ -102,7 +122,7 @@ public class PlayerShoot : MonoBehaviour
         {
             Transform clusterHit = hit.transform;
             //&& CubeManager.instance.gameModeAllClusters == false
-            if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null )
+            if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null)
             {
                 currentCluster = clusterHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                 foreach (Transform child in currentCluster.transform)
@@ -140,8 +160,16 @@ public class PlayerShoot : MonoBehaviour
         foreach (Transform child in cluster.transform)
         {
             child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
-            print("defreeze");
         }
         frozenCluster = null;
+    }
+    public IEnumerator DefreezeClusterTwo(GameObject cluster)
+    {
+        yield return new WaitForSeconds(meltingTime);
+        foreach (Transform child in cluster.transform)
+        {
+            child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
+        }
+        secondFrozenCluster = null;
     }
 }

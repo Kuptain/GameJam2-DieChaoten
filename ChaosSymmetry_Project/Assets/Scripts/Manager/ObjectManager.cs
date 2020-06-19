@@ -7,6 +7,8 @@ public class ObjectManager : MonoBehaviour
     public static ObjectManager instance;
 
     public GameObject player;
+    public GameObject powerUp;
+
 
     private void Awake()
     {
