@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CubeDestroy : MonoBehaviour
 {
-    [SerializeField] Color colorOne;
-    [SerializeField] Color colorTwo;
-    [SerializeField] Color colorThree;
+    Color colorOne;
+    Color colorTwo;
+    Color colorThree;
+
+
     public Color colorHover, colorHoverExploded;
     float speed;
     float slowmoValue;
@@ -21,6 +23,7 @@ public class CubeDestroy : MonoBehaviour
 
     CubeManager cubeManager;
     Rigidbody rigid;
+    Material baseMat;
 
     float finalSpeed;
     public float currentSlowmo = 1;
@@ -38,30 +41,10 @@ public class CubeDestroy : MonoBehaviour
 
     void Start()
     {
-        
+        //baseMat = GetComponent<MeshRenderer>().material;
+  
 
-        //Set Random color (auskommentiert)
-        {
-         /*
-        if (gameObject.GetComponent<Renderer>() != null)
-        {
-            Debug.Log("Has Mat");
-            int randomNumber = Random.Range(1, 4);
-            if (randomNumber == 1)
-            {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
-            }
-            if (randomNumber == 2)
-            {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorTwo);
-            }
-            if (randomNumber == 3)
-            {
-                gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorThree);
-            }
-        }
-        */
-        }
+   
         
         
         //Copy from Cubemanager//
@@ -78,6 +61,12 @@ public class CubeDestroy : MonoBehaviour
             sendBackAuto = cubeManager.sendBackAuto;
             //pushForce = cubeManager.pushForce;
             returnDelay = cubeManager.returnDelay;
+
+            colorOne = cubeManager.color1;
+            colorTwo = cubeManager.color2;
+            colorThree = cubeManager.color3;
+            colorHover = cubeManager.colorHover;
+            colorHoverExploded = cubeManager.colorHoverExploded;
         }
 
         //Start Setup
@@ -88,12 +77,43 @@ public class CubeDestroy : MonoBehaviour
             
 
             StartCoroutine(Force());
+            //TriggerRandomColor();
         }
 
         gravityAutoAdjust = 1;
 
+
     }
 
+    void TriggerRandomColor()
+    {
+        //Set Random color (auskommentiert)
+        {
+
+            if (gameObject.GetComponent<Renderer>() != null)
+            {
+                int randomNumber = Random.Range(1, 4);
+                if (randomNumber == 1)
+                {
+                    colorOne = cubeManager.color1;
+                    //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
+                }
+                if (randomNumber == 2)
+                {
+                    colorOne = cubeManager.color2;
+                    //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
+
+                }
+                if (randomNumber == 3)
+                {
+                    colorOne = cubeManager.color3;
+                    //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
+
+                }
+            }
+
+        }
+    }
     void Update()
     {
         InputPushNew();
@@ -105,6 +125,15 @@ public class CubeDestroy : MonoBehaviour
         {
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
+        }      
+
+        if (freezeThisCluster)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         //Return Cooldown
@@ -342,19 +371,20 @@ public class CubeDestroy : MonoBehaviour
     {
         if (gameObject.GetComponent<Renderer>() != null && isHovered == false)
         {
+            transform.GetChild(1).gameObject.SetActive(false);
             if (pushMode == 0)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
+                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
 
             }
             if (pushMode == 1)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorTwo);
+                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
 
             }
             if (pushMode == 2)
             {
-                gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorThree);
+                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorThree);
 
             }
         }

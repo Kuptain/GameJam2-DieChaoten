@@ -130,24 +130,29 @@ public class PlayerShoot : MonoBehaviour
 
                     foreach (Transform childChild in child)
                     {
-
-                        if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+                        if (childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster == false)
                         {
+                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+                            {
 
-                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
-                            childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
+                                //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
+                                childChild.GetChild(1).gameObject.SetActive(true);
+
+                                childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
 
 
+                            }
+
+                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
+                            {
+
+                                //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);
+                                childChild.GetChild(1).gameObject.SetActive(true);
+                                childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
+
+                            }
                         }
-
-                        if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
-                        {
-                            Debug.Log("Check4.2");
-
-                            childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);
-                            childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
-
-                        }
+                        
                     }
                 }
             }
