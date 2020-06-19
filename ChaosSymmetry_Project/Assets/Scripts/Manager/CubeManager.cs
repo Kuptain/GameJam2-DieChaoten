@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class CubeManager : MonoBehaviour
 {
-    [SerializeField] Button buttonA;
-    [SerializeField] Button buttonB;
+
+    public Material freezeMat;
+    public Color color1;
+    public Color color2;
+    public Color color3;
+    public Color colorHover, colorHoverExploded;
+
     public float speed;
     public float slowmoValue = 0.25f;
     public float gravityValue = 0.1f; //The value of the gravity
@@ -15,6 +20,7 @@ public class CubeManager : MonoBehaviour
     public float sendBackAuto = 0.001f;
     public float returnDelay = 3f;
     public float orbitMaxRotation = 45;
+
 
     [HideInInspector] public int testMode;
     [HideInInspector] public bool gameModeAllClusters;

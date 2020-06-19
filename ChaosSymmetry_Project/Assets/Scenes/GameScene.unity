@@ -3896,6 +3896,46 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 615978680}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHover.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHover.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHover.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHoverExploded.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHoverExploded.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHoverExploded.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHoverExploded.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: colorHover.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3003650229798901810, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_AnchoredPosition.y

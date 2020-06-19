@@ -1891,8 +1891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df6e0487e5f85c4e8cbdc2e15c38444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  powerUp: {fileID: 0}
+  player: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d, type: 3}
+  powerUp: {fileID: 3433732768048116125, guid: de429f6c4001aaf41b8e79434bb93fe1, type: 3}
 --- !u!114 &1569674664012012511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1905,8 +1905,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac986e6e7b6f81f44a33d14085aba6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonA: {fileID: 0}
-  buttonB: {fileID: 0}
+  freezeMat: {fileID: 2100000, guid: 8c35eb9a27189a645bb13502b3b78a6f, type: 2}
+  color1: {r: 0.29411766, g: 0.22352941, b: 0.24313726, a: 1}
+  color2: {r: 0.32941177, g: 0.28235295, b: 0.1764706, a: 1}
+  color3: {r: 0.6117647, g: 0.49803922, b: 0.35686275, a: 1}
   speed: 22
   slowmoValue: 0.04
   gravityValue: 0
