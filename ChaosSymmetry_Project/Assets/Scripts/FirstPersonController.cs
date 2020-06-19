@@ -21,16 +21,20 @@ public class FirstPersonController : MonoBehaviour
     Rigidbody rigid;
     Camera cam;
     PlayerManager pm;
+    CamCheckSideCollision camRightCollCheck;
+    CamCheckLeftCollision camLeftCollCheck;
 
     Vector3 lastMousePosition;
     //public List<GameObject> currentPlatforms = new List<GameObject>();
 
-    private Quaternion camRotation;
+    private Quaternion camRotation, savedCamRot;
 
     void Start()
     {
         pm = PlayerManager.instance.GetComponent<PlayerManager>();
         cam = Camera.main;
+        camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>(); 
+        camLeftCollCheck = cam.transform.parent.GetChild(2).GetComponent<CamCheckLeftCollision>();
         rigid = GetComponent<Rigidbody>();
         Cursor.visible = false;
 
@@ -41,7 +45,7 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-
+        print(Input.GetAxis("Mouse X"));
     }
     private void FixedUpdate()
     {
@@ -58,9 +62,19 @@ public class FirstPersonController : MonoBehaviour
 
     private void RotatePlayer()
     {
+        savedCamRot.y = camRotation.y;
         camRotation.y += Input.GetAxis("Mouse X") * camSmoothingFactor;
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);
+        if (camRightCollCheck.collidingToRight && Input.GetAxis("Mouse X") > 0)
+        {
+            camRotation.y = savedCamRot.y;
+        }
+        else if (camLeftCollCheck.collidingToLeft && Input.GetAxis("Mouse X") < 0)
+        {
+            camRotation.y = savedCamRot.y;
+        }
+
+        transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);        
     }
     void Jump()
     {
