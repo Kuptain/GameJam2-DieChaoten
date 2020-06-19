@@ -22,7 +22,8 @@ public class ResetJump : MonoBehaviour
         {
             if (transform.parent.GetComponent<Rigidbody>().velocity.y <= 0)
             {
-                transform.parent.GetComponent<FirstPersonController>().isGrounded = true;
+                //transform.parent.GetComponent<FirstPersonController>().isGrounded = true;
+                PlayerManager.instance.isGrounded = true;
                 PlayerManager.instance.floatFuel = PlayerManager.instance.maxFloatFuel;
 
             }

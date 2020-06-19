@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstPersonController : MonoBehaviour
+public class ThirdPersonController : MonoBehaviour
 {
 
     [SerializeField] float speed;
@@ -15,7 +15,6 @@ public class FirstPersonController : MonoBehaviour
     float camSmoothingFactor = 1;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    public bool isGrounded;
     bool isOnCube;
 
     Rigidbody rigid;
@@ -78,9 +77,9 @@ public class FirstPersonController : MonoBehaviour
     }
     void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && pm.isGrounded)
         {
-            isGrounded = false;
+            pm.isGrounded = false;
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
         }
@@ -88,7 +87,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Floating()
     {
-        if (Input.GetKey(KeyCode.Space) && isGrounded == false && pm.floatFuel > 0)
+        if (Input.GetKey(KeyCode.Space) && pm.isGrounded == false && pm.floatFuel > 0)
         {
             if (rigid.velocity.y < 0)
             {
@@ -122,7 +121,7 @@ public class FirstPersonController : MonoBehaviour
         {
             if (rigid.velocity.y <= 0)
             {
-                isGrounded = true;
+                pm.isGrounded = true;
                 pm.floatFuel = pm.maxFloatFuel;
 
             }
@@ -131,33 +130,39 @@ public class FirstPersonController : MonoBehaviour
     }
     */
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("terrain") &&  other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null  )
-        {
-            if(other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
-            {
-                LevelGeneration.instance.MoveCheckpoint();
-                Debug.Log("Move Checkpoint");
-            }
-         
-        }
-    }
 
 
     IEnumerator Defreeze(GameObject cube)
     {
         yield return new WaitForSeconds(0.15f);
-        if(isGrounded == false)
+        if(pm.isGrounded == false)
         {
             cube.GetComponent<CubeDestroy>().freezeThisCluster = false;
 
         }
 
     }
+
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        /*
+        if (other.CompareTag("terrain") && other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null)
+        {
+            if (other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
+            {
+                LevelGeneration.instance.MoveCheckpoint();
+                Debug.Log("Move Checkpoint");
+            }
+
+        }
+        */
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        StartCoroutine(ChangeGrounded());
+        //StartCoroutine(ChangeGrounded());
+
         /*if (other.CompareTag("terrain"))
         {
             if(other.gameObject.GetComponent<CubeDestroy>() != null)
@@ -175,12 +180,14 @@ public class FirstPersonController : MonoBehaviour
                 }
             }
         }*/
-        
+
     }
+
+
     IEnumerator ChangeGrounded()
     {
         yield return new WaitForSeconds(0.5f);
-        isGrounded = false;
+        pm.isGrounded = false;
 
     }
 
