@@ -162,11 +162,13 @@ public class LevelGeneration : MonoBehaviour
     }
     public void TriggerGeneration()
     {
+        float pointTwoVary = 10;
 
         clusterAmount = Mathf.RoundToInt(
-                        Vector3.Distance(checkPointOne.transform.position, checkPointTwo.transform.position) / clusterAmountCalc - difficulty);
-        clusterDistance = checkPointDistance / clusterAmount;
-        GenerateClusters(checkPointOne.transform.position, checkPointTwo.transform.position);
+                        Vector3.Distance(checkPointOne.transform.position + new Vector3(0, 5, 0), checkPointTwo.transform.position - new Vector3(0, pointTwoVary, 0)) / clusterAmountCalc - difficulty);
+        clusterDistance = (checkPointDistance - pointTwoVary) / clusterAmount;
+
+        GenerateClusters(checkPointOne.transform.position + new Vector3(0, 5, 0), checkPointTwo.transform.position - new Vector3(0, pointTwoVary, 0));
 
     }
 
