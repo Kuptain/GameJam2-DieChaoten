@@ -172,6 +172,20 @@ public class LevelGeneration : MonoBehaviour
 
     }
 
+    float RandomAngle()
+    {
+        float[] numbers = { 0, 90, 180, 270 };
+        int randomIndex = Random.Range(0, numbers.Length);
+        return numbers[randomIndex];
+
+    }
+    float Choose()
+    {
+        float[] numbers = { 0,1 };
+        int randomIndex = Random.Range(0, numbers.Length);
+        return numbers[randomIndex];
+
+    }
     public void GenerateClusters(Vector3 startPos, Vector3 endPos)
     {
         Vector3 spawnPos = startPos - new Vector3(0, 0, 0);
@@ -207,8 +221,15 @@ public class LevelGeneration : MonoBehaviour
                 spawnPos.z -= randomZ;
 
             }
-         
-            Instantiate(clusterObj, spawnPos, Quaternion.identity);
+
+            //Quaternion spawnAngle = new Quaternion(Choose(), Choose(), Choose(), RandomAngle());
+            Quaternion spawnAngle = clusterObj.transform.rotation;
+            spawnAngle.x = clusterObj.transform.rotation.x + RandomAngle();
+            spawnAngle.y = clusterObj.transform.rotation.y + RandomAngle();
+            spawnAngle.z = clusterObj.transform.rotation.z + RandomAngle();
+
+
+            Instantiate(clusterObj, spawnPos, spawnAngle);
             currentCluster += 1;
             
         }
