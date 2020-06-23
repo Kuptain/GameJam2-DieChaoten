@@ -21,7 +21,7 @@ public class CubeManager : MonoBehaviour
     public float sendBackManual = 0.02f;
     public float sendBackAuto = 0.001f;
     public float returnDelay = 3f;
-    public float orbitMaxRotation = 45;
+    public float orbitMaxRotation = 45;
     public float clusterMaxRotation = 20;
 
 
