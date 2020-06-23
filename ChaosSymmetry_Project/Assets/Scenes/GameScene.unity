@@ -1795,6 +1795,23 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc3a92c1ebf5cec4eafa65b93045e128, type: 2}
+    - target: {fileID: 6823661773539036720, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: spawnedCube
+      value: 
+      objectReference: {fileID: 5060578243451563794, guid: fc81aafc2671f3041ac59d1620d947d9,
+        type: 3}
+    - target: {fileID: 6823661773539036720, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: spawnedCubePrefab
+      value: 
+      objectReference: {fileID: 5060578243451563794, guid: fc81aafc2671f3041ac59d1620d947d9,
+        type: 3}
+    - target: {fileID: 6823661773539036720, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: spawnDistance
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a2192a2a02cef8418163e33e20d441d, type: 3}
 --- !u!1 &1308857834

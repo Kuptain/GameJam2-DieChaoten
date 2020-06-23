@@ -19,7 +19,17 @@ public class FreezeBubble : MonoBehaviour
     {
         
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            if (other.gameObject.GetComponent<spawnedCubePowerUp>() != null)
+            {
+                //other.gameObject.GetComponent<spawnedCubePowerUp>().StartCoroutine("FadeOut");
+            }
+        }
+      
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() != null)
@@ -36,9 +46,9 @@ public class FreezeBubble : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() != null)
+        if (other.CompareTag("terrain") )
         {
-            if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
+            if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>() != null && other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
             {
                 foreach (GameObject platform in currentPlatforms.ToList())
                 {
@@ -52,7 +62,12 @@ public class FreezeBubble : MonoBehaviour
                     }
                 }
             }
+            if (other.gameObject.GetComponent<spawnedCubePowerUp>() != null)
+            {
+                other.gameObject.GetComponent<spawnedCubePowerUp>().StartCoroutine("FadeOut");
+            }
         }
 
+      
     }
 }
