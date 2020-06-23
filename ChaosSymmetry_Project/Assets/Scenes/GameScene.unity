@@ -1880,6 +1880,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: clusterMaxRotation
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4566049732712367076, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_AnchorMin.x

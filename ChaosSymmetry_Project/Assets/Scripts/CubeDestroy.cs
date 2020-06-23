@@ -21,12 +21,11 @@ public class CubeDestroy : MonoBehaviour
     [HideInInspector] public int pushMode;
     public bool sendingBack, freezeThisCluster, bubbleFreeze, notsendingback;
 
-    CubeManager cubeManager;
+    CubeManager cm;
     Rigidbody rigid;
     Material baseMat;
 
     float finalSpeed;
-    public float currentSlowmo = 1;
     float gravityAutoAdjust = 1;
 
     bool colliding;
@@ -49,24 +48,24 @@ public class CubeDestroy : MonoBehaviour
         
         //Copy from Cubemanager//
         {
-            cubeManager = CubeManager.instance.GetComponent<CubeManager>();
+            cm = CubeManager.instance.GetComponent<CubeManager>();
 
-            speed = cubeManager.speed;
+            speed = cm.speed;
             finalSpeed = speed;
 
-            slowmoValue = cubeManager.slowmoValue;
-            gravityValue = cubeManager.gravityValue;
-            maxGravity = cubeManager.maxGravity;
-            sendBackManual = cubeManager.sendBackManual;
-            sendBackAuto = cubeManager.sendBackAuto;
+            slowmoValue = cm.slowmoValue;
+            gravityValue = cm.gravityValue;
+            maxGravity = cm.maxGravity;
+            sendBackManual = cm.sendBackManual;
+            sendBackAuto = cm.sendBackAuto;
             //pushForce = cubeManager.pushForce;
-            returnDelay = cubeManager.returnDelay;
+            returnDelay = cm.returnDelay;
 
-            colorOne = cubeManager.color1;
-            colorTwo = cubeManager.color2;
-            colorThree = cubeManager.color3;
-            colorHover = cubeManager.colorHover;
-            colorHoverExploded = cubeManager.colorHoverExploded;
+            colorOne = cm.color1;
+            colorTwo = cm.color2;
+            colorThree = cm.color3;
+            colorHover = cm.colorHover;
+            colorHoverExploded = cm.colorHoverExploded;
         }
 
         //Start Setup
@@ -95,18 +94,18 @@ public class CubeDestroy : MonoBehaviour
                 int randomNumber = Random.Range(1, 4);
                 if (randomNumber == 1)
                 {
-                    colorOne = cubeManager.color1;
+                    colorOne = cm.color1;
                     //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
                 }
                 if (randomNumber == 2)
                 {
-                    colorOne = cubeManager.color2;
+                    colorOne = cm.color2;
                     //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
 
                 }
                 if (randomNumber == 3)
                 {
-                    colorOne = cubeManager.color3;
+                    colorOne = cm.color3;
                     //gameObject.GetComponent<Renderer>().material.SetColor("_Color", colorOne);
 
                 }
@@ -152,7 +151,7 @@ public class CubeDestroy : MonoBehaviour
                 //Change velocity
                 if (moveVelocity.y > -maxGravity)
                 {
-                    moveVelocity.y -= gravityValue * Time.deltaTime * currentSlowmo * gravityAutoAdjust;
+                    moveVelocity.y -= gravityValue * Time.deltaTime * cm.currentSlowmo * gravityAutoAdjust;
 
                 }
                 else if (moveVelocity.y <= -maxGravity)
@@ -162,7 +161,7 @@ public class CubeDestroy : MonoBehaviour
 
             }
 
-            transform.position += moveVelocity * finalSpeed * Time.deltaTime * currentSlowmo;
+            transform.position += moveVelocity * finalSpeed * Time.deltaTime * cm.currentSlowmo;
 
           
 
@@ -198,7 +197,7 @@ public class CubeDestroy : MonoBehaviour
 
         //Send Cubes back to the roots
         {
-            if (cubeManager.testMode == 1)
+            if (cm.testMode == 1)
             {
                 sendingBack = true;
             }
@@ -219,7 +218,7 @@ public class CubeDestroy : MonoBehaviour
           
             yield return new WaitForSeconds(Random.Range(-0.75f, 0.75f));
 
-            if (currentSlowmo == 1)
+            if (cm.currentSlowmo == 1)
             {
                 if (pushMode == 2)
                 {
@@ -250,7 +249,7 @@ public class CubeDestroy : MonoBehaviour
             }
 
             moveVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-            if (cubeManager.testMode == 0)
+            if (cm.testMode == 0)
             {
                 sendingBack = false;
 
@@ -266,7 +265,7 @@ public class CubeDestroy : MonoBehaviour
 
         if(timer < returnDelay)
         {
-            timer += Time.deltaTime * currentSlowmo;
+            timer += Time.deltaTime * cm.currentSlowmo;
         }
         else
         {
@@ -283,8 +282,8 @@ public class CubeDestroy : MonoBehaviour
         if(freezeThisCluster == false && bubbleFreeze == false)
         {
             pushMode = 0;
-            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * currentSlowmo);
-            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, sendBackManual * currentSlowmo);
+            transform.position = Vector3.Slerp(transform.position, startPosition, sendBackManual * cm.currentSlowmo);
+            transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, sendBackManual * cm.currentSlowmo);
             moveVelocity = new Vector3(0, 0, 0);
 
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
@@ -302,7 +301,7 @@ public class CubeDestroy : MonoBehaviour
 
         /* if (cubeManager.testMode == 1)
          {
-             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * currentSlowmo);
+             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * cm.currentSlowmo);
              transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
 
 
@@ -318,13 +317,13 @@ public class CubeDestroy : MonoBehaviour
         //Slowmotion
         {
 
-            if (cubeManager.slowMode)
+            if (cm.slowMode)
             {
-                currentSlowmo = slowmoValue;
+                cm.currentSlowmo = slowmoValue;
             }
-            else if (cubeManager.slowMode == false)
+            else if (cm.slowMode == false)
             {
-                currentSlowmo = 1;
+                cm.currentSlowmo = 1;
 
             }
         }
@@ -348,7 +347,7 @@ public class CubeDestroy : MonoBehaviour
             //Send all cubes back to the roots
             if (Input.GetKey(KeyCode.Alpha3))
             {
-                if (cubeManager.testMode == 0)
+                if (cm.testMode == 0)
                 {
                     sendingBack = true;
                 }

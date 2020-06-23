@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 
 public class FreezeBubble : MonoBehaviour
 {
@@ -27,7 +29,7 @@ public class FreezeBubble : MonoBehaviour
                 currentPlatforms.Add(other.gameObject);
                 other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze = true;
                 other.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-                print("inbuble");
+                //print("inbuble");
             }
         }
     }
@@ -38,14 +40,14 @@ public class FreezeBubble : MonoBehaviour
         {
             if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
             {
-                foreach (GameObject platform in currentPlatforms)
+                foreach (GameObject platform in currentPlatforms.ToList())
                 {
                     if (other.gameObject == platform.gameObject)
                     {
                         
                         platform.GetComponent<CubeDestroy>().bubbleFreeze = false;
                         currentPlatforms.Remove(platform);
-                        print("buddleDefreeze");
+                        //print("buddleDefreeze");
                         
                     }
                 }

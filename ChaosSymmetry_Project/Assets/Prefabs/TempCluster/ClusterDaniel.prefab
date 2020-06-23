@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &2870518939046634179
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &4575316783187536823
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &4713969984407152829
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &6749092757673383585
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6749092757673383590}
+  - component: {fileID: 2041421781022394611}
   m_Layer: 0
   m_Name: ClusterDaniel
   m_TagString: Untagged
@@ -214,6 +219,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2041421781022394611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749092757673383585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCluster: 1
 --- !u!1 &6936503908548066463
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &7546345293171018753
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &8836364708869897990
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1 &9002045880710966375
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3b063caf931740a5e5361595de618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCluster: 0
 --- !u!1001 &888594151834306267
 PrefabInstance:
   m_ObjectHideFlags: 0
