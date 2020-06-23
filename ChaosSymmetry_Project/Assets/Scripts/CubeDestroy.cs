@@ -330,7 +330,7 @@ public class CubeDestroy : MonoBehaviour
         }
 
         //Control all cubes
-        {
+        /*{
             //Force/Push out 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -355,7 +355,7 @@ public class CubeDestroy : MonoBehaviour
             }
 
           
-        }
+        }*/
 
   
     }

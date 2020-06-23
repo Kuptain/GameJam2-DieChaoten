@@ -44,7 +44,6 @@ public class ThirdPersonController : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        print(Input.GetAxis("Mouse X"));
     }
     private void FixedUpdate()
     {

@@ -57,6 +57,7 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gameModeAllClusters = true;
@@ -64,7 +65,7 @@ public class CubeManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gameModeAllClusters = false;
-        }
+        }*/
 
         //Slowmotion
         {
