@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    [SerializeField] GameObject spawnedCubePrefab;
     CubeManager cubeManager;
     //[HideInInspector] 
     public GameObject currentCluster, frozenCluster, secondFrozenCluster;
@@ -39,6 +40,10 @@ public class PlayerShoot : MonoBehaviour
         }
         */
     }
+
+    GameObject spawnedCube;
+    [SerializeField] float spawnDistance = 15;
+
 
     void ShootRay()
     {
@@ -110,6 +115,44 @@ public class PlayerShoot : MonoBehaviour
                 }
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            spawnedCube = Instantiate(spawnedCubePrefab, cam.transform.position + cam.transform.forward * spawnDistance, Quaternion.identity) as GameObject;
+
+            if (spawnedCube != null)
+            {
+                //spawnedCube.transform.GetChild(1).gameObject.SetActive(true);
+                spawnedCube.transform.GetChild(2).gameObject.SetActive(true);
+
+                spawnedCube.GetComponent<Collider>().enabled = false;
+                spawnedCube.GetComponent<MeshRenderer>().enabled = false;
+
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (spawnedCube != null)
+            {
+
+                spawnedCube.transform.position = Vector3.Lerp(spawnedCube.transform.position, cam.transform.position + cam.transform.forward * spawnDistance, 0.05f);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            if (spawnedCube != null)
+            {
+                //spawnedCube.transform.GetChild(1).gameObject.SetActive(false);
+                spawnedCube.transform.GetChild(2).gameObject.SetActive(false);
+
+                spawnedCube.GetComponent<Collider>().enabled = true;
+                spawnedCube.GetComponent<MeshRenderer>().enabled = true;
+
+            }
+        }
     }
 
     void HoverCursor()
@@ -121,7 +164,6 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Transform clusterHit = hit.transform;
-            //&& CubeManager.instance.gameModeAllClusters == false
             if (clusterHit.gameObject.GetComponent<CubeDestroy>() != null)
             {
                 currentCluster = clusterHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent

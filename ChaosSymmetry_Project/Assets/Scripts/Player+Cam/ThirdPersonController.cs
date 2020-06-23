@@ -44,6 +44,16 @@ public class ThirdPersonController : MonoBehaviour
     void Update()
     {
         RotatePlayer();
+        //print(Input.GetAxis("Mouse X"));
+
+        if (pm.isRespawning == false)
+        {
+            if ((rigid.velocity.y < -60 && pm.floatFuel <= 0) || transform.position.y < 10)
+            {
+                pm.Respawn();
+            }
+        }
+      
     }
     private void FixedUpdate()
     {
@@ -65,11 +75,11 @@ public class ThirdPersonController : MonoBehaviour
 
         if (camRightCollCheck.collidingToRight && Input.GetAxis("Mouse X") > 0)
         {
-            camRotation.y = savedCamRot.y;
+            //camRotation.y = savedCamRot.y;
         }
         else if (camLeftCollCheck.collidingToLeft && Input.GetAxis("Mouse X") < 0)
         {
-            camRotation.y = savedCamRot.y;
+            //camRotation.y = savedCamRot.y;
         }
 
         transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);        

@@ -27,12 +27,13 @@ public class RandomPowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform.position);
+        transform.parent.LookAt(player.transform.position);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             if(consumable == true && PowerUpManager.instance.currentConsumable == "")
             {

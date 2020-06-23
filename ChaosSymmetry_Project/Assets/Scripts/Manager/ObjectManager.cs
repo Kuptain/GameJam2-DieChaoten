@@ -6,7 +6,8 @@ public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
 
-    public GameObject player;
+    //[HideInInspector] public GameObject playerInstance;
+    [HideInInspector] public GameObject player;
     public GameObject powerUp;
 
 
@@ -16,12 +17,14 @@ public class ObjectManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(this);
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
         camRotation.x = Mathf.Clamp(camRotation.x, lookUpMin, lookUpMax);
         if (colliding && Input.GetAxis("Mouse Y") > 0)
         {
-            camRotation.x = savedCamRot.x;
+            //camRotation.x = savedCamRot.x;
                 //Mathf.Clamp(camRotation.x, -30, lookUpMax);
         }
 

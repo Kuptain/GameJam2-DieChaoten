@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class OrbitPoint : MonoBehaviour
 {
+    public bool isCluster = false;
+    [HideInInspector] public bool canRotate = false;
+
     CubeDestroy childScript;
+    CubeManager cm;
     GameObject childObj;
-    float currentSlowmo;
 
     Vector3 randomRotate;
     float maxRotation;
 
+
     // Start is called before the first frame update
     void Start()
     {
-
-        maxRotation = CubeManager.instance.orbitMaxRotation;
-        
         childObj = gameObject.transform.GetChild(0).gameObject;
+        cm = CubeManager.instance.GetComponent<CubeManager>();
 
-        if (childObj.GetComponent<CubeDestroy>() != null)
+        if (isCluster)
         {
-            childScript = childObj.GetComponent<CubeDestroy>();
+            maxRotation = CubeManager.instance.clusterMaxRotation;
+            RandomizeRotation();
 
         }
+        else
+        {
+            maxRotation = CubeManager.instance.orbitMaxRotation;
+
+            if (childObj.GetComponent<CubeDestroy>() != null)
+            {
+                childScript = childObj.GetComponent<CubeDestroy>();
+            }
+        }       
 
         //StartCoroutine(ChangeRotationValue());
     }
@@ -31,7 +43,6 @@ public class OrbitPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSlowmo = childScript.currentSlowmo;
 
         //randomize Rotation
         {
@@ -74,25 +85,69 @@ public class OrbitPoint : MonoBehaviour
 
         }
 
+        if (isCluster)
+        {
+            if (CheckChildrenFreeze())
+            {
+                RotateCluster();
 
-        if (childScript.pushMode == 1 && childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
-        {            
-            transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,
-                             randomRotate.y * Time.deltaTime * currentSlowmo,
-                             randomRotate.z * Time.deltaTime * currentSlowmo);
+            }
 
         }
-        if (childScript.pushMode == 0 && childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
+        else
+        {
+
+            if(childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
+            {
+                canRotate = true;
+                RotateElements();
+
+            }
+            else
+            {
+                canRotate = false;
+            }
+
+        }
+    }
+
+    bool CheckChildrenFreeze()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<OrbitPoint>() != null && child.GetComponent<OrbitPoint>().canRotate == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    void RotateElements()
+    {
+        if (childScript.pushMode == 1)
+        {
+            transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
+                             randomRotate.y * Time.deltaTime * cm.currentSlowmo,
+                             randomRotate.z * Time.deltaTime * cm.currentSlowmo);
+
+        }
+        if (childScript.pushMode == 0 )
         {
             randomRotate = Vector3.Lerp(randomRotate, Vector3.zero, 0.005f);
-            transform.Rotate(randomRotate.x * Time.deltaTime * currentSlowmo,
-                       randomRotate.y * Time.deltaTime * currentSlowmo,
-                       randomRotate.z * Time.deltaTime * currentSlowmo);
+            transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
+                       randomRotate.y * Time.deltaTime * cm.currentSlowmo,
+                       randomRotate.z * Time.deltaTime * cm.currentSlowmo);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(0, 0, 0, 0), CubeManager.instance.sendBackManual * currentSlowmo);
+            transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(0, 0, 0, 0), CubeManager.instance.sendBackManual * cm.currentSlowmo);
 
 
         }
+    }
+    void RotateCluster()
+    {
+        transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
+                             randomRotate.y * Time.deltaTime * cm.currentSlowmo,
+                             randomRotate.z * Time.deltaTime * cm.currentSlowmo);
     }
     public void RandomizeRotation()
     {
