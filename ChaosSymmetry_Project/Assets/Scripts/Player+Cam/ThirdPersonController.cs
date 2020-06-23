@@ -44,7 +44,16 @@ public class ThirdPersonController : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        print(Input.GetAxis("Mouse X"));
+        //print(Input.GetAxis("Mouse X"));
+
+        if (pm.isRespawning == false)
+        {
+            if ((rigid.velocity.y < -60 && pm.floatFuel <= 0) || transform.position.y < 10)
+            {
+                pm.Respawn();
+            }
+        }
+      
     }
     private void FixedUpdate()
     {

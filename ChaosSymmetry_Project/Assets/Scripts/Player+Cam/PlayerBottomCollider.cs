@@ -42,7 +42,7 @@ public class PlayerBottomCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("terrain") && other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null)
+        if (other.CompareTag("terrain") && other.transform.parent != null && other.transform.parent.gameObject.GetComponent<CheckPointBehavior>() != null)
         {
             if (other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
             {

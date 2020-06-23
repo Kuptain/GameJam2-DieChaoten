@@ -17,12 +17,14 @@ public class ObjectManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(this);
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
