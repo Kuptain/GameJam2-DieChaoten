@@ -17,7 +17,7 @@ public class LevelGeneration : MonoBehaviour
     [Header("Generation values")]
 
         [Tooltip("Y Distance between checkpoints")]
-        public float checkPointDistance = 50;
+        public float checkPointDistanceY = 50;
 
         [Tooltip("Subtract this from the cluster amount")]
         public float difficulty = 0; //subtracts clusters
@@ -41,7 +41,7 @@ public class LevelGeneration : MonoBehaviour
     //---------------------------------------------------\\
 
 
-    float clusterDistance;
+    float clusterDistanceY;
     float clusterAmount;
 
     float randomX;
@@ -83,10 +83,10 @@ public class LevelGeneration : MonoBehaviour
                       
   
         checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariation(25f, 55f),
-                                                       checkPointOne.transform.position.y + checkPointDistance,
+                                                       checkPointOne.transform.position.y + checkPointDistanceY,
                                                        checkPointOne.transform.position.z + GenerateVariation(25f, 55f));
 
-        Instantiate(powerUp, checkPointTwo.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        Instantiate(powerUp, checkPointTwo.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
 
 
         if (checkPointOne != null && checkPointTwo != null)
@@ -130,7 +130,7 @@ public class LevelGeneration : MonoBehaviour
         //Increase difficulty
         {
             difficulty += incrDifficulty;
-            checkPointDistance += incrCheckPointDistance;
+            checkPointDistanceY += incrCheckPointDistance;
             clusterAmountCalc += incrClusterAmountCalc;
         } 
 
@@ -144,10 +144,10 @@ public class LevelGeneration : MonoBehaviour
 
         //Set the lower checkpoint higher
         checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
-                                                       checkPointTwo.transform.position.y + checkPointDistance,
+                                                       checkPointTwo.transform.position.y + checkPointDistanceY,
                                                        checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
 
-        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
 
         //Swap Checkpoint 1 with 2
         {
@@ -162,13 +162,14 @@ public class LevelGeneration : MonoBehaviour
     }
     public void TriggerGeneration()
     {
-        float pointTwoVary = 10;
+        float pointVaryOne = 6;
+        float pointVaryTwo = 8;
 
         clusterAmount = Mathf.RoundToInt(
-                        Vector3.Distance(checkPointOne.transform.position + new Vector3(0, 5, 0), checkPointTwo.transform.position - new Vector3(0, pointTwoVary, 0)) / clusterAmountCalc - difficulty);
-        clusterDistance = (checkPointDistance - pointTwoVary) / clusterAmount;
+                        Vector3.Distance(checkPointOne.transform.position + new Vector3(0, pointVaryOne, 0), checkPointTwo.transform.position - new Vector3(0, pointVaryTwo, 0)) / clusterAmountCalc - difficulty);
+        clusterDistanceY = (checkPointDistanceY - pointVaryTwo - pointVaryOne) / clusterAmount;
 
-        GenerateClusters(checkPointOne.transform.position + new Vector3(0, 5, 0), checkPointTwo.transform.position - new Vector3(0, pointTwoVary, 0));
+        GenerateClusters(checkPointOne.transform.position + new Vector3(0, pointVaryOne, 0), checkPointTwo.transform.position - new Vector3(0, pointVaryTwo, 0));
 
     }
 
@@ -188,20 +189,20 @@ public class LevelGeneration : MonoBehaviour
     }
     public void GenerateClusters(Vector3 startPos, Vector3 endPos)
     {
-        Vector3 spawnPos = startPos - new Vector3(0, 0, 0);
+        Vector3 spawnPos = startPos;
         //randomX = spawnPos.x;
         //randomZ = spawnPos.z;
         int currentCluster = 0; //-1 or 0  Random.Range(-1, 1);
 
 
-        for (int i = 0; i < clusterAmount; i++)
+        for (int i = 0; i <= clusterAmount; i++)
         {
             spawnPos.x = startPos.x;
             spawnPos.z = startPos.z;
             randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
             randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
 
-            spawnPos.y += clusterDistance;    
+            spawnPos.y += clusterDistanceY;    
 
             if (endPos.x > startPos.x)
             {
