@@ -46,6 +46,14 @@ public class RandomPowerUp : MonoBehaviour
             {
                 PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
 
+                if (TutorialManager.instance.currentHint == "")
+                {
+                    TutorialManager.instance.ChangeType("power");
+                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(3f));
+
+
+                }
+
                 if (PowerUpManager.instance.currentPowerUps.Count == 1)
                 {
                     UIManager.instance.currentPowerupOne.GetComponent<Text>().text = thisPowerUp;

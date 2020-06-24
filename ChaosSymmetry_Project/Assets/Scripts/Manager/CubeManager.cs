@@ -78,12 +78,19 @@ public class CubeManager : MonoBehaviour
                 if(slowMode == false)
                 {
                     slowMode = true;
+                    if (TutorialManager.instance.currentHint == "slow")
+                    {
+                        TutorialManager.instance.ChangeType("right");
+                    }
 
                 }
                 else if(slowMode == true)
                 {
                     slowMode = false;
-
+                    if (TutorialManager.instance.currentHint == "slowDisable")
+                    {
+                        TutorialManager.instance.ChangeType("");
+                    }
                 }
             }
          

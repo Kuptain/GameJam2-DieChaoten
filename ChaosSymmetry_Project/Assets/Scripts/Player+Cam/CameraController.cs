@@ -71,7 +71,7 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(camRotation.x, 0, 0);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {   
 
         if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
@@ -82,9 +82,52 @@ public class CameraController : MonoBehaviour
 
         if ( other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
-            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            if (other.GetComponent<MeshRenderer>() != null)
+            {
+                other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+            }
+            if (other.transform.childCount > 3)
+            {
+                for (int i = 3; i < other.transform.childCount; i++)
+                {
+                    if (other.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
+                    {
+                        other.transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+                    }
+                    foreach (Transform child in other.transform.GetChild(i))
+                    {
+                        if (child.gameObject.GetComponent<MeshRenderer>() != null)
+                        {
+                            child.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                        }
+                      
+                    }
+                }
+            }
+            
             other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
 
+        }
+        if (other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
+        {
+            other.transform.parent.parent.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+
+            for (int i = 3; i < other.transform.parent.parent.childCount; i++)
+            {
+                if (other.transform.parent.parent.GetChild(i).GetComponent<MeshRenderer>() != null)
+                {
+                    other.transform.parent.parent.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+                }
+                foreach (Transform child in other.transform.parent.parent.GetChild(i))
+                {
+                    if (child.gameObject.GetComponent<MeshRenderer>() != null)
+                    {
+                        child.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    }
+
+                }
+            }
         }
     }
 
@@ -97,9 +140,51 @@ public class CameraController : MonoBehaviour
 
         if (other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
-            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            if (other.GetComponent<MeshRenderer>() != null)
+            {
+                other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+            }
+            if (other.transform.childCount > 3)
+            {
+                for (int i = 3; i < other.transform.childCount; i++)
+                {
+                    if (other.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
+                    {
+                        other.transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
+                    }
+                    foreach (Transform child in other.transform.GetChild(i))
+                    {
+                        if (child.gameObject.GetComponent<MeshRenderer>() != null)
+                        {
+                            child.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                    
+                    }
+                }
+            }            
             other.gameObject.transform.GetChild(2).gameObject.SetActive(false);
 
+        }
+        if (other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
+        {
+            other.transform.parent.parent.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+
+            for (int i = 3; i < other.transform.parent.parent.childCount; i++)
+            {
+                if (other.transform.parent.parent.GetChild(i).GetComponent<MeshRenderer>() != null)
+                {
+                    other.transform.parent.parent.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
+                }
+                foreach (Transform child in other.transform.parent.parent.GetChild(i))
+                {
+                    if (child.gameObject.GetComponent<MeshRenderer>() != null)
+                    {
+                        child.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    }
+
+                }
+            }
         }
     }
 

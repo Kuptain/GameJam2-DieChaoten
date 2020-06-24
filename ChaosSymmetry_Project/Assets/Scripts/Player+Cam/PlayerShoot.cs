@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] GameObject spawnedCubePrefab;
     CubeManager cubeManager;
+    TutorialManager tm;
     //[HideInInspector] 
     public GameObject currentCluster, frozenCluster, secondFrozenCluster;
     public float meltingTime = 5;
@@ -18,6 +19,7 @@ public class PlayerShoot : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         cubeManager = CubeManager.instance;
+        tm = TutorialManager.instance;
 
     }
 
@@ -62,6 +64,12 @@ public class PlayerShoot : MonoBehaviour
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                    
+                    if(tm.currentHint == "left")
+                    {
+                        tm.ChangeType("slow");
+                    }
+
                     foreach (Transform child in currentCluster.transform)
                     {
                         foreach (Transform childChild in child)
@@ -86,6 +94,12 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
+
+                if (tm.currentHint == "right")
+                {
+                    tm.ChangeType("float");
+                }
+
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster == null)
                 {
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
@@ -188,22 +202,22 @@ public class PlayerShoot : MonoBehaviour
                     {
                         if (childChild.gameObject.GetComponent<CubeDestroy>() != null && childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster == false)
                         {
-                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0 && childChild.childCount > 2)
+                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0 && childChild.childCount > 0)
                             {
 
                                 //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
-                                childChild.GetChild(1).gameObject.SetActive(true);
+                                childChild.GetChild(0).gameObject.SetActive(true);
 
                                 childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
 
 
                             }
 
-                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1 && childChild.childCount > 2)
+                            if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1 && childChild.childCount > 0)
                             {
 
                                 //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);
-                                childChild.GetChild(1).gameObject.SetActive(true);
+                                childChild.GetChild(0).gameObject.SetActive(true);
                                 childChild.gameObject.GetComponent<CubeDestroy>().isHovered = true;
 
                             }
