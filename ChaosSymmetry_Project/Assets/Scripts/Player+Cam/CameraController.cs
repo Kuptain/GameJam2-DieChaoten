@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
 
         }
 
-        if ( other.gameObject.GetComponent<CubeDestroy>() != null)
+        if ( other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
             other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
@@ -95,7 +95,7 @@ public class CameraController : MonoBehaviour
             colliding = false;
         }
 
-        if (other.gameObject.GetComponent<CubeDestroy>() != null)
+        if (other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
             other.gameObject.GetComponent<MeshRenderer>().enabled = true;
             other.gameObject.transform.GetChild(2).gameObject.SetActive(false);

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RandomPowerUp : MonoBehaviour
 {
+    [HideInInspector] public bool isDropped = false;
+
     GameObject player;
     public string thisPowerUp;
     public bool consumable;
@@ -13,14 +15,18 @@ public class RandomPowerUp : MonoBehaviour
     void Start()
     {
         int i = Random.Range(1, 11);
+
         if(i <= 3)
         {
             thisPowerUp = PowerUpManager.instance.consumables[Random.Range(0, PowerUpManager.instance.consumables.Length)];
             print("comnsumable");
             consumable = true;
         }
-        else
+        else if (isDropped == false)
+        {
             thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
+
+        }
         player = ObjectManager.instance.player;
     }
 
@@ -33,14 +39,10 @@ public class RandomPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.GetComponent<ThirdPersonController>() != null)
         {
-            if(consumable == true && PowerUpManager.instance.currentConsumable == "")
-            {
-                PowerUpManager.instance.currentConsumable = thisPowerUp;
-                UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
-            }
-            else if (PowerUpManager.instance.currentPowerUps.Count < 3)
+
+            if (PowerUpManager.instance.currentPowerUps.Count < 3)
             {
                 PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
 
@@ -58,6 +60,7 @@ public class RandomPowerUp : MonoBehaviour
                 }
                 /*PowerUpManager.instance.currentPowerUp = thisPowerUp;
                 UIManager.instance.currentPowerup.GetComponent<Text>().text = thisPowerUp;*/
+
                 if (thisPowerUp == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = PowerUpManager.instance.longerFreezeData;
@@ -68,8 +71,18 @@ public class RandomPowerUp : MonoBehaviour
                     UIManager.instance.currentFreezeTime = 5;
                     UIManager.instance.freezetimer = 5;
                 }
+
+
                 Destroy(this.gameObject.transform.parent.gameObject);
-            }                        
+            }
+
+            else if (consumable == true && PowerUpManager.instance.currentConsumable == "")
+            {
+                PowerUpManager.instance.currentConsumable = thisPowerUp;
+                UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
+                Destroy(this.gameObject.transform.parent.gameObject);
+
+            }
         }
     }
 }

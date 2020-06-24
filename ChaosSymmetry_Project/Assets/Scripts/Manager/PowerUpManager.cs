@@ -115,37 +115,50 @@ public class PowerUpManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                GameObject droppedPowerup1 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+          
+                GameObject droppedPowerup1 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
+                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[0];
-                UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
-                print("ffff");
+             
+
+            
+
+                //UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
+                print("power1");
                 if(currentPowerUps[0] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;
                     UIManager.instance.freezetimer = 5;
                 }
                 currentPowerUps.RemoveAt(0);
-                return;
+                //currentPowerUps = new List<string>();
+                print(currentPowerUps.Count);
+                
             }
             else if (currentPowerUps.Count >= 2 && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+                GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + 
+                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[1];
-                UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
+                //UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
                 if (currentPowerUps[1] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;
                     UIManager.instance.freezetimer = 5;
                 }
                 currentPowerUps.RemoveAt(1);
-                print("aaaa");
-                return;
+                print("power2");
+            
             }
             else if (currentPowerUps.Count == 3 && Input.GetKeyDown(KeyCode.Alpha3))
             {
-                GameObject droppedPowerup3 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+                GameObject droppedPowerup3 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
+                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[2];
-                UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
+                //UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
 
                 if (currentPowerUps[2] == "longerFreeze")
                 {
@@ -153,14 +166,20 @@ public class PowerUpManager : MonoBehaviour
                     UIManager.instance.freezetimer = 5;
                 }
                 currentPowerUps.RemoveAt(2);
-                print("ssss");
-                return;
+                print("power3");
+         
             }
         }        
     }
 
     void ShowCurrentPowerUps()
     {
+        if ((currentPowerUps.Count == 0))
+        {
+            UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
+            UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
+            UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
+        }
         if (currentPowerUps.Count == 1)
         {
             UIManager.instance.currentPowerupOne.GetComponent<Text>().text = currentPowerUps[0];
@@ -176,6 +195,7 @@ public class PowerUpManager : MonoBehaviour
         {
             UIManager.instance.currentPowerupThree.GetComponent<Text>().text = currentPowerUps[2];
         }
+        
     }
 
     void UseConsumable()
