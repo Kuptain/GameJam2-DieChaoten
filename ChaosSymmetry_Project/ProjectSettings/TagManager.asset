@@ -8,6 +8,8 @@ TagManager:
   - ClusterParts1
   - ClusterParts2
   - terrain
+  - checkpoint
+  - UI
   layers:
   - Default
   - TransparentFX

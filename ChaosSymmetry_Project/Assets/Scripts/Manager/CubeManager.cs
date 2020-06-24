@@ -15,11 +15,15 @@ public class CubeManager : MonoBehaviour
     public float speed;
     public float slowmoValue = 0.25f;
     public float gravityValue = 0.1f; //The value of the gravity
+    public float currentSlowmo = 1;
+
     public float maxGravity = 0.1f; //gravityChange can not be higher than this
     public float sendBackManual = 0.02f;
     public float sendBackAuto = 0.001f;
     public float returnDelay = 3f;
-    public float orbitMaxRotation = 45;
+    public float orbitMaxRotation = 45;
+    public float clusterMaxRotation = 20;
+
 
 
     [HideInInspector] public int testMode;
@@ -57,6 +61,7 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gameModeAllClusters = true;
@@ -64,7 +69,7 @@ public class CubeManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gameModeAllClusters = false;
-        }
+        }*/
 
         //Slowmotion
         {

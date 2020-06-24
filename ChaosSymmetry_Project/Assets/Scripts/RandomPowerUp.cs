@@ -7,37 +7,69 @@ public class RandomPowerUp : MonoBehaviour
 {
     GameObject player;
     public string thisPowerUp;
+    public bool consumable;
 
     // Start is called before the first frame update
     void Start()
     {
-        thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
+        int i = Random.Range(1, 11);
+        if(i <= 3)
+        {
+            thisPowerUp = PowerUpManager.instance.consumables[Random.Range(0, PowerUpManager.instance.consumables.Length)];
+            print("comnsumable");
+            consumable = true;
+        }
+        else
+            thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
         player = ObjectManager.instance.player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform.position);
+        transform.parent.LookAt(player.transform.position);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            PowerUpManager.instance.currentPowerUp = thisPowerUp;
-            UIManager.instance.currentPowerup.GetComponent<Text>().text = thisPowerUp;
-            if(thisPowerUp == "longerFreeze")
+            if(consumable == true && PowerUpManager.instance.currentConsumable == "")
             {
-                UIManager.instance.currentFreezeTime = PowerUpManager.instance.longerFreezeData;
-                UIManager.instance.freezetimer = PowerUpManager.instance.longerFreezeData;
+                PowerUpManager.instance.currentConsumable = thisPowerUp;
+                UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
             }
-            else
+            else if (PowerUpManager.instance.currentPowerUps.Count < 3)
             {
-                UIManager.instance.currentFreezeTime = 5;
-                UIManager.instance.freezetimer = 5;
-            }
-            Destroy(this.gameObject);
+                PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
+
+                if (PowerUpManager.instance.currentPowerUps.Count == 1)
+                {
+                    UIManager.instance.currentPowerupOne.GetComponent<Text>().text = thisPowerUp;
+                }
+                else if (PowerUpManager.instance.currentPowerUps.Count == 2)
+                {
+                    UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = thisPowerUp;
+                }
+                else if (PowerUpManager.instance.currentPowerUps.Count == 3)
+                {
+                    UIManager.instance.currentPowerupThree.GetComponent<Text>().text = thisPowerUp;
+                }
+                /*PowerUpManager.instance.currentPowerUp = thisPowerUp;
+                UIManager.instance.currentPowerup.GetComponent<Text>().text = thisPowerUp;*/
+                if (thisPowerUp == "longerFreeze")
+                {
+                    UIManager.instance.currentFreezeTime = PowerUpManager.instance.longerFreezeData;
+                    UIManager.instance.freezetimer = PowerUpManager.instance.longerFreezeData;
+                }
+                else
+                {
+                    UIManager.instance.currentFreezeTime = 5;
+                    UIManager.instance.freezetimer = 5;
+                }
+                Destroy(this.gameObject.transform.parent.gameObject);
+            }                        
         }
     }
 }
