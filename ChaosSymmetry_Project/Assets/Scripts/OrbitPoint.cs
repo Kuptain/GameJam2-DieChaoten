@@ -18,7 +18,11 @@ public class OrbitPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        childObj = gameObject.transform.GetChild(0).gameObject;
+        if (gameObject.transform.GetChild(0) != null)
+        {
+            childObj = gameObject.transform.GetChild(0).gameObject;
+
+        }
         cm = CubeManager.instance.GetComponent<CubeManager>();
 
         if (isCluster)
@@ -96,17 +100,19 @@ public class OrbitPoint : MonoBehaviour
         }
         else
         {
-
-            if( childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
+            if (childScript != null)
             {
-                canRotate = true;
-                RotateElements();
+                if (childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
+                {
+                    canRotate = true;
+                    RotateElements();
 
-            }
-            else
-            {
-                canRotate = false;
-            }
+                }
+                else
+                {
+                    canRotate = false;
+                }
+            }         
 
         }
     }
