@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1.5f))
             {
-                print("ray has hit");
+                //print("ray has hit");
             }
             else
             {

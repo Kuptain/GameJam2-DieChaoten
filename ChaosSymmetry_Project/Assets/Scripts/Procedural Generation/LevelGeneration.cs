@@ -193,17 +193,25 @@ public class LevelGeneration : MonoBehaviour
         //randomX = spawnPos.x;
         //randomZ = spawnPos.z;
         int currentCluster = 0; //-1 or 0  Random.Range(-1, 1);
-
+        float newX = endPos.x - startPos.x;
+        float newZ = endPos.z - startPos.z;
 
         for (int i = 0; i <= clusterAmount; i++)
         {
             spawnPos.x = startPos.x;
             spawnPos.z = startPos.z;
-            randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
-            randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
+
+      
+
+            //randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
+            //randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
+
+            randomX = Random.Range(-maxVariationZX, maxVariationZX) + newX / clusterAmount * currentCluster;
+            randomZ = Random.Range(-maxVariationZX, maxVariationZX) + newZ / clusterAmount * currentCluster;
+
 
             spawnPos.y += clusterDistanceY;    
-
+            /*
             if (endPos.x > startPos.x)
             {
                 spawnPos.x += randomX;
@@ -220,8 +228,10 @@ public class LevelGeneration : MonoBehaviour
             else
             {
                 spawnPos.z -= randomZ;
-
             }
+            */
+            spawnPos.x += randomX;
+            spawnPos.z += randomZ;
 
             //Quaternion spawnAngle = new Quaternion(Choose(), Choose(), Choose(), RandomAngle());
             Quaternion spawnAngle = clusterObj.transform.rotation;

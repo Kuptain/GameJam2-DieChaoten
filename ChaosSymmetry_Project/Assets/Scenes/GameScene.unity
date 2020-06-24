@@ -2087,10 +2087,30 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 7000
       objectReference: {fileID: 0}
+    - target: {fileID: 483481537612287346, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: floatForce
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 483481538249870203, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623041344164508245, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623041344164508245, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3289048354881727147, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
@@ -2102,6 +2122,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc3a92c1ebf5cec4eafa65b93045e128, type: 2}
+    - target: {fileID: 4660017504106202621, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
+      objectReference: {fileID: 0}
     - target: {fileID: 6823661773539036720, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: spawnedCube
@@ -2118,6 +2143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnDistance
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804916918074951116, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a2192a2a02cef8418163e33e20d441d, type: 3}
@@ -2351,12 +2381,12 @@ PrefabInstance:
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: maxVariationZX
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: clusterAmountCalc
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
