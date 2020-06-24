@@ -2306,7 +2306,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clusterObj
       value: 
-      objectReference: {fileID: 6749092757673383585, guid: dad867fadeeec764ab68fcf1d56fa12b,
+      objectReference: {fileID: 6749092757673383585, guid: be28297ba4f68bf48aa73519e567cb49,
         type: 3}
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}

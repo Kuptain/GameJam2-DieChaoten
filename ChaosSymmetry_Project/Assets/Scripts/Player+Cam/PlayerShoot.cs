@@ -64,8 +64,11 @@ public class PlayerShoot : MonoBehaviour
                     {
                         foreach (Transform childChild in child)
                         {
-                            childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
-                            childChild.gameObject.GetComponent<CubeDestroy>().Explode();
+                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null)
+                            {
+                                childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
+                                childChild.gameObject.GetComponent<CubeDestroy>().Explode();
+                            }                           
                         }
                     }
                 }
@@ -190,9 +193,9 @@ public class PlayerShoot : MonoBehaviour
 
                         foreach (Transform childChild in child)
                         {
-                            if (childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster == false && childChild != null)
+                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null && childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster == false)
                             {
-                                if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0)
+                                if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 0 && childChild.childCount > 2)
                                 {
 
                                     //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHover);
@@ -203,7 +206,7 @@ public class PlayerShoot : MonoBehaviour
 
                                 }
 
-                                if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1)
+                                if (childChild.gameObject.GetComponent<CubeDestroy>().pushMode == 1 && childChild.childCount > 2)
                                 {
 
                                     //childChild.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", childChild.gameObject.GetComponent<CubeDestroy>().colorHoverExploded);

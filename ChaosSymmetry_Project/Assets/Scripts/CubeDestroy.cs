@@ -126,14 +126,18 @@ public class CubeDestroy : MonoBehaviour
             rigid.constraints = RigidbodyConstraints.FreezePosition;
         }      
 
-        if (freezeThisCluster)
+        if(transform.childCount > 0)
         {
-            transform.GetChild(0).gameObject.SetActive(true);
+            if (freezeThisCluster)
+            {
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
+       
 
         //Return Cooldown
         if (returnTimer == true)
@@ -370,7 +374,11 @@ public class CubeDestroy : MonoBehaviour
     {
         if (gameObject.GetComponent<Renderer>() != null && isHovered == false)
         {
-            transform.GetChild(1).gameObject.SetActive(false);
+            if (transform.gameObject.transform.childCount > 2)
+            {
+                transform.GetChild(1).gameObject.SetActive(false);
+
+            }
             if (pushMode == 0)
             {
                 //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);

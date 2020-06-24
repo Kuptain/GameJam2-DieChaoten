@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1955869857345380467}
   - component: {fileID: 7122993483419899629}
   - component: {fileID: 1720367629643156018}
-  - component: {fileID: 2577052222647239411}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -59,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
+  - {fileID: 2100000, guid: ecd2c79a191aaad4097f779f6f078b9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2577052222647239411
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2545616974800842393}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
 --- !u!1 &2602750161456882092
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,8 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3410636518078429974}
-  - component: {fileID: 9055814369114965926}
-  - component: {fileID: 2538543376106465654}
+  - component: {fileID: 3633049304788544612}
   m_Layer: 0
   m_Name: steineMitGitter2
   m_TagString: Untagged
@@ -126,45 +110,21 @@ Transform:
   - {fileID: 1955869857345380467}
   - {fileID: 8023034241244933972}
   m_Father: {fileID: 822690530338895863}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &9055814369114965926
-Rigidbody:
+--- !u!65 &3633049304788544612
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2602750161456882092}
-  serializedVersion: 2
-  m_Mass: 1000000
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 2
---- !u!114 &2538543376106465654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2602750161456882092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
-  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
-  pushMode: 0
-  sendingBack: 0
-  freezeThisCluster: 0
-  bubbleFreeze: 0
-  notsendingback: 0
-  isHovered: 0
-  moveVelocity: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3139961286705339177
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,10 +183,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
-  - {fileID: -3846018093981099296, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
-  - {fileID: -6478536213147159724, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
-  - {fileID: -4984906860265027368, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -258,7 +218,6 @@ GameObject:
   - component: {fileID: 6750495651063828117}
   - component: {fileID: 5083117352122339934}
   - component: {fileID: 5181569076203658251}
-  - component: {fileID: 6564483794330118423}
   m_Layer: 0
   m_Name: Cube.003
   m_TagString: Untagged
@@ -306,7 +265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 9185737683893222716, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
+  - {fileID: 2100000, guid: ecd2c79a191aaad4097f779f6f078b9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,20 +286,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6564483794330118423
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3454210200390441220}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8678823145569952518, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
 --- !u!1 &3516551010014582769
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,8 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289287422954802507}
-  - component: {fileID: 208690963191371488}
-  - component: {fileID: 452854886631801769}
+  - component: {fileID: 6807552833355139108}
   m_Layer: 0
   m_Name: steineMitGitter1
   m_TagString: Untagged
@@ -373,45 +317,21 @@ Transform:
   - {fileID: 8275759692981136025}
   - {fileID: 3917054322142024105}
   m_Father: {fileID: 822690530338895863}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 170.86801, z: 0}
---- !u!114 &208690963191371488
-MonoBehaviour:
+--- !u!65 &6807552833355139108
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3516551010014582769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
-  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
-  pushMode: 0
-  sendingBack: 0
-  freezeThisCluster: 0
-  bubbleFreeze: 0
-  notsendingback: 0
-  isHovered: 0
-  moveVelocity: {x: 0, y: 0, z: 0}
---- !u!54 &452854886631801769
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3516551010014582769}
   serializedVersion: 2
-  m_Mass: 1000000
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4031972984216651406
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +390,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6629797300637803691, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
   - {fileID: -2813467912831258332, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
   - {fileID: -3522955778539423533, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
   m_StaticBatchInfo:
@@ -502,8 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3798535838402957982}
-  - component: {fileID: 2681551554629555894}
-  - component: {fileID: 8174726459433087378}
+  - component: {fileID: 1964145728939028486}
   m_Layer: 0
   m_Name: steineMitGitter3
   m_TagString: Untagged
@@ -525,45 +444,21 @@ Transform:
   - {fileID: 6750495651063828117}
   - {fileID: 8562392833235563036}
   m_Father: {fileID: 822690530338895863}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -100.201004, z: 0}
---- !u!114 &2681551554629555894
-MonoBehaviour:
+--- !u!65 &1964145728939028486
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4610785057369032740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
-  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
-  pushMode: 0
-  sendingBack: 0
-  freezeThisCluster: 0
-  bubbleFreeze: 0
-  notsendingback: 0
-  isHovered: 0
-  moveVelocity: {x: 0, y: 0, z: 0}
---- !u!54 &8174726459433087378
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4610785057369032740}
   serializedVersion: 2
-  m_Mass: 1000000
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5242400652581808965
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +470,6 @@ GameObject:
   - component: {fileID: 8275759692981136025}
   - component: {fileID: 1570187725856343408}
   - component: {fileID: 5375343090032315757}
-  - component: {fileID: 5091410987027502293}
   m_Layer: 0
   m_Name: Cube.002
   m_TagString: Untagged
@@ -623,7 +517,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6922793697723135513, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
+  - {fileID: 2100000, guid: ecd2c79a191aaad4097f779f6f078b9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -644,20 +538,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5091410987027502293
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242400652581808965}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1550514412580984892, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
 --- !u!1 &8316552028259729298
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +547,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 822690530338895863}
+  - component: {fileID: 5940542513867378608}
+  - component: {fileID: 6228545539615197801}
   m_Layer: 0
   m_Name: gitterSteinPrefab
   m_TagString: Untagged
@@ -685,12 +567,49 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4289287422954802507}
   - {fileID: 3410636518078429974}
   - {fileID: 3798535838402957982}
-  - {fileID: 4289287422954802507}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5940542513867378608
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316552028259729298}
+  serializedVersion: 2
+  m_Mass: 1000000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
+--- !u!114 &6228545539615197801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316552028259729298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
+  pushMode: 0
+  sendingBack: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
+  isHovered: 0
+  moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &8549560836930362677
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +669,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 1886820026795636259, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
-  - {fileID: -6087771358165109452, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
+  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
