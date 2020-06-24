@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1955869857345380467}
   - component: {fileID: 7122993483419899629}
   - component: {fileID: 1720367629643156018}
-  m_Layer: 0
+  - component: {fileID: 8081787203109447249}
+  m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8081787203109447249
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545616974800842393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 0715618507b60b9439fdfb05ef73ca17, type: 3}
 --- !u!1 &2602750161456882092
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3410636518078429974}
-  - component: {fileID: 3633049304788544612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: steineMitGitter2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,19 +126,6 @@ Transform:
   m_Father: {fileID: 822690530338895863}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3633049304788544612
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2602750161456882092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3139961286705339177
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ GameObject:
   - component: {fileID: 8023034241244933972}
   - component: {fileID: 623856170428338975}
   - component: {fileID: 4935460107923822749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gitter7.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,10 +184,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,9 +219,10 @@ GameObject:
   - component: {fileID: 6750495651063828117}
   - component: {fileID: 5083117352122339934}
   - component: {fileID: 5181569076203658251}
-  m_Layer: 0
+  - component: {fileID: 807550545952243375}
+  m_Layer: 8
   m_Name: Cube.003
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +288,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &807550545952243375
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454210200390441220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8678823145569952518, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
 --- !u!1 &3516551010014582769
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,8 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289287422954802507}
-  - component: {fileID: 6807552833355139108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: steineMitGitter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,19 +334,6 @@ Transform:
   m_Father: {fileID: 822690530338895863}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 170.86801, z: 0}
---- !u!65 &6807552833355139108
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3516551010014582769}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4031972984216651406
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +345,7 @@ GameObject:
   - component: {fileID: 3917054322142024105}
   - component: {fileID: 2505542941152856818}
   - component: {fileID: 707367553163110879}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gitter7.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,9 +392,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
   - {fileID: -2813467912831258332, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
-  - {fileID: -3522955778539423533, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -422,8 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3798535838402957982}
-  - component: {fileID: 1964145728939028486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: steineMitGitter3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,19 +447,6 @@ Transform:
   m_Father: {fileID: 822690530338895863}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -100.201004, z: 0}
---- !u!65 &1964145728939028486
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4610785057369032740}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5242400652581808965
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,9 +458,10 @@ GameObject:
   - component: {fileID: 8275759692981136025}
   - component: {fileID: 1570187725856343408}
   - component: {fileID: 5375343090032315757}
-  m_Layer: 0
+  - component: {fileID: 2514772533403785579}
+  m_Layer: 8
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538,6 +527,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2514772533403785579
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242400652581808965}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1550514412580984892, guid: 7023fe0893000cb45a9aeb6a508b36a8, type: 3}
 --- !u!1 &8316552028259729298
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,9 +552,9 @@ GameObject:
   - component: {fileID: 822690530338895863}
   - component: {fileID: 5940542513867378608}
   - component: {fileID: 6228545539615197801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gitterSteinPrefab
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,7 +624,7 @@ GameObject:
   - component: {fileID: 8562392833235563036}
   - component: {fileID: 375220641375780353}
   - component: {fileID: 696818084054714887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gitter7.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +672,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 1886820026795636259, guid: 5fb067472f77ced44aab25c44eab7d3b, type: 3}
-  - {fileID: 2100000, guid: e0fe1b7b167577f468003aaee0dc9bf8, type: 2}
+  - {fileID: 2100000, guid: 7141f34e063e4644c967a3b1fe2a7d68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 2294904969940516562}
   - component: {fileID: 2915791020238713207}
   - component: {fileID: 1121975981411321277}
-  m_Layer: 0
+  - component: {fileID: 3910941322172643437}
+  - component: {fileID: 7518757109416086788}
+  - component: {fileID: -1303955013061797221}
+  m_Layer: 8
   m_Name: stein3
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482514708730045544}
-  m_LocalRotation: {x: 0, y: 0.1894335, z: -0, w: 0.9818936}
-  m_LocalPosition: {x: 26.952738, y: -7.5, z: -66.13263}
-  m_LocalScale: {x: 1.3379073, y: 1.3379073, z: 1.3379073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,3 +82,54 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3910941322172643437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482514708730045544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
+  pushMode: 0
+  sendingBack: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
+  isHovered: 0
+  moveVelocity: {x: 0, y: 0, z: 0}
+--- !u!54 &7518757109416086788
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482514708730045544}
+  serializedVersion: 2
+  m_Mass: 1000000
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
+--- !u!64 &-1303955013061797221
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482514708730045544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7441707930433122049, guid: ef3fc6a37ad743245b97dd09e4c1beef, type: 3}

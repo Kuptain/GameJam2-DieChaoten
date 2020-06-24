@@ -30,38 +30,105 @@ public class FreezeBubble : MonoBehaviour
         }
       
     }
-    private void OnTriggerStay(Collider other)
+
+    void CheckParentScript(GameObject obj, string mode)
     {
-        if (other.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() != null)
+        if (obj.transform.parent != null)
         {
-            if (other.name != "Ground" )
+            obj = obj.transform.parent.gameObject;
+            
+            if (mode == "freeze")
             {
-                currentPlatforms.Add(other.gameObject);
-                other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze = true;
-                other.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-                //print("inbuble");
+                if (obj.GetComponent<CubeDestroy>())
+                {
+                    FreezeCollider(obj, "freeze");
+                }
+                else
+                {
+                    CheckParentScript(obj, "freeze");
+                }
+            }
+         
+            else if (mode == "defreeze")
+            {
+                if (obj.GetComponent<CubeDestroy>() != null)
+                {
+                    FreezeCollider(obj, "defreeze");
+                }
+                else
+                {
+                    CheckParentScript(obj, "defreeze");
+
+                }
+
             }
         }
     }
+
+    void FreezeCollider(GameObject obj, string mode)
+    {
+        if (mode == "freeze")
+        {
+            currentPlatforms.Add(obj);
+            obj.GetComponent<CubeDestroy>().bubbleFreeze = true;
+            obj.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
+
+        }
+        else if (mode == "defreeze")
+        {
+            if (obj.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
+            {
+                foreach (GameObject platform in currentPlatforms.ToList())
+                {
+                    if (obj.gameObject == platform.gameObject)
+                    {
+                        obj.GetComponent<CubeDestroy>().bubbleFreeze = false;
+                        currentPlatforms.Remove(platform);
+                    }
+                }
+               
+            }
+
+        }
+
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("terrain"))
+        {
+            if(other.gameObject.GetComponent<CubeDestroy>() != null)
+            {
+                FreezeCollider(other.gameObject, "freeze");
+            }
+            else
+            {
+                CheckParentScript(other.gameObject, "freeze");
+            }
+        }
+    }
+
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("terrain") )
         {
-            if (other.name != "Ground" && currentPlatforms != null && other.gameObject.GetComponent<CubeDestroy>() != null && other.gameObject.GetComponent<CubeDestroy>().bubbleFreeze == true)
+            if (currentPlatforms != null )
             {
-                foreach (GameObject platform in currentPlatforms.ToList())
+                if (other.gameObject.GetComponent<CubeDestroy>() != null)
                 {
-                    if (other.gameObject == platform.gameObject)
-                    {
-                        
-                        platform.GetComponent<CubeDestroy>().bubbleFreeze = false;
-                        currentPlatforms.Remove(platform);
-                        //print("buddleDefreeze");
-                        
-                    }
+                    FreezeCollider(other.gameObject, "defreeze");
+
+                           
+                }
+                else
+                {
+                    CheckParentScript(other.gameObject, "defreeze");
+
+                  
                 }
             }
+
+            //Power Up Spawn Cube
             if (other.gameObject.GetComponent<spawnedCubePowerUp>() != null)
             {
                 other.gameObject.GetComponent<spawnedCubePowerUp>().StartCoroutine("FadeOut");

@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    [HideInInspector] public GameObject slomo, consumable, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
 
     public GameObject uiPrefab;
-    [HideInInspector] public GameObject slomo, consumable, currentPowerupOne, currentPowerupTwo, currentPowerupThree, freezeTime, slowmoScreen;
+    public GameObject freezeTime;
+
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
@@ -27,7 +29,7 @@ public class UIManager : MonoBehaviour
         slomo = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(2).gameObject;
         slowmoScreen = uiPrefab.transform.GetChild(0).GetChild(3).gameObject;
 
-        freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+        //freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime; 
         secondCurrentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
@@ -82,12 +84,15 @@ public class UIManager : MonoBehaviour
             }
             if(player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
             {
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
                 secondCurrentFreezeTime -= Time.deltaTime;
             }
             else
             {
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
+
+                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
+                //freezeTime.transform.GetChild(1).gameObject.SetActive(false);
+
             }
         }
         else

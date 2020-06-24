@@ -23,7 +23,7 @@ public class CubeManager : MonoBehaviour
     public float returnDelay = 3f;
     public float orbitMaxRotation = 45;
     public float clusterMaxRotation = 20;
-
+    public bool clusterHasShader = false;
 
 
     [HideInInspector] public int testMode;

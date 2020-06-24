@@ -126,7 +126,7 @@ public class CubeDestroy : MonoBehaviour
             rigid.constraints = RigidbodyConstraints.FreezePosition;
         }      
 
-        if(transform.childCount > 0)
+        if(transform.childCount > 0 && cm.clusterHasShader)
         {
             if (freezeThisCluster)
             {
@@ -372,7 +372,7 @@ public class CubeDestroy : MonoBehaviour
     //Color Management
     void SetColor()
     {
-        if (gameObject.GetComponent<Renderer>() != null && isHovered == false)
+        if (gameObject.GetComponent<Renderer>() != null && isHovered == false && cm.clusterHasShader)
         {
             if (transform.gameObject.transform.childCount > 2)
             {

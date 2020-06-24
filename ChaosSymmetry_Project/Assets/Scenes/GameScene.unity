@@ -2082,6 +2082,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 483481537612287346, guid: 1a2192a2a02cef8418163e33e20d441d,
+        type: 3}
+      propertyPath: jumpForce
+      value: 7000
+      objectReference: {fileID: 0}
     - target: {fileID: 483481537612287349, guid: 1a2192a2a02cef8418163e33e20d441d,
         type: 3}
       propertyPath: m_Name
@@ -2242,6 +2247,16 @@ PrefabInstance:
       propertyPath: clusterMaxRotation
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1856839261340211090, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: freezeTime
+      value: 
+      objectReference: {fileID: 1662230252}
+    - target: {fileID: 2149417384808447445, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2957801233410792283, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_UiScaleMode
@@ -2297,6 +2312,11 @@ PrefabInstance:
       propertyPath: respawnPanelDown
       value: 
       objectReference: {fileID: 990493548}
+    - target: {fileID: 7976314235892229972, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: maxFloatFuel
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: checkPointDistance
@@ -2311,7 +2331,17 @@ PrefabInstance:
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: maxVariationZX
-      value: 7
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: clusterAmountCalc
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: checkPointDistanceY
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7976314235972051352, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
@@ -2376,7 +2406,7 @@ PrefabInstance:
     - target: {fileID: 8147785835290112275, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16.000305
+      value: -16.000244
       objectReference: {fileID: 0}
     - target: {fileID: 8147785835290112275, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
@@ -2618,6 +2648,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -14.577001, y: -127.979004, z: 0}
+--- !u!1 &1662230252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2149417384808447445, guid: 33a823da738795641b176b98ea16dd99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1331137819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717701287
 GameObject:
   m_ObjectHideFlags: 0
