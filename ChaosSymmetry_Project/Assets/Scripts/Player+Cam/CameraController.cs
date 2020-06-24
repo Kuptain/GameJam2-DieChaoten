@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        Cursor.visible = false;
         velocity = Vector3.zero;
         defaultPos = transform.localPosition;
     }

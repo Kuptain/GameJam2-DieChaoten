@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
@@ -26,6 +27,7 @@ public class ThirdPersonController : MonoBehaviour
     Vector3 lastMousePosition;
     //public List<GameObject> currentPlatforms = new List<GameObject>();
 
+    // gamemode 0 is iwth lives, 1 is endless
     private Quaternion camRotation, savedCamRot;
 
     void Start()
@@ -35,7 +37,6 @@ public class ThirdPersonController : MonoBehaviour
         camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>(); 
         camLeftCollCheck = cam.transform.parent.GetChild(2).GetComponent<CamCheckLeftCollision>();
         rigid = GetComponent<Rigidbody>();
-        Cursor.visible = false;
 
         powerUp = PowerUpManager.instance;
         
@@ -50,7 +51,28 @@ public class ThirdPersonController : MonoBehaviour
         {
             if ((rigid.velocity.y < -60 && pm.floatFuel <= 0) || transform.position.y < 10)
             {
-                pm.Respawn();
+                if(PlayerPrefs.GetInt("gameMode", 0) == 0)
+                {
+                    if(pm.lives > 0)
+                    {
+                        pm.Respawn();
+                        pm.lives -= 1;
+                    }
+                    else
+                    {
+                        UIManager.instance.ingameCanvas.SetActive(false);
+                        UIManager.instance.pauseCanvas.SetActive(false);
+                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().enabled = false;
+                        ObjectManager.instance.player.GetComponent<PlayerShoot>().enabled = false;
+                        UIManager.instance.gameOverCanvas.SetActive(true);
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.None;
+                    }
+                }
+                else
+                {
+                    pm.Respawn();
+                }
             }
         }
       
