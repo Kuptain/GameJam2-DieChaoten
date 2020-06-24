@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     public GameObject uiPrefab;
-    [HideInInspector] public GameObject slomo, currentPowerup, freezeTime, slowmoScreen;
+    [HideInInspector] public GameObject slomo, consumable, currentPowerupOne, currentPowerupTwo, currentPowerupThree, freezeTime, slowmoScreen;
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
@@ -32,7 +32,10 @@ public class UIManager : MonoBehaviour
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime; 
         secondCurrentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
         freezetimer = currentFreezeTime;
-        currentPowerup = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject;
+        currentPowerupOne = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject;
+        currentPowerupTwo = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(1).gameObject;
+        currentPowerupThree = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(2).gameObject;
+        consumable = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(1).GetChild(3).gameObject;
     }
 
     // Update is called once per frame

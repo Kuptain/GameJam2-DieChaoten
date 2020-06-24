@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class PowerUpManager : MonoBehaviour
     PlayerShoot shootScript;
 
     public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze" };
+    public List<string> currentPowerUps = new List<string>();
+    public string[] consumables = { "placePlatform" };
+    public string currentConsumable;
 
     private void Awake()
     {
@@ -30,17 +34,47 @@ public class PowerUpManager : MonoBehaviour
         longerFloatData = 70f;
         longerFreezeData = 8;
         shootScript = ObjectManager.instance.player.GetComponent<PlayerShoot>();
+        currentConsumable = "";
     }
 
     // Update is called once per frame
     void Update()
     {
         GivePowerUps();
+        LosePowerUp();
+        ShowCurrentPowerUps();
+        UseConsumable();
     }
 
     void GivePowerUps()
     {
-        if (currentPowerUp != null)
+        if(currentPowerUps.Count > 0)
+        {
+            foreach (string powerUp in currentPowerUps)
+            {
+                if(powerUp != null)
+                {
+                    if (powerUp == "higherJump")
+                    {
+                        higherJumpFactor = higherJumpData;
+                    }
+                    if (powerUp == "longerFloat")
+                    {
+                        PlayerManager.instance.maxFloatFuel = longerFloatData;
+                    }
+                    if (powerUp == "longerFreeze")
+                    {
+                        shootScript.meltingTime = longerFreezeData;
+                    }
+                    if (powerUp == "secondClusterFreeze")
+                    {
+
+                    }
+                }
+            }
+        }
+
+        /*if (currentPowerUp != null)
         {
             if (currentPowerUp == "higherJump")
             {
@@ -66,12 +100,90 @@ public class PowerUpManager : MonoBehaviour
                 shootScript.meltingTime = 5;
                 PlayerManager.instance.maxFloatFuel = 40f;
             }
-        }
+        }*/
         else
         {
             higherJumpFactor = 1;
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 40f;
+        }
+    }
+
+    void LosePowerUp()
+    {
+        if(currentPowerUps.Count > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                GameObject droppedPowerup1 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+                droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[0];
+                UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
+                print("ffff");
+                if(currentPowerUps[0] == "longerFreeze")
+                {
+                    UIManager.instance.currentFreezeTime = 5;
+                    UIManager.instance.freezetimer = 5;
+                }
+                currentPowerUps.RemoveAt(0);
+                return;
+            }
+            else if (currentPowerUps.Count >= 2 && Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+                droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[1];
+                UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
+                if (currentPowerUps[1] == "longerFreeze")
+                {
+                    UIManager.instance.currentFreezeTime = 5;
+                    UIManager.instance.freezetimer = 5;
+                }
+                currentPowerUps.RemoveAt(1);
+                print("aaaa");
+                return;
+            }
+            else if (currentPowerUps.Count == 3 && Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                GameObject droppedPowerup3 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + Vector3.right, Quaternion.identity);
+                droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[2];
+                UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
+
+                if (currentPowerUps[2] == "longerFreeze")
+                {
+                    UIManager.instance.currentFreezeTime = 5;
+                    UIManager.instance.freezetimer = 5;
+                }
+                currentPowerUps.RemoveAt(2);
+                print("ssss");
+                return;
+            }
+        }        
+    }
+
+    void ShowCurrentPowerUps()
+    {
+        if (currentPowerUps.Count == 1)
+        {
+            UIManager.instance.currentPowerupOne.GetComponent<Text>().text = currentPowerUps[0];
+            UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
+            UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
+        }
+        else if (currentPowerUps.Count == 2)
+        {
+            UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
+            UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = currentPowerUps[1];
+        }
+        else if (currentPowerUps.Count == 3)
+        {
+            UIManager.instance.currentPowerupThree.GetComponent<Text>().text = currentPowerUps[2];
+        }
+    }
+
+    void UseConsumable()
+    {
+        if(currentConsumable == "placePlatform")
+        {
+            UIManager.instance.consumable.GetComponent<Text>().text = "";
+            currentConsumable = "";
         }
     }
 }
