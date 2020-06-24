@@ -97,7 +97,7 @@ public class OrbitPoint : MonoBehaviour
         else
         {
 
-            if(childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
+            if( childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
             {
                 canRotate = true;
                 RotateElements();
