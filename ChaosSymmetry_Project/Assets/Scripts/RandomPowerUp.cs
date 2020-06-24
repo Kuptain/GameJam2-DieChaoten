@@ -43,15 +43,15 @@ public class RandomPowerUp : MonoBehaviour
         {
 
             if (PowerUpManager.instance.currentPowerUps.Count < 3)
-            {
-                PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
-
-                if (TutorialManager.instance.currentHint == "")
-                {
-                    TutorialManager.instance.ChangeType("power");
-                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(3f));
-
-
+            {
+                PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
+
+                if (TutorialManager.instance.currentHint == "")
+                {
+                    TutorialManager.instance.ChangeType("power");
+                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(3f));
+
+
                 }
 
                 if (PowerUpManager.instance.currentPowerUps.Count == 1)

@@ -117,32 +117,32 @@ public class OrbitPoint : MonoBehaviour
         }
     }
 
-    void CheckCheckpointCollision()
-    {
-
+    void CheckCheckpointCollision()
+    {
+
     }
 
-    bool CheckChildrenFreeze()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.GetComponent<OrbitPoint>() != null && child.GetComponent<OrbitPoint>().canRotate == false)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    public bool CheckChildrenNotMoving()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.GetChild(0).GetComponent<CubeDestroy>() != null && child.GetChild(0).GetComponent<CubeDestroy>().pushMode == 1)
-            {
-                return false;
-            }
-        }
-        return true;
+    bool CheckChildrenFreeze()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<OrbitPoint>() != null && child.GetComponent<OrbitPoint>().canRotate == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public bool CheckChildrenNotMoving()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetChild(0).GetComponent<CubeDestroy>() != null && child.GetChild(0).GetComponent<CubeDestroy>().pushMode == 1)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     void RotateElements()
     {
@@ -177,6 +177,6 @@ public class OrbitPoint : MonoBehaviour
 
     }
 
-
-
+
+
 }

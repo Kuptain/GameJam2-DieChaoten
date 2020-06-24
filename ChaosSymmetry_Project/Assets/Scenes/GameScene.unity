@@ -2236,6 +2236,16 @@ PrefabInstance:
       propertyPath: m_PixelPerfect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 991887365019049092, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409973961695265904, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1569674664012012511, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: clusterMaxRotation
@@ -2251,6 +2261,11 @@ PrefabInstance:
       propertyPath: freezeTime
       value: 
       objectReference: {fileID: 1662230252}
+    - target: {fileID: 1856839261340211090, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: showMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2149417384808447445, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_IsActive
@@ -2304,6 +2319,11 @@ PrefabInstance:
     - target: {fileID: 5066453268975207569, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666592501249722572, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7976314235892229972, guid: 33a823da738795641b176b98ea16dd99,

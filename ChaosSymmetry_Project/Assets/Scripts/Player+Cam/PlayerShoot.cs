@@ -16,8 +16,6 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         cubeManager = CubeManager.instance;
         tm = TutorialManager.instance;
 
@@ -28,21 +26,6 @@ public class PlayerShoot : MonoBehaviour
     {
         ShootRay();
         HoverCursor();
-
-        /*Show Cursor with Control
-         * 
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        */
     }
 
     GameObject spawnedCube;
