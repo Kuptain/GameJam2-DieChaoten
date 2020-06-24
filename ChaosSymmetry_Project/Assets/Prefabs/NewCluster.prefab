@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: kaefig1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b2e8ce4139bb0b44bf2ba2e67e0eee3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b2e8ce4139bb0b44bf2ba2e67e0eee3, type: 3}
 --- !u!4 &7271700502431865453 stripped
@@ -470,6 +475,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stein (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcdd8d75e96ee2945b89a6cbd687e2c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdd8d75e96ee2945b89a6cbd687e2c1, type: 3}
 --- !u!4 &7271700501883562591 stripped
@@ -559,6 +569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cube2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f854476a40cd894e9eaece54816230c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f854476a40cd894e9eaece54816230c, type: 3}
@@ -655,6 +670,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stein
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcdd8d75e96ee2945b89a6cbd687e2c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdd8d75e96ee2945b89a6cbd687e2c1, type: 3}
 --- !u!4 &7271700501528366472 stripped
@@ -745,6 +765,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cube1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5add49b826de53649bbf870321fc6310,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5add49b826de53649bbf870321fc6310, type: 3}
 --- !u!4 &7271700501287497088 stripped
@@ -829,6 +854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cube2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f854476a40cd894e9eaece54816230c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f854476a40cd894e9eaece54816230c, type: 3}
@@ -924,6 +954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kaefig
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39383131a5c583c4890b8629ddd75e4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39383131a5c583c4890b8629ddd75e4f, type: 3}
