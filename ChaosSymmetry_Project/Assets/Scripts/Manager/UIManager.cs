@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    [HideInInspector] public GameObject slomo, consumable, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
+    [HideInInspector] public GameObject slomo, consumable, consumableCharges, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
     [HideInInspector] public GameObject mainMenuCanvas, pauseCanvas, ingameCanvas, gameOverCanvas;
     public GameObject uiPrefab;
     public GameObject freezeTime;
     public bool showMenu;
 
-    bool paused;
+    public bool paused;
 
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("showMenu", 1);
         }
 
-        if(PlayerPrefs.GetInt("levelRestarted") == 1)
+        if (PlayerPrefs.GetInt("levelRestarted") == 1)
         {
             PlayerPrefs.SetInt("showMenu", 1);
         }
@@ -63,22 +63,37 @@ public class UIManager : MonoBehaviour
         currentPowerupTwo = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(1).gameObject;
         currentPowerupThree = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(2).gameObject;
         consumable = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(3).gameObject;
+        consumableCharges = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(4).gameObject;
         mainMenuCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(() => StartGame());
         mainMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => StartEndlessMode());
         mainMenuCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
+        mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
         gameOverCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(() => RestartGame());
         gameOverCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         gameOverCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
         pauseCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(() => ResumeGame());
         pauseCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         pauseCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
+        pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
 
+        // 1 is on, 0 is off
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0)
+        {
+            pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+        }
+        else if (PlayerPrefs.GetInt("tutorial") == 1)
+        {
+            pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+        }
 
         // showmnenu 0 =  true, 1 is no menu
         if (PlayerPrefs.GetInt("showMenu") == 0)
         {
             ingameCanvas.SetActive(false);
             player.GetComponent<ThirdPersonController>().enabled = false;
+            Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
             player.GetComponent<PlayerShoot>().enabled = false;
             Cursor.visible = true;
         }
@@ -95,14 +110,16 @@ public class UIManager : MonoBehaviour
     {
         ShowSlomo();
         ShowFreezeTime();
-
+        print(paused);
+        print(PlayerPrefs.GetInt("tutorial", 0));
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             PauseGame();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
+            print("eee");
         }
     }
 
@@ -114,8 +131,10 @@ public class UIManager : MonoBehaviour
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<ThirdPersonController>().enabled = true;
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 0);
+        paused = false;
     }
 
     void PauseGame()
@@ -125,10 +144,21 @@ public class UIManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         ingameCanvas.SetActive(false);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+        // 1 is on, 0 is off
+        if (PlayerPrefs.GetInt("tutorial") == 0)
+        {
+            pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+        }
+        else if (PlayerPrefs.GetInt("tutorial") == 1)
+        {
+            pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+
+        }
     }
 
     void ResumeGame()
@@ -137,11 +167,11 @@ public class UIManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         paused = false;
         ingameCanvas.SetActive(true);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        print("hhh");
     }
 
     void RestartGame()
@@ -164,9 +194,11 @@ public class UIManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 1);
         player.GetComponent<PlayerShoot>().enabled = true;
+        paused = false;
     }
 
     void OpenMainMenu()
@@ -175,10 +207,20 @@ public class UIManager : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
         player.GetComponent<PlayerShoot>().enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        // 1 is on, 0 is off
+        if (PlayerPrefs.GetInt("tutorial") == 0)
+        {
+            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+        }
+        else if (PlayerPrefs.GetInt("tutorial") == 1)
+        {
+            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+        }
     }
 
     void ShowSlomo()
@@ -234,6 +276,19 @@ public class UIManager : MonoBehaviour
             freezeTime.SetActive(false);
             currentFreezeTime = freezetimer;
             secondCurrentFreezeTime = freezetimer;
+        }
+    }
+
+    void ToggleTutorial()
+    {
+        // 1 is on, 0 is off
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0)
+        {
+            PlayerPrefs.SetInt("tutorial", 1);
+        }
+        else if (PlayerPrefs.GetInt("tutorial") == 1)
+        {
+            PlayerPrefs.SetInt("tutorial", 0);
         }
     }
 }

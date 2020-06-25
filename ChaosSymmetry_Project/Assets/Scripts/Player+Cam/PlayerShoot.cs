@@ -11,7 +11,7 @@ public class PlayerShoot : MonoBehaviour
     //[HideInInspector] 
     public GameObject currentCluster, frozenCluster, secondFrozenCluster;
     public float meltingTime = 5;
-
+    public int cubeSpawnCharges = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -124,7 +124,7 @@ public class PlayerShoot : MonoBehaviour
 
         //Cube Spawn PowerUp
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) && cubeSpawnCharges > 0)
             {
                 spawnedCube = Instantiate(spawnedCubePrefab, cam.transform.position + cam.transform.forward * spawnDistance, Quaternion.identity) as GameObject;
 
@@ -140,7 +140,7 @@ public class PlayerShoot : MonoBehaviour
 
 
             }
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.Q) && cubeSpawnCharges > 0)
             {
                 if (spawnedCube != null)
                 {
@@ -148,7 +148,7 @@ public class PlayerShoot : MonoBehaviour
                     spawnedCube.transform.position = Vector3.Lerp(spawnedCube.transform.position, cam.transform.position + cam.transform.forward * spawnDistance, 0.05f);
                 }
             }
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(KeyCode.Q) && cubeSpawnCharges > 0)
             {
                 if (spawnedCube != null)
                 {
@@ -160,7 +160,7 @@ public class PlayerShoot : MonoBehaviour
                     }
                     spawnedCube.GetComponent<Collider>().enabled = true;
                     spawnedCube.GetComponent<MeshRenderer>().enabled = true;
-
+                    cubeSpawnCharges -= 1;
                 }
             }
         }

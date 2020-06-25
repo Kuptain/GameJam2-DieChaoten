@@ -13,7 +13,7 @@ public class PowerUpManager : MonoBehaviour
 
     PlayerShoot shootScript;
 
-    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze" };
+    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze", "betterSloMo"};
     public List<string> currentPowerUps = new List<string>();
     public string[] consumables = { "placePlatform" };
     public string currentConsumable;
@@ -43,7 +43,7 @@ public class PowerUpManager : MonoBehaviour
         GivePowerUps();
         LosePowerUp();
         ShowCurrentPowerUps();
-        UseConsumable();
+        ShowConsumableCharges();
     }
 
     void GivePowerUps()
@@ -66,9 +66,9 @@ public class PowerUpManager : MonoBehaviour
                     {
                         shootScript.meltingTime = longerFreezeData;
                     }
-                    if (powerUp == "secondClusterFreeze")
+                    if (powerUp == "betterSloMo")
                     {
-
+                        CubeManager.instance.slowmoValue = 0.25f;
                     }
                 }
             }
@@ -106,6 +106,7 @@ public class PowerUpManager : MonoBehaviour
             higherJumpFactor = 1;
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 40f;
+            CubeManager.instance.slowmoValue = 0.6f;
         }
     }
 
@@ -198,11 +199,17 @@ public class PowerUpManager : MonoBehaviour
         
     }
 
-    void UseConsumable()
+    void ShowConsumableCharges()
     {
-        if(currentConsumable == "placePlatform")
+        if(shootScript.cubeSpawnCharges > 0)
+        {
+            UIManager.instance.consumable.GetComponent<Text>().text = "placePlatform";
+            UIManager.instance.consumableCharges.GetComponent<Text>().text = shootScript.cubeSpawnCharges.ToString();
+        }
+        else
         {
             UIManager.instance.consumable.GetComponent<Text>().text = "";
+            UIManager.instance.consumableCharges.GetComponent<Text>().text = "";
             currentConsumable = "";
         }
     }
