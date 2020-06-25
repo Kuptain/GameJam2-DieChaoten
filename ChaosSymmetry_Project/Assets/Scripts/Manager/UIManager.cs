@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    [HideInInspector] public GameObject slomo, consumable, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
+    [HideInInspector] public GameObject slomo, consumable, consumableCharges, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
     [HideInInspector] public GameObject mainMenuCanvas, pauseCanvas, ingameCanvas, gameOverCanvas;
     public GameObject uiPrefab;
     public GameObject freezeTime;
@@ -63,10 +63,11 @@ public class UIManager : MonoBehaviour
         currentPowerupTwo = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(1).gameObject;
         currentPowerupThree = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(2).gameObject;
         consumable = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(3).gameObject;
+        consumableCharges = ingameCanvas.transform.GetChild(1).GetChild(1).GetChild(4).gameObject;
         mainMenuCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(() => StartGame());
         mainMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => StartEndlessMode());
         mainMenuCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
-        mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); } );
+        mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
         gameOverCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener(() => RestartGame());
         gameOverCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         gameOverCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
@@ -92,6 +93,7 @@ public class UIManager : MonoBehaviour
         {
             ingameCanvas.SetActive(false);
             player.GetComponent<ThirdPersonController>().enabled = false;
+            Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
             player.GetComponent<PlayerShoot>().enabled = false;
             Cursor.visible = true;
         }
@@ -114,7 +116,7 @@ public class UIManager : MonoBehaviour
         {
             PauseGame();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
             print("eee");
@@ -129,6 +131,7 @@ public class UIManager : MonoBehaviour
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<ThirdPersonController>().enabled = true;
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 0);
         paused = false;
@@ -141,6 +144,7 @@ public class UIManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         ingameCanvas.SetActive(false);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
@@ -163,6 +167,7 @@ public class UIManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         paused = false;
         ingameCanvas.SetActive(true);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
@@ -189,6 +194,7 @@ public class UIManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 1);
         player.GetComponent<PlayerShoot>().enabled = true;
@@ -201,6 +207,7 @@ public class UIManager : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
         player.GetComponent<PlayerShoot>().enabled = false;
         Cursor.visible = true;
@@ -275,7 +282,7 @@ public class UIManager : MonoBehaviour
     void ToggleTutorial()
     {
         // 1 is on, 0 is off
-        if(PlayerPrefs.GetInt("tutorial", 0) == 0)
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0)
         {
             PlayerPrefs.SetInt("tutorial", 1);
         }

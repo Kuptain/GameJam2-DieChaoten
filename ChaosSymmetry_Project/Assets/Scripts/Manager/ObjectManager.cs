@@ -8,7 +8,7 @@ public class ObjectManager : MonoBehaviour
 
     //[HideInInspector] public GameObject playerInstance;
     [HideInInspector] public GameObject player;
-    public GameObject powerUp;
+    public GameObject powerUp, consumable;
 
 
     private void Awake()

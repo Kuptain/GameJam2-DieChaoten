@@ -11,7 +11,7 @@ public class LevelGeneration : MonoBehaviour
 
 
 
-    GameObject powerUp;
+    GameObject powerUp, consumable;
 
     //---------------------------------------------------\\
     [Header("Generation values")]
@@ -61,6 +61,7 @@ public class LevelGeneration : MonoBehaviour
     {
         checkPoints = GameObject.FindGameObjectsWithTag("checkpoint");
         powerUp = ObjectManager.instance.powerUp;
+        consumable = ObjectManager.instance.consumable;
 
         if (checkPoints[0].GetComponent<CheckPointBehavior>().isStart)
         {
@@ -148,6 +149,12 @@ public class LevelGeneration : MonoBehaviour
                                                        checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
 
         Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
+
+        int consumableChance = Random.Range(0, 100);
+        if(consumableChance >= 65)
+        {
+            Instantiate(consumable, checkPointOne.transform.position + new Vector3(1.5f, 0.9f, 0), Quaternion.identity);
+        }
 
         //Swap Checkpoint 1 with 2
         {

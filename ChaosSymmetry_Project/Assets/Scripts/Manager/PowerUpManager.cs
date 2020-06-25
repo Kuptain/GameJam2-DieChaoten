@@ -43,7 +43,7 @@ public class PowerUpManager : MonoBehaviour
         GivePowerUps();
         LosePowerUp();
         ShowCurrentPowerUps();
-        UseConsumable();
+        ShowConsumableCharges();
     }
 
     void GivePowerUps()
@@ -198,11 +198,17 @@ public class PowerUpManager : MonoBehaviour
         
     }
 
-    void UseConsumable()
+    void ShowConsumableCharges()
     {
-        if(currentConsumable == "placePlatform")
+        if(shootScript.cubeSpawnCharges > 0)
+        {
+            UIManager.instance.consumable.GetComponent<Text>().text = "placePlatform";
+            UIManager.instance.consumableCharges.GetComponent<Text>().text = shootScript.cubeSpawnCharges.ToString();
+        }
+        else
         {
             UIManager.instance.consumable.GetComponent<Text>().text = "";
+            UIManager.instance.consumableCharges.GetComponent<Text>().text = "";
             currentConsumable = "";
         }
     }
