@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public float maxFloatFuel = 40f;
     public float collideJumpForce = 50f;
     public bool isGrounded;
+    public int lives = 3;
 
     private void Awake()
     {
