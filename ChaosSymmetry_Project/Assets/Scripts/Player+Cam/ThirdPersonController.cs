@@ -49,7 +49,7 @@ public class ThirdPersonController : MonoBehaviour
 
         if (pm.isRespawning == false)
         {
-            if ((rigid.velocity.y < -60 && pm.floatFuel <= 0) || transform.position.y < 10)
+            if ((rigid.velocity.y < -60 && pm.floatFuel <= 0))
             {
                 if(PlayerPrefs.GetInt("gameMode", 0) == 0)
                 {
@@ -193,6 +193,10 @@ public class ThirdPersonController : MonoBehaviour
 
         }
         */
+        if (other.gameObject.GetComponent<_DeathZone>() != null && transform.position.y < 10)
+        {
+            pm.Respawn();
+        }
     }
 
     private void OnTriggerExit(Collider other)
