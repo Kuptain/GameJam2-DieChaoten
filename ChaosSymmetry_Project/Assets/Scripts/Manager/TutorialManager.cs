@@ -80,7 +80,7 @@ public class TutorialManager : MonoBehaviour
         if (currentHint == "slow")
         {
             currentText
-                    = "Slow the time by pressing SHIFT!";
+                    = "Toggle slowmotion by pressing SHIFT!";
         }
         if (currentHint == "slowDisable")
         {
@@ -109,18 +109,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         currentHint = "";
     }
-    IEnumerator ChangeFadeTo(int mode)
-    {
-        yield return new WaitForSeconds(0.75f);
-        if (mode == 1)
-        {
-            FadeIn();
-        }
-        if (mode == 2)
-        {
-            FadeOut();
-        }
-    }
+
     public void ChangeType(string type)
     {
         fadeMode = 2;

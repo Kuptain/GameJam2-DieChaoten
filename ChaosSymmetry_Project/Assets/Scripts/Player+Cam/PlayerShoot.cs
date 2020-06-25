@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
     GameObject spawnedCube;
-    [SerializeField] float spawnDistance = 15;
+    float spawnDistance = 12;
 
 
     void ShootRay()
@@ -38,7 +38,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -71,7 +71,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -167,10 +167,11 @@ public class PlayerShoot : MonoBehaviour
       
     }
 
+    GameObject lastPowerUp;
     void HoverCursor()
     {
         RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 2, cam.gameObject.transform.forward);
+        Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
 
 
         if (Physics.Raycast(ray, out hit))
@@ -209,6 +210,38 @@ public class PlayerShoot : MonoBehaviour
                     }              
                 }
             }
+
+
+            if (lastPowerUp != null)
+            {
+                Debug.Log("notHovered");
+
+                lastPowerUp.transform.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = false;
+                lastPowerUp = null;
+            }
+
+            if (clusterHit.gameObject.GetComponent<_PowerUpCollider>() != null )
+            {
+                Debug.Log("hoveredParent");
+                lastPowerUp = clusterHit.gameObject;
+                clusterHit.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = true;
+            }
+
+            if (clusterHit.gameObject.GetComponent<RandomPowerUp>() != null)
+            {
+                Debug.Log("hoveredChild");
+                lastPowerUp = clusterHit.gameObject;
+                clusterHit.gameObject.GetComponent<RandomPowerUp>().isHovered = true;
+            }
+            /*
+            else if (lastPowerUp != null)
+            {
+                //Debug.Log("notHovered");
+
+                lastPowerUp.transform.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = false;
+                lastPowerUp = null;
+            }
+            */
         }
     }
 
