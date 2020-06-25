@@ -25,7 +25,6 @@ public class RandomPowerUp : MonoBehaviour
         if(i <= 3)
         {
             thisPowerUp = PowerUpManager.instance.consumables[Random.Range(0, PowerUpManager.instance.consumables.Length)];
-            print("comnsumable");
             consumable = true;
         }
         else if (isDropped == false)
