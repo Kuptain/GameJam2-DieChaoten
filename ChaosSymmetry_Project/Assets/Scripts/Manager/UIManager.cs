@@ -96,11 +96,11 @@ public class UIManager : MonoBehaviour
         ShowSlomo();
         ShowFreezeTime();
 
-        if (Input.GetKeyDown(KeyCode.Escape) && paused == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             PauseGame();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && paused)
+        else if(Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
         }
@@ -122,11 +122,13 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         paused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         ingameCanvas.SetActive(false);
         player.GetComponent<ThirdPersonController>().enabled = false;
         player.GetComponent<PlayerShoot>().enabled = false;
-        Cursor.visible = true;
         pauseCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
     }
 
     void ResumeGame()
@@ -137,7 +139,9 @@ public class UIManager : MonoBehaviour
         ingameCanvas.SetActive(true);
         player.GetComponent<ThirdPersonController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        print("hhh");
     }
 
     void RestartGame()
@@ -171,6 +175,10 @@ public class UIManager : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+        player.GetComponent<ThirdPersonController>().enabled = false;
+        player.GetComponent<PlayerShoot>().enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void ShowSlomo()

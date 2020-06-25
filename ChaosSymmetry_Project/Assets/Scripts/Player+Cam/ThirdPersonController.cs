@@ -129,6 +129,11 @@ public class ThirdPersonController : MonoBehaviour
             {
                 rigid.velocity = rigid.velocity + Vector3.up * floatForce;
                 pm.floatFuel -= 1;
+
+                if (TutorialManager.instance.currentHint == "float" && pm.floatFuel < pm.maxFloatFuel*0.5f)
+                {
+                    TutorialManager.instance.ChangeType("");
+                }
             }
         }
     }

@@ -130,11 +130,11 @@ public class CubeDestroy : MonoBehaviour
         {
             if (freezeThisCluster)
             {
-                transform.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(1).gameObject.SetActive(true);
             }
             else
             {
-                transform.GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(1).gameObject.SetActive(false);
             }
         }
        
@@ -372,28 +372,10 @@ public class CubeDestroy : MonoBehaviour
     //Color Management
     void SetColor()
     {
-        if (gameObject.GetComponent<Renderer>() != null && isHovered == false && cm.clusterHasShader)
+        if (isHovered == false && cm.clusterHasShader)
         {
-            if (transform.gameObject.transform.childCount > 2)
-            {
-                transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
 
-            }
-            if (pushMode == 0)
-            {
-                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
-
-            }
-            if (pushMode == 1)
-            {
-                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorOne);
-
-            }
-            if (pushMode == 2)
-            {
-                //gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", colorThree);
-
-            }
         }
    
 
