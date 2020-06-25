@@ -13,7 +13,7 @@ public class CubeManager : MonoBehaviour
     public Color colorHover, colorHoverExploded;
 
     public float speed;
-    public float slowmoValue = 0.25f;
+    public float slowmoValue = 0.6f; // old slowmo is 0.25f
     public float gravityValue = 0.1f; //The value of the gravity
     public float currentSlowmo = 1;
 

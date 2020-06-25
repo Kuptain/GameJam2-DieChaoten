@@ -320,5 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisPowerUp: 
   consumable: 0
-  textMeshPref: {fileID: 0}
+  textMeshPref: {fileID: 2742594066719073876, guid: 4ac1177be44b4974c948b47259a3dc71,
+    type: 3}
   isHovered: 1
