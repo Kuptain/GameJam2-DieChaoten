@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3433732768048116124}
+  - component: {fileID: 2432219817108188667}
+  - component: {fileID: 8466596530638159277}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Untagged
@@ -25,12 +27,37 @@ Transform:
   m_GameObject: {fileID: 3433732768048116125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.4186325, y: -0.58, z: -11.594779}
-  m_LocalScale: {x: 0.7289554, y: 0.7289554, z: 0.7289554}
+  m_LocalScale: {x: 0.6894898, y: 0.6894898, z: 0.6894898}
   m_Children:
   - {fileID: 3433732769892773977}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2432219817108188667
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433732768048116125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.45
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8466596530638159277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433732768048116125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53139bfe83523214cb4d6ec4a035a583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3433732768492008036
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8fa11a607a9084297889c6e34f9405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDropped: 0
+  textMeshPref: {fileID: 2742594066719073876, guid: 4ac1177be44b4974c948b47259a3dc71,
+    type: 3}
   thisPowerUp: 
   consumable: 0
+  isHovered: 0
 --- !u!135 &3433732769892773981
 SphereCollider:
   m_ObjectHideFlags: 0

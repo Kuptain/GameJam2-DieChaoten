@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class RandomPowerUp : MonoBehaviour
 {
     [HideInInspector] public bool isDropped = false;
+    [SerializeField] TMP_Text textMeshPref;
+    TMP_Text textMesh;
 
     GameObject player;
     public string thisPowerUp;
     public bool consumable;
+    public bool isHovered = true;
 
     // Start is called before the first frame update
     void Start()
     {
+   
+
         int i = Random.Range(1, 11);
 
         if(i <= 3)
@@ -28,12 +34,29 @@ public class RandomPowerUp : MonoBehaviour
 
         }
         player = ObjectManager.instance.player;
+
+        textMesh = Instantiate(textMeshPref, transform) as TMP_Text;
+        textMesh.GetComponent<PowerUpText>().type = thisPowerUp;
+        textMesh.GetComponent<PowerUpText>().consumable = consumable;
+        textMesh.GetComponent<PowerUpText>().powerUp = this.gameObject;
+
+        textMesh.text = thisPowerUp;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.parent.LookAt(player.transform.position);
+
+        if (isHovered)
+        {
+            textMesh.GetComponent<PowerUpText>().fadeMode = 1;
+        }
+        else
+        {
+            textMesh.GetComponent<PowerUpText>().fadeMode = 2;
+
+        }
     }
 
 
@@ -92,5 +115,9 @@ public class RandomPowerUp : MonoBehaviour
 
             }
         }
+    }
+    private void OnDestroy()
+    {
+        Destroy(textMesh);
     }
 }
