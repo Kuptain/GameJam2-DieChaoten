@@ -14,8 +14,10 @@ public class UIManager : MonoBehaviour
     public GameObject freezeTime;
     public bool showMenu;
 
+    Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
     public bool paused;
 
+    PowerUpManager powerUpManager;
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
@@ -50,6 +52,13 @@ public class UIManager : MonoBehaviour
         gameOverCanvas = uiPrefab.transform.GetChild(3).gameObject;
         gameOverCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+
+        powerDescOne = pauseCanvas.transform.GetChild(5).GetComponent<Text>();
+        powerDescTwo = pauseCanvas.transform.GetChild(6).GetComponent<Text>();
+        powerDescThree = pauseCanvas.transform.GetChild(7).GetComponent<Text>();
+        consDesc = pauseCanvas.transform.GetChild(8).GetComponent<Text>();
+
+        powerUpManager = PowerUpManager.instance;
 
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
         slowmoScreen = ingameCanvas.transform.GetChild(3).gameObject;
@@ -118,8 +127,6 @@ public class UIManager : MonoBehaviour
         {
             ResumeGame();
         }
-
-        print(freezetimer);
     }
 
     void StartGame()
@@ -148,6 +155,9 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+
+        ShowPowerUpDescription();
+
         // 1 is on, 0 is off
         if (PlayerPrefs.GetInt("tutorial") == 0)
         {
@@ -171,6 +181,91 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    void ShowPowerUpDescription()
+    {
+        if (powerUpManager.currentPowerUps.Count > 0)
+        {
+            //"longerFloat", "longerFreeze", "secondClusterFreeze", "betterSloMo"
+            if (powerUpManager.currentPowerUps[0] == "higherJump")
+            {
+                powerDescOne.text = "Makes you jump higher!";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "longerFreeze")
+            {
+                powerDescOne.text = "Platforms remain frozen for longer.";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "secondClusterFreeze")
+            {
+                powerDescOne.text = "Allows you to freeze two clusters at the same time.";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "betterSloMo")
+            {
+                powerDescOne.text = "Slowmotion slows time even more!";
+            }
+            else
+            {
+                powerDescOne.text = "";
+            }
+
+            if (powerUpManager.currentPowerUps.Count > 1)
+            {
+                if (powerUpManager.currentPowerUps[1] == "higherJump")
+                {
+                    powerDescTwo.text = "Makes you jump higher!";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "longerFreeze")
+                {
+                    powerDescTwo.text = "Platforms remain frozen for longer.";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "secondClusterFreeze")
+                {
+                    powerDescTwo.text = "Allows you to freeze two clusters at the same time.";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "betterSloMo")
+                {
+                    powerDescTwo.text = "Slowmotion slows time even more!";
+                }
+                else
+                {
+                    powerDescTwo.text = "";
+                }
+            }
+
+            if (powerUpManager.currentPowerUps.Count > 2)
+            {
+                if (powerUpManager.currentPowerUps[2] == "higherJump")
+                {
+                    powerDescThree.text = "Makes you jump higher!";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "longerFreeze")
+                {
+                    powerDescThree.text = "Platforms remain frozen for longer.";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "secondClusterFreeze")
+                {
+                    powerDescThree.text = "Allows you to freeze two clusters at the same time.";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "betterSloMo")
+                {
+                    powerDescThree.text = "Slowmotion slows time even more!";
+                }
+                else
+                {
+                    powerDescThree.text = "";
+                }
+            }
+        }
+
+        if (player.GetComponent<PlayerShoot>().cubeSpawnCharges > 0)
+        {
+            consDesc.text = "Hold Q to find a spot for a platform, then release Q to place it. " + player.GetComponent<PlayerShoot>().cubeSpawnCharges.ToString() + " charge(s) left.";
+        }
+        else
+        {
+            consDesc.text = "";
+        }
     }
 
     void RestartGame()
@@ -270,7 +365,7 @@ public class UIManager : MonoBehaviour
 
             }*/
             print("dddd");
-            if(currentFreezeTime >= 0)
+            if (currentFreezeTime >= 0)
             {
                 freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
                 currentFreezeTime -= Time.deltaTime;
