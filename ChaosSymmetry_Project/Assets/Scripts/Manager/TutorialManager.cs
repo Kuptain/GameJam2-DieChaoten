@@ -43,16 +43,28 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetText();
-        //FadeAway
-        if (fadeMode == 1)
+        if (PlayerPrefs.GetInt("tutorial", 0) == 1)
         {
-            FadeIn();
+            SetText();
+            //FadeAway
+            if (fadeMode == 1)
+            {
+                FadeIn();
+            }
+            if (fadeMode == 2)
+            {
+                FadeOut();
+            }
         }
-        if (fadeMode == 2)
+
+        if(PlayerPrefs.GetInt("tutorial", 0) == 0)
         {
             FadeOut();
+
         }
+     
+
+
     }
     void FadeOut()
     {

@@ -17,6 +17,17 @@ public class TutorialText : MonoBehaviour
     {
 
         textMesh.text = tm.currentText;
+
+        if (UIManager.instance.paused)
+        {
+            GetComponent<MeshRenderer>().enabled = false;
+
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().enabled = true;
+
+        }
     }
     private void FixedUpdate()
     {
