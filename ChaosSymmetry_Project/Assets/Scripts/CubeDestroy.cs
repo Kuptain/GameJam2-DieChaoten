@@ -41,10 +41,6 @@ public class CubeDestroy : MonoBehaviour
     void Start()
     {
         //baseMat = GetComponent<MeshRenderer>().material;
-  
-
-   
-        
         
         //Copy from Cubemanager//
         {
@@ -80,8 +76,6 @@ public class CubeDestroy : MonoBehaviour
         }
 
         gravityAutoAdjust = 1;
-
-
     }
 
     void TriggerRandomColor()
@@ -323,7 +317,7 @@ public class CubeDestroy : MonoBehaviour
 
             if (cm.slowMode)
             {
-                cm.currentSlowmo = slowmoValue;
+                cm.currentSlowmo = cm.slowmoValue;
             }
             else if (cm.slowMode == false)
             {

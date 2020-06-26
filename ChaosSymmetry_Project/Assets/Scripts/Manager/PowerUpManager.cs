@@ -8,12 +8,13 @@ public class PowerUpManager : MonoBehaviour
     public static PowerUpManager instance;
 
     // Factor wird im code multiplieziert (kann entweder = 1 oder = Data sein), Data ist der Speicherwert für Powerup
-    [HideInInspector] public float higherJumpFactor, higherJumpData, longerFloatData, longerFreezeData;
+    //[HideInInspector] 
+    public float higherJumpFactor, higherJumpData, longerFloatData, longerFreezeData;
     [HideInInspector] public string currentPowerUp;
 
     PlayerShoot shootScript;
 
-    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze", "betterSloMo"};
+    public string[] powerUps = { "higherJump", "longerFloat", "longerFreeze", "secondClusterFreeze", "betterSloMo" };
     public List<string> currentPowerUps = new List<string>();
     public string[] consumables = { "placePlatform" };
     public string currentConsumable;
@@ -48,11 +49,11 @@ public class PowerUpManager : MonoBehaviour
 
     void GivePowerUps()
     {
-        if(currentPowerUps.Count > 0)
+        if (currentPowerUps.Count > 0)
         {
             foreach (string powerUp in currentPowerUps)
             {
-                if(powerUp != null)
+                if (powerUp != null)
                 {
                     if (powerUp == "higherJump")
                     {
@@ -68,9 +69,10 @@ public class PowerUpManager : MonoBehaviour
                     }
                     if (powerUp == "betterSloMo")
                     {
-                        CubeManager.instance.slowmoValue = 0.25f;
+                        CubeManager.instance.slowmoValue = 0.04f;
+                        CubeManager.instance.currentSlowmo = 0.04f;
                     }
-                    if(powerUp == "secondClusterFreeze")
+                    if (powerUp == "secondClusterFreeze")
                     {
                         currentPowerUp = "secondClusterFreeze";
                     }
@@ -110,18 +112,19 @@ public class PowerUpManager : MonoBehaviour
             higherJumpFactor = 1;
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 40f;
-            CubeManager.instance.slowmoValue = 0.6f;
+            CubeManager.instance.currentSlowmo = 0.25f;
+            CubeManager.instance.slowmoValue = 0.25f;
             currentPowerUp = "";
         }
     }
 
     void LosePowerUp()
     {
-        if(currentPowerUps.Count > 0)
+        if (currentPowerUps.Count > 0)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-          
+
                 GameObject droppedPowerup1 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
                                                                                          ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
@@ -145,7 +148,7 @@ public class PowerUpManager : MonoBehaviour
                 }
                 //UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
                 print("power1");
-                if(currentPowerUps[0] == "longerFreeze")
+                if (currentPowerUps[0] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;
                     UIManager.instance.freezetimer = 5;
@@ -153,11 +156,11 @@ public class PowerUpManager : MonoBehaviour
                 currentPowerUps.RemoveAt(0);
                 //currentPowerUps = new List<string>();
                 print(currentPowerUps.Count);
-                
+
             }
             else if (currentPowerUps.Count >= 2 && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position + 
+                GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
                                                                                          ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[1];
@@ -186,7 +189,7 @@ public class PowerUpManager : MonoBehaviour
                 }
                 currentPowerUps.RemoveAt(1);
                 print("power2");
-            
+
             }
             else if (currentPowerUps.Count == 3 && Input.GetKeyDown(KeyCode.Alpha3))
             {
@@ -218,9 +221,9 @@ public class PowerUpManager : MonoBehaviour
                 }
                 currentPowerUps.RemoveAt(2);
                 print("power3");
-         
+
             }
-        }        
+        }
     }
 
     void ShowCurrentPowerUps()
@@ -246,12 +249,12 @@ public class PowerUpManager : MonoBehaviour
         {
             UIManager.instance.currentPowerupThree.GetComponent<Text>().text = currentPowerUps[2];
         }
-        
+
     }
 
     void ShowConsumableCharges()
     {
-        if(shootScript.cubeSpawnCharges > 0)
+        if (shootScript.cubeSpawnCharges > 0)
         {
             UIManager.instance.consumable.GetComponent<Text>().text = "placePlatform";
             UIManager.instance.consumableCharges.GetComponent<Text>().text = shootScript.cubeSpawnCharges.ToString();
