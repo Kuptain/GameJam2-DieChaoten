@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 2076070647070709572}
   - component: {fileID: 2740923234163861572}
   - component: {fileID: 1162856051813295442}
+  - component: {fileID: 1041525780083982004}
   m_Layer: 8
   m_Name: stein2
   m_TagString: terrain
@@ -294,6 +295,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3787144391514394711, guid: 90c56cffde9e2364e809e4fdc0bbde54, type: 3}
+--- !u!114 &1041525780083982004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607803672472984026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437425e531487684ab0fcf86e53539e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorHover: {r: 1, g: 0.6179246, b: 0.8231966, a: 1}
+  colorHoverExploded: {r: 0.9811321, g: 0.56924176, b: 0.7065386, a: 1}
+  pushMode: 0
+  sendingBack: 0
+  freezeThisCluster: 0
+  bubbleFreeze: 0
+  notsendingback: 0
+  isHovered: 0
+  moveVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &9171825382570575057
 GameObject:
   m_ObjectHideFlags: 0
