@@ -14,8 +14,10 @@ public class UIManager : MonoBehaviour
     public GameObject freezeTime;
     public bool showMenu;
 
+    Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
     public bool paused;
 
+    PowerUpManager powerUpManager;
     GameObject player;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
@@ -51,10 +53,17 @@ public class UIManager : MonoBehaviour
         gameOverCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
 
+        powerDescOne = pauseCanvas.transform.GetChild(5).GetComponent<Text>();
+        powerDescTwo = pauseCanvas.transform.GetChild(6).GetComponent<Text>();
+        powerDescThree = pauseCanvas.transform.GetChild(7).GetComponent<Text>();
+        consDesc = pauseCanvas.transform.GetChild(8).GetComponent<Text>();
+
+        powerUpManager = PowerUpManager.instance;
+
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
         slowmoScreen = ingameCanvas.transform.GetChild(3).gameObject;
 
-        //freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+        freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
         secondCurrentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
@@ -110,8 +119,6 @@ public class UIManager : MonoBehaviour
     {
         ShowSlomo();
         ShowFreezeTime();
-        //print(paused);
-        //print(PlayerPrefs.GetInt("tutorial", 0));
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             PauseGame();
@@ -119,7 +126,6 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
-            //print("eee");
         }
     }
 
@@ -149,6 +155,9 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+
+        ShowPowerUpDescription();
+
         // 1 is on, 0 is off
         if (PlayerPrefs.GetInt("tutorial") == 0)
         {
@@ -172,6 +181,91 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    void ShowPowerUpDescription()
+    {
+        if (powerUpManager.currentPowerUps.Count > 0)
+        {
+            //"longerFloat", "longerFreeze", "secondClusterFreeze", "betterSloMo"
+            if (powerUpManager.currentPowerUps[0] == "higherJump")
+            {
+                powerDescOne.text = "Makes you jump higher!";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "longerFreeze")
+            {
+                powerDescOne.text = "Platforms remain frozen for longer.";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "secondClusterFreeze")
+            {
+                powerDescOne.text = "Allows you to freeze two clusters at the same time.";
+            }
+            else if (powerUpManager.currentPowerUps[0] == "betterSloMo")
+            {
+                powerDescOne.text = "Slowmotion slows time even more!";
+            }
+            else
+            {
+                powerDescOne.text = "";
+            }
+
+            if (powerUpManager.currentPowerUps.Count > 1)
+            {
+                if (powerUpManager.currentPowerUps[1] == "higherJump")
+                {
+                    powerDescTwo.text = "Makes you jump higher!";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "longerFreeze")
+                {
+                    powerDescTwo.text = "Platforms remain frozen for longer.";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "secondClusterFreeze")
+                {
+                    powerDescTwo.text = "Allows you to freeze two clusters at the same time.";
+                }
+                else if (powerUpManager.currentPowerUps[1] == "betterSloMo")
+                {
+                    powerDescTwo.text = "Slowmotion slows time even more!";
+                }
+                else
+                {
+                    powerDescTwo.text = "";
+                }
+            }
+
+            if (powerUpManager.currentPowerUps.Count > 2)
+            {
+                if (powerUpManager.currentPowerUps[2] == "higherJump")
+                {
+                    powerDescThree.text = "Makes you jump higher!";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "longerFreeze")
+                {
+                    powerDescThree.text = "Platforms remain frozen for longer.";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "secondClusterFreeze")
+                {
+                    powerDescThree.text = "Allows you to freeze two clusters at the same time.";
+                }
+                else if (powerUpManager.currentPowerUps[2] == "betterSloMo")
+                {
+                    powerDescThree.text = "Slowmotion slows time even more!";
+                }
+                else
+                {
+                    powerDescThree.text = "";
+                }
+            }
+        }
+
+        if (player.GetComponent<PlayerShoot>().cubeSpawnCharges > 0)
+        {
+            consDesc.text = "Hold Q to find a spot for a platform, then release Q to place it. " + player.GetComponent<PlayerShoot>().cubeSpawnCharges.ToString() + " charge(s) left.";
+        }
+        else
+        {
+            consDesc.text = "";
+        }
     }
 
     void RestartGame()
@@ -249,7 +343,7 @@ public class UIManager : MonoBehaviour
             //string timeInterval = interval.ToString();
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = timeInterval;
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = (((Mathf.Floor(currentFreezeTime / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(currentFreezeTime % 60f).ToString("00")); ;
-            if (currentFreezeTime >= 0)
+            /*if (currentFreezeTime >= 0)
             {
                 freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
                 currentFreezeTime -= Time.deltaTime;
@@ -260,14 +354,36 @@ public class UIManager : MonoBehaviour
             }
             if (player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
             {
-                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
                 secondCurrentFreezeTime -= Time.deltaTime;
             }
             else
             {
 
-                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
-                //freezeTime.transform.GetChild(1).gameObject.SetActive(false);
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
+                freezeTime.transform.GetChild(1).gameObject.SetActive(false);
+
+            }*/
+            print("dddd");
+            if (currentFreezeTime >= 0)
+            {
+                freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
+                currentFreezeTime -= Time.deltaTime;
+            }
+            else
+            {
+                freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
+
+            }
+
+            if (secondCurrentFreezeTime >= 0 && player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
+            {
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+                secondCurrentFreezeTime -= Time.deltaTime;
+            }
+            else
+            {
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
 
             }
         }
