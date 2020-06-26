@@ -195,7 +195,28 @@ public class ThirdPersonController : MonoBehaviour
         if (other.gameObject.GetComponent<TerrainCollider>() != null && !isSafe)
         {
             isSafe = true;
-            pm.Respawn();
+            if (PlayerPrefs.GetInt("gameMode", 0) == 0)
+            {
+                if (pm.lives > 0)
+                {
+                    pm.Respawn();
+                    pm.lives -= 1;
+                }
+                else
+                {
+                    UIManager.instance.ingameCanvas.SetActive(false);
+                    UIManager.instance.pauseCanvas.SetActive(false);
+                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().enabled = false;
+                    ObjectManager.instance.player.GetComponent<PlayerShoot>().enabled = false;
+                    UIManager.instance.gameOverCanvas.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+            }
+            else
+            {
+                pm.Respawn();
+            }
 
         }
     }
