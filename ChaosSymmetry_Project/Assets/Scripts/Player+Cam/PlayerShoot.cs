@@ -61,7 +61,15 @@ public class PlayerShoot : MonoBehaviour
                             {
                                 childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
                                 childChild.gameObject.GetComponent<CubeDestroy>().Explode();
-                            }                           
+                            }                            
+                        }
+                        if (child.gameObject.GetComponent<OrbitForRubble>() != null)
+                        {
+                            child.gameObject.GetComponent<OrbitForRubble>().RandomizeRotation();
+                        }
+                        if (child.gameObject.GetComponent<RubbleExplosion>() != null)
+                        {
+                            child.gameObject.GetComponent<RubbleExplosion>().Explode();
                         }
                     }
                 }
@@ -250,6 +258,7 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(meltingTime);
         foreach (Transform child in cluster.transform)
         {
+            if(child.GetChild(0).GetComponent<CubeDestroy>() != null)
             child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
         }
         frozenCluster = null;
