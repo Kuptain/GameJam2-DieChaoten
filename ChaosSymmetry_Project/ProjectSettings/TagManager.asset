@@ -10,6 +10,7 @@ TagManager:
   - terrain
   - checkpoint
   - UI
+  - safeZone
   layers:
   - Default
   - TransparentFX

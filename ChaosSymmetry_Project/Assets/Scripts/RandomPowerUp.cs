@@ -2,38 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class RandomPowerUp : MonoBehaviour
 {
     [HideInInspector] public bool isDropped = false;
+    [SerializeField] TMP_Text textMeshPref;
+    TMP_Text textMesh;
 
     GameObject player;
     public string thisPowerUp;
     public bool consumable;
+    public bool isHovered = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        int i = Random.Range(1, 11);
+        /*int i = Random.Range(1, 11);
 
-        if(i <= 3)
+        if (i <= 3)
         {
             thisPowerUp = PowerUpManager.instance.consumables[Random.Range(0, PowerUpManager.instance.consumables.Length)];
-            print("comnsumable");
             consumable = true;
-        }
-        else if (isDropped == false)
+        }*/
+
+        if (isDropped == false)
         {
             thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
 
         }
+
         player = ObjectManager.instance.player;
+
+        textMesh = Instantiate(textMeshPref, transform) as TMP_Text;
+        textMesh.GetComponent<PowerUpText>().type = thisPowerUp;
+        textMesh.GetComponent<PowerUpText>().consumable = consumable;
+        textMesh.GetComponent<PowerUpText>().powerUp = this.gameObject;
+
+        textMesh.text = thisPowerUp;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.parent.LookAt(player.transform.position);
+
+        if (isHovered)
+        {
+            textMesh.GetComponent<PowerUpText>().fadeMode = 1;
+        }
+        else
+        {
+            textMesh.GetComponent<PowerUpText>().fadeMode = 2;
+
+        }
     }
 
 
@@ -41,17 +63,13 @@ public class RandomPowerUp : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<ThirdPersonController>() != null)
         {
-
             if (PowerUpManager.instance.currentPowerUps.Count < 3)
-            {
+            {
                 PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
-
-                if (TutorialManager.instance.currentHint == "")
-                {
+                if (TutorialManager.instance.currentHint == "")
+                {
                     TutorialManager.instance.ChangeType("power");
-                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(3f));
-
-
+                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(5f));
                 }
 
                 if (PowerUpManager.instance.currentPowerUps.Count == 1)
@@ -84,13 +102,17 @@ public class RandomPowerUp : MonoBehaviour
                 Destroy(this.gameObject.transform.parent.gameObject);
             }
 
-            else if (consumable == true && PowerUpManager.instance.currentConsumable == "")
+            /*else if (consumable == true && PowerUpManager.instance.currentConsumable == "")
             {
                 PowerUpManager.instance.currentConsumable = thisPowerUp;
                 UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
                 Destroy(this.gameObject.transform.parent.gameObject);
 
-            }
+            }*/
         }
+    }
+    private void OnDestroy()
+    {
+        Destroy(textMesh);
     }
 }

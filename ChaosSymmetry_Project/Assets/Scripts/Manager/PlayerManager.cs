@@ -52,13 +52,16 @@ public class PlayerManager : MonoBehaviour
         respawnPanelDown.GetComponent<Animation>().Play();
         respawnPanelUp.GetComponent<Animation>().Play();
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+        ObjectManager.instance.player.GetComponent<ThirdPersonController>().isSafe = false;
+        player.transform.position = LevelGeneration.instance.checkPointOne.transform.position + new Vector3(0, 1.5f, 0);
+        player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+        yield return new WaitForSeconds(0.25f);
 
         respawnPanelDown.gameObject.SetActive(false);
         respawnPanelUp.gameObject.SetActive(false);
 
-        player.transform.position = LevelGeneration.instance.checkPointOne.transform.position + new Vector3(0, 2, 0);
-        player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 
         yield return new WaitForSeconds(0.5f);
         isRespawning = false;

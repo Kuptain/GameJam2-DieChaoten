@@ -13,7 +13,7 @@ public class CubeManager : MonoBehaviour
     public Color colorHover, colorHoverExploded;
 
     public float speed;
-    public float slowmoValue = 0.25f;
+    public float slowmoValue = 0.5f; // old slowmo is 0.25f
     public float gravityValue = 0.1f; //The value of the gravity
     public float currentSlowmo = 1;
 
@@ -46,7 +46,7 @@ public class CubeManager : MonoBehaviour
     void Start()
     {
         player = ObjectManager.instance.player;
-
+        slowmoValue = 0.25f;
     }
 
     public void ChangeToA()

@@ -13,43 +13,84 @@ public class CameraController : MonoBehaviour
 
     Camera cam;
 
-    Vector3 lastMousePosition, velocity, defaultPos;
+    Vector3 lastMousePosition, velocity,  followVector;
+
+
+    GameObject player;
 
     private Quaternion camRotation, savedCamRot;
     public bool colliding;
+    bool lockY = false;
+    public bool playerCollide = false;
+    float positionLerp;
 
     void Start()
     {
         cam = Camera.main;
         velocity = Vector3.zero;
-        defaultPos = transform.localPosition;
+
+        player = ObjectManager.instance.player;
+        transform.SetParent(null);
     }
 
     void Update()
     {
-        CollideWithGround();
+        //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, player.transform.position, ref velocity, smoothTime);
         RotateCamera();
+   
+
+    }
+    private void FixedUpdate()
+    {
+        CollideWithGround();
+
+      
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, followVector, positionLerp); ;
+
+
     }
 
     void CollideWithGround()
     {
-        if (colliding)
+        if (!colliding && !lockY)
         {
-            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, new Vector3(0, 1, 0), ref velocity, smoothTime);
+            followVector = player.transform.position;
+
+            positionLerp = Time.deltaTime * 25;
+
+        }
+ 
+        if (colliding || lockY)
+        {
+            //!playerCollide
+            if (true)
+            {
+                //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, transform.position + transform.forward * 1.5f, ref velocity, smoothTime);
+                followVector = player.transform.position + player.transform.forward * 3f + player.transform.up * 2;
+
+            
+                //lockY = true;
+                positionLerp = Time.deltaTime * 5f;
+
+
+            }
+
         }
         else
         {
             RaycastHit hit;
 
-            Ray ray = new Ray(cam.transform.position, -cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position, - cam.gameObject.transform.forward);
 
             if (Physics.Raycast(ray, out hit, 1.5f))
             {
                 //print("ray has hit");
+
             }
             else
             {
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, defaultPos, ref velocity, smoothTime);
+                //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, defaultPos, ref velocity, smoothTime);
             }
         }
     }
@@ -67,17 +108,22 @@ public class CameraController : MonoBehaviour
                 //Mathf.Clamp(camRotation.x, -30, lookUpMax);
         }
 
-        transform.localRotation = Quaternion.Euler(camRotation.x, 0, 0);
+        if (Input.GetAxis("Mouse Y") < 0)
+        {
+            lockY = false;
+        }
+        //transform.rotation = Quaternion.Euler(camRotation.x, transform.rotation.y, transform.rotation.z);
+        
+        transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, Time.deltaTime * 35);
+
+        transform.eulerAngles = new Vector3(camRotation.x, transform.eulerAngles.y , 0 );
+
+
     }
 
     private void OnTriggerStay(Collider other)
     {   
 
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
-        {
-            colliding = true;
-
-        }
 
         if ( other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
@@ -108,7 +154,7 @@ public class CameraController : MonoBehaviour
             other.gameObject.transform.GetChild(2).gameObject.SetActive(true);
 
         }
-        if (other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
+        if (other.transform.parent != null && other.transform.parent.parent != null && other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
         {
             other.transform.parent.parent.gameObject.transform.GetChild(2).gameObject.SetActive(true);
 
@@ -132,11 +178,7 @@ public class CameraController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<CubeDestroy>() == false)
-        {
-            colliding = false;
-        }
-
+       
         if (other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
             if (other.GetComponent<MeshRenderer>() != null)
@@ -165,7 +207,8 @@ public class CameraController : MonoBehaviour
             other.gameObject.transform.GetChild(2).gameObject.SetActive(false);
 
         }
-        if (other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
+
+        if (other.transform.parent != null && other.transform.parent.parent != null && other.transform.parent.parent.childCount > 3 && other.transform.parent.parent.gameObject.GetComponent<CubeDestroy>() != null)
         {
             other.transform.parent.parent.gameObject.transform.GetChild(2).gameObject.SetActive(false);
 

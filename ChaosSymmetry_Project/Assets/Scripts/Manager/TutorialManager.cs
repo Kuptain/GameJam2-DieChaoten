@@ -43,16 +43,28 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetText();
-        //FadeAway
-        if (fadeMode == 1)
+        if (PlayerPrefs.GetInt("tutorial", 0) == 1)
         {
-            FadeIn();
+            SetText();
+            //FadeAway
+            if (fadeMode == 1)
+            {
+                FadeIn();
+            }
+            if (fadeMode == 2)
+            {
+                FadeOut();
+            }
         }
-        if (fadeMode == 2)
+
+        if(PlayerPrefs.GetInt("tutorial", 0) == 0)
         {
             FadeOut();
+
         }
+     
+
+
     }
     void FadeOut()
     {
@@ -80,7 +92,7 @@ public class TutorialManager : MonoBehaviour
         if (currentHint == "slow")
         {
             currentText
-                    = "Slow the time by pressing SHIFT!";
+                    = "Toggle slowmotion by pressing SHIFT!";
         }
         if (currentHint == "slowDisable")
         {
@@ -109,18 +121,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         currentHint = "";
     }
-    IEnumerator ChangeFadeTo(int mode)
-    {
-        yield return new WaitForSeconds(0.75f);
-        if (mode == 1)
-        {
-            FadeIn();
-        }
-        if (mode == 2)
-        {
-            FadeOut();
-        }
-    }
+
     public void ChangeType(string type)
     {
         fadeMode = 2;
