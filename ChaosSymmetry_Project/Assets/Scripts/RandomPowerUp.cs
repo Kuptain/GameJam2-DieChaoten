@@ -69,7 +69,7 @@ public class RandomPowerUp : MonoBehaviour
                 if (TutorialManager.instance.currentHint == "")
                 {
                     TutorialManager.instance.ChangeType("power");
-                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(3f));
+                    TutorialManager.instance.StartCoroutine(TutorialManager.instance.DisableAfter(5f));
                 }
 
                 if (PowerUpManager.instance.currentPowerUps.Count == 1)

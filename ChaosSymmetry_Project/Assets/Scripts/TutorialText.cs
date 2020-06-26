@@ -20,7 +20,7 @@ public class TutorialText : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = Vector3.Slerp(transform.position, Camera.main.transform.position + Camera.main.transform.forward * 6 + new Vector3(0, 2.5f, 0), 0.05f);
+        transform.position = Vector3.Slerp(transform.position, Camera.main.transform.position + Camera.main.transform.forward * 6 + new Vector3(0, 2.5f, 0), 0.08f);
         transform.LookAt(Camera.main.transform.position, Vector3.up);
         transform.Rotate(new Vector3(0, 180, 0));
 
