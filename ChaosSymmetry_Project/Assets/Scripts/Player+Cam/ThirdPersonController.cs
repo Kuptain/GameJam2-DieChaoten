@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
+    [HideInInspector] public bool isSafe;
 
     [SerializeField] float speed;
     //[SerializeField] float mouseSensitivity;
@@ -179,7 +180,15 @@ public class ThirdPersonController : MonoBehaviour
 
     }
 
-    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.GetComponent<TerrainCollider>() != null && !isSafe)
+        {
+            isSafe = true;
+            pm.Respawn();
+
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         /*
@@ -193,14 +202,19 @@ public class ThirdPersonController : MonoBehaviour
 
         }
         */
-        if (other.gameObject.GetComponent<_DeathZone>() != null && transform.position.y < 10)
+       
+        if (other.gameObject.GetComponent<_DeathZone>() != null )
         {
-            pm.Respawn();
+            isSafe = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.GetComponent<_DeathZone>() != null)
+        {
+            isSafe = false ;
+        }
         //StartCoroutine(ChangeGrounded());
 
         /*if (other.CompareTag("terrain"))

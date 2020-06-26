@@ -110,8 +110,8 @@ public class UIManager : MonoBehaviour
     {
         ShowSlomo();
         ShowFreezeTime();
-        print(paused);
-        print(PlayerPrefs.GetInt("tutorial", 0));
+        //print(paused);
+        //print(PlayerPrefs.GetInt("tutorial", 0));
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             PauseGame();
@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
-            print("eee");
+            //print("eee");
         }
     }
 
