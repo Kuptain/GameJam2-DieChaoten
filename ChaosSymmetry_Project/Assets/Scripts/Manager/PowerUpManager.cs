@@ -70,6 +70,10 @@ public class PowerUpManager : MonoBehaviour
                     {
                         CubeManager.instance.slowmoValue = 0.25f;
                     }
+                    if(powerUp == "secondClusterFreeze")
+                    {
+                        currentPowerUp = "secondClusterFreeze";
+                    }
                 }
             }
         }
@@ -107,6 +111,7 @@ public class PowerUpManager : MonoBehaviour
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 40f;
             CubeManager.instance.slowmoValue = 0.6f;
+            currentPowerUp = "";
         }
     }
 
@@ -121,10 +126,23 @@ public class PowerUpManager : MonoBehaviour
                                                                                          ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[0];
-             
 
-            
-
+                if (currentPowerUps[0] == "secondClusterFreeze")
+                {
+                    currentPowerUp = "";
+                }
+                if (currentPowerUps[0] == "higherJump")
+                {
+                    higherJumpFactor = 1;
+                }
+                if (currentPowerUps[0] == "longerFloat")
+                {
+                    PlayerManager.instance.maxFloatFuel = 40f;
+                }
+                if (currentPowerUps[0] == "betterSloMo")
+                {
+                    CubeManager.instance.slowmoValue = 0.6f;
+                }
                 //UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
                 print("power1");
                 if(currentPowerUps[0] == "longerFreeze")
@@ -144,6 +162,23 @@ public class PowerUpManager : MonoBehaviour
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[1];
                 //UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
+
+                if (currentPowerUps[1] == "secondClusterFreeze")
+                {
+                    currentPowerUp = "";
+                }
+                if (currentPowerUps[1] == "higherJump")
+                {
+                    higherJumpFactor = 1;
+                }
+                if (currentPowerUps[1] == "longerFloat")
+                {
+                    PlayerManager.instance.maxFloatFuel = 40f;
+                }
+                if (currentPowerUps[1] == "betterSloMo")
+                {
+                    CubeManager.instance.slowmoValue = 0.6f;
+                }
                 if (currentPowerUps[1] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;
@@ -160,7 +195,22 @@ public class PowerUpManager : MonoBehaviour
                 droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[2];
                 //UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
-
+                if (currentPowerUps[2] == "secondClusterFreeze")
+                {
+                    currentPowerUp = "";
+                }
+                if (currentPowerUps[2] == "higherJump")
+                {
+                    higherJumpFactor = 1;
+                }
+                if (currentPowerUps[2] == "longerFloat")
+                {
+                    PlayerManager.instance.maxFloatFuel = 40f;
+                }
+                if (currentPowerUps[2] == "betterSloMo")
+                {
+                    CubeManager.instance.slowmoValue = 0.6f;
+                }
                 if (currentPowerUps[2] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;

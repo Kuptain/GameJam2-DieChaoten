@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
         slowmoScreen = ingameCanvas.transform.GetChild(3).gameObject;
 
-        //freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
+        freezeTime = uiPrefab.transform.GetChild(0).GetChild(1).GetChild(0).gameObject;
         player = ObjectManager.instance.player;
         currentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
         secondCurrentFreezeTime = player.GetComponent<PlayerShoot>().meltingTime;
@@ -110,8 +110,6 @@ public class UIManager : MonoBehaviour
     {
         ShowSlomo();
         ShowFreezeTime();
-        print(paused);
-        print(PlayerPrefs.GetInt("tutorial", 0));
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             PauseGame();
@@ -119,8 +117,9 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
-            print("eee");
         }
+
+        print(freezetimer);
     }
 
     void StartGame()
@@ -249,7 +248,7 @@ public class UIManager : MonoBehaviour
             //string timeInterval = interval.ToString();
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = timeInterval;
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = (((Mathf.Floor(currentFreezeTime / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(currentFreezeTime % 60f).ToString("00")); ;
-            if (currentFreezeTime >= 0)
+            /*if (currentFreezeTime >= 0)
             {
                 freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
                 currentFreezeTime -= Time.deltaTime;
@@ -260,14 +259,36 @@ public class UIManager : MonoBehaviour
             }
             if (player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
             {
-                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
                 secondCurrentFreezeTime -= Time.deltaTime;
             }
             else
             {
 
-                //freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
-                //freezeTime.transform.GetChild(1).gameObject.SetActive(false);
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
+                freezeTime.transform.GetChild(1).gameObject.SetActive(false);
+
+            }*/
+            print("dddd");
+            if(currentFreezeTime >= 0)
+            {
+                freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
+                currentFreezeTime -= Time.deltaTime;
+            }
+            else
+            {
+                freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
+
+            }
+
+            if (secondCurrentFreezeTime >= 0 && player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
+            {
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+                secondCurrentFreezeTime -= Time.deltaTime;
+            }
+            else
+            {
+                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
 
             }
         }
