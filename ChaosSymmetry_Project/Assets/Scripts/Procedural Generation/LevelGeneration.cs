@@ -124,9 +124,21 @@ public class LevelGeneration : MonoBehaviour
         return variation;
     }
 
+    bool safeZoneDestroyed = false;
     public void MoveCheckpoint()
     {
         float oldClusterAmountCalc = clusterAmountCalc;
+
+        if (safeZoneDestroyed == false)
+        {
+            GameObject safeZone = GameObject.FindGameObjectWithTag("safeZone");
+            if (safeZone != null)
+            {
+                Destroy(safeZone);
+            }
+            safeZoneDestroyed = true;
+        }
+     
 
         //Increase difficulty
         {

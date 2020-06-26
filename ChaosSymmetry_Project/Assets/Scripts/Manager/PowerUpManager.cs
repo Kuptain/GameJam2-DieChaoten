@@ -147,7 +147,6 @@ public class PowerUpManager : MonoBehaviour
                     CubeManager.instance.slowmoValue = 0.6f;
                 }
                 //UIManager.instance.currentPowerupOne.GetComponent<Text>().text = "None";
-                print("power1");
                 if (currentPowerUps[0] == "longerFreeze")
                 {
                     UIManager.instance.currentFreezeTime = 5;
@@ -155,7 +154,6 @@ public class PowerUpManager : MonoBehaviour
                 }
                 currentPowerUps.RemoveAt(0);
                 //currentPowerUps = new List<string>();
-                print(currentPowerUps.Count);
 
             }
             else if (currentPowerUps.Count >= 2 && Input.GetKeyDown(KeyCode.Alpha2))
@@ -188,7 +186,6 @@ public class PowerUpManager : MonoBehaviour
                     UIManager.instance.freezetimer = 5;
                 }
                 currentPowerUps.RemoveAt(1);
-                print("power2");
 
             }
             else if (currentPowerUps.Count == 3 && Input.GetKeyDown(KeyCode.Alpha3))
@@ -220,7 +217,6 @@ public class PowerUpManager : MonoBehaviour
                     UIManager.instance.freezetimer = 5;
                 }
                 currentPowerUps.RemoveAt(2);
-                print("power3");
 
             }
         }
