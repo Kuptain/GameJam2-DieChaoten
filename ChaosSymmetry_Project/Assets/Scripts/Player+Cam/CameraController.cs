@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] float lookUpMax = 60;
     [SerializeField] float lookUpMin = -60;
+    [SerializeField] float followVectorY;
 
     float camSmoothingFactor = 1f, smoothTime = 0.3f;
 
@@ -55,7 +56,7 @@ public class CameraController : MonoBehaviour
     {
         if (!colliding && !lockY)
         {
-            followVector = player.transform.position;
+            followVector = player.transform.position + new Vector3(0, followVectorY, 0);
 
             positionLerp = Time.deltaTime * 25;
 
@@ -67,7 +68,7 @@ public class CameraController : MonoBehaviour
             if (true)
             {
                 //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, transform.position + transform.forward * 1.5f, ref velocity, smoothTime);
-                followVector = player.transform.position + player.transform.forward * 3f + player.transform.up * 2;
+                followVector = player.transform.position + player.transform.forward * 3f + player.transform.up * 2 + new Vector3(0, followVectorY, 0);
 
             
                 //lockY = true;
