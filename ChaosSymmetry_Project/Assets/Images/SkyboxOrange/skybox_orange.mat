@@ -33,7 +33,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: 10792aee8bcb20e48954e1aa92e95503, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5da848c2022460d41bd42e012cf53025, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: -0.01}
     - _BaseMap:
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 2795ce2e71c80bc44a4203eee89e626d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff22d41025cd8b84cab1d07db97da280, type: 3}
         m_Scale: {x: 1, y: 0.04}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -53,11 +53,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: e0c61bc42930d2a48a22f7bdba3b6217, type: 3}
+        m_Texture: {fileID: 2800000, guid: 361c18b4db6e9bc488fcd7d341192319, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: -0.01}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 86570bb72ca17f64f9e047766018e27e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d17128176273cbc4f9205a2ce578e818, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: -0.01}
     - _MainTex:
@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: 99d715718d1132b438ea10fb6968dbc4, type: 3}
+        m_Texture: {fileID: 2800000, guid: b00428600db8f4940a556f84fa2244c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: -0.01}
     - _SpecGlossMap:
@@ -85,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 330689af7a978b2498f0b1fa0abb3dce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4f8ec56e8c82d2a4e8d2615335f0e645, type: 3}
         m_Scale: {x: 0.9, y: 1}
         m_Offset: {x: 0.1, y: 0}
     m_Floats:
