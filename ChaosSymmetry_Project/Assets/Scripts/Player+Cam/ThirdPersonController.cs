@@ -24,6 +24,7 @@ public class ThirdPersonController : MonoBehaviour
     PlayerManager pm;
     CamCheckSideCollision camRightCollCheck;
     CamCheckLeftCollision camLeftCollCheck;
+    ResetJump jumpSoundScript;
 
     Vector3 lastMousePosition;
     //public List<GameObject> currentPlatforms = new List<GameObject>();
@@ -38,7 +39,7 @@ public class ThirdPersonController : MonoBehaviour
         camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>(); 
         camLeftCollCheck = cam.transform.parent.GetChild(2).GetComponent<CamCheckLeftCollision>();
         rigid = GetComponent<Rigidbody>();
-
+        jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
         
     }
@@ -115,6 +116,7 @@ public class ThirdPersonController : MonoBehaviour
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
             StartCoroutine(DisableCollider());
+            jumpSoundScript.jumped = true;
         }
     }
 

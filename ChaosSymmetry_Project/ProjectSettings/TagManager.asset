@@ -11,6 +11,7 @@ TagManager:
   - checkpoint
   - UI
   - safeZone
+  - SoundParent
   layers:
   - Default
   - TransparentFX

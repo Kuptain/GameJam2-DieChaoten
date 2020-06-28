@@ -6,8 +6,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioClip slomoOn;
-    public AudioClip slomoOff;
+    public AudioSource slomoOn;
+    public AudioSource slomoOff;
+    public AudioSource landing;
+    public GameObject soundParent;
 
     private void Awake()
     {
@@ -20,7 +22,10 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        soundParent = GameObject.FindGameObjectWithTag("SoundParent");
+        slomoOff = soundParent.transform.GetChild(1).gameObject.GetComponent<AudioSource>();
+        slomoOn = soundParent.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
+        landing = soundParent.transform.GetChild(2).gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

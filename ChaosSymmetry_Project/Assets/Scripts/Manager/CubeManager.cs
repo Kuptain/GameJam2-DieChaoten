@@ -35,6 +35,7 @@ public class CubeManager : MonoBehaviour
     public bool slowMode = false;
 
     GameObject player;
+    AudioManager audioManager;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class CubeManager : MonoBehaviour
     {
         player = ObjectManager.instance.player;
         slowmoValue = 0.25f;
+        audioManager = AudioManager.instance;
     }
 
     public void ChangeToA()
@@ -78,6 +80,7 @@ public class CubeManager : MonoBehaviour
                 if(slowMode == false)
                 {
                     slowMode = true;
+                    AudioManager.instance.slomoOn.Play();
                     if (TutorialManager.instance.currentHint == "slow")
                     {
                         TutorialManager.instance.ChangeType("right");
@@ -87,6 +90,8 @@ public class CubeManager : MonoBehaviour
                 else if(slowMode == true)
                 {
                     slowMode = false;
+                    AudioManager.instance.slomoOff.Play();
+
                     if (TutorialManager.instance.currentHint == "slowDisable")
                     {
                         TutorialManager.instance.ChangeType("");
