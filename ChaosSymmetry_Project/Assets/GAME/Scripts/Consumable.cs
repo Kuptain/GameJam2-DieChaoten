@@ -50,7 +50,7 @@ public class Consumable : MonoBehaviour
         {
             //PowerUpManager.instance.currentConsumable = thisPowerUp;
             player.GetComponent<PlayerShoot>().cubeSpawnCharges += 1;
-            UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
+            //UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
             Destroy(this.gameObject.transform.parent.gameObject);
 
         }

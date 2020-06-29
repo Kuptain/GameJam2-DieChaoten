@@ -47,8 +47,8 @@ public class PlayerShoot : MonoBehaviour
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
-                    
-                    if(tm.currentHint == "left")
+
+                    if (tm.currentHint == "left")
                     {
                         tm.ChangeType("slow");
                     }
@@ -57,11 +57,11 @@ public class PlayerShoot : MonoBehaviour
                     {
                         foreach (Transform childChild in child)
                         {
-                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null )
+                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null)
                             {
                                 childChild.gameObject.GetComponent<CubeDestroy>().pushMode = 1;
                                 childChild.gameObject.GetComponent<CubeDestroy>().Explode();
-                            }                            
+                            }
                         }
                         if (child.gameObject.GetComponent<OrbitForRubble>() != null)
                         {
@@ -96,9 +96,9 @@ public class PlayerShoot : MonoBehaviour
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                     foreach (Transform child in frozenCluster.transform)
                     {
-                        foreach (Transform childChild in child )
+                        foreach (Transform childChild in child)
                         {
-                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null )
+                            if (childChild.gameObject.GetComponent<CubeDestroy>() != null)
                             {
                                 childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster = true;
                                 childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
@@ -114,10 +114,10 @@ public class PlayerShoot : MonoBehaviour
                     {
                         secondFrozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                         foreach (Transform child in secondFrozenCluster.transform)
-                        {                        
+                        {
                             foreach (Transform childChild in child)
                             {
-                                if (childChild.gameObject.GetComponent<CubeDestroy>() != null )
+                                if (childChild.gameObject.GetComponent<CubeDestroy>() != null)
                                 {
                                     childChild.gameObject.GetComponent<CubeDestroy>().freezeThisCluster = true;
                                     childChild.gameObject.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
@@ -172,7 +172,7 @@ public class PlayerShoot : MonoBehaviour
                 }
             }
         }
-      
+
     }
 
     GameObject lastPowerUp;
@@ -185,7 +185,7 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Transform clusterHit = hit.transform;
-            if (cubeManager.clusterHasShader && clusterHit.gameObject.GetComponent<CubeDestroy>() != null )
+            if (cubeManager.clusterHasShader && clusterHit.gameObject.GetComponent<CubeDestroy>() != null)
             {
                 currentCluster = clusterHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                 foreach (Transform child in currentCluster.transform)
@@ -215,7 +215,7 @@ public class PlayerShoot : MonoBehaviour
                             }
                         }
 
-                    }              
+                    }
                 }
             }
 
@@ -228,7 +228,7 @@ public class PlayerShoot : MonoBehaviour
                 lastPowerUp = null;
             }
 
-            if (clusterHit.gameObject.GetComponent<_PowerUpCollider>() != null )
+            if (clusterHit.gameObject.GetComponent<_PowerUpCollider>() != null)
             {
                 Debug.Log("hoveredParent");
                 lastPowerUp = clusterHit.gameObject;
@@ -258,8 +258,8 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(meltingTime);
         foreach (Transform child in cluster.transform)
         {
-            if(child.GetChild(0).GetComponent<CubeDestroy>() != null)
-            child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
+            if (child.GetChild(0).GetComponent<CubeDestroy>() != null)
+                child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
         }
         frozenCluster = null;
     }
@@ -268,7 +268,8 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(meltingTime);
         foreach (Transform child in cluster.transform)
         {
-            child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
+            if (child.GetChild(0).GetComponent<CubeDestroy>() != null)
+                child.GetChild(0).GetComponent<CubeDestroy>().freezeThisCluster = false;
         }
         secondFrozenCluster = null;
     }

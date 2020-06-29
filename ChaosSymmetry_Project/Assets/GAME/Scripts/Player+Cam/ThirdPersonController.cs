@@ -127,6 +127,7 @@ public class ThirdPersonController : MonoBehaviour
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
             StartCoroutine(DisableCollider());
+            UIManager.instance.jumped = true;
         }
     }
 

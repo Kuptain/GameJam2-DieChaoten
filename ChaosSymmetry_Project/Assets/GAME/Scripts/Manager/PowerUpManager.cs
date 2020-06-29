@@ -43,7 +43,7 @@ public class PowerUpManager : MonoBehaviour
     {
         GivePowerUps();
         LosePowerUp();
-        ShowCurrentPowerUps();
+        //ShowCurrentPowerUps();
         ShowConsumableCharges();
     }
 
