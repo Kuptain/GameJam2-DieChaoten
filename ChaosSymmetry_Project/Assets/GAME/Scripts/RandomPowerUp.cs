@@ -8,6 +8,12 @@ public class RandomPowerUp : MonoBehaviour
 {
     [HideInInspector] public bool isDropped = false;
     [SerializeField] TMP_Text textMeshPref;
+    [SerializeField] Sprite longerFreeze;
+    [SerializeField] Sprite secondClusterFreeze;
+    [SerializeField] Sprite longerFloat;
+    [SerializeField] Sprite higherJump;
+    [SerializeField] Sprite betterSloMo;
+
     TMP_Text textMesh;
 
     GameObject player;
@@ -28,8 +34,7 @@ public class RandomPowerUp : MonoBehaviour
 
         if (isDropped == false)
         {
-            thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
-
+            CheckDoubles();
         }
 
         player = ObjectManager.instance.player;
@@ -38,14 +43,26 @@ public class RandomPowerUp : MonoBehaviour
         textMesh.GetComponent<PowerUpText>().type = thisPowerUp;
         textMesh.GetComponent<PowerUpText>().consumable = consumable;
         textMesh.GetComponent<PowerUpText>().powerUp = this.gameObject;
-
-        textMesh.text = thisPowerUp;
+        CheckType();
     }
 
+    void CheckDoubles()
+    {
+        thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
+        for(int i = 0; i < PowerUpManager.instance.currentPowerUps.Count; i++)
+        {
+            if(thisPowerUp == PowerUpManager.instance.currentPowerUps[i])
+            {
+                CheckDoubles();
+                break;
+            }
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {
-        transform.parent.LookAt(player.transform.position);
+        transform.parent.LookAt(Camera.main.transform.position);
 
         if (isHovered)
         {
@@ -58,8 +75,41 @@ public class RandomPowerUp : MonoBehaviour
         }
     }
 
+    void CheckType()
+    {
+        if (thisPowerUp == "longerFloat")
+        {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = longerFloat;
+            textMesh.text = "Extra Float Fuel";
 
-    private void OnTriggerEnter(Collider collision)
+        }
+        if (thisPowerUp == "higherJump")
+        {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = higherJump;
+            textMesh.text = "Higher Jumps";
+
+        }
+        if (thisPowerUp == "secondClusterFreeze")
+        {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = secondClusterFreeze;
+            textMesh.text = "Freeze a second Cluster";
+
+        }
+        if (thisPowerUp == "betterSloMo")
+        {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = betterSloMo;
+            textMesh.text = "Stronger Slowmotion";
+
+        }
+        if (thisPowerUp == "longerFreeze")
+        {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = longerFreeze;
+            textMesh.text = "Freeze Cluster longer";
+
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.GetComponent<ThirdPersonController>() != null)
         {

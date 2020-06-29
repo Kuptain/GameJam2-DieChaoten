@@ -200,9 +200,9 @@ public class LevelGeneration : MonoBehaviour
         */
 
         int consumableChance = Random.Range(0, 100);
-        if(consumableChance >= 65)
+        if(consumableChance >= 0)
         {
-            Instantiate(consumable, checkPointOne.transform.position + new Vector3(1.5f, 0.9f, 0), Quaternion.identity);
+            Instantiate(consumable, checkPointOne.transform.position + new Vector3(2f, 0.9f, 0), Quaternion.identity);
         }
 
         //Swap Checkpoint 1 with 2
