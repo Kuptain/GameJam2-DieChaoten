@@ -112,7 +112,7 @@ public class ThirdPersonController : MonoBehaviour
             //camRotation.y = savedCamRot.y;
         }
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, cam.transform.eulerAngles.y, transform.rotation.z);        
+        transform.rotation = Quaternion.Euler(transform.rotation.x, Camera.main.transform.eulerAngles.y, transform.rotation.z);        
     }
     void Jump()
     {
