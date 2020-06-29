@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    [SerializeField] GameObject clusterObj;
+    GameObject clusterObj;
+    [SerializeField] GameObject clusterObjOne;
+    [SerializeField] GameObject clusterObjTwo;
+    [SerializeField] GameObject clusterObjThree;
     [HideInInspector] public GameObject checkPointOne;
     [HideInInspector] public GameObject checkPointTwo;
     [HideInInspector] public GameObject[] checkPoints;
@@ -251,6 +254,22 @@ public class LevelGeneration : MonoBehaviour
             */
             spawnPos.x += randomX;
             spawnPos.z += randomZ;
+
+            // spwan random Cluster
+            int chance = Random.Range(0, 30);
+            if(chance < 10)
+            {
+                clusterObj = clusterObjOne;
+            }
+            else if( chance >= 10 && chance < 20)
+            {
+                clusterObj = clusterObjTwo;
+            }
+            else if( chance >= 20)
+            {
+                clusterObj = clusterObjThree;
+            }
+
 
             //Quaternion spawnAngle = new Quaternion(Choose(), Choose(), Choose(), RandomAngle());
             Quaternion spawnAngle = clusterObj.transform.rotation;

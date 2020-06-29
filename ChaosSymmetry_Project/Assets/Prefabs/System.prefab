@@ -7023,7 +7023,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02fa182619fa0e4d8d837516e6e6ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clusterObj: {fileID: 6749092757673383585, guid: be28297ba4f68bf48aa73519e567cb49,
+  clusterObjOne: {fileID: 6749092757673383585, guid: 3e16822673cef1e46b97f5514ab5c39a,
+    type: 3}
+  clusterObjTwo: {fileID: 6749092757673383585, guid: 812b05b2fe4e259439b02c54b3eb5eae,
+    type: 3}
+  clusterObjThree: {fileID: 6749092757673383585, guid: c5e8e033a9b301e4aad4de61062e8ed3,
     type: 3}
   checkPointOne: {fileID: 0}
   checkPointTwo: {fileID: 0}
