@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [HideInInspector] public GameObject slomo, consumable, consumableCharges, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
     [HideInInspector] public GameObject mainMenuCanvas, pauseCanvas, ingameCanvas, gameOverCanvas;
+    [SerializeField] GameObject freezeBalken, freezeBalkenGoal;
     public GameObject uiPrefab;
     public GameObject freezeTime;
     public bool showMenu;
@@ -22,6 +23,9 @@ public class UIManager : MonoBehaviour
     GameObject player;
     GameObject cineMach;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
+
+    Vector3 balkenStartPos, balkenEndPos;
+    Quaternion balkenStartRot, balkenEndRot;
 
     private void Awake()
     {
@@ -68,6 +72,10 @@ public class UIManager : MonoBehaviour
         cineMach = GameObject.Find("CM FreeLook1");
         cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
         gameStarted = false;
+        balkenStartPos = freezeBalken.transform.position;
+        balkenStartRot = freezeBalken.transform.rotation;
+        balkenEndPos = freezeBalkenGoal.transform.position;
+        balkenEndRot = freezeBalkenGoal.transform.rotation;
 
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
         slowmoScreen = ingameCanvas.transform.GetChild(3).gameObject;
@@ -120,7 +128,7 @@ public class UIManager : MonoBehaviour
         {
             mainMenuCanvas.SetActive(false);
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked; 
+            Cursor.lockState = CursorLockMode.Locked;
             Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
             player.GetComponent<ThirdPersonController>().enabled = true;
             player.GetComponent<PlayerShoot>().enabled = true;
@@ -366,9 +374,9 @@ public class UIManager : MonoBehaviour
 
     void ShowFreezeTime()
     {
-        if (player.GetComponent<PlayerShoot>().frozenCluster != null || player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
+        if (player.GetComponent<PlayerShoot>().frozenCluster != null)
         {
-            freezeTime.SetActive(true);
+            freezeBalken.SetActive(true);
             //TimeSpan interval = TimeSpan.FromSeconds(currentFreezeTime);
             //string timeInterval = interval.ToString();
             //freezeTime.transform.GetChild(0).GetComponent<Text>().text = timeInterval;
@@ -397,32 +405,36 @@ public class UIManager : MonoBehaviour
             print("dddd");
             if (currentFreezeTime >= 0)
             {
-                freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
+                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
+                freezeBalken.transform.position = Vector3.Slerp(freezeBalken.transform.position, balkenEndPos, currentFreezeTime);
+                freezeBalken.transform.rotation = Quaternion.Lerp(freezeBalken.transform.rotation, balkenEndRot, currentFreezeTime);
                 currentFreezeTime -= Time.deltaTime;
             }
             else
             {
-                freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
-
-            }
-
-            if (secondCurrentFreezeTime >= 0 && player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
-            {
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
-                secondCurrentFreezeTime -= Time.deltaTime;
-            }
-            else
-            {
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
-
+                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
+                freezeBalken.SetActive(false); 
+                currentFreezeTime = freezetimer;
+                secondCurrentFreezeTime = freezetimer;
             }
         }
-        else
+       /* else
         {
             freezeTime.SetActive(false);
             currentFreezeTime = freezetimer;
             secondCurrentFreezeTime = freezetimer;
         }
+
+        if (secondCurrentFreezeTime >= 0 && player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
+        {
+            freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
+            secondCurrentFreezeTime -= Time.deltaTime;
+        }
+        else
+        {
+            freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
+
+        }  */      
     }
 
     void ToggleTutorial()
