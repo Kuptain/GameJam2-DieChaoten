@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PlayerBottomCollider : MonoBehaviour
 {
-
     void Start()
-    {        
+    {
     }
 
     void Update()
-    {        
+    {
     }
     private void FixedUpdate()
-    { 
+    {
     }
 
     /*
@@ -72,7 +71,6 @@ public class PlayerBottomCollider : MonoBehaviour
                 }
             }
         }*/
-        
-    }
 
+    }
 }

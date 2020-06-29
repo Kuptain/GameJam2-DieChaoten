@@ -20,7 +20,7 @@ public class SphereTerrainCheck : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<_IsTerrain>() != null)
+        if (other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<_IsTerrain>() != null)
         {
             transform.parent.GetComponentInParent<CameraController>().colliding = true;
             GetComponent<CapsuleCollider>().radius = 5f;
@@ -41,7 +41,7 @@ public class SphereTerrainCheck : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (GetComponent<Collider>().GetType() == typeof(SphereCollider) && other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<_IsTerrain>() != null)
+        if (other.gameObject.CompareTag("terrain") && other.gameObject.GetComponent<_IsTerrain>() != null)
         {
             transform.parent.GetComponentInParent<CameraController>().colliding = false;
             GetComponent<CapsuleCollider>().radius = 0.5f;

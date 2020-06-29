@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResetJump : MonoBehaviour
 {
+    public bool jumped;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,16 @@ public class ResetJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (jumped)
+        {
+            AudioManager.instance.landing.Play();
+            jumped = false;
+        }
     }
 
     private void OnTriggerStay(Collider other)

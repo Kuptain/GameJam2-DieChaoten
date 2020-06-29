@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class UIManager : MonoBehaviour
     public bool showMenu;
 
     Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
-    public bool paused;
+    public bool paused, gameStarted;
 
     PowerUpManager powerUpManager;
     GameObject player;
+    GameObject cineMach;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
     private void Awake()
@@ -45,6 +47,10 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("showMenu", 1);
         }
+        else
+        {
+            PlayerPrefs.SetInt("showMenu", 0);
+        }
 
         mainMenuCanvas = uiPrefab.transform.GetChild(1).gameObject;
         pauseCanvas = uiPrefab.transform.GetChild(2).gameObject;
@@ -59,6 +65,9 @@ public class UIManager : MonoBehaviour
         consDesc = pauseCanvas.transform.GetChild(8).GetComponent<Text>();
 
         powerUpManager = PowerUpManager.instance;
+        cineMach = GameObject.Find("CM FreeLook1");
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
+        gameStarted = false;
 
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
         slowmoScreen = ingameCanvas.transform.GetChild(3).gameObject;
@@ -105,13 +114,26 @@ public class UIManager : MonoBehaviour
             Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
             player.GetComponent<PlayerShoot>().enabled = false;
             Cursor.visible = true;
+            mainMenuCanvas.SetActive(true);
         }
         else
         {
             mainMenuCanvas.SetActive(false);
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked; 
+            Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
+            player.GetComponent<ThirdPersonController>().enabled = true;
+            player.GetComponent<PlayerShoot>().enabled = true;
         }
+        Time.timeScale = 1;
+        pauseCanvas.SetActive(false);
+        paused = false;
+        //ingameCanvas.SetActive(true);
+        //Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
+        //player.GetComponent<ThirdPersonController>().enabled = true;
+        //player.GetComponent<PlayerShoot>().enabled = true;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -133,6 +155,7 @@ public class UIManager : MonoBehaviour
     {
         mainMenuCanvas.SetActive(false);
         Cursor.visible = false;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
@@ -141,6 +164,7 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 0);
         paused = false;
+        gameStarted = true;
     }
 
     void PauseGame()
@@ -149,6 +173,7 @@ public class UIManager : MonoBehaviour
         paused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
         ingameCanvas.SetActive(false);
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
@@ -175,6 +200,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         pauseCanvas.SetActive(false);
         paused = false;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         ingameCanvas.SetActive(true);
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
@@ -287,34 +313,38 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         PlayerPrefs.SetInt("gameMode", 1);
         player.GetComponent<PlayerShoot>().enabled = true;
+        gameStarted = true;
         paused = false;
     }
 
     void OpenMainMenu()
     {
+        /* PlayerPrefs.SetInt("levelRestarted", 0);
+         mainMenuCanvas.SetActive(true);
+         gameOverCanvas.SetActive(false);
+         pauseCanvas.SetActive(false);
+         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
+         player.GetComponent<ThirdPersonController>().enabled = false;
+         player.GetComponent<PlayerShoot>().enabled = false;
+         Cursor.visible = true;
+         Cursor.lockState = CursorLockMode.None;
+         // 1 is on, 0 is off
+         if (PlayerPrefs.GetInt("tutorial") == 0)
+         {
+             mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
+         }
+         else if (PlayerPrefs.GetInt("tutorial") == 1)
+         {
+             mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
+         }*/
         PlayerPrefs.SetInt("levelRestarted", 0);
-        mainMenuCanvas.SetActive(true);
-        gameOverCanvas.SetActive(false);
-        pauseCanvas.SetActive(false);
-        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
-        player.GetComponent<ThirdPersonController>().enabled = false;
-        player.GetComponent<PlayerShoot>().enabled = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        // 1 is on, 0 is off
-        if (PlayerPrefs.GetInt("tutorial") == 0)
-        {
-            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
-        }
-        else if (PlayerPrefs.GetInt("tutorial") == 1)
-        {
-            mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void ShowSlomo()

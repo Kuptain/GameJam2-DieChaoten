@@ -24,6 +24,7 @@ public class ThirdPersonController : MonoBehaviour
     PlayerManager pm;
     CamCheckSideCollision camRightCollCheck;
     CamCheckLeftCollision camLeftCollCheck;
+    ResetJump jumpSoundScript;
 
     Vector3 lastMousePosition;
     //public List<GameObject> currentPlatforms = new List<GameObject>();
@@ -31,6 +32,11 @@ public class ThirdPersonController : MonoBehaviour
     // gamemode 0 is iwth lives, 1 is endless
     private Quaternion camRotation, savedCamRot;
 
+    public GameObject ankor;
+
+    private void Awake()
+    {
+    }
     void Start()
     {
         pm = PlayerManager.instance.GetComponent<PlayerManager>();
@@ -38,9 +44,10 @@ public class ThirdPersonController : MonoBehaviour
         camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>(); 
         camLeftCollCheck = cam.transform.parent.GetChild(2).GetComponent<CamCheckLeftCollision>();
         rigid = GetComponent<Rigidbody>();
-
+        jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
-        
+        ankor = transform.GetChild(0).gameObject;
+
     }
 
     void Update()
@@ -76,7 +83,12 @@ public class ThirdPersonController : MonoBehaviour
                 }
             }
         }
-      
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumpSoundScript.jumped = true;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -105,7 +117,7 @@ public class ThirdPersonController : MonoBehaviour
             //camRotation.y = savedCamRot.y;
         }
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);        
+        transform.rotation = Quaternion.Euler(transform.rotation.x, Camera.main.transform.eulerAngles.y, transform.rotation.z);        
     }
     void Jump()
     {
@@ -195,7 +207,28 @@ public class ThirdPersonController : MonoBehaviour
         if (other.gameObject.GetComponent<TerrainCollider>() != null && !isSafe)
         {
             isSafe = true;
-            pm.Respawn();
+            if (PlayerPrefs.GetInt("gameMode", 0) == 0)
+            {
+                if (pm.lives > 0)
+                {
+                    pm.Respawn();
+                    pm.lives -= 1;
+                }
+                else
+                {
+                    UIManager.instance.ingameCanvas.SetActive(false);
+                    UIManager.instance.pauseCanvas.SetActive(false);
+                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().enabled = false;
+                    ObjectManager.instance.player.GetComponent<PlayerShoot>().enabled = false;
+                    UIManager.instance.gameOverCanvas.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+            }
+            else
+            {
+                pm.Respawn();
+            }
 
         }
     }
