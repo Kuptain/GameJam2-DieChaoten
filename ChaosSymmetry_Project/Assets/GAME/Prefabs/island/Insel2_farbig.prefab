@@ -251,9 +251,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3098289679430252020}
+  - component: {fileID: 2532190135400596018}
+  - component: {fileID: 7185081482129317221}
   m_Layer: 0
-  m_Name: Insel2
-  m_TagString: Untagged
+  m_Name: Insel2_farbig
+  m_TagString: checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,6 +294,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -50.514004, z: 0}
+--- !u!135 &2532190135400596018
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428714124352597838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.38
+  m_Center: {x: -0.03, y: 3.09, z: 0.09}
+--- !u!114 &7185081482129317221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428714124352597838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc370f3d2dfa44d8837ff65432952e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStart: 0
+  canBuild: 0
 --- !u!1 &4117097537232549991
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +333,7 @@ GameObject:
   - component: {fileID: 4522248001887420731}
   - component: {fileID: 5014783838137788528}
   - component: {fileID: 3275787574488128706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: island
   m_TagString: terrain
   m_Icon: {fileID: 0}
@@ -723,7 +752,7 @@ GameObject:
   - component: {fileID: 8761582097694937216}
   - component: {fileID: 6930021399638375126}
   - component: {fileID: 3275787574339020429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: boden
   m_TagString: terrain
   m_Icon: {fileID: 0}
