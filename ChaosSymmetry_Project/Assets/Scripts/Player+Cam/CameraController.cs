@@ -125,7 +125,7 @@ public class CameraController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {   
 
-
+        /*
         if ( other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
             if (other.GetComponent<MeshRenderer>() != null)
@@ -175,11 +175,12 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     private void OnTriggerExit(Collider other)
     {
-       
+       /*
         if (other.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.clusterHasShader)
         {
             if (other.GetComponent<MeshRenderer>() != null)
@@ -229,6 +230,7 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+        */
     }
 
 }

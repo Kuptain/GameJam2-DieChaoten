@@ -31,14 +31,14 @@ public class PlayerShoot : MonoBehaviour
     GameObject spawnedCube;
     float spawnDistance = 12;
 
-
+    float rayForwardMultiply = 7;
     void ShootRay()
     {
 
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * rayForwardMultiply, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -79,7 +79,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
+            Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * rayForwardMultiply, cam.gameObject.transform.forward);
 
 
             if (Physics.Raycast(ray, out hit))
@@ -179,7 +179,7 @@ public class PlayerShoot : MonoBehaviour
     void HoverCursor()
     {
         RaycastHit hit;
-        Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * 4, cam.gameObject.transform.forward);
+        Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * rayForwardMultiply, cam.gameObject.transform.forward);
 
 
         if (Physics.Raycast(ray, out hit))
