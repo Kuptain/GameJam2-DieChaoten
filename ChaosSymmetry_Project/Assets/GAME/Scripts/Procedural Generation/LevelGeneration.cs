@@ -8,6 +8,11 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] GameObject clusterObjOne;
     [SerializeField] GameObject clusterObjTwo;
     [SerializeField] GameObject clusterObjThree;
+
+    [SerializeField] GameObject Island1;
+    [SerializeField] GameObject Island2;
+    [SerializeField] GameObject Island3;
+
     [HideInInspector] public GameObject checkPointOne;
     [HideInInspector] public GameObject checkPointTwo;
     [HideInInspector] public GameObject[] checkPoints;
@@ -62,10 +67,12 @@ public class LevelGeneration : MonoBehaviour
 
     void Start()
     {
-        checkPoints = GameObject.FindGameObjectsWithTag("checkpoint");
+        //checkPoints = GameObject.FindGameObjectsWithTag("checkpoint");
+        checkPointOne = GameObject.FindGameObjectWithTag("checkpoint");
+
         powerUp = ObjectManager.instance.powerUp;
         consumable = ObjectManager.instance.consumable;
-
+        /*
         if (checkPoints[0].GetComponent<CheckPointBehavior>().isStart)
         {
             checkPointOne = checkPoints[0];
@@ -80,16 +87,17 @@ public class LevelGeneration : MonoBehaviour
 
 
         }
-        else
+        */
+        if (checkPointTwo != null)
         {
-            Debug.LogError("No Checkpoint");
+            Destroy(checkPointTwo);
         }
-                      
-  
-        checkPointTwo.transform.position = new Vector3(checkPointOne.transform.position.x + GenerateVariation(25f, 55f),
-                                                       checkPointOne.transform.position.y + checkPointDistanceY,
-                                                       checkPointOne.transform.position.z + GenerateVariation(25f, 55f));
 
+        Vector3 checkpointTransform = new Vector3(checkPointOne.transform.position.x + GenerateVariation(25f, 55f),
+                                                       checkPointOne.transform.position.y + checkPointDistanceY,
+                                                       checkPointOne.transform.position.z + GenerateVariation(25f, 55f));        
+
+        checkPointTwo = Instantiate(RandomIsland(), checkpointTransform, Quaternion.identity) as GameObject;
         Instantiate(powerUp, checkPointTwo.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
 
 
@@ -103,6 +111,21 @@ public class LevelGeneration : MonoBehaviour
 
     }
 
+    GameObject RandomIsland()
+    {
+        GameObject island = Island1;
+
+        int random = Random.Range(0, 3);
+        if (random == 1)
+        {
+            island = Island2;
+        }
+        else if (random == 2)
+        {
+            island = Island3;
+        }
+        return island;
+    }
     void Update()
     {
       
@@ -159,11 +182,22 @@ public class LevelGeneration : MonoBehaviour
         }
 
         //Set the lower checkpoint higher
+        Vector3 checkpointTransform = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
+                                                       checkPointTwo.transform.position.y + checkPointDistanceY,
+                                                       checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
+        if (checkPointOne != null)
+        {
+            Destroy(checkPointOne);
+        }
+
+        checkPointOne = Instantiate(RandomIsland(), checkpointTransform, Quaternion.identity) as GameObject;
+        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
+
+        /*
         checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointTwo.transform.position.y + checkPointDistanceY,
                                                        checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
-
-        Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
+        */
 
         int consumableChance = Random.Range(0, 100);
         if(consumableChance >= 65)
