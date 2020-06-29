@@ -32,6 +32,11 @@ public class ThirdPersonController : MonoBehaviour
     // gamemode 0 is iwth lives, 1 is endless
     private Quaternion camRotation, savedCamRot;
 
+    public GameObject ankor;
+
+    private void Awake()
+    {
+    }
     void Start()
     {
         pm = PlayerManager.instance.GetComponent<PlayerManager>();
@@ -41,7 +46,8 @@ public class ThirdPersonController : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
-        
+        ankor = transform.GetChild(0).gameObject;
+
     }
 
     void Update()
@@ -106,7 +112,7 @@ public class ThirdPersonController : MonoBehaviour
             //camRotation.y = savedCamRot.y;
         }
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, camRotation.y, transform.rotation.z);        
+        transform.rotation = Quaternion.Euler(transform.rotation.x, cam.transform.eulerAngles.y, transform.rotation.z);        
     }
     void Jump()
     {
