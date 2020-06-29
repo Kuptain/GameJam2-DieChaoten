@@ -83,7 +83,12 @@ public class ThirdPersonController : MonoBehaviour
                 }
             }
         }
-      
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumpSoundScript.jumped = true;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -122,7 +127,6 @@ public class ThirdPersonController : MonoBehaviour
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
             StartCoroutine(DisableCollider());
-            jumpSoundScript.jumped = true;
         }
     }
 

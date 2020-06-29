@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     PowerUpManager powerUpManager;
     GameObject player;
+    GameObject cineMach;
     [HideInInspector] public float freezetimer, currentFreezeTime, secondCurrentFreezeTime;
 
     private void Awake()
@@ -63,6 +65,8 @@ public class UIManager : MonoBehaviour
         consDesc = pauseCanvas.transform.GetChild(8).GetComponent<Text>();
 
         powerUpManager = PowerUpManager.instance;
+        cineMach = GameObject.Find("CM FreeLook1");
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
         gameStarted = false;
 
         slomo = ingameCanvas.transform.GetChild(1).GetChild(2).gameObject;
@@ -151,6 +155,7 @@ public class UIManager : MonoBehaviour
     {
         mainMenuCanvas.SetActive(false);
         Cursor.visible = false;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
@@ -168,6 +173,7 @@ public class UIManager : MonoBehaviour
         paused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
         ingameCanvas.SetActive(false);
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
         player.GetComponent<ThirdPersonController>().enabled = false;
@@ -194,6 +200,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         pauseCanvas.SetActive(false);
         paused = false;
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         ingameCanvas.SetActive(true);
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
@@ -306,6 +313,7 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;

@@ -15,7 +15,7 @@ public class ResetJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(transform.parent.GetComponent<Rigidbody>().velocity.y);
+
     }
 
     private void OnTriggerEnter(Collider other)
