@@ -7961,6 +7961,9 @@ MonoBehaviour:
     type: 3}
   clusterObjThree: {fileID: 6749092757673383585, guid: c5e8e033a9b301e4aad4de61062e8ed3,
     type: 3}
+  Island1: {fileID: 0}
+  Island2: {fileID: 0}
+  Island3: {fileID: 0}
   checkPointOne: {fileID: 0}
   checkPointTwo: {fileID: 0}
   checkPoints: []
