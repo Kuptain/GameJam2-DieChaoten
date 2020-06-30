@@ -119,6 +119,7 @@ public class ThirdPersonController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(transform.rotation.x, Camera.main.transform.eulerAngles.y, transform.rotation.z);        
     }
+
     void Jump()
     {
         if (Input.GetKey(KeyCode.Space) && pm.isGrounded)
