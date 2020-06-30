@@ -112,8 +112,7 @@ public class ThirdPersonController : MonoBehaviour
     private void Move()
     {
         rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
-        
-        if (Input.GetAxis("Vertical") != 0|| Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxis("Vertical") != 0 ||Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("walking", true);
         }
@@ -122,6 +121,58 @@ public class ThirdPersonController : MonoBehaviour
             anim.SetBool("walking", false);
 
         }
+        float lerpValue = 0.2f;
+        //Forwards
+        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0)), lerpValue);
+
+        }
+        //Forward Right
+        if ((Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") > 0))
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 45, 0)), lerpValue);
+
+        }
+        //Forward Left
+        if ((Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") < 0))
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 315, 0)), lerpValue);
+
+        }
+
+        //Backwards
+        if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 180, 0)), lerpValue);
+
+        }
+        //Backwards Right
+        if ((Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") > 0))
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 135, 0)), lerpValue);
+
+        }
+        //Backwards Left
+        if ((Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") < 0))
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 225, 0)), lerpValue);
+
+        }
+
+        //Right
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") > 0)
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 90, 0)), lerpValue);
+
+        }
+        //Left
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") < 0)
+        {
+            character.transform.localRotation = Quaternion.Lerp(character.transform.localRotation, Quaternion.Euler(new Vector3(0, 270, 0)), lerpValue);
+
+        }
+
     }
 
     private void RotatePlayer()
