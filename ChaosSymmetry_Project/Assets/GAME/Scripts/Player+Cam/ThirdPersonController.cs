@@ -33,6 +33,8 @@ public class ThirdPersonController : MonoBehaviour
     private Quaternion camRotation, savedCamRot;
 
     public GameObject ankor;
+    GameObject character;
+    Animator anim;
 
     private void Awake()
     {
@@ -47,6 +49,15 @@ public class ThirdPersonController : MonoBehaviour
         jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
         ankor = transform.GetChild(0).gameObject;
+        
+        foreach(Transform child in transform)
+        {
+            if (child.gameObject.name == "Character")
+            {
+                character = child.gameObject;
+                anim = character.GetComponent<Animator>();
+            }
+        }
 
     }
 
@@ -101,6 +112,16 @@ public class ThirdPersonController : MonoBehaviour
     private void Move()
     {
         rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
+        
+        if (Input.GetAxis("Vertical") != 0|| Input.GetAxis("Horizontal") != 0)
+        {
+            anim.SetBool("walking", true);
+        }
+        else
+        {
+            anim.SetBool("walking", false);
+
+        }
     }
 
     private void RotatePlayer()
