@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 6406198188706083469}
   m_Layer: 8
   m_Name: MainCube
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 1350706314569248526}
   m_Layer: 8
   m_Name: cube2
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

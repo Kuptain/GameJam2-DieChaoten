@@ -36,6 +36,7 @@ public class ResetJump : MonoBehaviour
                 //transform.parent.GetComponent<FirstPersonController>().isGrounded = true;
                 PlayerManager.instance.isGrounded = true;
                 PlayerManager.instance.floatFuel = PlayerManager.instance.maxFloatFuel;
+                ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlayLand();
 
             }
 
