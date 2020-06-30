@@ -11,13 +11,18 @@ public class PlayerShoot : MonoBehaviour
     //[HideInInspector] 
     public GameObject currentCluster, frozenCluster, secondFrozenCluster;
     public float meltingTime = 5;
-    public int cubeSpawnCharges = 0;
+    public int cubeSpawnCharges = 0; 
+    GameObject spawnedCube;
+    float spawnDistance = 12;
+
+    float rayForwardMultiply = 7;
 
     // Start is called before the first frame update
     void Start()
     {
         cubeManager = CubeManager.instance;
         tm = TutorialManager.instance;
+        spawnDistance = 30;
 
     }
 
@@ -28,10 +33,6 @@ public class PlayerShoot : MonoBehaviour
         HoverCursor();
     }
 
-    GameObject spawnedCube;
-    float spawnDistance = 12;
-
-    float rayForwardMultiply = 7;
     void ShootRay()
     {
 
