@@ -9,7 +9,17 @@ public class AudioManager : MonoBehaviour
     public AudioSource slomoOn;
     public AudioSource slomoOff;
     public AudioSource landing;
+    public AudioSource clusterBreak;
+    public AudioSource clusterFreeze;
+    public AudioSource checkpoint;
     public GameObject soundParent;
+
+    public AudioClip breakOne;
+    public AudioClip breakTwo;
+    public AudioClip breakThree; 
+    public AudioClip freezeOne;
+    public AudioClip freezeTwo;
+    public AudioClip freezeThree;
 
     private void Awake()
     {

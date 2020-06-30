@@ -48,6 +48,20 @@ public class PlayerShoot : MonoBehaviour
                 {
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
 
+                    int chance = Random.Range(1, 3);
+                    if(chance == 1)
+                    {
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakOne, 1);
+                    }
+                    else if (chance == 2)
+                    {
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakTwo, 1);
+                    }
+                    else if (chance == 3)
+                    {
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakThree, 1);
+                    }
+
                     if (tm.currentHint == "left")
                     {
                         tm.ChangeType("slow");
@@ -93,6 +107,20 @@ public class PlayerShoot : MonoBehaviour
 
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster == null)
                 {
+                    int chance = Random.Range(1, 3);
+                    if (chance == 1)
+                    {
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 1);
+                    }
+                    else if (chance == 2)
+                    {
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 1);
+                    }
+                    else if (chance == 3)
+                    {
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 1);
+                    }
+
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                     foreach (Transform child in frozenCluster.transform)
                     {
@@ -112,6 +140,20 @@ public class PlayerShoot : MonoBehaviour
                 {
                     if (PowerUpManager.instance.currentPowerUp == "secondClusterFreeze" && secondFrozenCluster == null)
                     {
+                        int chance = Random.Range(1, 3);
+                        if (chance == 1)
+                        {
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 1);
+                        }
+                        else if (chance == 2)
+                        {
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 1);
+                        }
+                        else if (chance == 3)
+                        {
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 1);
+                        }
+
                         secondFrozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                         foreach (Transform child in secondFrozenCluster.transform)
                         {

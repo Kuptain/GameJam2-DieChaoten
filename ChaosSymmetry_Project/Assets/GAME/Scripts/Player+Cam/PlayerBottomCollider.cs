@@ -46,6 +46,7 @@ public class PlayerBottomCollider : MonoBehaviour
             if (other.transform.parent.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
             {
                 LevelGeneration.instance.MoveCheckpoint();
+                AudioManager.instance.checkpoint.Play();
                 Debug.Log("Move Checkpoint");
             }
 
