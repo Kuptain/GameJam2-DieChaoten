@@ -18,7 +18,7 @@ public class CubeManager : MonoBehaviour
     public float currentSlowmo = 1;
 
     public float maxGravity = 0.1f; //gravityChange can not be higher than this
-    public float sendBackManual = 0.02f;
+    public float sendBackManual = 6f;
     public float sendBackAuto = 0.001f;
     public float returnDelay = 3f;
     public float orbitMaxRotation = 45;
@@ -49,6 +49,7 @@ public class CubeManager : MonoBehaviour
         player = ObjectManager.instance.player;
         slowmoValue = 0.25f;
         audioManager = AudioManager.instance;
+        sendBackManual = 0.08f;
     }
 
     public void ChangeToA()
