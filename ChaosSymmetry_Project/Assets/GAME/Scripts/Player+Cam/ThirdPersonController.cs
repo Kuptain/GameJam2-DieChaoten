@@ -175,6 +175,15 @@ public class ThirdPersonController : MonoBehaviour
 
     }
 
+    public void PlaySlowmo()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            anim.SetTrigger("slowmoTrigger");
+
+        }
+
+    }
     private void RotatePlayer()
     {
         savedCamRot.y = camRotation.y;

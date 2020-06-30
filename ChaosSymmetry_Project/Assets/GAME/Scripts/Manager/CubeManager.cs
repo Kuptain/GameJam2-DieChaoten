@@ -81,6 +81,8 @@ public class CubeManager : MonoBehaviour
                 {
                     slowMode = true;
                     AudioManager.instance.slomoOn.Play();
+                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlaySlowmo();
+
                     if (TutorialManager.instance.currentHint == "slow")
                     {
                         TutorialManager.instance.ChangeType("right");
@@ -91,6 +93,7 @@ public class CubeManager : MonoBehaviour
                 {
                     slowMode = false;
                     AudioManager.instance.slomoOff.Play();
+                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlaySlowmo();
 
                     if (TutorialManager.instance.currentHint == "slowDisable")
                     {
