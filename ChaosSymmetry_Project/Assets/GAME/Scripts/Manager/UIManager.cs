@@ -118,6 +118,7 @@ public class UIManager : MonoBehaviour
         pauseCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         pauseCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
         pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
 
         // 1 is on, 0 is off
         if (PlayerPrefs.GetInt("tutorial", 0) == 0)
@@ -230,7 +231,7 @@ public class UIManager : MonoBehaviour
         paused = false;
         cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         ingameCanvas.SetActive(true);
-        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
+        //Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
