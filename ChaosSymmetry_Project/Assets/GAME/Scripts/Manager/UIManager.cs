@@ -447,7 +447,6 @@ public class UIManager : MonoBehaviour
             fuelbalkenBG.gameObject.SetActive(true);
             if (PlayerManager.instance.floatFuel > 0 && fuelSave != PlayerManager.instance.floatFuel)
             {
-                print("fffff");
                 fuelbalkenTime = Time.deltaTime / (PlayerManager.instance.maxFloatFuel / 70);
                 fuelbalken.transform.position = Vector3.Slerp(fuelbalken.transform.position, fuelbalkenEndPos, fuelbalkenTime);
                 fuelbalken.transform.rotation = Quaternion.Lerp(fuelbalken.transform.rotation, fuelbalkenEndRot, fuelbalkenTime);
@@ -745,13 +744,13 @@ public class UIManager : MonoBehaviour
     {
         if (CubeManager.instance.slowMode == true)
         {
-            slomo.SetActive(true);
+            //slomo.SetActive(true);
             slowmoScreen.SetActive(true);
 
         }
         else
         {
-            slomo.SetActive(false);
+            //slomo.SetActive(false);
             slowmoScreen.SetActive(false);
         }
 
