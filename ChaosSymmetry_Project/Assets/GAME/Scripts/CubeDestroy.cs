@@ -107,6 +107,48 @@ public class CubeDestroy : MonoBehaviour
 
         }
     }
+    private void FixedUpdate()
+    {
+        //Send Cubes back to the roots
+        {
+            if (cm.testMode == 1)
+            {
+                sendingBack = true;
+            }
+
+            if (sendingBack)
+            {
+                SendBack();
+            }
+        }
+
+
+        //Add own velocity and gravity - Push Cubes away
+        {
+            moveVelocity *= 0.99f;
+
+            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThisCluster == false && bubbleFreeze == false)
+            {
+
+                //Change velocity
+                if (moveVelocity.y > -maxGravity)
+                {
+                    moveVelocity.y -= gravityValue * Time.deltaTime * cm.currentSlowmo * gravityAutoAdjust;
+
+                }
+                else if (moveVelocity.y <= -maxGravity)
+                {
+                    moveVelocity.y = -maxGravity * gravityAutoAdjust;
+                }
+
+            }
+
+            transform.position += moveVelocity * finalSpeed * Time.deltaTime * cm.currentSlowmo;
+
+
+
+        }
+    }
     void Update()
     {
         InputPushNew();
@@ -139,33 +181,8 @@ public class CubeDestroy : MonoBehaviour
             ReturnTimer();
         }
 
-        //Add own velocity and gravity - Push Cubes away
-        {
-            moveVelocity *= 0.99f;
 
-            if (colliding == false && (pushMode == 1 || pushMode == 2) && freezeThisCluster == false && bubbleFreeze == false)
-            {
-
-                //Change velocity
-                if (moveVelocity.y > -maxGravity)
-                {
-                    moveVelocity.y -= gravityValue * Time.deltaTime * cm.currentSlowmo * gravityAutoAdjust;
-
-                }
-                else if (moveVelocity.y <= -maxGravity)
-                {
-                    moveVelocity.y = -maxGravity * gravityAutoAdjust;
-                }
-
-            }
-
-            transform.position += moveVelocity * finalSpeed * Time.deltaTime * cm.currentSlowmo;
-
-          
-
-        }
-
-
+        /*
         //Check ground below for Collision/Raycast
         {
             RaycastHit hit;
@@ -191,20 +208,10 @@ public class CubeDestroy : MonoBehaviour
 
             }
         }
+        */
 
 
-        //Send Cubes back to the roots
-        {
-            if (cm.testMode == 1)
-            {
-                sendingBack = true;
-            }
-
-            if (sendingBack)
-            {
-                SendBack();
-            }
-        }
+     
                      
     }
 

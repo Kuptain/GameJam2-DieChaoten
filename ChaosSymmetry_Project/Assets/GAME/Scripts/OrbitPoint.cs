@@ -43,52 +43,8 @@ public class OrbitPoint : MonoBehaviour
 
         //StartCoroutine(ChangeRotationValue());
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-
-        //randomize Rotation
-        {
-            /*
-            float maxRotationAdjust = 1;
-            //x
-            randomRotate.x += Random.Range(-maxRotationAdjust, maxRotationAdjust);
-            if (randomRotate.x > maxRotation)
-            {
-                randomRotate.x = maxRotation;
-
-            }
-            if (randomRotate.x < -maxRotation)
-            {
-                randomRotate.x = -maxRotation;
-            }
-            //y
-            randomRotate.y += Random.Range(-maxRotationAdjust, maxRotationAdjust);
-            if (randomRotate.y > maxRotation)
-            {
-                randomRotate.y = maxRotation;
-
-            }
-            if (randomRotate.y < -maxRotation)
-            {
-                randomRotate.y = -maxRotation;
-            }
-            //z
-            randomRotate.z += Random.Range(-maxRotationAdjust, maxRotationAdjust);
-            if (randomRotate.z > maxRotation)
-            {
-                randomRotate.z = maxRotation;
-
-            }
-            if (randomRotate.z < -maxRotation)
-            {
-                randomRotate.z = -maxRotation;
-            }
-            */
-
-        }
-
         if (isCluster)
         {
             if (CheckChildrenFreeze())
@@ -110,9 +66,17 @@ public class OrbitPoint : MonoBehaviour
                 {
                     canRotate = false;
                 }
-            }         
+            }
 
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
+        
+
+      
     }
 
     bool CheckChildrenFreeze()
