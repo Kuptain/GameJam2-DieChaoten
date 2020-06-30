@@ -115,7 +115,7 @@ public class RandomPowerUp : MonoBehaviour
         {
             if (PowerUpManager.instance.currentPowerUps.Count < 3)
             {
-                PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);
+                PowerUpManager.instance.currentPowerUps.Add(thisPowerUp);                AudioManager.instance.powerUp.PlayOneShot(AudioManager.instance.pickUp, 1);
                 if (TutorialManager.instance.currentHint == "")
                 {
                     TutorialManager.instance.ChangeType("power");

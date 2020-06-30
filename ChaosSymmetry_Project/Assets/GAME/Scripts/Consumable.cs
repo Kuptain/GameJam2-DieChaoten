@@ -49,7 +49,8 @@ public class Consumable : MonoBehaviour
         if (collision.gameObject.GetComponent<ThirdPersonController>() != null)
         {
             //PowerUpManager.instance.currentConsumable = thisPowerUp;
-            player.GetComponent<PlayerShoot>().cubeSpawnCharges += 1;
+            player.GetComponent<PlayerShoot>().cubeSpawnCharges += 1; 
+            AudioManager.instance.powerUp.PlayOneShot(AudioManager.instance.pickUp, 1);
             //UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
             Destroy(this.gameObject.transform.parent.gameObject);
 

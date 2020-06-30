@@ -124,9 +124,9 @@ public class PowerUpManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-
+                AudioManager.instance.powerUp.PlayOneShot(AudioManager.instance.putDown, 1);
                 GameObject droppedPowerup1 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
-                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                                                                                         ObjectManager.instance.player.transform.forward * 2 + Vector3.up, Quaternion.identity) as GameObject;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup1.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[0];
 
@@ -158,8 +158,10 @@ public class PowerUpManager : MonoBehaviour
             }
             else if (currentPowerUps.Count >= 2 && Input.GetKeyDown(KeyCode.Alpha2))
             {
+                AudioManager.instance.powerUp.PlayOneShot(AudioManager.instance.putDown, 1);
+
                 GameObject droppedPowerup2 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
-                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                                                                                         ObjectManager.instance.player.transform.forward * 2 + Vector3.up, Quaternion.identity) as GameObject;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup2.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[1];
                 //UIManager.instance.currentPowerupTwo.GetComponent<Text>().text = "None";
@@ -190,8 +192,10 @@ public class PowerUpManager : MonoBehaviour
             }
             else if (currentPowerUps.Count == 3 && Input.GetKeyDown(KeyCode.Alpha3))
             {
+                AudioManager.instance.powerUp.PlayOneShot(AudioManager.instance.putDown, 1);
+
                 GameObject droppedPowerup3 = Instantiate(ObjectManager.instance.powerUp, ObjectManager.instance.player.transform.position +
-                                                                                         ObjectManager.instance.player.transform.forward * 2, Quaternion.identity) as GameObject;
+                                                                                         ObjectManager.instance.player.transform.forward * 2 + Vector3.up, Quaternion.identity) as GameObject;
                 droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().isDropped = true;
                 droppedPowerup3.transform.GetChild(0).GetComponent<RandomPowerUp>().thisPowerUp = currentPowerUps[2];
                 //UIManager.instance.currentPowerupThree.GetComponent<Text>().text = "None";
