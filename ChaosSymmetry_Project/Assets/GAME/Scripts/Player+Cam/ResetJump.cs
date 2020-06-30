@@ -29,7 +29,7 @@ public class ResetJump : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("terrain"))
+        if (other.CompareTag("terrain") && PlayerManager.instance.isGrounded == false)
         {
             if (transform.parent.GetComponent<Rigidbody>().velocity.y <= 0)
             {
