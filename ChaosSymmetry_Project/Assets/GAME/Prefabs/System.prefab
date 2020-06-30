@@ -10372,9 +10372,9 @@ MonoBehaviour:
     type: 3}
   clusterObjThree: {fileID: 6749092757673383585, guid: c5e8e033a9b301e4aad4de61062e8ed3,
     type: 3}
-  Island1: {fileID: 0}
-  Island2: {fileID: 0}
-  Island3: {fileID: 0}
+  Island1: {fileID: 5909257247358742116, guid: 6864acd713b3b6d4fbc312ab45f6abc2, type: 3}
+  Island2: {fileID: 2428714124352597838, guid: bc514c2012b054644b23844eb88b54b7, type: 3}
+  Island3: {fileID: 603977762238854568, guid: f83d00536502ef64389e8a71ec8ed5ed, type: 3}
   checkPointOne: {fileID: 0}
   checkPointTwo: {fileID: 0}
   checkPoints: []
