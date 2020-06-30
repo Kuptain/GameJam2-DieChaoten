@@ -182,8 +182,15 @@ public class ThirdPersonController : MonoBehaviour
             anim.SetTrigger("slowmoTrigger");
 
         }
+    }
+    public void PlayLand()
+    {
+        anim.SetTrigger("land");
+        anim.SetBool("jumping", false);
 
     }
+
+  
     private void RotatePlayer()
     {
         savedCamRot.y = camRotation.y;
@@ -206,6 +213,8 @@ public class ThirdPersonController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && pm.isGrounded)
         {
             pm.isGrounded = false;
+
+            anim.SetBool("jumping", true);
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
             StartCoroutine(DisableCollider());
