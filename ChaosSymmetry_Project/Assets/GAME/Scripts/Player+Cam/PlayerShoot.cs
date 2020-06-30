@@ -52,15 +52,15 @@ public class PlayerShoot : MonoBehaviour
                     int chance = Random.Range(1, 3);
                     if(chance == 1)
                     {
-                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakOne, 1);
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakOne, 0.5f);
                     }
                     else if (chance == 2)
                     {
-                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakTwo, 1);
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakTwo, 0.5f);
                     }
                     else if (chance == 3)
                     {
-                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakThree, 1);
+                        AudioManager.instance.clusterBreak.PlayOneShot(AudioManager.instance.breakThree, 0.5f);
                     }
 
                     if (tm.currentHint == "left")
@@ -111,15 +111,15 @@ public class PlayerShoot : MonoBehaviour
                     int chance = Random.Range(1, 3);
                     if (chance == 1)
                     {
-                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 1);
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 0.6f);
                     }
                     else if (chance == 2)
                     {
-                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 1);
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 0.6f);
                     }
                     else if (chance == 3)
                     {
-                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 1);
+                        AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 0.6f);
                     }
 
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
@@ -144,15 +144,15 @@ public class PlayerShoot : MonoBehaviour
                         int chance = Random.Range(1, 3);
                         if (chance == 1)
                         {
-                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 1);
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeOne, 0.6f);
                         }
                         else if (chance == 2)
                         {
-                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 1);
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeTwo, 0.6f);
                         }
                         else if (chance == 3)
                         {
-                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 1);
+                            AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 0.6f);
                         }
 
                         secondFrozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
