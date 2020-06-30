@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
     public void SetFuelLevel()
     {
         //UI
-        //fuelSlider.maxValue = maxFloatFuel;
+        //fuelSlider.maxValue = maxFlpoatFuel;
         //fuelSlider.value = floatFuel;
     }
 
