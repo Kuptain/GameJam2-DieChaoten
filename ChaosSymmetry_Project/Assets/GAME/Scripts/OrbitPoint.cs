@@ -94,9 +94,7 @@ public class OrbitPoint : MonoBehaviour
             if (CheckChildrenFreeze())
             {
                 RotateCluster();
-
             }
-
         }
         else
         {
@@ -117,33 +115,29 @@ public class OrbitPoint : MonoBehaviour
         }
     }
 
-    void CheckCheckpointCollision()
-    {
-
+    bool CheckChildrenFreeze()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<OrbitPoint>() != null && child.GetComponent<OrbitPoint>().canRotate == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public bool CheckChildrenNotMoving()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetChild(0).GetComponent<CubeDestroy>() != null && child.GetChild(0).GetComponent<CubeDestroy>().pushMode == 1)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
-    bool CheckChildrenFreeze()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.GetComponent<OrbitPoint>() != null && child.GetComponent<OrbitPoint>().canRotate == false)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    public bool CheckChildrenNotMoving()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.GetChild(0).GetComponent<CubeDestroy>() != null && child.GetChild(0).GetComponent<CubeDestroy>().pushMode == 1)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
     void RotateElements()
     {
         if (childScript.pushMode == 1)
@@ -151,7 +145,6 @@ public class OrbitPoint : MonoBehaviour
             transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
                              randomRotate.y * Time.deltaTime * cm.currentSlowmo,
                              randomRotate.z * Time.deltaTime * cm.currentSlowmo);
-
         }
         if (childScript.pushMode == 0 )
         {
@@ -161,8 +154,6 @@ public class OrbitPoint : MonoBehaviour
                        randomRotate.z * Time.deltaTime * cm.currentSlowmo);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(0, 0, 0, 0), CubeManager.instance.sendBackManual * cm.currentSlowmo);
-
-
         }
     }
     void RotateCluster()
