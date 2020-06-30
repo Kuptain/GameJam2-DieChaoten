@@ -34,6 +34,8 @@ public class ThirdPersonController : MonoBehaviour
 
     public GameObject ankor;
     GameObject character;
+    GameObject bodyObject;
+
     Animator anim;
 
     private void Awake()
@@ -56,6 +58,10 @@ public class ThirdPersonController : MonoBehaviour
             {
                 character = child.gameObject;
                 anim = character.GetComponent<Animator>();
+            }
+            if (child.gameObject.name == "PlayerUpper")
+            {
+                bodyObject = child.gameObject;
             }
         }
 
@@ -225,10 +231,12 @@ public class ThirdPersonController : MonoBehaviour
     IEnumerator DisableCollider()
     {
         GetComponent<Collider>().enabled = false;
+        bodyObject.GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.35f);
 
         GetComponent<Collider>().enabled = true;
+        bodyObject.GetComponent<Collider>().enabled = true;
 
     }
     void Floating()
