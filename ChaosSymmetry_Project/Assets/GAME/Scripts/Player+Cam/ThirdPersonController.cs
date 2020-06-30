@@ -191,8 +191,11 @@ public class ThirdPersonController : MonoBehaviour
     }
     public void PlayLand()
     {
-        anim.SetTrigger("land");
-        anim.SetBool("jumping", false);
+        if (anim != null)
+        {
+            anim.SetTrigger("land");
+            anim.SetBool("jumping", false);
+        }  
 
     }
 
