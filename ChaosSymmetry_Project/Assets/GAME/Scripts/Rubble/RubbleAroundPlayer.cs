@@ -10,7 +10,7 @@ public class RubbleAroundPlayer : MonoBehaviour
     CubeManager cm;
     PlayerManager pm;
     public bool exploding;
-    
+
     public Transform target;
     public Vector3 axis = Vector3.up;
     public Vector3 desiredPosition;
@@ -62,13 +62,23 @@ public class RubbleAroundPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Character")
+        if (cm.slowMode)
+        {
+            radius = 0.9f;
+        }
+        else
+        {
+            radius = 0.5f;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Character")
         {
             if (doOnce == false)
             {
                 rotationSpeed = 30f;
                 //transform.position = shakeStartPos;
                 doOnce = true;
+
             }
 
             transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
@@ -110,7 +120,7 @@ public class RubbleAroundPlayer : MonoBehaviour
 
             }
         }
-       
+
 
         /*if (cm.slowMode == false)
         {
@@ -148,13 +158,13 @@ public class RubbleAroundPlayer : MonoBehaviour
                 transform.rotation.y + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
                 transform.rotation.z + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
                 transform.rotation.w + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f);*/
-            //temp_shake_intensity -= shake_decay;
+        //temp_shake_intensity -= shake_decay;
 
-            //randomPos = shakeStartPos + (Random.insideUnitSphere * distance);
+        //randomPos = shakeStartPos + (Random.insideUnitSphere * distance);
 
-            //transform.position = randomPos;
+        //transform.position = randomPos;
 
-            // gameObject.transform.position.x = Mathf.Sin(Time.deltaTime * speed) * amount; */
+        // gameObject.transform.position.x = Mathf.Sin(Time.deltaTime * speed) * amount; */
         //}     
     }
 
