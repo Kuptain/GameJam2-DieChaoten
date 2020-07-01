@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class RubbleAroundPlayer : MonoBehaviour
@@ -34,12 +35,23 @@ public class RubbleAroundPlayer : MonoBehaviour
     {
         cm = CubeManager.instance;
         pm = PlayerManager.instance;
-        maxRotation = cm.orbitMaxRotation;
+        radius = 0.5f;
+
         RandomizeRotation();
 
-        target = ObjectManager.instance.player.transform;
+        if (SceneManager.GetActiveScene().name == "Character")
+        {
+            target = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
+            radius = 0.8f;
+        }
+        else
+        {
+            maxRotation = cm.orbitMaxRotation;
+            target = ObjectManager.instance.player.transform;
+
+        }
+
         transform.position = (transform.position - target.position).normalized * radius + target.position;
-        radius = 0.5f;
         doOnce = true;
 
         speed = 100;
@@ -50,23 +62,7 @@ public class RubbleAroundPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!pm.isGrounded)
-        {
-            if (doOnce)
-            {
-                //shakeStartPos = transform.position;
-                rotationSpeed = 400f;
-                doOnce = false;
-            }
-            //tranform.position.x = shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount );
-
-            //tranform.position.y = shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) ;
-            //transform.position = new Vector3(shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount) * 0.02f, shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) * 0.02f, transform.position.z);
-            transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
-            desiredPosition = (transform.position - target.position).normalized * radius + target.position;
-            transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-        }
-        else
+        if(SceneManager.GetActiveScene().name == "Character")
         {
             if (doOnce == false)
             {
@@ -79,8 +75,42 @@ public class RubbleAroundPlayer : MonoBehaviour
             desiredPosition = (transform.position - target.position).normalized * radius + target.position;
             transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
             transform.Rotate(randomRotate.x * Time.deltaTime, randomRotate.y * Time.deltaTime, randomRotate.z * Time.deltaTime);
-
         }
+        else
+        {
+            if (!pm.isGrounded)
+            {
+                if (doOnce)
+                {
+                    //shakeStartPos = transform.position;
+                    rotationSpeed = 400f;
+                    doOnce = false;
+                }
+                //tranform.position.x = shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount );
+
+                //tranform.position.y = shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) ;
+                //transform.position = new Vector3(shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount) * 0.02f, shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) * 0.02f, transform.position.z);
+                transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
+                desiredPosition = (transform.position - target.position).normalized * radius + target.position;
+                transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
+            }
+            else
+            {
+                if (doOnce == false)
+                {
+                    rotationSpeed = 30f;
+                    //transform.position = shakeStartPos;
+                    doOnce = true;
+                }
+
+                transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
+                desiredPosition = (transform.position - target.position).normalized * radius + target.position;
+                transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
+                transform.Rotate(randomRotate.x * Time.deltaTime, randomRotate.y * Time.deltaTime, randomRotate.z * Time.deltaTime);
+
+            }
+        }
+       
 
         /*if (cm.slowMode == false)
         {

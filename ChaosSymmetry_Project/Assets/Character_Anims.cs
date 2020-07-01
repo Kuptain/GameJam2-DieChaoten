@@ -11,6 +11,7 @@ public class Character_Anims : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -36,11 +37,10 @@ public class Character_Anims : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) )
         {
             
-            anim.SetBool("jumping", true);
+            //anim.SetBool("jumping", true);
             rigid.velocity = new Vector3(0, 0, 0);
-            //rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
+            rigid.AddForce(Vector3.up * 1000f);
             //StartCoroutine(DisableCollider());
-            UIManager.instance.jumped = true;
         }
     }
 }
