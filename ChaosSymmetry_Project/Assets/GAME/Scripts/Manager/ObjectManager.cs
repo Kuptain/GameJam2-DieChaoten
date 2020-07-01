@@ -9,6 +9,7 @@ public class ObjectManager : MonoBehaviour
     //[HideInInspector] public GameObject playerInstance;
     [HideInInspector] public GameObject player;
     public GameObject powerUp, consumable;
+    [SerializeField] public Material glowMat;
 
 
     private void Awake()

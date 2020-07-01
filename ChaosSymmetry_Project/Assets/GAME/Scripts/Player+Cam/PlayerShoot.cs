@@ -105,7 +105,6 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                Instantiate(PlayerManager.instance.particleFreeze, objectHit.position, Quaternion.identity);
 
                 if (tm.currentHint == "right")
                 {
@@ -129,6 +128,8 @@ public class PlayerShoot : MonoBehaviour
                     }
 
                     frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
+                    Instantiate(PlayerManager.instance.particleFreeze, objectHit.position, Quaternion.identity);
+
                     foreach (Transform child in frozenCluster.transform)
                     {
                         foreach (Transform childChild in child)
