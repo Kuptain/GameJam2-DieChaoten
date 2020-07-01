@@ -92,7 +92,7 @@ public class RandomPowerUp : MonoBehaviour
         if (thisPowerUp == "secondClusterFreeze")
         {
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = secondClusterFreeze;
-            textMesh.text = "Freeze a second Cluster";
+            textMesh.text = "Freeze A Second Cluster";
 
         }
         if (thisPowerUp == "betterSloMo")
@@ -104,7 +104,7 @@ public class RandomPowerUp : MonoBehaviour
         if (thisPowerUp == "longerFreeze")
         {
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = longerFreeze;
-            textMesh.text = "Freeze Cluster longer";
+            textMesh.text = "Freeze Cluster Longer";
 
         }
     }
