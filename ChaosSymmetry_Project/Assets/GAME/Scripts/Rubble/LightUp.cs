@@ -17,14 +17,14 @@ public class LightUp : MonoBehaviour
     {
         lightComp = GetComponent<Light>();
         lightUp = true;
-        fadeSpeed = 6f;
+        fadeSpeed = 3f;
         objectManager = ObjectManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             lightUp = true;
             startColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 0);
