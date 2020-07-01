@@ -2725,6 +2725,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7976314235892229972, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: particleDestroy
+      value: 
+      objectReference: {fileID: 7006494098281544524, guid: f5752ac8f6457ca44837d1b8b97603fe,
+        type: 3}
+    - target: {fileID: 7976314235892229972, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: particleFreeze
+      value: 
+      objectReference: {fileID: 7006494098281544524, guid: 777e1705e85b3064fa6a01620fe16ebc,
+        type: 3}
     - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: clusterAmountCalc

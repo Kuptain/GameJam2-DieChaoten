@@ -6,6 +6,8 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] GameObject spawnedCubePrefab;
+
+
     CubeManager cubeManager;
     TutorialManager tm;
     //[HideInInspector] 
@@ -48,6 +50,7 @@ public class PlayerShoot : MonoBehaviour
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false)
                 {
+                    Instantiate(PlayerManager.instance.particleDestroy, objectHit.position, Quaternion.identity);
                     currentCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
 
                     int chance = Random.Range(1, 3);
@@ -102,6 +105,7 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
+                Instantiate(PlayerManager.instance.particleFreeze, objectHit.position, Quaternion.identity);
 
                 if (tm.currentHint == "right")
                 {

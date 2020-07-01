@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Image respawnPanelUp;
     [SerializeField] Image respawnPanelDown;
     [HideInInspector] public bool isRespawning = false;
+    public GameObject particleDestroy;
+    public GameObject particleFreeze;
 
     public static PlayerManager instance;
     private GameObject player;
