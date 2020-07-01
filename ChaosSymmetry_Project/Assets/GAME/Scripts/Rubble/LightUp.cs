@@ -27,12 +27,12 @@ public class LightUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        /*if(Input.GetKeyDown(KeyCode.C))
         {
             lightUp = true;
             //startColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 0);
             //endColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 40);
-        }
+        }*/
 
         if (lightUp)
         {
