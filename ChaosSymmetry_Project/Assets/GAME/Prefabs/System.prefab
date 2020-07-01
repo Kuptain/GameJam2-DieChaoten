@@ -988,7 +988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b94d13973d3f6b4faaaa31c6c9a8d8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74f7919219c4c3d488e1c1ac86861006, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10345,6 +10345,7 @@ MonoBehaviour:
   orbitMaxRotation: 90
   clusterMaxRotation: 10
   clusterHasShader: 1
+  clusterObjects: []
   testMode: 0
   gameModeAllClusters: 0
   pushForce: 25
