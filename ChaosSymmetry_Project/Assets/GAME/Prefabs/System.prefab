@@ -10351,10 +10351,13 @@ MonoBehaviour:
   respawnPanelUp: {fileID: 393671812}
   respawnPanelDown: {fileID: 990493548}
   isRespawning: 0
+  particleDestroy: {fileID: 0}
+  particleFreeze: {fileID: 0}
   floatFuel: 0
   maxFloatFuel: 100
   collideJumpForce: 215
   isGrounded: 0
+  canJump: 1
   lives: 3
 --- !u!114 &7976314235892229974
 MonoBehaviour:
@@ -10445,8 +10448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8dd235f8448cc04881a87a57a5855d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam1: {fileID: 0}
-  cam2: {fileID: 0}
+  cam1: {fileID: 2568966266000698998, guid: 6743c79211630254f81be811b1ee6608, type: 3}
+  cam2: {fileID: 5329758465964864501, guid: e84e8e3d7a737e041bce5e523f230a82, type: 3}
 --- !u!1 &8414953430649817604
 GameObject:
   m_ObjectHideFlags: 0
