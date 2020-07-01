@@ -35,6 +35,8 @@ public class ThirdPersonController : MonoBehaviour
     public GameObject ankor;
     GameObject character;
     GameObject bodyObject;
+    [HideInInspector] public GameObject hornBlue;
+    [HideInInspector] public GameObject hornOrange;
 
     Animator anim;
 
@@ -51,6 +53,8 @@ public class ThirdPersonController : MonoBehaviour
         jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
         ankor = transform.GetChild(0).gameObject;
+
+     
         
         foreach(Transform child in transform)
         {
@@ -62,8 +66,38 @@ public class ThirdPersonController : MonoBehaviour
             if (child.gameObject.name == "PlayerUpper")
             {
                 bodyObject = child.gameObject;
+            }            
+            
+            if(child.gameObject.name == "Character")
+            {
+                foreach (Transform childChild in child)
+                {
+                    foreach (Transform childThree in childChild)
+                    {
+                        if (childThree.gameObject.name == "joint16")
+                        {
+                            foreach (Transform childFour in childThree)
+                            {
+                                if (childFour.gameObject.name == "HornBlue")
+                                {
+                                    hornBlue = childFour.gameObject;
+                                }
+                                if (childFour.gameObject.name == "HornOrange")
+                                {
+                                    hornOrange = childFour.gameObject;
+                                }
+                            }
+                          
+                        }
+                      
+                       
+                    }                  
+                }
             }
+                     
+            
         }
+
 
     }
 
@@ -273,6 +307,7 @@ public class ThirdPersonController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && pm.isGrounded == false && pm.floatFuel > 0)
         {
             anim.SetBool("floating", true);
+         
 
             if (rigid.velocity.y < 0)
             {
@@ -293,6 +328,7 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             anim.SetBool("floating", false);
+         
 
         }
     }

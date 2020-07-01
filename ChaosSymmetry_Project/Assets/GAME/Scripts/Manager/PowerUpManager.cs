@@ -112,7 +112,7 @@ public class PowerUpManager : MonoBehaviour
             higherJumpFactor = 1;
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 125f;
-            CubeManager.instance.currentSlowmo = 0.15f;
+            CubeManager.instance.currentSlowmo = 0.175f;
             CubeManager.instance.slowmoValue = 0.15f;
             currentPowerUp = "";
         }
