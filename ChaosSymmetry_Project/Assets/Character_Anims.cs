@@ -36,7 +36,7 @@ public class Character_Anims : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) )
         {
-            
+            anim.Play("Jump");
             //anim.SetBool("jumping", true);
             rigid.velocity = new Vector3(0, 0, 0);
             rigid.AddForce(Vector3.up * 1000f);
