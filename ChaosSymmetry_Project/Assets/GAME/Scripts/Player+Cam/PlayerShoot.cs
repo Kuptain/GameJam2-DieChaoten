@@ -94,7 +94,7 @@ public class PlayerShoot : MonoBehaviour
                         }
                     }
 
-                    //camAnim = true; // CamSwitch script
+                    camAnim = true; // CamSwitch script
                 }
             }
         }
