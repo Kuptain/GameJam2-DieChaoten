@@ -54,7 +54,6 @@ public class RandomPowerUp : MonoBehaviour
             if(thisPowerUp == PowerUpManager.instance.currentPowerUps[i])
             {
                 CheckDoubles();
-                break;
             }
         }
 
