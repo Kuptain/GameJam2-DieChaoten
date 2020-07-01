@@ -25,7 +25,7 @@ public class Consumable : MonoBehaviour
         textMesh.GetComponent<PowerUpText>().consumable = consumable;
         textMesh.GetComponent<PowerUpText>().powerUp = this.gameObject;
 
-        textMesh.text = thisPowerUp;
+        textMesh.text = "Place A Platform";
     }
 
     // Update is called once per frame
