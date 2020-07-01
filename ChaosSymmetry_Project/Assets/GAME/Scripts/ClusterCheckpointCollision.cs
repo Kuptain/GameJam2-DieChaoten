@@ -19,9 +19,11 @@ public class ClusterCheckpointCollision : MonoBehaviour
     {
         if (other.gameObject.GetComponent<CheckPointBehavior>() != null && other.gameObject.GetComponent<CheckPointBehavior>().isStart == false)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(LevelGeneration.instance.checkPointOne.transform.position.x,
-                                                                                        transform.position.y,
-                                                                                        LevelGeneration.instance.checkPointOne.transform.position.z), 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(ObjectManager.instance.player.transform.position.x,
+                                                                                     transform.position.y,
+                                                                                     ObjectManager.instance.player.transform.position.z), Time.deltaTime*150);
+
+            //transform.position = LevelGeneration.instance.checkPointOne.transform.position;
         }
 
        

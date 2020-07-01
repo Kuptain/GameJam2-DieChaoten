@@ -16,6 +16,7 @@ public class PlayerShoot : MonoBehaviour
     float spawnDistance = 12;
 
     float rayForwardMultiply = 7;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * rayForwardMultiply, cam.gameObject.transform.forward);
-
+            ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlayDestroy();
 
             if (Physics.Raycast(ray, out hit))
             {
@@ -95,6 +96,7 @@ public class PlayerShoot : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = new Ray(cam.transform.position + cam.gameObject.transform.forward * rayForwardMultiply, cam.gameObject.transform.forward);
+            ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlaySlowmo();
 
 
             if (Physics.Raycast(ray, out hit))

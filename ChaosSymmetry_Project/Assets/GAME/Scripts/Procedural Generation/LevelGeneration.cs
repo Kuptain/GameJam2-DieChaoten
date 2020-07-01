@@ -218,7 +218,7 @@ public class LevelGeneration : MonoBehaviour
     }
     public void TriggerGeneration()
     {
-        float pointVaryOne = 4;
+        float pointVaryOne = 6;
         float pointVaryTwo = 6;
 
         clusterAmount = Mathf.RoundToInt(
