@@ -106,6 +106,17 @@ public class ThirdPersonController : MonoBehaviour
             jumpSoundScript.jumped = true;
         }
 
+        if (!pm.isGrounded)
+        {
+            anim.SetBool("midAir", true);
+        }
+        else
+        {
+            anim.SetBool("midAir", false);
+
+        }
+
+
     }
     private void FixedUpdate()
     {
@@ -197,6 +208,13 @@ public class ThirdPersonController : MonoBehaviour
             anim.SetBool("jumping", false);
         }  
 
+    }
+    public void PlayDestroy()
+    {
+        if (anim != null)
+        {
+            anim.SetTrigger("cluster");
+        }
     }
 
   

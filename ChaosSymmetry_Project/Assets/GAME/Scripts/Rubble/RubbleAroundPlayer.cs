@@ -42,6 +42,7 @@ public class RubbleAroundPlayer : MonoBehaviour
 
         speed = 100;
         amount = 0.01f;
+        rotationSpeed = 30f;
     }
 
     // Update is called once per frame
@@ -51,7 +52,8 @@ public class RubbleAroundPlayer : MonoBehaviour
         {
             if(doOnce == false)
             {
-                transform.position = shakeStartPos;
+                rotationSpeed = 30f;
+                //transform.position = shakeStartPos;
                 doOnce = true;
             }
 
@@ -59,13 +61,13 @@ public class RubbleAroundPlayer : MonoBehaviour
             desiredPosition = (transform.position - target.position).normalized * radius + target.position;
             transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
             transform.Rotate(randomRotate.x * Time.deltaTime, randomRotate.y * Time.deltaTime, randomRotate.z * Time.deltaTime);
-            doOnce = true;
         }
         else
         {
             if(doOnce )
             {
-                shakeStartPos = transform.position;
+                //shakeStartPos = transform.position;
+                rotationSpeed = 400f;
                 doOnce = false;
             }
             //tranform.position.x = shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount );
@@ -76,12 +78,12 @@ public class RubbleAroundPlayer : MonoBehaviour
             desiredPosition = (transform.position - target.position).normalized * radius + target.position;
             transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
 
-            transform.position = transform.position + (Random.insideUnitSphere * 0.4f) * temp_shake_intensity;
+            /*transform.position = transform.position + (Random.insideUnitSphere * 0.4f) * temp_shake_intensity;
             transform.rotation = new Quaternion(
                 transform.rotation.x + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
                 transform.rotation.y + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
                 transform.rotation.z + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
-                transform.rotation.w + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f);
+                transform.rotation.w + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f);*/
             //temp_shake_intensity -= shake_decay;
 
             //randomPos = shakeStartPos + (Random.insideUnitSphere * distance);

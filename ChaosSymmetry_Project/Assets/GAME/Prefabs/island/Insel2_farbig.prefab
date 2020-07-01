@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 1707896930919933727}
   - component: {fileID: 2048764206404276142}
   - component: {fileID: 8604377875921109924}
+  - component: {fileID: 4474675930082923716}
   m_Layer: 9
   m_Name: heyagone
   m_TagString: Untagged
@@ -242,6 +243,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4474675930082923716
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181236662781562976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3190776664415688681, guid: 1ddb685847747d34a98c06f7f11de39b, type: 3}
 --- !u!1 &2428714124352597838
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +268,7 @@ GameObject:
   - component: {fileID: 3098289679430252020}
   - component: {fileID: 2532190135400596018}
   - component: {fileID: 7185081482129317221}
+  - component: {fileID: 917519308843033300}
   m_Layer: 9
   m_Name: Insel2_farbig
   m_TagString: checkpoint
@@ -323,6 +339,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 0
   canBuild: 0
+--- !u!54 &917519308843033300
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428714124352597838}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4117097537232549991
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +540,7 @@ GameObject:
   - component: {fileID: 1628909489693159406}
   - component: {fileID: 7577968514577685508}
   - component: {fileID: 5483185246461060750}
+  - component: {fileID: 2103784094735059177}
   m_Layer: 9
   m_Name: crystal
   m_TagString: Untagged
@@ -577,6 +610,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2103784094735059177
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564137884253827055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4294523711905448709, guid: 1ddb685847747d34a98c06f7f11de39b, type: 3}
 --- !u!1 &5985468729389307597
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +719,7 @@ GameObject:
   - component: {fileID: 7022508712802111782}
   - component: {fileID: 3607071245300672024}
   - component: {fileID: 2428483846774571702}
+  - component: {fileID: 6942188736980850357}
   m_Layer: 9
   m_Name: beton
   m_TagString: Untagged
@@ -742,6 +790,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6942188736980850357
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476574922117948309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1719617573713610362, guid: 1ddb685847747d34a98c06f7f11de39b, type: 3}
 --- !u!1 &7315291244023133396
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +909,7 @@ GameObject:
   - component: {fileID: 5098039496800066469}
   - component: {fileID: 5199775369038591935}
   - component: {fileID: 8924440047337602066}
+  - component: {fileID: 9009626216088968070}
   m_Layer: 9
   m_Name: steine
   m_TagString: Untagged
@@ -916,6 +979,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &9009626216088968070
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340088022784185295}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 186685245311772749, guid: 1ddb685847747d34a98c06f7f11de39b, type: 3}
 --- !u!1001 &884362063284242552
 PrefabInstance:
   m_ObjectHideFlags: 0
