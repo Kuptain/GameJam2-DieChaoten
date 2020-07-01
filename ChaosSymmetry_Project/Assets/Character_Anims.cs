@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character_Anims : MonoBehaviour
 {
-
+    Rigidbody rigid;
     Animator anim;
 
     // Start is called before the first frame update
@@ -31,6 +31,16 @@ public class Character_Anims : MonoBehaviour
         if (Input.GetKey(KeyCode.C))
         {
             anim.Play("Cluster");
+        }
+
+        if (Input.GetKey(KeyCode.Space) )
+        {
+            
+            anim.SetBool("jumping", true);
+            rigid.velocity = new Vector3(0, 0, 0);
+            //rigid.AddForce(Vector3.up * jumpForce * powerUp.higherJumpFactor);
+            //StartCoroutine(DisableCollider());
+            UIManager.instance.jumped = true;
         }
     }
 }
