@@ -2748,6 +2748,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 603977762238854568, guid: f83d00536502ef64389e8a71ec8ed5ed,
         type: 3}
+    - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: incrDifficulty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: incrCheckPointDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976314235892229974, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: checkPointDistanceY
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7976314235972051352, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_Name
