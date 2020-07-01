@@ -11,14 +11,17 @@ public class LightUp : MonoBehaviour
     Color startColor;
     Color endColor;
     ObjectManager objectManager;
+    ParticleSystem barbieParticle;
+    bool doOnce;
 
     // Start is called before the first frame update
     void Start()
     {
         lightComp = GetComponent<Light>();
-        lightUp = true;
+        lightUp = false;
         fadeSpeed = 3f;
         objectManager = ObjectManager.instance;
+        barbieParticle = objectManager.barbieParticle;
     }
 
     // Update is called once per frame
@@ -27,12 +30,17 @@ public class LightUp : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C))
         {
             lightUp = true;
-            startColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 0);
-            endColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 40);
+            //startColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 0);
+            //endColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 40);
         }
 
         if (lightUp)
-        {           
+        {
+            if (doOnce == false)
+            {
+                Instantiate(barbieParticle, transform.position, Quaternion.identity);
+                doOnce = true;
+            }
             if (lightComp.intensity <= 29 && shining == false)
             {
                 lightComp.intensity = Mathf.Lerp(lightComp.intensity, 30, Time.deltaTime * fadeSpeed);
@@ -54,6 +62,7 @@ public class LightUp : MonoBehaviour
                 lightUp = false;
                 lightComp.intensity = 0;
                 shining = false;
+                doOnce = false;
             }
         }
         /*

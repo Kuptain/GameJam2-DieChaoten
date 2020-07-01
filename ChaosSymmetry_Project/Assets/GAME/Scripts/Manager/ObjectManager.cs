@@ -10,6 +10,7 @@ public class ObjectManager : MonoBehaviour
     [HideInInspector] public GameObject player;
     public GameObject powerUp, consumable;
     [SerializeField] public Material glowMat;
+    [SerializeField] public ParticleSystem barbieParticle;
 
 
     private void Awake()
