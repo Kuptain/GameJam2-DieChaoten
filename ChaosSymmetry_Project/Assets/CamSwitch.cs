@@ -23,7 +23,7 @@ public class CamSwitch : MonoBehaviour
     {
         if (playerShootScript.camAnim)
         {               
-            coroutine = ProcessShake(0.5f);
+            coroutine = ProcessShake(0.2f);
             StartCoroutine(coroutine);
         }
         else
@@ -33,9 +33,9 @@ public class CamSwitch : MonoBehaviour
 
     }
 
-    private IEnumerator ProcessShake(float t = 0.5f)
+    private IEnumerator ProcessShake(float t = 0.2f)
     {
-        cam1.GetComponent<CinemachineFreeLook>().m_Lens.Dutch = Mathf.Clamp(cam1.GetComponent<CinemachineFreeLook>().m_Lens.Dutch, 1, -1);
+        cam1.GetComponent<CinemachineFreeLook>().m_Lens.Dutch = Mathf.Clamp(cam1.GetComponent<CinemachineFreeLook>().m_Lens.Dutch, 1, 0);
 
         yield return new WaitForSeconds(t);
         
