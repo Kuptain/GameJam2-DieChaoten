@@ -38,27 +38,28 @@ public class RandomPowerUp : MonoBehaviour
         }
 
         player = ObjectManager.instance.player;
-
         textMesh = Instantiate(textMeshPref, transform) as TMP_Text;
         textMesh.GetComponent<PowerUpText>().type = thisPowerUp;
         textMesh.GetComponent<PowerUpText>().consumable = consumable;
         textMesh.GetComponent<PowerUpText>().powerUp = this.gameObject;
         CheckType();
+
     }
 
     void CheckDoubles()
     {
-        thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
+        thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];       
+        
         for(int i = 0; i < PowerUpManager.instance.currentPowerUps.Count; i++)
         {
             if(thisPowerUp == PowerUpManager.instance.currentPowerUps[i])
             {
                 CheckDoubles();
             }
-        }
-
+        }   
+        
     }
-    // Update is called once per frame
+
     void Update()
     {
         transform.parent.LookAt(Camera.main.transform.position);

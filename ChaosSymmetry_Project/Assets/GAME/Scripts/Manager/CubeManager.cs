@@ -24,7 +24,7 @@ public class CubeManager : MonoBehaviour
     public float orbitMaxRotation = 45;
     public float clusterMaxRotation = 20;
     public bool clusterHasShader = false;
-
+    public List<GameObject> clusterObjects;
 
     [HideInInspector] public int testMode;
     [HideInInspector] public bool gameModeAllClusters;

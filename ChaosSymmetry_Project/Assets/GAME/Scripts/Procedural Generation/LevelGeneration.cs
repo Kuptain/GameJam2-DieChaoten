@@ -311,8 +311,13 @@ public class LevelGeneration : MonoBehaviour
             spawnAngle.y = clusterObj.transform.rotation.y + RandomAngle();
             spawnAngle.z = clusterObj.transform.rotation.z + RandomAngle();
 
+            CubeManager.instance.clusterObjects.Add(Instantiate(clusterObj, spawnPos, spawnAngle) as GameObject);
+            if (CubeManager.instance.clusterObjects.Count > clusterAmount+1)
+            {
+                Destroy(CubeManager.instance.clusterObjects[0]);
+                CubeManager.instance.clusterObjects.RemoveAt(0);
 
-            Instantiate(clusterObj, spawnPos, spawnAngle);
+            }
             currentCluster += 1;
             
         }
