@@ -10217,6 +10217,7 @@ MonoBehaviour:
   powerUp: {fileID: 3433732768048116125, guid: de429f6c4001aaf41b8e79434bb93fe1, type: 3}
   consumable: {fileID: 3433732768048116125, guid: eaaf0f8f7130ccf41a61fdd0a8d20606,
     type: 3}
+  glowMat: {fileID: 2100000, guid: 8c89b2570dae9a34789e0dc4d524a64a, type: 2}
 --- !u!114 &1569674664012012511
 MonoBehaviour:
   m_ObjectHideFlags: 0
