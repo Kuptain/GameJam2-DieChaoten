@@ -10180,6 +10180,7 @@ GameObject:
   - component: {fileID: 7976314235892229974}
   - component: {fileID: 1323907616}
   - component: {fileID: 4708620049079780379}
+  - component: {fileID: 7717867326896704700}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -10432,6 +10433,20 @@ MonoBehaviour:
   freezeThree: {fileID: 8300000, guid: 86e94d5f3961c144d88e5922d2499a40, type: 3}
   pickUp: {fileID: 8300000, guid: d8c2512e3b9ceeb48bb761d2bc11e682, type: 3}
   putDown: {fileID: 8300000, guid: eafd10cedb5bc4643ac4c6c258ec7f03, type: 3}
+--- !u!114 &7717867326896704700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242745758661182572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dd235f8448cc04881a87a57a5855d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam1: {fileID: 0}
+  cam2: {fileID: 0}
 --- !u!1 &8414953430649817604
 GameObject:
   m_ObjectHideFlags: 0

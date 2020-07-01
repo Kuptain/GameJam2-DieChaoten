@@ -20,6 +20,8 @@ public class PlayerShoot : MonoBehaviour
     float rayForwardMultiply = 7;
     Animator anim;
 
+    public bool camAnim = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +93,8 @@ public class PlayerShoot : MonoBehaviour
                             child.gameObject.GetComponent<RubbleExplosion>().Explode();
                         }
                     }
+
+                    camAnim = true; // CameraAnimation script
                 }
             }
         }
