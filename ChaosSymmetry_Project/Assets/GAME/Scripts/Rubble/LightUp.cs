@@ -38,7 +38,7 @@ public class LightUp : MonoBehaviour
         {
             if (doOnce == false)
             {
-                Instantiate(barbieParticle, transform.position, Quaternion.identity);
+                Instantiate(barbieParticle, transform.position, Quaternion.Euler(-90, 0, 0));
                 doOnce = true;
             }
             if (lightComp.intensity <= 29 && shining == false)

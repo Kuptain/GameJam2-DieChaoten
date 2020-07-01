@@ -8104,6 +8104,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8388521537081169306, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: barbieParticle
+      value: 
+      objectReference: {fileID: 5808390096276392351, guid: 4af2025856c315a4a857f220f7eb58a1,
+        type: 3}
     - target: {fileID: 9175758892722368830, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.a
