@@ -48,16 +48,31 @@ public class RandomPowerUp : MonoBehaviour
 
     void CheckDoubles()
     {
-        thisPowerUp = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];       
+        string powerUpSafe = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
         
+        /*
         for(int i = 0; i < PowerUpManager.instance.currentPowerUps.Count; i++)
         {
-            if(thisPowerUp == PowerUpManager.instance.currentPowerUps[i])
+            Debug.Log("Powerups: " + i);
+
+            if (powerUpSafe == PowerUpManager.instance.currentPowerUps[i])
             {
+                Debug.Log("Double");
                 CheckDoubles();
             }
-        }   
-        
+        }
+        */
+
+        foreach(string collected in PowerUpManager.instance.currentPowerUps)
+        {
+            if (powerUpSafe == collected)
+            {
+                CheckDoubles();
+                return;
+            }
+
+        }
+        thisPowerUp = powerUpSafe;
     }
 
     void Update()
