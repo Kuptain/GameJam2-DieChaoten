@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1001 &206101251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1 &480139333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7285567358672611499, guid: 33a823da738795641b176b98ea16dd99,
@@ -757,7 +757,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
+--- !u!1 &490036900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6410351668205916398, guid: 33a823da738795641b176b98ea16dd99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1331137819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &490036905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490036900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7d01bc933f27143a65ab22c43e8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 442835011}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!4 &495949906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9031779300831345326, guid: 038fdfc0165da7e4a966b2498f6317c2,
@@ -900,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!4 &761863991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5669865450486574782, guid: 35c94f8c9e4867e4b841d27484143d3c,
@@ -1116,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1 &1005553596
 GameObject:
   m_ObjectHideFlags: 3
@@ -1847,7 +1867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1 &1258004991
 GameObject:
   m_ObjectHideFlags: 3
@@ -2447,7 +2467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1 &1491681080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3643035384085765533, guid: 33a823da738795641b176b98ea16dd99,
@@ -2467,7 +2487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!1 &1760472550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 442835011}
-  ClickSound: {fileID: 8300000, guid: dc5a659a793d5431b82cbc8a4c9d5f14, type: 3}
+  ClickSound: {fileID: 8300000, guid: 03412a8f229a9415caafabb2faccc4f3, type: 3}
 --- !u!4 &371514333135252026
 Transform:
   m_ObjectHideFlags: 0
