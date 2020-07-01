@@ -284,7 +284,7 @@ MonoBehaviour:
   isSafe: 0
   speed: 5.2
   jumpForce: 4800
-  floatForce: 0.1
+  floatForce: 0.125
   fallMultiplier: 0.9
   lowJumpMultiplier: 2
   ankor: {fileID: 2962563839485812969}
@@ -812,7 +812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5664977162810981949}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -6.96, z: 0}
+  m_LocalPosition: {x: 0, y: -2.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 483481537612287344}
@@ -830,10 +830,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.83413947, b: 0, a: 1}
-  m_Intensity: 90
-  m_Range: 4.74
-  m_SpotAngle: 12.34082
-  m_InnerSpotAngle: 11.990107
+  m_Intensity: 300
+  m_Range: 8
+  m_SpotAngle: 5.9639254
+  m_InnerSpotAngle: 5.9639254
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
