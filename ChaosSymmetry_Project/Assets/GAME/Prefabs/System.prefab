@@ -2364,7 +2364,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9bbd253f87cceb54cbb7397fbd904124, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.363
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10546,7 +10546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam1: {fileID: 2568966266000698998, guid: 6743c79211630254f81be811b1ee6608, type: 3}
-  cam2: {fileID: 5329758465964864501, guid: e84e8e3d7a737e041bce5e523f230a82, type: 3}
 --- !u!1 &8414953430649817604
 GameObject:
   m_ObjectHideFlags: 0
