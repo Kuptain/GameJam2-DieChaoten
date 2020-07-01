@@ -28,5 +28,9 @@ public class Character_Anims : MonoBehaviour
         {
             anim.Play("SlowMo");
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            anim.Play("Cluster");
+        }
     }
 }
