@@ -237,9 +237,10 @@ public class ThirdPersonController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && pm.isGrounded)
+        if (Input.GetKey(KeyCode.Space) && pm.isGrounded && pm.canJump)
         {
             pm.isGrounded = false;
+            StartCoroutine(JumpCooldown());
 
             anim.SetBool("jumping", true);
             rigid.velocity = new Vector3(0, 0, 0);
@@ -249,6 +250,13 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
+    IEnumerator JumpCooldown()
+    {
+        pm.canJump = false;
+        yield return new WaitForSeconds(0.35f);
+        pm.canJump = true;
+
+    }
     IEnumerator DisableCollider()
     {
         GetComponent<Collider>().enabled = false;
@@ -264,6 +272,8 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && pm.isGrounded == false && pm.floatFuel > 0)
         {
+            anim.SetBool("floating", true);
+
             if (rigid.velocity.y < 0)
             {
                 rigid.velocity = new Vector3(rigid.velocity.x, rigid.velocity.y * 0.75f, rigid.velocity.z);
@@ -279,6 +289,11 @@ public class ThirdPersonController : MonoBehaviour
                     TutorialManager.instance.ChangeType("");
                 }
             }
+        }
+        else
+        {
+            anim.SetBool("floating", false);
+
         }
     }
 

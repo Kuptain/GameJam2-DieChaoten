@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public float maxFloatFuel = 40f;
     public float collideJumpForce = 50f;
     public bool isGrounded;
+    public bool canJump = true;
     public int lives = 3;
 
     private void Awake()
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         player = ObjectManager.instance.player;
+        canJump = true;
     }
 
     // Update is called once per frame
