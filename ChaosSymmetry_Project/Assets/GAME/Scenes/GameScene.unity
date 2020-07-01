@@ -2165,6 +2165,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7122139256590904192, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: powerUps.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122139256590904192, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: powerUps.Array.data[4]
+      value: betterSloMo
+      objectReference: {fileID: 0}
     - target: {fileID: 7717867326896704700, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: cam1
