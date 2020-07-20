@@ -16,8 +16,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite floatSprite, jumpSprite, freezeSprite, secondSprite, platformSprite, slomoSprite, consumableSprite;
     [SerializeField] Image powerUpImageOne, powerUpImageTwo, powerUpImageThree, consumableImage;
     [SerializeField] Image pausePowerUpImageOne, pausePowerUpImageTwo, pausePowerUpImageThree, pauseConsumableImage;
-    public GameObject uiPrefab;
+    public GameObject uiPrefab, lives, livespause;
     public GameObject freezeTime;
+    public Image heart, heartpause;
     public bool showMenu, jumped;
 
     Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
@@ -46,19 +47,12 @@ public class UIManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        if (showMenu)
-        {
-            PlayerPrefs.SetInt("showMenu", 0);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("showMenu", 1);
-        }
+    {       
 
         if (PlayerPrefs.GetInt("levelRestarted") == 1)
         {
             PlayerPrefs.SetInt("showMenu", 1);
+            print("FFF");
         }
         else
         {
@@ -177,6 +171,19 @@ public class UIManager : MonoBehaviour
         {
             ResumeGame();
         }
+
+        if(ingameCanvas.activeSelf == true)
+        {
+            if (PlayerPrefs.GetInt("gameMode") == 1)
+            {
+                heart.enabled = false;
+                lives.gameObject.SetActive(false);
+            }
+            else
+            {
+                lives.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
+            }
+        }    
     }
 
     void StartGame()
@@ -208,6 +215,16 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+
+        if (PlayerPrefs.GetInt("gameMode") == 1)
+        {
+            heartpause.enabled = false;
+            livespause.gameObject.SetActive(false);
+        }
+        else
+        {
+            livespause.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
+        }
 
         ShowCurrentPowerupsPause();
         ShowPowerUpDescription();

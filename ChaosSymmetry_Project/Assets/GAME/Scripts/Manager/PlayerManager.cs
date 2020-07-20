@@ -53,6 +53,9 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
+        UIManager.instance.heart.enabled = false;
+        UIManager.instance.lives.SetActive(false);
+
         respawnPanelDown.GetComponent<Animation>().Play();
         respawnPanelUp.GetComponent<Animation>().Play();
 
@@ -68,6 +71,11 @@ public class PlayerManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
+        if (PlayerPrefs.GetInt("gameMode") == 0)
+        {
+            UIManager.instance.heart.enabled = true;
+            UIManager.instance.lives.SetActive(true);
+        }
         isRespawning = false;
 
 

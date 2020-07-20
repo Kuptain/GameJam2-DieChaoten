@@ -112,7 +112,7 @@ public class ThirdPersonController : MonoBehaviour
             {
                 if(PlayerPrefs.GetInt("gameMode", 0) == 0)
                 {
-                    if(pm.lives > 0)
+                    if(pm.lives > 1)
                     {
                         pm.Respawn();
                         pm.lives -= 1;
@@ -381,7 +381,7 @@ public class ThirdPersonController : MonoBehaviour
             isSafe = true;
             if (PlayerPrefs.GetInt("gameMode", 0) == 0)
             {
-                if (pm.lives > 0)
+                if (pm.lives > 1)
                 {
                     pm.Respawn();
                     pm.lives -= 1;
