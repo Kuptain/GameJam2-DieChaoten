@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Security.Cryptography;
+using Cinemachine;
 using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
@@ -35,6 +36,7 @@ public class ThirdPersonController : MonoBehaviour
 
     public GameObject ankor;
     GameObject character;
+    GameObject cineMach;
     GameObject bodyObject;
     [HideInInspector] public GameObject hornBlue;
     [HideInInspector] public GameObject hornOrange;
@@ -54,7 +56,7 @@ public class ThirdPersonController : MonoBehaviour
         jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
         ankor = transform.GetChild(0).gameObject;
-
+        cineMach = GameObject.Find("CM FreeLook1");
 
 
         foreach (Transform child in transform)
@@ -127,6 +129,7 @@ public class ThirdPersonController : MonoBehaviour
                         UIManager.instance.gameOverCanvas.SetActive(true);
                         UIManager.instance.overScore.GetComponent<Text>().text = "You reached island " + UIManager.instance.normalScore.ToString() + "!";
                         UIManager.instance.overHighscore.GetComponent<Text>().text = "Your high score is " + PlayerPrefs.GetInt("normalHighScore").ToString() + "!";
+                        cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
                     }
@@ -398,6 +401,7 @@ public class ThirdPersonController : MonoBehaviour
                     UIManager.instance.gameOverCanvas.SetActive(true);
                     UIManager.instance.overScore.GetComponent<Text>().text = "You reached island " + UIManager.instance.normalScore.ToString() + "!";
                     UIManager.instance.overHighscore.GetComponent<Text>().text = "Your high score is " + PlayerPrefs.GetInt("normalHighScore").ToString() + "!";
+                    cineMach.GetComponent<CinemachineFreeLook>().enabled = false;
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                 }

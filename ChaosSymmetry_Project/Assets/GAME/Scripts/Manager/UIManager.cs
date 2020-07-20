@@ -148,6 +148,8 @@ public class UIManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
             player.GetComponent<ThirdPersonController>().enabled = true;
+            cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
+            ingameCanvas.SetActive(true);
             player.GetComponent<PlayerShoot>().enabled = true;
         }
         Time.timeScale = 1;
@@ -507,7 +509,7 @@ public class UIManager : MonoBehaviour
             fuelbalken.transform.rotation = fuelbalkenStartRot;
             fuelbalken.SetActive(false);
             fuelbalkenBG.SetActive(false);
-            fuelbalkenTime = 0; 
+            fuelbalkenTime = 0;
             jumped = false;
         }
     }
