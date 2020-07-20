@@ -1560,6 +1560,7 @@ GameObject:
   - component: {fileID: 1205420695}
   - component: {fileID: 1205420694}
   - component: {fileID: 1205420696}
+  - component: {fileID: 1205420697}
   m_Layer: 0
   m_Name: CM FreeLook1
   m_TagString: Untagged
@@ -1715,6 +1716,19 @@ MonoBehaviour:
   m_Damping: 10
   m_DampingWhenOccluded: 0.92
   m_OptimalTargetDistance: 0
+--- !u!114 &1205420697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205420693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba158013fd890074cbf114169ca70f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookSpeed: 0.00001
 --- !u!1001 &1217343845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2119,6 +2133,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1856839261340211090, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: camFreeLook
+      value: 
+      objectReference: {fileID: 1205420693}
     - target: {fileID: 1894053958261925864, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: m_RootOrder

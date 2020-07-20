@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public GameObject slomo, consumable, consumableCharges, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
     [HideInInspector] public GameObject mainMenuCanvas, pauseCanvas, ingameCanvas, gameOverCanvas;
     [SerializeField] GameObject freezeBalken, freezeBalkenGoal, pauseConsumableCharges, freezeBalkenBG, fuelbalken, fuelbalkenGoal, fuelbalkenBG;
-    [SerializeField] GameObject secondfreezeBalken, secondfreezeBalkenGoal, secondfreezeBalkenBG;
+    [SerializeField] GameObject secondfreezeBalken, secondfreezeBalkenGoal, secondfreezeBalkenBG, camFreeLook, slider;
     [SerializeField] Sprite floatSprite, jumpSprite, freezeSprite, secondSprite, platformSprite, slomoSprite, consumableSprite;
     [SerializeField] Image powerUpImageOne, powerUpImageTwo, powerUpImageThree, consumableImage;
     [SerializeField] Image pausePowerUpImageOne, pausePowerUpImageTwo, pausePowerUpImageThree, pauseConsumableImage;
@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("sensitivity", 1);
         normalScore = 0;
         endlessScore = 0;
 
@@ -115,6 +116,7 @@ public class UIManager : MonoBehaviour
         pauseCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         pauseCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
         pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
+        slider.GetComponent<Slider>().onValueChanged.AddListener((value) => { ChangeSensitivity(); });
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
 
         // 1 is on, 0 is off
@@ -421,6 +423,12 @@ public class UIManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("levelRestarted", 0);
         Application.Quit();
+    }
+
+    void ChangeSensitivity()
+    {
+        camFreeLook.GetComponent<MouseSensitivitz>().lookSpeed = slider.GetComponent<Slider>().value;
+        PlayerPrefs.SetFloat("sensitivity", slider.GetComponent<Slider>().value);
     }
 
     void StartEndlessMode()
