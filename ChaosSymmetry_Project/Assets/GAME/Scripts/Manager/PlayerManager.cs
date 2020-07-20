@@ -68,14 +68,14 @@ public class PlayerManager : MonoBehaviour
 
         respawnPanelDown.gameObject.SetActive(false);
         respawnPanelUp.gameObject.SetActive(false);
-
-
-        yield return new WaitForSeconds(0.5f);
         if (PlayerPrefs.GetInt("gameMode") == 0)
         {
             UIManager.instance.heart.enabled = true;
             UIManager.instance.lives.SetActive(true);
         }
+
+        yield return new WaitForSeconds(0.5f);
+        
         isRespawning = false;
 
 

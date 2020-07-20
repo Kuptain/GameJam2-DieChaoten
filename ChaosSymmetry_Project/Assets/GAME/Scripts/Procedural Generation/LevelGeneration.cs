@@ -192,7 +192,16 @@ public class LevelGeneration : MonoBehaviour
 
         checkPointOne = Instantiate(RandomIsland(), checkpointTransform, Quaternion.identity) as GameObject;
         Instantiate(powerUp, checkPointOne.transform.position + new Vector3(0, 0.9f, 0), Quaternion.identity);
-
+        if (PlayerPrefs.GetInt("gameMode") == 1)
+        {
+            UIManager.instance.endlessScore += 1;
+            PlayerPrefs.SetInt("endlessHighScore", PlayerPrefs.GetInt("endlessHighScore") + 1);
+        }
+        else
+        {
+            UIManager.instance.normalScore += 1;
+            PlayerPrefs.SetInt("normalHighScore", PlayerPrefs.GetInt("normalHighScore") + 1);
+        }
         /*
         checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
                                                        checkPointTwo.transform.position.y + checkPointDistanceY,

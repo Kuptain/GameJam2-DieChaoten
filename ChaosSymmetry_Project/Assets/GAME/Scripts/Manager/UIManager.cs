@@ -16,10 +16,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite floatSprite, jumpSprite, freezeSprite, secondSprite, platformSprite, slomoSprite, consumableSprite;
     [SerializeField] Image powerUpImageOne, powerUpImageTwo, powerUpImageThree, consumableImage;
     [SerializeField] Image pausePowerUpImageOne, pausePowerUpImageTwo, pausePowerUpImageThree, pauseConsumableImage;
-    public GameObject uiPrefab, lives, livespause;
-    public GameObject freezeTime;
+    public GameObject uiPrefab, lives, livespause, currentScore, highScore;
+    public GameObject freezeTime, overScore, overHighscore;
     public Image heart, heartpause;
     public bool showMenu, jumped;
+    public int normalScore, endlessScore;
 
     Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
     public bool paused, gameStarted;
@@ -47,7 +48,9 @@ public class UIManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {       
+    {
+        normalScore = 0;
+        endlessScore = 0;
 
         if (PlayerPrefs.GetInt("levelRestarted") == 1)
         {
@@ -172,7 +175,7 @@ public class UIManager : MonoBehaviour
             ResumeGame();
         }
 
-        if(ingameCanvas.activeSelf == true)
+        if (ingameCanvas.activeSelf == true)
         {
             if (PlayerPrefs.GetInt("gameMode") == 1)
             {
@@ -183,7 +186,7 @@ public class UIManager : MonoBehaviour
             {
                 lives.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
             }
-        }    
+        }
     }
 
     void StartGame()
@@ -220,10 +223,14 @@ public class UIManager : MonoBehaviour
         {
             heartpause.enabled = false;
             livespause.gameObject.SetActive(false);
+            currentScore.GetComponent<Text>().text = "Islands reached: " + endlessScore.ToString();
+            highScore.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("endlessHighScore").ToString();
         }
         else
         {
             livespause.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
+            currentScore.GetComponent<Text>().text = "Islands reached: " + normalScore.ToString();
+            highScore.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("normalHighScore").ToString();
         }
 
         ShowCurrentPowerupsPause();
@@ -420,16 +427,16 @@ public class UIManager : MonoBehaviour
     {
         mainMenuCanvas.SetActive(false);
         Cursor.visible = false;
+        PlayerPrefs.SetInt("gameMode", 1);
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
-        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
-        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
-        PlayerPrefs.SetInt("gameMode", 1);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
-        gameStarted = true;
         paused = false;
+        gameStarted = true;
     }
 
     void OpenMainMenu()

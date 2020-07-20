@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -47,16 +48,16 @@ public class ThirdPersonController : MonoBehaviour
     {
         pm = PlayerManager.instance.GetComponent<PlayerManager>();
         cam = Camera.main;
-        camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>(); 
+        camRightCollCheck = cam.transform.parent.GetChild(1).GetComponent<CamCheckSideCollision>();
         camLeftCollCheck = cam.transform.parent.GetChild(2).GetComponent<CamCheckLeftCollision>();
         rigid = GetComponent<Rigidbody>();
         jumpSoundScript = GameObject.Find("JumpCollider").GetComponent<ResetJump>();
         powerUp = PowerUpManager.instance;
         ankor = transform.GetChild(0).gameObject;
 
-     
-        
-        foreach(Transform child in transform)
+
+
+        foreach (Transform child in transform)
         {
             if (child.gameObject.name == "Character")
             {
@@ -66,9 +67,9 @@ public class ThirdPersonController : MonoBehaviour
             if (child.gameObject.name == "PlayerUpper")
             {
                 bodyObject = child.gameObject;
-            }            
-            
-            if(child.gameObject.name == "Character")
+            }
+
+            if (child.gameObject.name == "Character")
             {
                 foreach (Transform childChild in child)
                 {
@@ -87,15 +88,15 @@ public class ThirdPersonController : MonoBehaviour
                                     hornOrange = childFour.gameObject;
                                 }
                             }
-                          
+
                         }
-                      
-                       
-                    }                  
+
+
+                    }
                 }
             }
-                     
-            
+
+
         }
 
 
@@ -110,9 +111,9 @@ public class ThirdPersonController : MonoBehaviour
         {
             if ((rigid.velocity.y < -60 && pm.floatFuel <= 0))
             {
-                if(PlayerPrefs.GetInt("gameMode", 0) == 0)
+                if (PlayerPrefs.GetInt("gameMode", 0) == 0)
                 {
-                    if(pm.lives > 1)
+                    if (pm.lives > 1)
                     {
                         pm.Respawn();
                         pm.lives -= 1;
@@ -124,6 +125,8 @@ public class ThirdPersonController : MonoBehaviour
                         ObjectManager.instance.player.GetComponent<ThirdPersonController>().enabled = false;
                         ObjectManager.instance.player.GetComponent<PlayerShoot>().enabled = false;
                         UIManager.instance.gameOverCanvas.SetActive(true);
+                        UIManager.instance.overScore.GetComponent<Text>().text = "You reached island " + UIManager.instance.normalScore.ToString() + "!";
+                        UIManager.instance.overHighscore.GetComponent<Text>().text = "Your high score is " + PlayerPrefs.GetInt("normalHighScore").ToString() + "!";
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
                     }
@@ -163,7 +166,7 @@ public class ThirdPersonController : MonoBehaviour
     private void Move()
     {
         rigid.MovePosition(transform.position + (transform.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) + transform.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime)));
-        if (Input.GetAxis("Vertical") != 0 ||Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("walking", true);
         }
@@ -240,7 +243,7 @@ public class ThirdPersonController : MonoBehaviour
         {
             anim.SetTrigger("land");
             anim.SetBool("jumping", false);
-        }  
+        }
 
     }
     public void PlayDestroy()
@@ -251,7 +254,7 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
-  
+
     private void RotatePlayer()
     {
         savedCamRot.y = camRotation.y;
@@ -266,7 +269,7 @@ public class ThirdPersonController : MonoBehaviour
             //camRotation.y = savedCamRot.y;
         }
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, Camera.main.transform.eulerAngles.y, transform.rotation.z);        
+        transform.rotation = Quaternion.Euler(transform.rotation.x, Camera.main.transform.eulerAngles.y, transform.rotation.z);
     }
 
     void Jump()
@@ -307,7 +310,7 @@ public class ThirdPersonController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && pm.isGrounded == false && pm.floatFuel > 0)
         {
             anim.SetBool("floating", true);
-         
+
 
             if (rigid.velocity.y < 0)
             {
@@ -319,7 +322,7 @@ public class ThirdPersonController : MonoBehaviour
                 rigid.velocity = rigid.velocity + Vector3.up * floatForce;
                 pm.floatFuel -= 1;
 
-                if (TutorialManager.instance.currentHint == "float" && pm.floatFuel < pm.maxFloatFuel*0.5f)
+                if (TutorialManager.instance.currentHint == "float" && pm.floatFuel < pm.maxFloatFuel * 0.5f)
                 {
                     TutorialManager.instance.ChangeType("");
                 }
@@ -328,7 +331,7 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             anim.SetBool("floating", false);
-         
+
 
         }
     }
@@ -366,7 +369,7 @@ public class ThirdPersonController : MonoBehaviour
     IEnumerator Defreeze(GameObject cube)
     {
         yield return new WaitForSeconds(0.15f);
-        if(pm.isGrounded == false)
+        if (pm.isGrounded == false)
         {
             cube.GetComponent<CubeDestroy>().freezeThisCluster = false;
 
@@ -393,6 +396,8 @@ public class ThirdPersonController : MonoBehaviour
                     ObjectManager.instance.player.GetComponent<ThirdPersonController>().enabled = false;
                     ObjectManager.instance.player.GetComponent<PlayerShoot>().enabled = false;
                     UIManager.instance.gameOverCanvas.SetActive(true);
+                    UIManager.instance.overScore.GetComponent<Text>().text = "You reached island " + UIManager.instance.normalScore.ToString() + "!";
+                    UIManager.instance.overHighscore.GetComponent<Text>().text = "Your high score is " + PlayerPrefs.GetInt("normalHighScore").ToString() + "!";
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                 }
@@ -417,8 +422,8 @@ public class ThirdPersonController : MonoBehaviour
 
         }
         */
-       
-        if (other.gameObject.GetComponent<_DeathZone>() != null )
+
+        if (other.gameObject.GetComponent<_DeathZone>() != null)
         {
             isSafe = true;
         }
@@ -428,7 +433,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<_DeathZone>() != null)
         {
-            isSafe = false ;
+            isSafe = false;
         }
         //StartCoroutine(ChangeGrounded());
 
