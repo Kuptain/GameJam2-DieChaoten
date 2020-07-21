@@ -31,7 +31,7 @@ public class PowerUpManager : MonoBehaviour
     void Start()
     {
         higherJumpFactor = 1;
-        higherJumpData = 1.05f;
+        higherJumpData = 1.1f;
         longerFloatData = 200f;
         longerFreezeData = 10;
         shootScript = ObjectManager.instance.player.GetComponent<PlayerShoot>();
@@ -112,7 +112,7 @@ public class PowerUpManager : MonoBehaviour
             higherJumpFactor = 1;
             shootScript.meltingTime = 5;
             PlayerManager.instance.maxFloatFuel = 125f;
-            CubeManager.instance.currentSlowmo = 0.175f;
+            CubeManager.instance.currentSlowmo = 0.25f;
             CubeManager.instance.slowmoValue = 0.15f;
             currentPowerUp = "";
         }

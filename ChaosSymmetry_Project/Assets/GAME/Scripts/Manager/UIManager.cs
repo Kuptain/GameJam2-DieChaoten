@@ -776,7 +776,7 @@ public class UIManager : MonoBehaviour
 
     void ShowSlomo()
     {
-        if (CubeManager.instance.slowMode == true)
+        if (PlayerManager.instance.slowMode == true)
         {
             //slomo.SetActive(true);
             slowmoScreen.SetActive(true);

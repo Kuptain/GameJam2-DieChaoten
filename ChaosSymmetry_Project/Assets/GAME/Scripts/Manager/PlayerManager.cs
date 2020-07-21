@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public bool isGrounded;
     public bool canJump = true;
     public int lives = 3;
+    public bool slowMode = false;
 
     private void Awake()
     {

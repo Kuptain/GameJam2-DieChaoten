@@ -332,11 +332,11 @@ public class CubeDestroy : MonoBehaviour
         //Slowmotion
         {
 
-            if (cm.slowMode)
+            if (PlayerManager.instance.slowMode)
             {
                 cm.currentSlowmo = cm.slowmoValue;
             }
-            else if (cm.slowMode == false)
+            else if (PlayerManager.instance.slowMode == false)
             {
                 cm.currentSlowmo = 1;
 

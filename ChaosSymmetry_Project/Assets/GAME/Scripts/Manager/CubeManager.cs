@@ -73,7 +73,9 @@ public class CubeManager : MonoBehaviour
         {
             gameModeAllClusters = false;
         }*/
+        slowMode = PlayerManager.instance.slowMode;
 
+        /*
         //Slowmotion
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -121,5 +123,7 @@ public class CubeManager : MonoBehaviour
             }
          
         }
+
+        */
     }
 }
