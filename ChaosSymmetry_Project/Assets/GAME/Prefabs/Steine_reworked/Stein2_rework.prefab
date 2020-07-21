@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5936131137264233944}
   - component: {fileID: 8177918312137152027}
   - component: {fileID: 6944922451057789525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stein2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

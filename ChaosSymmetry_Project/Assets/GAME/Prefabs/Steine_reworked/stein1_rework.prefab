@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4839468261065261090}
   - component: {fileID: 1842931297897084624}
   - component: {fileID: 9133808480889476076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface106
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 2088175544133500364}
   - component: {fileID: 904082094537395532}
   - component: {fileID: 1891853536247454987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8014047452296718697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stein1_rework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
