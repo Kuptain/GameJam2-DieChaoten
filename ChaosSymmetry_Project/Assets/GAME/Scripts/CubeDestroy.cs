@@ -30,6 +30,7 @@ public class CubeDestroy : MonoBehaviour
 
     bool colliding;
     bool returnTimer;
+    bool doOnce;
     public bool isHovered;
 
     Vector3 startPosition;
@@ -69,8 +70,9 @@ public class CubeDestroy : MonoBehaviour
             rigid = gameObject.GetComponent<Rigidbody>();
             startPosition = transform.position;
             startRotation = transform.rotation;
-            
 
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
             StartCoroutine(Force());
             //TriggerRandomColor();
         }
@@ -144,11 +146,9 @@ public class CubeDestroy : MonoBehaviour
             }
 
             transform.position += moveVelocity * finalSpeed * Time.deltaTime * cm.currentSlowmo;
-
-
-
         }
     }
+
     void Update()
     {
         InputPushNew();
@@ -160,9 +160,11 @@ public class CubeDestroy : MonoBehaviour
         {
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
-        }      
+        }
+        rigid.constraints = RigidbodyConstraints.FreezeRotation;
+        rigid.constraints = RigidbodyConstraints.FreezePosition;
 
-        if(transform.childCount > 0 && cm.clusterHasShader)
+        if (transform.childCount > 0 && cm.clusterHasShader)
         {
             if (freezeThisCluster)
             {
@@ -172,8 +174,7 @@ public class CubeDestroy : MonoBehaviour
             {
                 transform.GetChild(1).gameObject.SetActive(false);
             }
-        }
-       
+        }       
 
         //Return Cooldown
         if (returnTimer == true)
@@ -208,10 +209,7 @@ public class CubeDestroy : MonoBehaviour
 
             }
         }
-        */
-
-
-     
+        */    
                      
     }
 
@@ -240,7 +238,9 @@ public class CubeDestroy : MonoBehaviour
     //Push out effect/Explode
     public void Explode()
     {
-        if(freezeThisCluster == false && bubbleFreeze == false)
+        transform.parent.parent.GetComponent<OrbitPoint>().rotateElements = true;
+
+        if (freezeThisCluster == false && bubbleFreeze == false)
         {
             colliding = false;
             rigid.constraints = RigidbodyConstraints.None;
@@ -303,18 +303,28 @@ public class CubeDestroy : MonoBehaviour
             //notsendingback = true;
         }
 
+        if(doOnce == false)
+        {
+            StartCoroutine(SendingBackFalseTimer());
+            doOnce = true; 
+        }
 
         /* if (cubeManager.testMode == 1)
          {
              transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * cm.currentSlowmo);
              transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
-
-
          }*/
-
-
-
     }
+
+    IEnumerator SendingBackFalseTimer()
+    {
+
+        yield return new WaitForSeconds(3f);
+        sendingBack = false;
+        transform.parent.parent.GetComponent<OrbitPoint>().rotateElements = false;
+        doOnce = false;
+    }
+
 
     void InputPushNew()
     {         

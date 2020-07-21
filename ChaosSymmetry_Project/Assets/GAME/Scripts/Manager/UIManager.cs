@@ -12,13 +12,15 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public GameObject slomo, consumable, consumableCharges, currentPowerupOne, currentPowerupTwo, currentPowerupThree, slowmoScreen;
     [HideInInspector] public GameObject mainMenuCanvas, pauseCanvas, ingameCanvas, gameOverCanvas;
     [SerializeField] GameObject freezeBalken, freezeBalkenGoal, pauseConsumableCharges, freezeBalkenBG, fuelbalken, fuelbalkenGoal, fuelbalkenBG;
-    [SerializeField] GameObject secondfreezeBalken, secondfreezeBalkenGoal, secondfreezeBalkenBG;
+    [SerializeField] GameObject secondfreezeBalken, secondfreezeBalkenGoal, secondfreezeBalkenBG, camFreeLook, slider;
     [SerializeField] Sprite floatSprite, jumpSprite, freezeSprite, secondSprite, platformSprite, slomoSprite, consumableSprite;
     [SerializeField] Image powerUpImageOne, powerUpImageTwo, powerUpImageThree, consumableImage;
     [SerializeField] Image pausePowerUpImageOne, pausePowerUpImageTwo, pausePowerUpImageThree, pauseConsumableImage;
-    public GameObject uiPrefab;
-    public GameObject freezeTime;
+    public GameObject uiPrefab, lives, livespause, currentScore, highScore;
+    public GameObject freezeTime, overScore, overHighscore;
+    public Image heart, heartpause;
     public bool showMenu, jumped;
+    public int normalScore, endlessScore;
 
     Text powerDescOne, powerDescTwo, powerDescThree, consDesc;
     public bool paused, gameStarted;
@@ -47,18 +49,14 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (showMenu)
-        {
-            PlayerPrefs.SetInt("showMenu", 0);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("showMenu", 1);
-        }
+        slider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("sensitivity", 1);
+        normalScore = 0;
+        endlessScore = 0;
 
         if (PlayerPrefs.GetInt("levelRestarted") == 1)
         {
             PlayerPrefs.SetInt("showMenu", 1);
+            print("FFF");
         }
         else
         {
@@ -118,6 +116,7 @@ public class UIManager : MonoBehaviour
         pauseCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().onClick.AddListener(() => OpenMainMenu());
         pauseCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().onClick.AddListener(() => QuitGame());
         pauseCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => { ToggleTutorial(); });
+        slider.GetComponent<Slider>().onValueChanged.AddListener((value) => { ChangeSensitivity(); });
         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
 
         // 1 is on, 0 is off
@@ -149,6 +148,8 @@ public class UIManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
             player.GetComponent<ThirdPersonController>().enabled = true;
+            cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
+            ingameCanvas.SetActive(true);
             player.GetComponent<PlayerShoot>().enabled = true;
         }
         Time.timeScale = 1;
@@ -176,6 +177,19 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && paused && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
             ResumeGame();
+        }
+
+        if (ingameCanvas.activeSelf == true)
+        {
+            if (PlayerPrefs.GetInt("gameMode") == 1)
+            {
+                heart.enabled = false;
+                lives.gameObject.SetActive(false);
+            }
+            else
+            {
+                lives.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
+            }
         }
     }
 
@@ -208,6 +222,20 @@ public class UIManager : MonoBehaviour
         player.GetComponent<PlayerShoot>().enabled = false;
         pauseCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+
+        if (PlayerPrefs.GetInt("gameMode") == 1)
+        {
+            heartpause.enabled = false;
+            livespause.gameObject.SetActive(false);
+            currentScore.GetComponent<Text>().text = "Islands reached: " + endlessScore.ToString();
+            highScore.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("endlessHighScore").ToString();
+        }
+        else
+        {
+            livespause.GetComponent<Text>().text = PlayerManager.instance.lives.ToString();
+            currentScore.GetComponent<Text>().text = "Islands reached: " + normalScore.ToString();
+            highScore.GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("normalHighScore").ToString();
+        }
 
         ShowCurrentPowerupsPause();
         ShowPowerUpDescription();
@@ -399,20 +427,26 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    void ChangeSensitivity()
+    {
+        camFreeLook.GetComponent<MouseSensitivitz>().lookSpeed = slider.GetComponent<Slider>().value;
+        PlayerPrefs.SetFloat("sensitivity", slider.GetComponent<Slider>().value);
+    }
+
     void StartEndlessMode()
     {
         mainMenuCanvas.SetActive(false);
         Cursor.visible = false;
+        PlayerPrefs.SetInt("gameMode", 1);
+        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         pauseCanvas.SetActive(false);
         ingameCanvas.SetActive(true);
-        cineMach.GetComponent<CinemachineFreeLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
-        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<ThirdPersonController>().enabled = true;
-        PlayerPrefs.SetInt("gameMode", 1);
+        Camera.main.transform.parent.GetComponent<CameraController>().enabled = true;
         player.GetComponent<PlayerShoot>().enabled = true;
-        gameStarted = true;
         paused = false;
+        gameStarted = true;
     }
 
     void OpenMainMenu()
@@ -475,7 +509,7 @@ public class UIManager : MonoBehaviour
             fuelbalken.transform.rotation = fuelbalkenStartRot;
             fuelbalken.SetActive(false);
             fuelbalkenBG.SetActive(false);
-            fuelbalkenTime = 0; 
+            fuelbalkenTime = 0;
             jumped = false;
         }
     }
