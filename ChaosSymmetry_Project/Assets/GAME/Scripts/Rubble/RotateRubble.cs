@@ -14,6 +14,7 @@ public class RotateRubble : MonoBehaviour
     Rigidbody rigid;
     float sendBackManual;
     Quaternion startRotation;
+    public bool doOnce, sentback;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,10 @@ public class RotateRubble : MonoBehaviour
                 transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
                             randomRotate.y * Time.deltaTime * cm.currentSlowmo,
                             randomRotate.z * Time.deltaTime * cm.currentSlowmo);
+
             }
 
-            if (platformScript.sendingBack == true)
+            if (platformScript.sendingBack == true && sentback == false)
             {
                 SendBack();
             }
@@ -72,5 +74,19 @@ public class RotateRubble : MonoBehaviour
             rigid.constraints = RigidbodyConstraints.FreezeRotation;
             rigid.constraints = RigidbodyConstraints.FreezePosition;
         }
+        if (doOnce == false)
+        {
+            StartCoroutine(SendingBackFalseTimer());
+            doOnce = true;
+        }
+    }
+
+    IEnumerator SendingBackFalseTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        sentback = true;
+        exploding = false;
+        doOnce = false;
+        print("hhhhhhaa");
     }
 }

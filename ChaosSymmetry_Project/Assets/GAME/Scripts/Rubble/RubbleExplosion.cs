@@ -24,12 +24,15 @@ public class RubbleExplosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        explosionForce = 70;
         if (exploded)
         {
             foreach (Transform child in transform)
             {
                 child.GetComponent<RotateRubble>().RandomizeRotation();
                 child.GetComponent<RotateRubble>().exploding = true;
+                child.GetComponent<RotateRubble>().sentback = false;
+
             }
             exploded = false;
         }
@@ -45,6 +48,7 @@ public class RubbleExplosion : MonoBehaviour
                 if (hitCol.GetComponent<Rigidbody>() != null)
                 {
                     hitCol.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, this.transform.position, blastradius, 1, ForceMode.Impulse);
+                    print("hhdddf");
                 }
             }
             //RandomizeRotation();
