@@ -13,7 +13,7 @@ public class OrbitPoint : MonoBehaviour
 
     Vector3 randomRotate;
     float maxRotation;
-
+    public bool rotateElements;
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +58,11 @@ public class OrbitPoint : MonoBehaviour
             {
                 if (childScript.freezeThisCluster == false && childScript.bubbleFreeze == false)
                 {
+                    if (rotateElements)
+                    {
+                        RotateElements();
+                    }
                     canRotate = true;
-                    RotateElements();
 
                 }
                 else
