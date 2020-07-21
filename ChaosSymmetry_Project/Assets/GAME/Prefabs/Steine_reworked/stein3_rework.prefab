@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1142175589437927546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stein3_rework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1940651648060779059}
   - component: {fileID: 3576463183934192259}
   - component: {fileID: 1757795896411888695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4881589383835300817}
   - component: {fileID: 3991705999378117022}
   - component: {fileID: 6463882961539393477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stein3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
