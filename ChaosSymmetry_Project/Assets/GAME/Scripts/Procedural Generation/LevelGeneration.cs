@@ -240,7 +240,10 @@ public class LevelGeneration : MonoBehaviour
 
     float RandomAngle()
     {
-        float[] numbers = { 0, 90, 180, 270 };
+        //float[] numbers = { 0, 90, 180, 270 };
+
+        float[] numbers = { 0,180};
+
         int randomIndex = Random.Range(0, numbers.Length);
         return numbers[randomIndex];
 
@@ -316,10 +319,15 @@ public class LevelGeneration : MonoBehaviour
 
             //Quaternion spawnAngle = new Quaternion(Choose(), Choose(), Choose(), RandomAngle());
             Quaternion spawnAngle = clusterObj.transform.rotation;
-            spawnAngle.x = clusterObj.transform.rotation.x + RandomAngle();
-            spawnAngle.y = clusterObj.transform.rotation.y + RandomAngle();
-            spawnAngle.z = clusterObj.transform.rotation.z + RandomAngle();
+            spawnAngle = Quaternion.Euler(clusterObj.transform.eulerAngles.x + RandomAngle(),
+                                                   clusterObj.transform.eulerAngles.y + RandomAngle(),
+                                                   clusterObj.transform.eulerAngles.z + RandomAngle());
 
+            //spawnAngle.x = clusterObj.transform.rotation.x + RandomAngle();
+            //spawnAngle.y = clusterObj.transform.rotation.y + RandomAngle();
+            //spawnAngle.z = clusterObj.transform.rotation.z + RandomAngle();
+
+            
             CubeManager.instance.clusterObjects.Add(Instantiate(clusterObj, spawnPos, spawnAngle) as GameObject);
             if (CubeManager.instance.clusterObjects.Count > clusterAmount+1)
             {
