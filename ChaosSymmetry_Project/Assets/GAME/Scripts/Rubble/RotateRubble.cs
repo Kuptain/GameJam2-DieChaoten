@@ -87,6 +87,5 @@ public class RotateRubble : MonoBehaviour
         sentback = true;
         exploding = false;
         doOnce = false;
-        print("hhhhhhaa");
     }
 }

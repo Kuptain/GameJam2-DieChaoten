@@ -20,9 +20,10 @@ public class ResetJump : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (jumped)
+        if (jumped && other.CompareTag("terrain"))
         {
             AudioManager.instance.landing.Play();
+            print("QQQQQ");
             jumped = false;
         }
     }
