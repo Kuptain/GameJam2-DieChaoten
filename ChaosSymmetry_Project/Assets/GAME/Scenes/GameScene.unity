@@ -2228,6 +2228,16 @@ PrefabInstance:
       propertyPath: cam2
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7922341456328770439, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 57.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7922341456328770439, guid: 33a823da738795641b176b98ea16dd99,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7976314235892229972, guid: 33a823da738795641b176b98ea16dd99,
         type: 3}
       propertyPath: particleDestroy
