@@ -22,7 +22,6 @@ public class ResetJump : MonoBehaviour
     {
         if (jumped)
         {
-            AudioManager.instance.landing.Play();
             jumped = false;
         }
     }
@@ -34,6 +33,8 @@ public class ResetJump : MonoBehaviour
             if (transform.parent.GetComponent<Rigidbody>().velocity.y <= 0)
             {
                 //transform.parent.GetComponent<FirstPersonController>().isGrounded = true;
+                AudioManager.instance.landing.Play();
+
                 PlayerManager.instance.isGrounded = true;
                 PlayerManager.instance.floatFuel = PlayerManager.instance.maxFloatFuel;
                 ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlayLand();

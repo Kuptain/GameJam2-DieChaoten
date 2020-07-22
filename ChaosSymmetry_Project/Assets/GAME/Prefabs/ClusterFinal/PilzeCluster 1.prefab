@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &2870518939046634179
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &4713969984407152829
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &6052261132244072418
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &6749092757673383585
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 1
   canRotate: 0
+  rotateElements: 0
 --- !u!135 &6471027118529756559
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -310,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &7546345293171018753
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1 &8836364708869897990
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCluster: 0
   canRotate: 0
+  rotateElements: 0
 --- !u!1001 &1809404447825710254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1029,6 +1037,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7922662723864330501}
     m_Modifications:
+    - target: {fileID: 3427538657000098301, guid: 7699550900903c843b01ec2a91d9b411,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4065585969808871802, guid: 7699550900903c843b01ec2a91d9b411,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -1129,6 +1142,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6912265063855973162}
     m_Modifications:
+    - target: {fileID: 1018831355498364745, guid: 619863ec2c75a944b9a265be43dea192,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6235990732884691251, guid: 619863ec2c75a944b9a265be43dea192,
         type: 3}
       propertyPath: m_LocalPosition.x
