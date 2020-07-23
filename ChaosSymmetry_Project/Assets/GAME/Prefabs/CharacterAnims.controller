@@ -159,7 +159,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 0.5
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 113682383095678870}
@@ -174,7 +174,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3100369314251171874, guid: 3c66740a430bdf449b6cfcdc19535e12,
+  m_Motion: {fileID: -3100369314251171874, guid: 7d9bc772f15859a4580921b251132a57,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -250,7 +250,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6787035311584400395, guid: 6e5a3ea09f76565489d55c6d7c5511df,
+  m_Motion: {fileID: 6787035311584400395, guid: ee75730153391c44891034408c437be8,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -702,7 +702,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cluster
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5880793004669322760}
@@ -717,7 +717,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7193527581717834635, guid: e1a57af8e2757ef4bab885d623f7dc8f,
+  m_Motion: {fileID: 7193527581717834635, guid: 35cc4fd3998e9e849a387eb173096853,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -903,9 +903,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.33253077
+  m_TransitionDuration: 2.0657394
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 0.000000004404282
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
