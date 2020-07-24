@@ -72,22 +72,7 @@ public class LevelGeneration : MonoBehaviour
 
         powerUp = ObjectManager.instance.powerUp;
         consumable = ObjectManager.instance.consumable;
-        /*
-        if (checkPoints[0].GetComponent<CheckPointBehavior>().isStart)
-        {
-            checkPointOne = checkPoints[0];
-            checkPointTwo = checkPoints[1];
-
-
-        }
-        else if (checkPoints[1].GetComponent<CheckPointBehavior>().isStart)
-        {
-            checkPointOne = checkPoints[1];
-            checkPointTwo = checkPoints[0];
-
-
-        }
-        */
+      
         if (checkPointTwo != null)
         {
             Destroy(checkPointTwo);
@@ -106,9 +91,7 @@ public class LevelGeneration : MonoBehaviour
             TriggerGeneration();
         }
 
-        //checkPointOne.isStart = true;
-        //checkPointOne.canBuild = true;
-
+     
     }
 
     GameObject RandomIsland()
@@ -202,12 +185,7 @@ public class LevelGeneration : MonoBehaviour
             UIManager.instance.normalScore += 1;
             PlayerPrefs.SetInt("normalHighScore", PlayerPrefs.GetInt("normalHighScore") + 1);
         }
-        /*
-        checkPointOne.transform.position = new Vector3(checkPointTwo.transform.position.x + GenerateVariation(25f, 55f),
-                                                       checkPointTwo.transform.position.y + checkPointDistanceY,
-                                                       checkPointTwo.transform.position.z + GenerateVariation(25f, 55f));
-        */
-
+        
         int consumableChance = Random.Range(0, 100);
         if(consumableChance >= 0)
         {
@@ -240,7 +218,6 @@ public class LevelGeneration : MonoBehaviour
 
     float RandomAngle()
     {
-        //float[] numbers = { 0, 90, 180, 270 };
 
         float[] numbers = { 0,180};
 
@@ -267,37 +244,14 @@ public class LevelGeneration : MonoBehaviour
         for (int i = 0; i <= clusterAmount; i++)
         {
             spawnPos.x = startPos.x;
-            spawnPos.z = startPos.z;
-
-      
-
-            //randomX = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
-            //randomZ = Random.Range(-maxVariationZX, maxVariationZX) + clusterAmountCalc * currentCluster;
+            spawnPos.z = startPos.z;   
 
             randomX = Random.Range(-maxVariationZX, maxVariationZX) + newX / clusterAmount * currentCluster;
             randomZ = Random.Range(-maxVariationZX, maxVariationZX) + newZ / clusterAmount * currentCluster;
 
 
             spawnPos.y += clusterDistanceY;    
-            /*
-            if (endPos.x > startPos.x)
-            {
-                spawnPos.x += randomX;
-            }
-            else
-            {
-                spawnPos.x -= randomX;
-
-            }
-            if (endPos.z > startPos.z)
-            {
-                spawnPos.z += randomZ;
-            }
-            else
-            {
-                spawnPos.z -= randomZ;
-            }
-            */
+           
             spawnPos.x += randomX;
             spawnPos.z += randomZ;
 

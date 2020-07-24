@@ -15,7 +15,6 @@ public static class PlayModeStateChangedExample
 
     private static void LogPlayModeState(PlayModeStateChange state)
     {
-        //Debug.Log(state);
         if(state == PlayModeStateChange.EnteredPlayMode)
         {
             PlayerPrefs.SetInt("levelRestarted", 0);

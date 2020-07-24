@@ -335,34 +335,21 @@ public class PlayerShoot : MonoBehaviour
 
             if (lastPowerUp != null)
             {
-                Debug.Log("notHovered");
-
                 lastPowerUp.transform.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = false;
                 lastPowerUp = null;
             }
 
             if (clusterHit.gameObject.GetComponent<_PowerUpCollider>() != null)
             {
-                Debug.Log("hoveredParent");
                 lastPowerUp = clusterHit.gameObject;
                 clusterHit.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = true;
             }
 
             if (clusterHit.gameObject.GetComponent<RandomPowerUp>() != null)
             {
-                Debug.Log("hoveredChild");
                 lastPowerUp = clusterHit.gameObject;
                 clusterHit.gameObject.GetComponent<RandomPowerUp>().isHovered = true;
             }
-            /*
-            else if (lastPowerUp != null)
-            {
-                //Debug.Log("notHovered");
-
-                lastPowerUp.transform.GetChild(0).gameObject.GetComponent<RandomPowerUp>().isHovered = false;
-                lastPowerUp = null;
-            }
-            */
         }
     }
 

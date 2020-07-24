@@ -181,36 +181,6 @@ public class CubeDestroy : MonoBehaviour
         {
             ReturnTimer();
         }
-
-
-        /*
-        //Check ground below for Collision/Raycast
-        {
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 1.5f))
-            {
-                Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * hit.distance, Color.yellow);
-                if (hit.collider.gameObject.CompareTag("terrain") && hit.collider.gameObject.GetComponent<CubeDestroy>() == null)
-                {
-                    colliding = true;
-                    //moveVelocity.y = 0;
-                    moveVelocity *= 0.9f;
-                    rigid.constraints = RigidbodyConstraints.FreezeRotation;
-                }
-                else
-                {
-                    colliding = false;
-                }
-            }
-            else
-            {
-                colliding = false;
-
-            }
-        }
-        */    
-                     
     }
 
     //Intervall Push mode, every x second makes the cubes push away again
@@ -308,12 +278,6 @@ public class CubeDestroy : MonoBehaviour
             StartCoroutine(SendingBackFalseTimer());
             doOnce = true; 
         }
-
-        /* if (cubeManager.testMode == 1)
-         {
-             transform.position = Vector3.Slerp(transform.position, startPosition, sendBackAuto * cm.currentSlowmo);
-             transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, 0.002f);
-         }*/
     }
 
     IEnumerator SendingBackFalseTimer()
@@ -341,37 +305,7 @@ public class CubeDestroy : MonoBehaviour
                 cm.currentSlowmo = 1;
 
             }
-        }
-
-        //Control all cubes
-        /*{
-            //Force/Push out 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                pushMode = 1;
-                Explode();
-            }
-
-            //Intervall Force/Push
-            if (Input.GetKey(KeyCode.Alpha2))
-            {
-                pushMode = 2;
-                Explode();
-            }
-
-            //Send all cubes back to the roots
-            if (Input.GetKey(KeyCode.Alpha3))
-            {
-                if (cm.testMode == 0)
-                {
-                    sendingBack = true;
-                }
-            }
-
-          
-        }*/
-
-  
+        }  
     }
     IEnumerator ChangeHoveredState()
     {

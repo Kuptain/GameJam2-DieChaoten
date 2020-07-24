@@ -10,6 +10,5 @@ public class ClusterDemo : MonoBehaviour
     {
         Cluster c = ClusterGenerator.Generate(settings);
         GetComponent<ClusterRenderer>().Render(c);
-        Debug.Log(c.ToString());
     }
 }

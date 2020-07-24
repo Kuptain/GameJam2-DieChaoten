@@ -125,11 +125,7 @@ public class OrbitPoint : MonoBehaviour
     }
     void RotateCluster()
     {
-        /*
-        transform.Rotate(randomRotate.x * Time.deltaTime * cm.currentSlowmo,
-                             randomRotate.y * Time.deltaTime * cm.currentSlowmo,
-                             randomRotate.z * Time.deltaTime * cm.currentSlowmo);
-        */
+      
 
         transform.Rotate(0,
                             randomRotate.y * Time.deltaTime * cm.currentSlowmo,

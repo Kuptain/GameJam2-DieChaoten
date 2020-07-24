@@ -92,12 +92,5 @@ public class ClusterManager : MonoBehaviour
 
     }
 
-    void BackToOrder()
-    {
-        /*foreach (GameObject go in allStructureParts)
-        {
-            go.transform.Translate(startPosition * Time.deltaTime * 15, Space.World);
-            //go.transform.Rotate(Vector3.right * Time.deltaTime * Random.Range(10, 30));
-        }*/
-    }
+ 
 }

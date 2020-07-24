@@ -80,33 +80,7 @@ public class PowerUpManager : MonoBehaviour
             }
         }
 
-        /*if (currentPowerUp != null)
-        {
-            if (currentPowerUp == "higherJump")
-            {
-                higherJumpFactor = higherJumpData;
-                shootScript.meltingTime = 5;
-                PlayerManager.instance.maxFloatFuel = 40f;
-            }
-            if (currentPowerUp == "longerFloat")
-            {
-                PlayerManager.instance.maxFloatFuel = longerFloatData;
-                shootScript.meltingTime = 5;
-                higherJumpFactor = 1;
-            }
-            if (currentPowerUp == "longerFreeze")
-            {
-                higherJumpFactor = 1;
-                PlayerManager.instance.maxFloatFuel = 40f;
-                shootScript.meltingTime = longerFreezeData;
-            }
-            if(currentPowerUp == "secondClusterFreeze")
-            {
-                higherJumpFactor = 1;
-                shootScript.meltingTime = 5;
-                PlayerManager.instance.maxFloatFuel = 40f;
-            }
-        }*/
+       
         else
         {
             higherJumpFactor = 1;

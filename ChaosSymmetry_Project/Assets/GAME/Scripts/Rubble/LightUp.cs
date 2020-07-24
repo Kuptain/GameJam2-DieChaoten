@@ -27,12 +27,6 @@ public class LightUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.C))
-        {
-            lightUp = true;
-            //startColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 0);
-            //endColor = new Color(objectManager.glowMat.color.r, objectManager.glowMat.color.g, objectManager.glowMat.color.b, 40);
-        }*/
 
         if (lightUp)
         {
@@ -65,35 +59,5 @@ public class LightUp : MonoBehaviour
                 doOnce = false;
             }
         }
-        /*
-        if (lightUp)
-        {
-            if (objectManager.glowMat.color.a <= 29 && shining == false)
-            {
-                //glowMat.color = new Color(glowMat.color.r, glowMat.color.g, glowMat.color.b, Mathf.Lerp(glowMat.color.a, 30, Time.deltaTime * fadeSpeed));
-                objectManager.glowMat.color = Color.Lerp(objectManager.glowMat.color, endColor, Time.deltaTime * fadeSpeed);
-            }
-
-            if (objectManager.glowMat.color.a > 29 && shining == false)
-            {
-                shining = true;
-                print("hhhhh");
-            }
-
-            if (shining)
-            {
-                //glowMat.color = new Color(glowMat.color.r, glowMat.color.g, glowMat.color.b, Mathf.Lerp(glowMat.color.a, 0, Time.deltaTime * fadeSpeed));
-                objectManager.glowMat.color = Color.Lerp(objectManager.glowMat.color, startColor, Time.deltaTime * fadeSpeed);
-            }
-
-            if (objectManager.glowMat.color.a <= 1 && shining == true)
-            {
-                lightUp = false;
-                //glowMat.color = new Color(glowMat.color.r, glowMat.color.g, glowMat.color.b, 0);
-                print("ffff");
-                objectManager.glowMat.color = startColor;
-                shining = false;
-            }
-        }*/
     }
 }

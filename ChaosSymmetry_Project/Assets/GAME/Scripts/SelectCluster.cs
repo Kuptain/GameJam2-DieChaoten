@@ -28,7 +28,6 @@ public class SelectCluster : MonoBehaviour
         //RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
             clusterManager.OnTheWayToHeaven();
         }
     }

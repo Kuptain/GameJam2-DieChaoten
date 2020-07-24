@@ -76,7 +76,6 @@ public class RubbleAroundPlayer : MonoBehaviour
             if (doOnce == false)
             {
                 rotationSpeed = 30f;
-                //transform.position = shakeStartPos;
                 doOnce = true;
 
             }
@@ -92,14 +91,9 @@ public class RubbleAroundPlayer : MonoBehaviour
             {
                 if (doOnce)
                 {
-                    //shakeStartPos = transform.position;
                     rotationSpeed = 400f;
                     doOnce = false;
                 }
-                //tranform.position.x = shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount );
-
-                //tranform.position.y = shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) ;
-                //transform.position = new Vector3(shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount) * 0.02f, shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) * 0.02f, transform.position.z);
                 transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
                 desiredPosition = (transform.position - target.position).normalized * radius + target.position;
                 transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
@@ -109,7 +103,6 @@ public class RubbleAroundPlayer : MonoBehaviour
                 if (doOnce == false)
                 {
                     rotationSpeed = 30f;
-                    //transform.position = shakeStartPos;
                     doOnce = true;
                 }
 
@@ -120,52 +113,6 @@ public class RubbleAroundPlayer : MonoBehaviour
 
             }
         }
-
-
-        /*if (cm.slowMode == false)
-        {
-            if(doOnce == false)
-            {
-                rotationSpeed = 30f;
-                //transform.position = shakeStartPos;
-                doOnce = true;
-            }
-
-            transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
-            desiredPosition = (transform.position - target.position).normalized * radius + target.position;
-            transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-            transform.Rotate(randomRotate.x * Time.deltaTime, randomRotate.y * Time.deltaTime, randomRotate.z * Time.deltaTime);
-        }
-        else
-        {
-            if(doOnce )
-            {
-                //shakeStartPos = transform.position;
-                rotationSpeed = 400f;
-                doOnce = false;
-            }
-            //tranform.position.x = shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount );
-
-            //tranform.position.y = shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) ;
-            //transform.position = new Vector3(shakeStartPos.x + Mathf.Sin((Time.time * speed) * amount) * 0.02f, shakeStartPos.y + Mathf.Sin((Time.time * speed) * amount) * 0.02f, transform.position.z);
-            transform.RotateAround(target.position, axis, rotationSpeed * Time.deltaTime);
-            desiredPosition = (transform.position - target.position).normalized * radius + target.position;
-            transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-
-            /*transform.position = transform.position + (Random.insideUnitSphere * 0.4f) * temp_shake_intensity;
-            transform.rotation = new Quaternion(
-                transform.rotation.x + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
-                transform.rotation.y + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
-                transform.rotation.z + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
-                transform.rotation.w + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f);*/
-        //temp_shake_intensity -= shake_decay;
-
-        //randomPos = shakeStartPos + (Random.insideUnitSphere * distance);
-
-        //transform.position = randomPos;
-
-        // gameObject.transform.position.x = Mathf.Sin(Time.deltaTime * speed) * amount; */
-        //}     
     }
 
     public void RandomizeRotation()

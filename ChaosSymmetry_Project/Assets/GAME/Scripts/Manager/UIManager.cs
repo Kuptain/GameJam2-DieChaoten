@@ -56,7 +56,6 @@ public class UIManager : MonoBehaviour
         if (PlayerPrefs.GetInt("levelRestarted") == 1)
         {
             PlayerPrefs.SetInt("showMenu", 1);
-            print("FFF");
         }
         else
         {
@@ -450,25 +449,7 @@ public class UIManager : MonoBehaviour
     }
 
     void OpenMainMenu()
-    {
-        /* PlayerPrefs.SetInt("levelRestarted", 0);
-         mainMenuCanvas.SetActive(true);
-         gameOverCanvas.SetActive(false);
-         pauseCanvas.SetActive(false);
-         Camera.main.transform.parent.GetComponent<CameraController>().enabled = false;
-         player.GetComponent<ThirdPersonController>().enabled = false;
-         player.GetComponent<PlayerShoot>().enabled = false;
-         Cursor.visible = true;
-         Cursor.lockState = CursorLockMode.None;
-         // 1 is on, 0 is off
-         if (PlayerPrefs.GetInt("tutorial") == 0)
-         {
-             mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(false);
-         }
-         else if (PlayerPrefs.GetInt("tutorial") == 1)
-         {
-             mainMenuCanvas.transform.GetChild(4).gameObject.GetComponent<Toggle>().SetIsOnWithoutNotify(true);
-         }*/
+    {        
         PlayerPrefs.SetInt("levelRestarted", 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -796,43 +777,16 @@ public class UIManager : MonoBehaviour
         if (player.GetComponent<PlayerShoot>().frozenCluster != null)
         {
             freezeBalken.SetActive(true);
-            freezeBalkenBG.SetActive(true);
-            //TimeSpan interval = TimeSpan.FromSeconds(currentFreezeTime);
-            //string timeInterval = interval.ToString();
-            //freezeTime.transform.GetChild(0).GetComponent<Text>().text = timeInterval;
-            //freezeTime.transform.GetChild(0).GetComponent<Text>().text = (((Mathf.Floor(currentFreezeTime / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(currentFreezeTime % 60f).ToString("00")); ;
-            /*if (currentFreezeTime >= 0)
-            {
-                freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
-                currentFreezeTime -= Time.deltaTime;
-            }
-            else
-            {
-                freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
-            }
-            if (player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
-            {
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
-                secondCurrentFreezeTime -= Time.deltaTime;
-            }
-            else
-            {
-
-                freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
-                freezeTime.transform.GetChild(1).gameObject.SetActive(false);
-
-            }*/
+            freezeBalkenBG.SetActive(true);           
             if (currentFreezeTime >= 0)
             {
                 balkenTime = Time.deltaTime / freezetimer;
-                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
                 freezeBalken.transform.position = Vector3.Slerp(freezeBalken.transform.position, balkenEndPos, balkenTime);
                 freezeBalken.transform.rotation = Quaternion.Lerp(freezeBalken.transform.rotation, balkenEndRot, balkenTime);
                 currentFreezeTime -= Time.deltaTime;
             }
             else
             {
-                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
                 freezeBalken.transform.position = balkenStartPos;
                 freezeBalken.transform.rotation = balkenStartRot;
                 freezeBalken.SetActive(false);
@@ -856,14 +810,12 @@ public class UIManager : MonoBehaviour
             if (secondCurrentFreezeTime >= 0)
             {
                 secondbalkenTime = Time.deltaTime / freezetimer;
-                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = ((Mathf.Floor(currentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((currentFreezeTime * 100f) % 100).ToString("00")));
                 secondfreezeBalken.transform.position = Vector3.Slerp(secondfreezeBalken.transform.position, secondbalkenEndPos, secondbalkenTime);
                 secondfreezeBalken.transform.rotation = Quaternion.Lerp(secondfreezeBalken.transform.rotation, secondbalkenEndRot, secondbalkenTime);
                 secondCurrentFreezeTime -= Time.deltaTime;
             }
             else
             {
-                //freezeTime.transform.GetChild(0).GetComponent<Text>().text = "";
                 secondfreezeBalken.transform.position = secondbalkenStartPos;
                 secondfreezeBalken.transform.rotation = secondbalkenStartRot;
                 secondfreezeBalken.SetActive(false);
@@ -878,24 +830,7 @@ public class UIManager : MonoBehaviour
             secondfreezeBalken.SetActive(false);
             secondfreezeBalkenBG.SetActive(false);
 
-        }
-        /* else
-         {
-             freezeTime.SetActive(false);
-             currentFreezeTime = freezetimer;
-             secondCurrentFreezeTime = freezetimer;
-         }
-
-         if (secondCurrentFreezeTime >= 0 && player.GetComponent<PlayerShoot>().secondFrozenCluster != null)
-         {
-             freezeTime.transform.GetChild(1).GetComponent<Text>().text = ((Mathf.Floor(secondCurrentFreezeTime % 60f).ToString("00")) + ":" + (Mathf.Floor((secondCurrentFreezeTime * 100f) % 100).ToString("00")));
-             secondCurrentFreezeTime -= Time.deltaTime;
-         }
-         else
-         {
-             freezeTime.transform.GetChild(1).GetComponent<Text>().text = "";
-
-         }  */
+        } 
     }
 
     void ToggleTutorial()

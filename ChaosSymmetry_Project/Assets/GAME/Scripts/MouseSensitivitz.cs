@@ -16,7 +16,7 @@ public class MouseSensitivitz : MonoBehaviour
         freeLookComponent = GetComponent<CinemachineFreeLook>();
         xAxis = freeLookComponent.m_XAxis.m_MaxSpeed;
         yAxis = freeLookComponent.m_YAxis.m_MaxSpeed;
-        lookSpeed = PlayerPrefs.GetFloat("sensitivity", 1);
+        lookSpeed = PlayerPrefs.GetFloat("sensitivity", 50);
 
     }
 

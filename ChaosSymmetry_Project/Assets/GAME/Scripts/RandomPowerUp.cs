@@ -24,14 +24,6 @@ public class RandomPowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*int i = Random.Range(1, 11);
-
-        if (i <= 3)
-        {
-            thisPowerUp = PowerUpManager.instance.consumables[Random.Range(0, PowerUpManager.instance.consumables.Length)];
-            consumable = true;
-        }*/
-
         if (isDropped == false)
         {
             CheckDoubles();
@@ -50,19 +42,6 @@ public class RandomPowerUp : MonoBehaviour
     {
         string powerUpSafe = PowerUpManager.instance.powerUps[Random.Range(0, PowerUpManager.instance.powerUps.Length)];
         
-        /*
-        for(int i = 0; i < PowerUpManager.instance.currentPowerUps.Count; i++)
-        {
-            Debug.Log("Powerups: " + i);
-
-            if (powerUpSafe == PowerUpManager.instance.currentPowerUps[i])
-            {
-                Debug.Log("Double");
-                CheckDoubles();
-            }
-        }
-        */
-
         foreach(string collected in PowerUpManager.instance.currentPowerUps)
         {
             if (powerUpSafe == collected)
@@ -149,8 +128,6 @@ public class RandomPowerUp : MonoBehaviour
                 {
                     UIManager.instance.currentPowerupThree.GetComponent<Text>().text = thisPowerUp;
                 }
-                /*PowerUpManager.instance.currentPowerUp = thisPowerUp;
-                UIManager.instance.currentPowerup.GetComponent<Text>().text = thisPowerUp;*/
 
                 if (thisPowerUp == "longerFreeze")
                 {
@@ -166,14 +143,6 @@ public class RandomPowerUp : MonoBehaviour
 
                 Destroy(this.gameObject.transform.parent.gameObject);
             }
-
-            /*else if (consumable == true && PowerUpManager.instance.currentConsumable == "")
-            {
-                PowerUpManager.instance.currentConsumable = thisPowerUp;
-                UIManager.instance.consumable.GetComponent<Text>().text = thisPowerUp;
-                Destroy(this.gameObject.transform.parent.gameObject);
-
-            }*/
         }
     }
     private void OnDestroy()

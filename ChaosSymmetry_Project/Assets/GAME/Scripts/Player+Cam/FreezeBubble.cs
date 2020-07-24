@@ -72,7 +72,6 @@ public class FreezeBubble : MonoBehaviour
             currentPlatforms.Add(obj);
             obj.GetComponent<CubeDestroy>().bubbleFreeze = true;
             obj.GetComponent<CubeDestroy>().moveVelocity = Vector3.zero;
-            //print(obj.name);
 
         }
         else if (mode == "defreeze")

@@ -64,66 +64,9 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameModeAllClusters = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameModeAllClusters = false;
-        }*/
+        
         slowMode = PlayerManager.instance.slowMode;
 
-        /*
-        //Slowmotion
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if(slowMode == false)
-                {
-                    slowMode = true;
-                    AudioManager.instance.slomoOn.Play();
-                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlaySlowmo();
-
-                    if (ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue != null &&
-                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue != null)
-                    {
-                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue.SetActive(true);
-                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornOrange.SetActive(true);
-
-                    }
-
-
-
-                    if (TutorialManager.instance.currentHint == "slow")
-                    {
-                        TutorialManager.instance.ChangeType("right");
-                    }
-
-                }
-                else if(slowMode == true)
-                {
-                    slowMode = false;
-                    AudioManager.instance.slomoOff.Play();
-                    ObjectManager.instance.player.GetComponent<ThirdPersonController>().PlaySlowmo();
-                    if (ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue != null &&
-                         ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue != null)
-                    {
-                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornBlue.SetActive(false);
-                        ObjectManager.instance.player.GetComponent<ThirdPersonController>().hornOrange.SetActive(false);
-
-                    }
-
-                    if (TutorialManager.instance.currentHint == "slowDisable")
-                    {
-                        TutorialManager.instance.ChangeType("");
-                    }
-                }
-            }
-         
-        }
-
-        */
+      
     }
 }
