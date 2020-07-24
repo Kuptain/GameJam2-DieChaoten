@@ -49,12 +49,9 @@ public class ClusterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //OnTheWayToHeaven();
+       
 
-        if (Input.GetKey(KeyCode.O))
-        {
-            BackToOrder();
-        }
+      
     }
 
     public void OnTheWayToHeaven()
