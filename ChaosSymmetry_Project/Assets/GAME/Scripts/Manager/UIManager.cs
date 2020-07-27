@@ -161,15 +161,18 @@ public class UIManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
     }
-
+    private void FixedUpdate()
+    {
+        ShowFuel();
+        ShowSlomo();
+    }
     // Update is called once per frame
     void Update()
     {
         //PlayerPrefs.SetInt("normalHighScore", 0);
-
-        ShowSlomo();
+  
         ShowFreezeTime();
-        ShowFuel();
+    
         ShowCurrentPowerups();
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && mainMenuCanvas.activeSelf == false && gameOverCanvas.activeSelf == false)
         {
@@ -466,7 +469,7 @@ public class UIManager : MonoBehaviour
             {
                 fuelbalkenTime = Time.deltaTime / (PlayerManager.instance.maxFloatFuel / 70);
                 fuelbalken.transform.position = Vector3.Slerp(fuelbalken.transform.position, fuelbalkenEndPos, fuelbalkenTime);
-                fuelbalken.transform.rotation = Quaternion.Lerp(fuelbalken.transform.rotation, fuelbalkenEndRot, fuelbalkenTime);
+                fuelbalken.transform.rotation = Quaternion.Slerp(fuelbalken.transform.rotation, fuelbalkenEndRot, fuelbalkenTime);
             }
             fuelSave = PlayerManager.instance.floatFuel;
             if (PlayerManager.instance.floatFuel <= 0)
@@ -784,7 +787,7 @@ public class UIManager : MonoBehaviour
             {
                 balkenTime = Time.deltaTime / freezetimer;
                 freezeBalken.transform.position = Vector3.Slerp(freezeBalken.transform.position, balkenEndPos, balkenTime);
-                freezeBalken.transform.rotation = Quaternion.Lerp(freezeBalken.transform.rotation, balkenEndRot, balkenTime);
+                freezeBalken.transform.rotation = Quaternion.Slerp(freezeBalken.transform.rotation, balkenEndRot, balkenTime);
                 currentFreezeTime -= Time.deltaTime;
             }
             else
