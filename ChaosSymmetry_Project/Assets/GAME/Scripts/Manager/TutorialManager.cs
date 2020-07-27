@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour
         if (currentHint == "right")
         {
             currentText
-                     = "Freeze a cluster with RIGHT CLICK!";
+                     = "Release RIGHT CLICK to freeze a cluster!";
         }
         if (currentHint == "float")
         {
@@ -93,7 +93,7 @@ public class TutorialManager : MonoBehaviour
         if (currentHint == "slow")
         {
             currentText
-                    = "Toggle slowmotion by pressing SHIFT!";
+                    = "Hold RIGHT CLICK to trigger slowmotion...";
         }
         if (currentHint == "slowDisable")
         {

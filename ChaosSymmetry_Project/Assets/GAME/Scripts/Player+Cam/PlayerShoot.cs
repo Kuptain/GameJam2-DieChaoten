@@ -99,10 +99,7 @@ public class PlayerShoot : MonoBehaviour
         {
             Transform objectHit = hit.transform;
 
-            if (tm.currentHint == "right")
-            {
-                tm.ChangeType("float");
-            }
+           
 
             if (objectHit.gameObject.GetComponent<CubeDestroy>() != null && CubeManager.instance.gameModeAllClusters == false && frozenCluster == null)
             {
@@ -119,7 +116,10 @@ public class PlayerShoot : MonoBehaviour
                 {
                     AudioManager.instance.clusterFreeze.PlayOneShot(AudioManager.instance.freezeThree, 0.6f);
                 }
-
+                if (tm.currentHint == "right")
+                {
+                    tm.ChangeType("float");
+                }
                 frozenCluster = objectHit.gameObject.transform.parent.gameObject.transform.parent.gameObject; //The parent's parent
                 Instantiate(PlayerManager.instance.particleFreeze, objectHit.position, Quaternion.identity);
 
