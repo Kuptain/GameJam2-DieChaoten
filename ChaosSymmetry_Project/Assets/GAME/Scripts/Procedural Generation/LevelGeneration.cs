@@ -178,12 +178,18 @@ public class LevelGeneration : MonoBehaviour
         if (PlayerPrefs.GetInt("gameMode") == 1)
         {
             UIManager.instance.endlessScore += 1;
-            PlayerPrefs.SetInt("endlessHighScore", PlayerPrefs.GetInt("endlessHighScore") + 1);
+            if(UIManager.instance.endlessScore > PlayerPrefs.GetInt("endlessHighScore"))
+            {
+                PlayerPrefs.SetInt("endlessHighScore", PlayerPrefs.GetInt("endlessHighScore") + 1);
+            }
         }
         else
         {
             UIManager.instance.normalScore += 1;
-            PlayerPrefs.SetInt("normalHighScore", PlayerPrefs.GetInt("normalHighScore") + 1);
+            if(UIManager.instance.normalScore > PlayerPrefs.GetInt("normalHighScore"))
+            {
+                PlayerPrefs.SetInt("normalHighScore", PlayerPrefs.GetInt("normalHighScore") + 1);
+            }
         }
         
         int consumableChance = Random.Range(0, 100);
