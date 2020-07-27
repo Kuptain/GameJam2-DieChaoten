@@ -165,6 +165,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //PlayerPrefs.SetInt("normalHighScore", 0);
+
         ShowSlomo();
         ShowFreezeTime();
         ShowFuel();
